@@ -1,0 +1,42 @@
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+strong, 
+span, 
+p, 
+em, 
+i, 
+li, 
+input, 
+label, 
+textarea, 
+select, 
+a, 
+button, 
+table, 
+div { font-weight: 400; font-family: "VolvoNovum", "NotoSansCJK", sans-serif; font-style: normal; line-height: 100%; color: inherit; letter-spacing: -.5px; }
+
+.f-volov { font-family: "NotoSansCJK", sans-serif; letter-spacing: 0px; }
+
+.container { margin: 0 auto; padding: 0 30px; width: 100%; max-width: 1310px; }
+
+
+
+/* BUTTON */
+.btn { display: block; width: 195px; font-size: 16px; text-align: center; border: 1px solid transparent; background-color: transparent; }
+.btn.white { border-color: #fff; color: #fff; }
+.btn.blue { border-color: #007bcd; color: #007bcd; font-weight: 300; }
+.btn.h60 { height: 60px; line-height: 60px; }
+.btn.h55 { height: 55px; line-height: 55px; }
+.btn.angle-r:after { content: ">"; display: inline-block; margin-left: 8px; transform: scaleX(.5); }
+
+
+/* FORM */
+form input { padding: 0 20px; width: 100%; height: 100%; font-size: 17px; color: #333; font-weight: 300; }
+form input::placeholder { color: 999; }
+form button { width: 100%; height: 100%;  }
+form .box-input { height: 50px; width: 100%; border: 1px solid #b7b7b7; overflow: hidden; white-space: nowrap; }
+form .box-submit { height: 50px; width: 50px; border: 1px solid #b7b7b7; }
+form i.search { display: block; width: 100%; height: 100%; background-image: url(../images/ic_search.png); background-repeat: no-repeat; background-size: auto; background-position: center; }

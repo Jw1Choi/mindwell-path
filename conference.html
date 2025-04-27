@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마음 디톡스 - 가족 속에서 잃어버린 나를 다시 마주하는 시간</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3086ff',secondary:'#f8f9fa'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Noto Sans KR', sans-serif;
+color: #333;
+}
+.modal {
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal.active {
+opacity: 1;
+visibility: visible;
+}
+.modal-content {
+transform: translateY(20px);
+transition: transform 0.3s ease;
+}
+.modal.active .modal-content {
+transform: translateY(0);
+}
+
+.f-d-r{
+    flex-direction: row !important;
+}
+
+.cursor-unset{
+    cursor:auto !important;
+}
+
+/* @media screen and (max-width: 700px) {
+    .mb-none{
+ display:none;
+}
+} */
+.gradient-overlay {
+background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%);
+}
+.stat-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.program-card {
+transition: all 0.3s ease;
+}
+.program-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+.program-detail {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+opacity: 0;
+padding-top: 0;
+padding-bottom: 0;
+}
+.program-detail.active {
+max-height: 500px;
+opacity: 1;
+padding-top: 1rem;
+padding-bottom: 1rem;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.progress-bar {
+transition: width 1.5s ease-in-out;
+}
+.chart-container {
+position: relative;
+height: 200px;
+}
+
+.hero-bg {
+background-image: url('https://readdy.ai/api/search-image?query=A%20warm%20and%20inviting%20illustration%20showing%20a%20family%20reconnecting%20emotionally.%20The%20image%20features%20soft%20blue%20tones%20with%20gentle%20white%20transitions%20on%20the%20left%20side%2C%20creating%20a%20calm%20and%20healing%20atmosphere.%20The%20illustration%20should%20evoke%20feelings%20of%20emotional%20healing%2C%20self-discovery%2C%20and%20family%20bonding&width=1200&height=600&seq=12345&orientation=landscape');
+background-size: cover;
+background-position: right center;
+}
+.section-card {
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 24px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #4F7CAC;
+            z-index: 10;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: #e5e7eb;
+        }
+        .session-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor:none;
+        }
+        /* .session-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        } */
+</style>
+</head>
+<body class="bg-white pt-[72px]">
+<!-- 헤더 -->
+<header class="w-full bg-white shadow-sm fixed top-0 left-0 z-50 transition-transform duration-300" id="floating-header">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<div class="flex items-center">
+    <div class="text-primary mr-2 flex items-center justify-center" style="width:100px;">
+        <img src="./img/logo.png" >
+        </div>
+<!-- <div class="font-['Pacifico'] text-2xl text-primary">Mind Well</div> -->
+</div>
+<div class="hidden md:flex items-center space-x-6">
+<a href="#program" class="text-gray-700 hover:text-primary transition-colors">프로그램</a>
+<a href="#speakers" class="text-gray-700 hover:text-primary transition-colors">연사 소개</a>
+<a href="#benefits" class="text-gray-700 hover:text-primary transition-colors">기대효과</a>
+<a href="#register" class="bg-primary text-white px-6 py-2 rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">신청하기</a>
+</div>
+<div class="flex items-center space-x-4 md:hidden">
+<a href="#register" class="bg-primary text-white px-4 py-2 rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">신청하기</a>
+<!-- <button class="w-8 h-8 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</button> -->
+</div>
+</div>
+</header>
+
+<style>
+    .intro-title{
+        font-size:22px;
+    }
+    
+    .intro-detail{
+        font-size:21px;
+    }
+
+    @media screen and (max-width:700px) {
+        .intro-title{
+        font-size:18px;
+    }
+     
+        .intro-detail{
+        font-size:17px;
+    }
+
+    .flex{
+        /* flex-direction: column; */
+        line-height:150%;
+    }
+    }
+</style>
+<!-- 히어로 섹션 -->
+<section class="hero-bg w-full relative" style="background-image: url('./img/intro-conference.png');">
+    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+    <div class="container mx-auto px-4 py-24 relative">
+    <div class="max-w-xl">
+        <p class="text-xl md:text-2xl text-gray-700 mb-6 intro-title"><b>가족과의 소통과 자존감을 회복하는 시간</b></p>
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 " style="line-height:120%;">가정의 달 특집!<br>마음 디톡스</h1>
+    
+    <p class="text-gray-600 mb-8 intro-detail">가족과의 소통에서 어려움을 겪고 있다면?<br>가족 내에서 소외감과 고독감을 느끼신다면?<br><br>가족 관계와 자존감을 회복하는<br>특별한 시간을 마련했습니다.</p>
+    <div class="flex flex-col sm:flex-row gap-4">
+    <a href="#register" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">신청하기</a>
+    <a href="#program" class="border border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">프로그램 보기</a>
+    </div>
+    <div class="mt-8 flex items-center text-gray-600">
+        <div class="flex items-center mr-6">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-calendar-line"></i>
+          </div>
+          <span>2025년 5월 21일 (수) 오후 3시</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-map-pin-line"></i>
+          </div>
+          <span>서울시 대한성공회 프란시스홀</span>
+        </div>
+      </div>
+    </div>
+    </div>
+    </section>
+    <!-- 소개 섹션 -->
+
+<style>
+.hg-18{height:18rem;}
+.w-1\/2{width:50%}
+.w-10{width:2.5rem}
+.w-12{width:3rem}
+.w-14{width:3.5rem}
+.w-6{width:1.5rem}
+.w-8{width:2rem}
+.w-full{width:100%}
+.text-title{font-size:1.34rem;line-height:1.75rem}
+    @media (min-width: 640px){.sm\:flex-row{flex-direction:row}
+.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+}
+@media (min-width: 768px){
+.md\:col-span-2{grid-column:span 2 / span 2}
+.md\:w-1\/2{width:50%}
+.md\:w-3\/5{width:60%}
+.md\:w-70{width:70%}
+.md\:w-30{width:30%}
+.md\:w-40{width:40%}
+.md\:w-50{width:50%}
+.md\:w-60{width:60%}
+.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}
+.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}
+.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}
+.md\:flex-row{flex-direction:row}
+.md\:gap-12{gap:3rem}
+.md\:border-b-0{border-bottom-width:0px}
+.md\:border-r{border-right-width:1px}
+.md\:p-12{padding:3rem}
+.md\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+.md\:py-32{padding-top:8rem;padding-bottom:8rem}
+.md\:text-2xl{font-size:1.5rem;line-height:2rem}
+.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}
+.md\:text-5xl{font-size:3rem;line-height:1}
+}
+@media (min-width: 1024px){.lg\:col-span-1{grid-column:span 1 / span 1}
+.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}
+.lg\:px-8{padding-left:2rem;padding-right:2rem}
+}
+
+
+
+
+@media (min-width: 640px){
+.sm\:flex-row{flex-direction:row}
+.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+}
+@media (min-width: 768px){
+.md\:col-span-2{grid-column:span 2 / span 2}
+.md\:w-1\/2{width:50%}
+.md\:w-3\/5{width:60%}
+.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}
+.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}
+.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}
+.md\:flex-row{flex-direction:row;}
+.md\:flex-row-reverse{flex-direction:row-reverse !important;}
+.md\:gap-12{gap:3rem}
+.md\:border-b-0{border-bottom-width:0px}
+.md\:border-r{border-right-width:1px}
+.md\:p-12{padding:3rem}
+.md\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+.md\:py-32{padding-top:8rem;padding-bottom:8rem}
+.md\:text-2xl{font-size:1.5rem;line-height:2rem}
+.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}
+.md\:text-5xl{font-size:3rem;line-height:1}
+}
+@media (min-width: 1024px){
+.lg\:col-span-1{grid-column:span 1 / span 1}
+.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr)) !important}
+.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}
+.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}
+.lg\:px-8{padding-left:2rem;padding-right:2rem}
+}
+
+</style>
+
+<section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-6">여러분의 가족 관계와<br>소통은 원활한가요?</h2>
+    <p class="text-lg text-gray-700">현대 사회에서 많은 가족들이<br>소통의 어려움을 겪고 있습니다.<br>함께 살면서도 서로를 이해하지 못하고,<br>정서적 단절을 경험하는 경우가 늘고 있습니다.</p>
+    </div>
+    </div>
+    </section>
+    <!-- 통계 섹션 -->
+    <section id="stats" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-900 text-center mb-16">가족 간 소통과<br>정서적 단절의 현실</h2>
+    <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+    <!-- 첫 번째 통계 카드 -->
+    <div class="stat-card bg-white p-8 rounded-lg shadow-md">
+    <div class="flex items-center mb-6">
+    <div class="text-5xl font-bold text-primary mr-4">35%</div>
+    <h3 class="text-xl font-semibold text-gray-800">가족 간 소통이 어려워요</h3>
+    </div>
+    <div class="mb-6 bg-gray-200 h-3 rounded-full overflow-hidden">
+    <div class="progress-bar bg-primary h-full rounded-full" style="width: 0%"></div>
+    </div>
+    <p class="text-gray-700 mb-4">50-60세 중장년층의 약 35%가 가족과의 소통에서 대화가 잘 되지 않고, 갈등 해소가 안되어 힘들어하는 문제를 겪고 있습니다.</p>
+    <p class="text-sm text-gray-500">출처: 한국보건사회연구원, 2021</p>
+    </div>
+    <!-- 두 번째 통계 카드 -->
+    <div class="stat-card bg-white p-8 rounded-lg shadow-md">
+    <div class="flex items-center mb-6">
+    <div class="text-5xl font-bold text-primary mr-4">40%</div>
+    <h3 class="text-xl font-semibold text-gray-800">정서적 외로움과 고독감을 느껴요</h3>
+    </div>
+    <div class="chart-container mb-6" id="loneliness-chart"></div>
+    <p class="text-gray-700 mb-4">50~60대 대상, 10명 중 4명은 가족과 함께 하면서도, 외로움과 고독감으로 어려움을 겪고 있습니다.</p>
+    <p class="text-sm text-gray-500">출처: 서울시복지재단, 2020년</p>
+    </div>
+    </div>
+    <!-- 문제 심화 섹션 -->
+    <div class="max-w-3xl mx-auto mt-16 text-center">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+    <h3 class="text-2xl font-bold text-gray-900 mb-6">가족 소통의 문제와 소외감을<br>방치하면 안되는 이유?</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="bg-gray-50 p-6 rounded-lg">
+    <div class="text-3xl font-bold text-primary mb-2">15%</div>
+    <p class="text-gray-700">5060세대<br>우울증 위험군</p>
+    </div>
+    <div class="bg-gray-50 p-6 rounded-lg">
+    <div class="text-3xl font-bold text-primary mb-2">65.8%</div>
+    <p class="text-gray-700">배우자와<br>하루 대화 1시간 미만</p>
+    </div>
+    <div class="bg-gray-50 p-6 rounded-lg">
+    <div class="text-3xl font-bold text-primary mb-2">53%</div>
+    <p class="text-gray-700">50대 남성<br>고독사 비중</p>
+    </div>
+    </div>
+    <p class="text-lg text-gray-700 mb-4">가족 간 단절과 소통 부재는<br>우울증 및 정서적 문제로 이어질 수 있는 만큼<br>꼭 개선을 위한 해결책이 필요합니다.</p>
+    <p class="text-lg font-medium text-primary">지금, 가족과의 관계 회복을 시작해보세요.</p>
+    </div>
+    </div>
+    <!-- 해결책 전환 섹션 -->
+    <div class="max-w-3xl mx-auto mt-16 text-center bg-gradient-to-r from-blue-50 to-purple-50 p-10 rounded-lg shadow-md">
+    <h3 class="text-2xl font-bold text-gray-900 mb-4">혼자서는 해결책을<br>찾기 힘든 소통의 문제<br>즐겁게 방법을 찾아보세요.</h3>
+    <p class="text-lg text-gray-700 mb-6">더 행복한 삶과 가족 관계 회복의 시작</p>
+    <p class="text-gray-700 mb-8">전문가와 함께하는<br>맞춤형 프로그램으로<br>가족 간의 이해와 소통을 회복하세요</p>
+    <a href="#programs" class="bg-primary text-white px-8 py-3 !rounded-button font-medium whitespace-nowrap hover:bg-opacity-90 transition-all shadow-md">프로그램 자세히 보기</a>
+    </div>
+    </div>
+    </section>
+    <!-- 프로그램 섹션 -->
+    <section id="programs" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-900 text-center mb-6">가정의 달 기녕!<br>마음디톡스<br>컨퍼런스 프로그램</h2>
+    <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-16">각 분야 전문가들이 준비한 통찰력 있는 강의와<br>대담을 통해 가족 관계의 회복과<br>소통의 기술을 배워보세요.</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- 프로그램 1 -->
+    <div class="program-card bg-white rounded-lg shadow-md overflow-hidden ">
+    <div class="h-48 overflow-hidden">
+    <img src="https://readdy.ai/api/search-image?query=A%20professional%20therapist%20leading%20a%20family%20communication%20workshop.%20The%20therapist%20is%20guiding%20a%20middle-aged%20couple%20and%20their%20adult%20children%20through%20a%20communication%20exercise.%20Everyone%20is%20engaged%20and%20attentive.%20The%20setting%20is%20a%20warm%2C%20professional%20conference%20room%20with%20natural%20lighting.%20The%20image%20has%20a%20hopeful%2C%20supportive%20atmosphere.&width=600&height=400&seq=125&orientation=landscape" alt="가족 소통의 기술" class="w-full h-full object-cover object-top">
+    </div>
+    <div class="p-6">
+    <h3 class="text-xl font-bold text-gray-900 mb-3">가족 소통의 지혜</h3>
+    <p class="text-gray-700 mb-4">효과적인 가족 대화법과 갈등 해결 방법을 배우는 시간</p>
+    <button class="program-toggle flex items-center text-primary font-medium">
+    <span>자세히 보기</span>
+    <i class="ri-arrow-down-s-line ri-lg ml-1"></i>
+    </button>
+    <div class="program-detail mt-2 bg-gray-50 rounded-md">
+    <div class="p-4">
+    <p class="text-gray-700 mb-3">이 강의에서는 가족 간 효과적인 대화 방법, 감정 표현 기술, 갈등 상황에서의 대처법 등을 실습을 통해 배웁니다. 특히 배우자와 가족과의 소통에서 어려움을 극복하는 실질적인 방법을 제시합니다.</p>
+    <div class="flex items-center mt-4">
+    <img src="./img/profile1.jpg" alt="김미영 교수" class="w-12 h-12 rounded-full mr-4">
+    <div>
+    <p class="font-medium text-gray-900">윤종모 주교님</p>
+    <p class="text-sm text-gray-600">서울대교구 주교</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- 프로그램 2 -->
+    <div class="program-card bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="h-48 overflow-hidden">
+    <img src="https://readdy.ai/api/search-image?query=A%20mindfulness%20workshop%20for%20middle-aged%20adults.%20The%20participants%20are%20seated%20in%20a%20circle%2C%20practicing%20mindfulness%20exercises%20with%20eyes%20closed.%20The%20instructor%20is%20guiding%20them%20calmly.%20The%20room%20has%20soft%20lighting%20and%20a%20peaceful%20atmosphere.%20The%20setting%20appears%20to%20be%20a%20modern%20conference%20center%20with%20minimalist%20design.&width=600&height=400&seq=127&orientation=landscape" alt="마음 챙김과 자기 이해" class="w-full h-full object-cover object-top">
+    </div>
+    <div class="p-6">
+    <h3 class="text-xl font-bold text-gray-900 mb-3">소외감, 고독감 같은 감정의 이해</h3>
+    <p class="text-gray-700 mb-4">나의 감정을 먼저 이해하고 어떤 감정이든 행복으로 갈 수 있는 길을 알려드려요.</p>
+    <button class="program-toggle flex items-center text-primary font-medium">
+    <span>자세히 보기</span>
+    <i class="ri-arrow-down-s-line ri-lg ml-1"></i>
+    </button>
+    <div class="program-detail mt-2 bg-gray-50 rounded-md">
+    <div class="p-4">
+    <p class="text-gray-700 mb-3">자신을 먼저 이해함으로써 가족과의 관계에서 발생하는 감정적 반응을 조절하는 방법을 익힙니다.</p>
+    <div class="flex items-center mt-4">
+    <img src="./img/profile2.jpg" alt="마가스님" class="w-12 h-12 rounded-full mr-4">
+    <div>
+    <p class="font-medium text-gray-900">마가스님</p>
+    <p class="text-sm text-gray-600">동국대학교 정각원(교법사)</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- 프로그램 3 -->
+    <div class="program-card bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="h-48 overflow-hidden">
+    <img src="https://readdy.ai/api/search-image?query=An%20intergenerational%20workshop%20with%20middle-aged%20parents%20and%20their%20adult%20children%20engaged%20in%20a%20structured%20activity.%20They%20are%20working%20together%20on%20a%20creative%20project%20that%20involves%20sharing%20stories.%20The%20setting%20is%20a%20bright%2C%20modern%20conference%20room%20with%20colorful%20materials%20on%20tables.%20Everyone%20appears%20engaged%20and%20emotionally%20connected.&width=600&height=400&seq=129&orientation=landscape" alt="세대 간 이해와 공감" class="w-full h-full object-cover object-top">
+    </div>
+    <div class="p-6">
+    <h3 class="text-xl font-bold text-gray-900 mb-3">공감대로 함께 하는 자유대담</h3>
+    <p class="text-gray-700 mb-4">다른 사람들의 이야기와 실제 이야기를 통해 함께 답을 찾아가는 시간</p>
+    <button class="program-toggle flex items-center text-primary font-medium">
+    <span>자세히 보기</span>
+    <i class="ri-arrow-down-s-line ri-lg ml-1"></i>
+    </button>
+    <div class="program-detail mt-2 bg-gray-50 rounded-md">
+    <div class="p-4">
+    <p class="text-gray-700 mb-3">각자의 문제와 어려움을 이해하고, 서로의 관점에서 바라보는 연습을 통해 공감 능력을 키웁니다. 실제 사례를 통하여 각자만의 답을 찾아나가는 시간.</p>
+    <div class="flex items-center mt-4">
+    <img src="./img/profile3.jpg" alt="함영준 대표님" class="w-12 h-12 rounded-full mr-4">
+    <div>
+    <p class="font-medium text-gray-900">함영준 대표님</p>
+    <p class="text-sm text-gray-600">마음건강 길 대표</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </section>
+  <!-- 프로그램 소개 섹션 -->
+  <section id="program" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">가족 관계를 회복해나가는<br>마음디톡스 프로그램 일정</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">5월 21일 수요일,<br>가족의 관계를 회복하는<br>특별한 컨퍼런스에 참여하세요.</p>
+        </div>
+
+        <div class="relative pl-8 md:pl-12 space-y-8 mb-16">
+            <div class="timeline-item relative pl-8 session-card bg-white rounded-lg shadow-sm p-6 cursor-unset" data-session="1">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full mb-3">15:00 ~ 15:10 (10분)</span>
+                        <h3 class="text-xl font-semibold mb-2">오프닝 - 마음을 여는 시간</h3>
+                        <!-- <p class="text-gray-600 mb-4">서로 다른 세대가 경험하는 소통의 어려움과 이를 극복하는 실질적인 방법을 알아봅니다.</p> -->
+                        <div class="flex items-center">
+                            <img src="./img/profile3.jpg" alt="함영준 대표님" class="w-10 h-10 rounded-full object-cover">
+                            <div class="ml-3">
+                                <p class="font-medium">함영준 대표님</p>
+                                <p class="text-sm text-gray-500">마음건강 길 대표</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="mt-4 md:mt-0">
+                        <span class="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                            <i class="ri-computer-line mr-1"></i>
+                            <span>온/오프라인</span>
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="timeline-item relative pl-8 session-card bg-white rounded-lg shadow-sm p-6 cursor-unset" data-session="2">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full mb-3">15:10 ~ 15:40 (30분)</span>
+                        <h3 class="text-xl font-semibold mb-2">가족 안에서 잃어버린 나를 찾아서: 소통과 관계 회복의 지혜</h3>
+                        <p class="text-gray-600 mb-4">가족 간의 소통이 어려운 분들에게 관계를 회복하는 행복한 의사소통 방법을 전달드립니다.</p>
+                        <div class="flex items-center">
+                            <img src="./img/profile1.jpg" alt="윤종모 주교님" class="w-10 h-10 rounded-full object-cover">
+                            <div class="ml-3">
+                                <p class="font-medium">윤종모 주교님</p>
+                                <p class="text-sm text-gray-500">서울대교구 주교</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="mt-4 md:mt-0">
+                        <span class="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                            <i class="ri-computer-line mr-1"></i>
+                            <span>온/오프라인</span>
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="timeline-item relative pl-8 session-card bg-white rounded-lg shadow-sm p-6 cursor-unset" data-session="3">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full mb-3">15:40 ~ 16:10 (30분)</span>
+                        <h3 class="text-xl font-semibold mb-2">나는 내 인생의 주인공</h3>
+                        <p class="text-gray-600 mb-4">낮아진 자존감과 고독감을 날리고 자존감을 높이는 마음챙김 법으로 내면의 행복을 찾는 법.</p>
+                        <div class="flex items-center">
+                            <img src="./img/profile2.jpg" alt="마가스님" class="w-10 h-10 rounded-full object-cover">
+                            <div class="ml-3">
+                                <p class="font-medium">마가스님</p>
+                                <p class="text-sm text-gray-500">동국대학교 정각원(교법사), 자비명상(대표)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="mt-4 md:mt-0">
+                        <span class="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                            <i class="ri-computer-line mr-1"></i>
+                            <span>온/오프라인</span>
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="timeline-item relative pl-8 session-card bg-white rounded-lg shadow-sm p-6 cursor-unset" data-session="3">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full mb-3">16:10 ~ 16:20 (10분)</span>
+                        <h3 class="text-xl font-semibold mb-2">휴식 및 질문 작성</h3>
+                        <p class="text-gray-600 mb-4">해결하고 싶은 질문을 자유롭게 적어보는 시간.</p>
+                        <!-- <div class="flex items-center">
+                            <img src="./img/profile2.jpg" alt="마가스님" class="w-10 h-10 rounded-full object-cover">
+                            <div class="ml-3">
+                                <p class="font-medium">마가스님</p>
+                                <p class="text-sm text-gray-500">동국대학교 정각원(교법사), 자비명상(대표)</p>
+                            </div>
+                        </div> -->
+                    </div>
+                    <!-- <div class="mt-4 md:mt-0">
+                        <span class="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                            <i class="ri-computer-line mr-1"></i>
+                            <span>온/오프라인</span>
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="timeline-item relative pl-8 session-card bg-white rounded-lg shadow-sm p-6 cursor-unset" data-session="4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full mb-3">16:20 ~ 16:50 (30분)</span>
+                        <h3 class="text-xl font-semibold mb-2">패널 토크</h3>
+                        <p class="text-gray-600 mb-4">참여자 분들의 질문을 듣고 두 강연자와 함께하는 질의응답 및 토크 시간.</p>
+                        <div class="flex items-center">
+                            <!-- <img src="https://readdy.ai/api/search-image?query=Professional%20Asian%20male%20family%20therapist%20in%20his%2040s%2C%20friendly%20and%20energetic%20expression%2C%20casual%20smart%20attire%2C%20clean%20background%2C%20high%20quality%20portrait%20photo&width=100&height=100&seq=5&orientation=squarish" alt="박준호 강사" class="w-10 h-10 rounded-full object-cover"> -->
+                            <div class="ml-3">
+                                <p class="font-medium">윤종모 주교님, 마가스님, 함영준 대표님</p>
+                                <!-- <p class="text-sm text-gray-500">가족활동 프로그램 개발자</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="mt-4 md:mt-0">
+                        <span class="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                            <i class="ri-user-line mr-1"></i>
+                            <span>오프라인 전용</span>
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="timeline-item relative pl-8 session-card bg-white rounded-lg shadow-sm p-6 cursor-unset" data-session="4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full mb-3">16:50 ~ 17:00 (10분)</span>
+                        <h3 class="text-xl font-semibold mb-2">클로징</h3>
+                        <p class="text-gray-600 mb-4">마무리 인사</p>
+                        <!-- <div class="flex items-center">
+                            <img src="https://readdy.ai/api/search-image?query=Professional%20Asian%20male%20family%20therapist%20in%20his%2040s%2C%20friendly%20and%20energetic%20expression%2C%20casual%20smart%20attire%2C%20clean%20background%2C%20high%20quality%20portrait%20photo&width=100&height=100&seq=5&orientation=squarish" alt="박준호 강사" class="w-10 h-10 rounded-full object-cover">
+                            <div class="ml-3">
+                                <p class="font-medium">박준호 강사</p>
+                                <p class="text-sm text-gray-500">가족활동 프로그램 개발자</p>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- <div class="mt-4 md:mt-0">
+                        <span class="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+                            <i class="ri-user-line mr-1"></i>
+                            <span>오프라인 전용</span>
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="#register" class="bg-primary text-white px-6 py-3 rounded-button inline-block font-medium whitespace-nowrap hover:bg-opacity-90 transition-colors">지금 등록하기</a>
+        </div>
+    </div>
+</section>
+
+ 
+
+
+<!-- 연사 소개 섹션 -->
+<section id="speakers" class="py-16 bg-secondary">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">강연자 소개</h2>
+<p class="text-gray-600">가족 관계와 자존감 회복 분야의 전문가들이 여러분의 마음 여정을 함께합니다.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- 윤종모 주교 -->
+<div class="bg-white rounded-lg  section-card speaker-detail cursor-pointer" data-id="speaker1">
+<div class="hg-18 bg-gray-200" style="background-image: url('./img/profile1.jpg'); background-size: cover; background-position: center;"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">윤종모 주교님</h3>
+<p class="text-gray-500 text-sm mb-3">서울대교구 주교</p>
+<p class="text-gray-600 mb-4">"소통이 회복되면, 관계도 회복됩니다."</p>
+<button class="speaker-detail text-primary font-medium flex items-center hover:underline !rounded-button" data-id="speaker1">
+<span>더 자세히 보기</span>
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</button>
+</div>
+</div>
+<!-- 마가스님 -->
+<div class="bg-white rounded-lg  section-card speaker-detail cursor-pointer" data-id="speaker2">
+<div class="hg-18 bg-gray-200" style="background-image: url('./img/profile2.jpg'); background-size: cover; background-position: center;"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">마가스님</h3>
+<p class="text-gray-500 text-sm mb-3">동국대학교 정각원(교법사) / 자비명상 대표</p>
+<p class="text-gray-600 mb-4">"나를 사랑해야, 진짜 가족도 사랑할 수 있습니다."</p>
+<button class="speaker-detail text-primary font-medium flex items-center  !rounded-button" data-id="speaker2">
+<span>더 자세히 보기</span>
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</button>
+</div>
+</div>
+<!-- 함영준 대표 -->
+<div class="bg-white rounded-lg  section-card speaker-detail cursor-pointer" data-id="speaker3">
+<div class="hg-18 bg-gray-200" style="background-image: url('./img/profile3.jpg'); background-size: cover; background-position: center;"></div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">함영준 대표</h3>
+<p class="text-gray-500 text-sm mb-3">일상에 적용하는 감정 훈련 지도</p>
+<p class="text-gray-600 mb-4">"지금 이 감정이, 나의 다음 삶을 바꿉니다."</p>
+<button class="speaker-detail text-primary font-medium flex items-center hover:underline !rounded-button" data-id="speaker3">
+<span>더 자세히 보기</span>
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 기대효과 섹션 -->
+<section id="benefits" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">당신이 얻게 될 변화</h2>
+<p class="text-gray-600">마음 디톡스 프로그램을 통해 얻게 될 실질적인 변화들입니다.</p>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="flex">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4 mt-1 flex-shrink-0">
+<i class="ri-chat-smile-3-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">가족과의 침묵이 대화로 바뀝니다</h3>
+<p class="text-gray-600">효과적인 소통 방법을 배워 가족 간의 대화가 자연스럽고 의미 있게 변화합니다.</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4 mt-1 flex-shrink-0">
+<i class="ri-emotion-happy-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">'나는 이미 행복하다'라는 자각이 생깁니다</h3>
+<p class="text-gray-600">자신의 가치를 재발견하고 역할이 아닌 한 사람으로서의 자존감을 회복합니다.</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4 mt-1 flex-shrink-0">
+<i class="ri-heart-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">감정 표현 도구가 생깁니다</h3>
+<p class="text-gray-600">지금부터 시작할 수 있는 실질적인 감정 표현 방법과 도구를 습득합니다.</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mr-4 mt-1 flex-shrink-0">
+<i class="ri-compass-3-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">실천 가능한 마음 사용법을 배웁니다</h3>
+<p class="text-gray-600">강연이 끝난 뒤에도 일상에서 지속적으로 실천할 수 있는 구체적인 방법을 배웁니다.</p>
+</div>
+</div>
+</div>
+<div class="mt-12 bg-primary/5 rounded-lg p-8 border border-primary/20 flex flex-col md:flex-row items-center">
+<div class="w-32 h-32 flex items-center justify-center mb-6 md:mb-0 md:mr-8">
+<img src="./img/favicon.png" alt="마음 디톡스" class="w-full h-full object-contain">
+</div>
+<div>
+<h3 class="text-xl font-bold mb-3 text-center md:text-left">마음의 무게를 내려놓는 가장 안전한 시작</h3>
+<p class="text-gray-600 mb-4">마음 디톡스는 가족 관계 속에서 잃어버린 나를 찾고, 진정한 소통을 회복하는 여정입니다. 이 특별한 시간을 통해 가족 안에서 '나'로 존재하는 방법을 배우고, 정서적 연결감을 회복해보세요.</p>
+<div class="text-center md:text-left">
+<a href="#register" class="inline-block bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">지금 신청하기</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 신청하기 섹션 -->
+<section id="register" class="py-16 bg-primary">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-white mb-4">지금 신청하세요!</h2>
+<p class="text-white/80">마음 디톡스 프로그램에 참여하여<br>가족 관계와 자존감을 회복하세요.</p>
+</div>
+<div class="max-w-xl mx-auto bg-white rounded-lg p-8 section-card">
+<form>
+<div class="mb-6">
+<label for="name" class="block text-gray-700 font-medium mb-2">이름</label>
+<input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="이름을 입력해주세요" required>
+</div>
+<!-- <div class="mb-6">
+<label for="email" class="block text-gray-700 font-medium mb-2">이메일</label>
+<input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="이메일을 입력해주세요" required>
+</div> -->
+<div class="mb-6">
+<label for="phone" class="block text-gray-700 font-medium mb-2">연락처</label>
+<input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="연락처를 입력해주세요" required>
+</div>
+<!-- <div class="mb-6">
+<p class="block text-gray-700 font-medium mb-2">참가 인원</p>
+<div class="flex items-center space-x-4">
+<label class="flex items-center cursor-pointer">
+<div class="relative w-5 h-5 mr-2">
+<input type="radio" name="participants" value="1" class="sr-only" checked>
+<div class="w-5 h-5 border border-gray-300 rounded-full"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 radio-checked">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+</div>
+</div>
+<span>1인</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<div class="relative w-5 h-5 mr-2">
+<input type="radio" name="participants" value="2" class="sr-only">
+<div class="w-5 h-5 border border-gray-300 rounded-full"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 radio-checked">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+</div>
+</div>
+<span>2인</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<div class="relative w-5 h-5 mr-2">
+<input type="radio" name="participants" value="3+" class="sr-only">
+<div class="w-5 h-5 border border-gray-300 rounded-full"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 radio-checked">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+</div>
+</div>
+<span>3인 이상</span>
+</label>
+</div>
+</div> -->
+<div class="mb-6">
+<label for="message" class="block text-gray-700 font-medium mb-2">문의사항 (선택)</label>
+<textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="문의사항이 있으시면 입력해주세요"></textarea>
+</div>
+<div class="mb-6">
+<label class="flex items-center cursor-pointer">
+<div class="relative w-5 h-5 mr-2">
+<input type="checkbox" id="agree" class="sr-only" required checked>
+<div class="w-5 h-5 border border-gray-300 rounded"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-1 checkbox-checked">
+<i class="ri-check-line ri-sm text-primary"></i>
+</div>
+</div>
+<span class="text-sm text-gray-700">개인정보 수집 및 이용에 동의합니다.</span>
+</label>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">프로그램 신청하기</button>
+<p class="text-center text-sm text-gray-500 mt-4">* 신청 후 24시간 이내에 결제 안내 메일이 발송됩니다.</p>
+</form>
+</div>
+</div>
+</section>
+<!-- 푸터 -->
+<footer class="bg-gray-800 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between">
+<div class="mb-8 md:mb-0">
+<div class="flex items-center mb-4">
+<div class="text-white mr-2 flex items-center justify-center" style="width:100px;">
+<img src="./img/logo.png">
+</div>
+<!-- <div class="font-['Pacifico'] text-xl text-white">Mind Well</div> -->
+</div>
+<p class="text-gray-400 max-w-md">마음 디톡스는 가족 관계 속에서 잃어버린 나를 찾고, 진정한 소통을 회복하는 여정을 함께합니다.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+<div>
+<h4 class="text-lg font-bold mb-4">프로그램</h4>
+<ul class="space-y-2">
+<li><a href="#program" class="text-gray-400 hover:text-white transition-colors">프로그램 일정</a></li>
+<li><a href="#speakers" class="text-gray-400 hover:text-white transition-colors">강연자 소개</a></li>
+<li><a href="#benefits" class="text-gray-400 hover:text-white transition-colors">기대효과</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-4">문의</h4>
+<ul class="space-y-2">
+<li class="flex items-center text-gray-400">
+<i class="ri-phone-line ri-lg mr-2"></i>
+<span>02-725-7525</span>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-mail-line ri-lg mr-2"></i>
+<span>mindgil21@naver.com</span>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-map-pin-line ri-lg mr-2"></i>
+<span>서울시 중구 세종대로72 대영빌딩 7층 802호</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-4">팔로우</h4>
+<div class="flex space-x-4">
+<a href="https://blog.naver.com/mindgil21" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition-colors">
+<img src="./img/blog.png" class="ri-blog-line ri-lg" style="border-radius:100%;"></i>
+</a>
+<a href="https://www.youtube.com/@mindgil21" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition-colors">
+<i class="ri-youtube-line ri-lg"></i>
+</a>
+<a href="https://mindwellpath.co.kr/invitation.html" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition-colors">
+<i class="ri-kakao-talk-fill ri-lg"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-sm">
+<p>© 2025 Mind Well. All rights reserved.</p>
+<div class="flex justify-center space-x-4 mt-2">
+<!-- <a href="#" class="hover:text-white transition-colors">이용약관</a>
+<a href="#" class="hover:text-white transition-colors">개인정보처리방침</a> -->
+</div>
+</div>
+</div>
+</footer>
+<!-- 연사 상세 모달 -->
+<div id="speakerModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+<div class="modal-content bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto mx-4">
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-800" id="modalTitle">연사 상세 정보</h3>
+<button id="closeModal" class="w-8 h-8 items-center justify-center text-gray-500 hover:text-gray-700" style="flex-direction:row;">
+<i class="ri-close-line ri-lg mb-none"></i>
+</button>
+</div>
+<div id="modalContent">
+<!-- 모달 내용은 JS로 동적 생성 -->
+</div>
+</div>
+</div>
+</div>
+
+<!-- 세션 상세 모달 -->
+<div id="sessionModal" class="fixed  bg-black bg-opacity-50 flex items-center justify-center z-50 modal hidden">
+    <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto mx-4">
+        <div class="relative">
+            <div class="h-40 bg-primary bg-opacity-10 rounded-t-lg flex items-center justify-center">
+                <i class="ri-presentation-line text-primary ri-3x"></i>
+            </div>
+            <button id="closeModal1" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-md">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div class="p-6">
+            <div id="modalContent">
+                <!-- 모달 내용이 동적으로 채워집니다 -->
+            </div>
+            <div class="mt-8 flex justify-end">
+                <button id="registerSessionBtn" class="bg-primary text-white px-6 py-2 rounded-button font-medium whitespace-nowrap hover:bg-opacity-90 transition-colors">세션 등록하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Floating header functionality
+let lastScrollY = window.scrollY;
+const header = document.getElementById('floating-header');
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    // Show/hide header based on scroll direction
+    if(currentScrollY > lastScrollY) {
+        // Scrolling down - hide header
+        header.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling up - show header
+        header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollY = currentScrollY;
+});
+// 라디오 버튼 커스텀 스타일 처리
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+radioButtons.forEach(radio => {
+radio.addEventListener('change', function() {
+// 모든 라디오 버튼의 checked 상태 초기화
+document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => {
+const checkedDiv = r.parentElement.querySelector('.radio-checked');
+checkedDiv.style.opacity = '0';
+});
+// 선택된 라디오 버튼의 checked 상태 표시
+if (this.checked) {
+const checkedDiv = this.parentElement.querySelector('.radio-checked');
+checkedDiv.style.opacity = '1';
+}
+});
+// 초기 상태 설정
+if (radio.checked) {
+const checkedDiv = radio.parentElement.querySelector('.radio-checked');
+checkedDiv.style.opacity = '1';
+}
+});
+// 체크박스 커스텀 스타일 처리
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+checkboxes.forEach(checkbox => {
+checkbox.addEventListener('change', function() {
+const checkedDiv = this.parentElement.querySelector('.checkbox-checked');
+checkedDiv.style.opacity = this.checked ? '1' : '0';
+});
+});
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+// 연사 정보
+const speakerData = {
+speaker1: {
+name: '윤종모 주교님',
+title: '서울대교구 주교',
+quote: '"소통이 회복되면, 관계도 회복됩니다."',
+image: './img/profile1.jpg',
+bio: `
+<p class="mb-4">연세대, 토론토대(석사과정), 앨버타대(박사과정)에서 신학, 문학,  상담학을 공부하고 성공회대와 연세대 상담코칭아카데미에서 상담심리학과 코칭을 강의했다.<br><br>
+창의리더십아카데미에서 명상을 강의해오고 있으며, 기타 여러 기관과 대학원 등에서 상담, 명상, 부모와 자녀 교육 등을 강의해 왔다.<br><br>
+<동서문학> 신인번역상을 수상했고, 한국기독교상담심리학회장을 역임했으며, 저서로는 <치유명상> <치유명상 5단계> <마음 디자인> <행복한 아이 성공하는 아이>, 그 외에 여러권의 저서와 역서가 있다.</p>
+`
+},
+speaker2: {
+name: '마가스님',
+title: '동국대학교 정각원(교법사), 자비명상(대표)',
+quote: '"나를 사랑해야, 진짜 가족도 사랑할 수 있습니다."',
+image: './img/profile2.jpg',
+bio: `
+<p class="mb-4">
+중앙승가대학교 사회복지과를 졸업하고, 한신대학교 종교문화학과에서 석사, 중앙승가대학교에서 문학박사 학위를 받았다.<br><br>
+중앙대학교 겸임교수, 동국대학교 정각원 교법사를 역임했으며, 자비명상 템플스테이를 개발한 마곡사 포교국장으로 활동했다. 현재는 자비명상 대표로서 명상과 상담을 통해 대중과 소통하고 있다.<br><br>
+광주 금호고등학교 졸업 후, 도선사에서 현성스님을 은사로 출가하여 법주사 복천암, 미얀마 마히시 국제선원 등지에서 수행했다. 굴암사와 옥천사, 현성정사 주지를 역임했으며, 현재는 미고사 마음환승센터에서 활동 중이다.<br><br>
+BBS 불교라디오 <마가스님과 함께하는 자비명상>, <그래도 괜찮아>, KTV, tvN, 불교TV, KBS 아침마당 등 다양한 방송 매체를 통해 자비명상의 가치를 대중에게 전해왔다.<br><br>
+저서로는 &lt;내 안에서 찾는 붓다&gt;, &lt;내 마음 바로보기&gt;, &lt;고마워요 자비명상&gt;, &lt;알고 보면 괜찮은&gt;, &lt;신들의 수다&gt;(공저), &lt;나를 바꾸는 100일&gt;, &lt;마음충전&gt;, &lt;마가스님의 100일 명상&gt; 등이 있으며, 명상과 치유, 자기 성찰을 주제로 한 다양한 책들을 펴냈다.
+</p>
+`
+},
+speaker3: {
+name: '함영준 대표',
+title: '마음건강 길 대표',
+quote: '"지금 이 감정이, 나의 다음 삶을 바꿉니다."',
+image: './img/profile3.jpg',
+bio: `
+<p class="mb-4">
+신문 기자로 활동하며 사회 각계의 다양한 이슈를 다뤘고, 이후 청와대 비서관으로 공직 생활을 경험했다. 이러한 경력을 바탕으로 2019년, 마음건강 종합 온라인 매체인 '마음건강 길(mindgil.com)'을 창간하여 대표로 활동 중이다.<br><br>
+개인적으로 우울증과 공황장애를 겪은 경험을 통해 명상, 단전호흡, 긍정 훈련 등 다양한 방법으로 이를 극복하였으며, 이러한 경험을 바탕으로 마음 건강의 중요성을 알리는 데 힘쓰고 있다.<br><br>
+조선일보와 마음건강 길에서 '함영준의 마음PT' 칼럼을 연재하며, 우울증, 명상, 심리학, 뇌과학 등 마음과 관련된 다양한 주제를 다루고 있다. 또한, 유튜브 채널 '마음건강 길'을 통해 대중과 소통하며 마음 건강에 대한 정보를 전달하고 있다.<br><br>
+저서로는 &lt;나, 요즘 마음이 힘들어서&gt;, &lt;마흔이 내게 준 선물&gt; 등이 있으며, 명상과 자기 성찰을 주제로 한 다양한 강연과 저술 활동을 이어가고 있다.
+</p>
+`
+}
+};
+// 모달 관련 요소
+const modal = document.getElementById('speakerModal');
+const closeModal = document.getElementById('closeModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalContent = document.getElementById('modalContent');
+// 연사 상세 버튼 클릭 이벤트
+document.querySelectorAll('.speaker-detail').forEach(button => {
+button.addEventListener('click', function() {
+const speakerId = this.getAttribute('data-id');
+const speaker = speakerData[speakerId];
+// 모달 내용 설정
+modalTitle.textContent = speaker.name;
+modalContent.innerHTML = `
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/3 mb-6 md:mb-0 md:mr-6">
+<div class="rounded-lg ">
+<img src="${speaker.image}" alt="${speaker.name}" class="w-full h-auto object-cover">
+</div>
+<div class="mt-4">
+<p class="font-bold text-xl">${speaker.name}</p>
+<p class="text-gray-500">${speaker.title}</p>
+<p class="text-primary mt-2 italic">${speaker.quote}</p>
+</div>
+</div>
+<div class="md:w-2/3">
+<h4 class="text-xl font-bold mb-4">약력</h4>
+<div class="text-gray-700">
+${speaker.bio}
+</div>
+</div>
+</div>
+`;
+// 모달 표시
+modal.classList.add('active');
+// document.body.style.overflow = 'hidden';
+});
+});
+// 모달 닫기 버튼 클릭 이벤트
+closeModal.addEventListener('click', function() {
+modal.classList.remove('active');
+document.body.style.overflow = '';
+});
+// 모달 외부 클릭 시 닫기
+modal.addEventListener('click', function(e) {
+if (e.target === modal) {
+modal.classList.remove('active');
+document.body.style.overflow = '';
+}
+});
+});
+
+
+
+</script>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+// 프로그램 상세 정보 토글
+const toggleButtons = document.querySelectorAll('.program-toggle');
+toggleButtons.forEach(button => {
+button.addEventListener('click', function() {
+const detail = this.nextElementSibling;
+const icon = this.querySelector('i');
+if (detail.classList.contains('active')) {
+detail.classList.remove('active');
+icon.classList.remove('ri-arrow-up-s-line');
+icon.classList.add('ri-arrow-down-s-line');
+this.querySelector('span').textContent = '자세히 보기';
+} else {
+detail.classList.add('active');
+icon.classList.remove('ri-arrow-down-s-line');
+icon.classList.add('ri-arrow-up-s-line');
+this.querySelector('span').textContent = '접기';
+}
+});
+});
+// 체크박스 커스텀 스타일 동작
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+checkboxes.forEach(checkbox => {
+checkbox.addEventListener('change', function() {
+const svg = this.nextElementSibling.querySelector('svg');
+if (this.checked) {
+svg.classList.remove('hidden');
+this.nextElementSibling.classList.add('border-primary');
+this.nextElementSibling.classList.remove('border-gray-300');
+} else {
+svg.classList.add('hidden');
+this.nextElementSibling.classList.remove('border-primary');
+this.nextElementSibling.classList.add('border-gray-300');
+}
+});
+});
+// 통계 바 애니메이션
+const progressBar = document.querySelector('.progress-bar');
+setTimeout(() => {
+progressBar.style.width = '35%';
+}, 500);
+});
+document.addEventListener('DOMContentLoaded', function() {
+// 원형 차트 초기화
+const chartDom = document.getElementById('loneliness-chart');
+const myChart = echarts.init(chartDom);
+const option = {
+animation: false,
+series: [
+{
+type: 'pie',
+radius: ['50%', '70%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 10,
+borderColor: '#fff',
+borderWidth: 2
+},
+label: {
+show: false,
+position: 'center'
+},
+emphasis: {
+label: {
+show: true,
+fontSize: '18',
+fontWeight: 'bold',
+formatter: '{b}\n{c}%'
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{ value: 40, name: '외로움 경험', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+{ value: 60, name: '그렇지 않음', itemStyle: { color: 'rgba(0, 0, 0, 1)' } }
+]
+}
+],
+tooltip: {
+trigger: 'item',
+formatter: '{b}: {c}%',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+textStyle: {
+color: '#1f2937'
+}
+}
+};
+myChart.setOption(option);
+// 창 크기 변경 시 차트 크기 조정
+window.addEventListener('resize', function() {
+myChart.resize();
+});
+});
+</script>
+</body>
+</html>
