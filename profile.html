@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고급형 프로필 랜딩 (시니어 최적화)</title>
+  <style>
+    /* 기본 스타일 */
+    #profile1 {
+      font-family: 'Pretendard', 'Noto Sans', sans-serif;
+      padding: 100px 20px;
+      background: #f9fafb;
+      min-height: 100vh;
+    }
+
+    /* ✅ 헤드라인 섹션 */
+    #profile1 .headline-section {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    #profile1 .headline-section h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 20px;
+    }
+    #profile1 .headline-section p {
+      font-size: 22px;
+      color: #6b7280;
+    }
+
+    #profile1 .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    #profile1 .card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #profile1 .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    #profile1 .card-img-wrapper {
+      overflow: hidden;
+      height: 260px;
+    }
+
+    #profile1 .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    #profile1 .card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    #profile1 .card-body {
+      padding: 30px;
+    }
+
+    #profile1 .card-body h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    #profile1 .card-body .subtitle {
+      font-size: 18px;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    #profile1 .card-body .quote {
+      font-size: 18px;
+      color: #374151;
+      font-style: italic;
+    }
+
+    /* 모달 스타일 */
+    #profile1 .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeIn 0.4s forwards;
+      padding: 20px;
+    }
+
+    #profile1 .modal1 {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 50px 40px;
+      max-width: 720px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      animation: slideUp 0.4s forwards;
+      text-align: center;
+    }
+
+    #profile1 .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      font-size: 32px;
+      cursor: pointer;
+      color: #9ca3af;
+      transition: color 0.3s;
+    }
+
+    #profile1 .close-btn:hover {
+      color: #6b7280;
+    }
+
+    #profile1 #modalInner {
+      text-align: center;
+    }
+
+    #profile1 #modalInner img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    #profile1 #modalInner h2 {
+      font-size: 30px;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+
+    #profile1 #modalInner p {
+      font-size: 20px;
+      color: #4b5563;
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    /* 애니메이션 */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ✅ 반응형 */
+    @media (max-width: 980px) {
+      #profile1 .profile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #profile1 .card-img-wrapper {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="profile1">
+  <div class="headline-section">
+    <h1>우리의 연사를 소개합니다</h1>
+    <p>50~60대도 편하게 읽을 수 있도록 큰 글자와 넓은 화면으로 준비했습니다.</p>
+  </div>
+
+  <div class="profile-grid">
+    <div class="card" onclick="openModal1('윤종모 주교님')">
+      <div class="card-img-wrapper">
+        <img src="https://placehold.co/600x400?text=윤종모+주교님" alt="윤종모 주교님" class="card-img">
+      </div>
+      <div class="card-body">
+        <h3>윤종모 주교님</h3>
+        <p class="subtitle">서울대교구 주교</p>
+        <p class="quote">"소통이 회복되면, 관계도 회복됩니다."</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="openModal1('마가스님')">
+      <div class="card-img-wrapper">
+        <img src="https://placehold.co/600x400?text=마가스님" alt="마가스님" class="card-img">
+      </div>
+      <div class="card-body">
+        <h3>마가스님</h3>
+        <p class="subtitle">동국대학교 정각원 교수</p>
+        <p class="quote">"나를 사랑해야, 진짜 가족도 사랑할 수 있습니다."</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="openModal1('함영준 대표')">
+      <div class="card-img-wrapper">
+        <img src="https://placehold.co/600x400?text=함영준+대표" alt="함영준 대표" class="card-img">
+      </div>
+      <div class="card-body">
+        <h3>함영준 대표</h3>
+        <p class="subtitle">감정 훈련 지도자</p>
+        <p class="quote">"지금 이 감정이, 나의 다음 삶을 바꿉니다."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modalOverlay1" class="modal-overlay" onclick="closeModal1()">
+    <div class="modal1" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeModal1()">×</button>
+      <div id="modalInner"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal1(name) {
+    const modal = document.getElementById('modalOverlay1');
+    const inner = document.getElementById('modalInner');
+    let imgSrc = '';
+    let content = '';
+
+    if (name === '윤종모 주교님') {
+      imgSrc = "https://placehold.co/600x400?text=윤종모+주교님";
+      content = `
+        <img src="${imgSrc}" alt="윤종모 주교님">
+        <h2>윤종모 주교님</h2>
+        <p>서울대교구 주교</p>
+        <p>"소통이 회복되면, 관계도 회복됩니다."</p>
+        <p>연세대, 토론토대, 앨버타대에서 신학, 문학, 상담학 전공. 상담심리 및 코칭 분야 강의 경력.</p>
+      `;
+    } else if (name === '마가스님') {
+      imgSrc = "https://placehold.co/600x400?text=마가스님";
+      content = `
+        <img src="${imgSrc}" alt="마가스님">
+        <h2>마가스님</h2>
+        <p>동국대학교 정각원 교수</p>
+        <p>"나를 사랑해야, 진짜 가족도 사랑할 수 있습니다."</p>
+        <p>자비명상 대표로 활동, 명상과 가족 치유 프로그램 운영.</p>
+      `;
+    } else if (name === '함영준 대표') {
+      imgSrc = "https://placehold.co/600x400?text=함영준+대표";
+      content = `
+        <img src="${imgSrc}" alt="함영준 대표">
+        <h2>함영준 대표</h2>
+        <p>감정 훈련 지도자</p>
+        <p>"지금 이 감정이, 나의 다음 삶을 바꿉니다."</p>
+        <p>일상 감정훈련법 개발 및 심리 회복 프로그램 운영.</p>
+      `;
+    }
+
+    inner.innerHTML = content;
+    modal.style.display = 'flex';
+  }
+
+  function closeModal1() {
+    document.getElementById('modalOverlay1').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
