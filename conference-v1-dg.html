@@ -1999,7 +1999,19 @@ Footer
   setInterval(animateBoxes1, 1000);
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const submitBtn = document.getElementById("send_message");
 
+    if (submitBtn) {
+      submitBtn.addEventListener("click", function () {
+        if (typeof window.karrotPixel !== "undefined") {
+          window.karrotPixel.track("Purchase");
+        }
+      });
+    }
+  });
+</script>
     <!-- <script src="js/slick.js"></script> -->
     <!-- <script src="./js/countdown.js"></script> -->
   </body>
