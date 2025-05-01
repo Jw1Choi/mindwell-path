@@ -8,7 +8,7 @@ template.innerHTML = `
     
     </a>
     <div class="menu-btn">
-       <button class=" Event_Menu" onclick="location.href='#form-survey';">바로 신청하기</button>
+       <button class=" Event_Menu" onclick="location.href='#choice_p';">바로 신청하기</button>
 
         <!-- <button class="total_menu"><img src="img/hamburger.svg" style="width:17px"></button> -->
     </div>
