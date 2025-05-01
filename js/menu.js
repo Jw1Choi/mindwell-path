@@ -3,12 +3,13 @@ template.innerHTML = `
 <header>
 <nav class="top">
     <a class="logo"  target="_self" href="#">
-      <p class="logo-font" style="font-size:13px;">마음건강 길</p>
-      <!-- <img alt="" src="img/jamclass-logo.png" > -->
+      <!-- <p class="logo-font" style="font-size:13px;">마음건강 길</p> -->
+      <img  src="../img/logo-menu3.png" >
     
     </a>
     <div class="menu-btn">
-        <!-- <button class="Event_Menu">Event</button> -->
+       <button class=" Event_Menu" onclick="location.href='#form-survey';">바로 신청하기</button>
+
         <!-- <button class="total_menu"><img src="img/hamburger.svg" style="width:17px"></button> -->
     </div>
 </nav>

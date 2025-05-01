@@ -1,0 +1,223 @@
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    #form-survey,
+    #form-survey * {
+      all: unset;
+      all: revert;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif !important;
+    }
+
+    #form-survey {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    #form-survey .intro {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    #form-survey .intro h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    #form-survey .intro .timer-box {
+      border: 1.5px solid #003e81;
+      border-radius: 10px;
+      padding: 10px 20px;
+      max-width: 450px;
+      margin: 0 auto 20px;
+    }
+
+    #form-survey .timer {
+      font-size: 14px;
+      font-weight: 600;
+      color: #003e81;
+    }
+
+    #form-survey form label {
+      display: block;
+      margin-bottom: 0px;
+    }
+
+    #form-survey form label p {
+      font-size: 14px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    #form-survey input[type=text],
+    #form-survey input[type=email],
+    #form-survey input[type=number],
+    #form-survey select,
+    #form-survey textarea {
+      width: 100%;
+      font-size: 15px;
+      color: #333;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      appearance: none;
+      display: block;
+    }
+
+    #form-survey textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    #form-survey .radio {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    #form-survey .radio.gender {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    #form-survey .radio.gender p {
+      margin: 0;
+      min-width: 60px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-right: 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    #form-survey .radio.gender label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #333;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    #form-survey input[type=radio],
+    #form-survey input[type=checkbox] {
+      margin-right: 6px;
+      accent-color: #3a94f5;
+      appearance: auto;
+    }
+
+    #form-survey label input[type=checkbox] {
+      margin-right: 6px;
+    }
+
+    #form-survey .submit-btn {
+      background: #003e81;
+      padding: 16px;
+      width: 100%;
+      font-size: 16px;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      appearance: none;
+      text-align: center;
+    }
+
+    #form-survey .submit-btn:hover {
+      background: #e5a100;
+    }
+
+    @media (max-width: 640px) {
+      #form-survey {
+        padding: 28px 16px;
+      }
+
+      #form-survey .radio {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #form-survey .radio.gender {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+
+      #form-survey .radio.gender label {
+        margin: 6px 0;
+      }
+    }
+  </style>
+
+  <div id="form-survey">
+    <div class="intro">
+      <div class="timer-box">
+        <span class="timer">
+          혜택 마감 | <span id="day1"></span> ( <span id="countdown1"></span> )
+        </span>
+      </div>
+      <h1>컨퍼런스 지금 신청하기</h1>
+    </div>
+
+    <div class="container">
+      <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf71R5G5n8UVJvdo6yXYDC9rX9MPhJClQJxyxKdYqVOjpJ25Q/formResponse"
+        id="form_e11" method="POST" target="hidden_iframe11" onsubmit="dll(); submitted=true;">
+        
+        <input type="hidden" name="entry.1533466749" id="from" value="카카오" />
+        <input type="hidden" id="selectedOption" name="entry.1348488413" value="" />
+        <input type="hidden" id="selectedOption1" name="entry.1442690328" value="" />
+
+        <label><p>1. 성함</p>
+          <input type="text" name="entry.1552992859" id="name" placeholder="성함 혹은 닉네임" maxlength="8" />
+        </label>
+
+        <label><p>2. 나이</p>
+          <input type="text" name="entry.1860392184" id="age" placeholder="나이" maxlength="2" />
+        </label>
+
+        <div class="radio gender">
+          <p>3. 성별</p>
+          <label><input class="gender-radio" type="radio" name="entry.188464640" value="남성" /> 남성</label>
+          <label><input class="gender-radio" type="radio" name="entry.188464640" value="여성" /> 여성</label>
+        </div>
+
+        <label><p>4. 휴대폰 번호</p>
+          <input type="text" name="entry.1143600273" id="phone" placeholder="휴대폰 번호" maxlength="11" />
+        </label>
+
+        <label>
+          <input type="checkbox" checked id="agree11" value="front-end" /> 개인정보동의
+        </label>
+
+        <br><br>
+        <input class="submit-btn" type="submit" id="send_message" disabled value="컨퍼런스 신청하기" />
+        <iframe name="hidden_iframe11" id="hidden_iframe11" style="display:none;" onload=""></iframe>
+      </form>
+    </div>
+  </div>
+
+  <!-- 필요 스크립트 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="lib/contactform/countdown-form.js"></script>
+  <script src="js/validation-conference.js"></script>
+  <script src="js/personal.js"></script>
+  <script>var submitted = false;</script>

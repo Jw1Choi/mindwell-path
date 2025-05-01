@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>병원 밖 마음치유공간 마음디톡스 - 행사 안내</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        #event1 {
+            font-family: 'Noto Sans KR', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            color: #333;
+        }
+        
+        #event1 .event-header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+        }
+
+        #event1 .event-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        #event1 .event-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        #event1 .info-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease;
+        }
+        
+        #event1 .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        #event1 .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2575fc;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #event1 .card-title i {
+            margin-right: 10px;
+        }
+
+        #event1 .info-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        #event1 .map-container {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        #event1 .map-overlay {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+        }
+
+        #event1 .map-marker {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+        }
+
+        #event1 .direction-steps {
+            background-color: #f0f7ff;
+            border-left: 4px solid #2575fc;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 25px;
+        }
+
+        #event1 .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        #event1 .step:last-child {
+            margin-bottom: 0;
+        }
+
+        #event1 .step-number {
+            background-color: #2575fc;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        #event1 .step-text {
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        #event1 .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+
+    <div id="event1">
+        <!-- 행사 헤더 -->
+        <div style="text-align:-webkit-center;margin:40px;font-size:2.5rem;">
+        <h1>행사 일정 안내</h1>
+        </div>
+        <!-- 날짜 및 시간 정보 -->
+        <div class="info-card">
+            <h2 class="card-title">
+                <i class="fas fa-calendar-alt"></i>
+                행사 일정
+            </h2>
+            <div class="info-content">
+                <p class="font-bold text-xl mb-2">2025년 5월 21일 수요일</p>
+                <p class="text-gray-700">오후 3시부터</p>
+            </div>
+        </div>
+
+        <!-- 장소 정보 -->
+        <div class="info-card">
+            <h2 class="card-title">
+                <i class="fas fa-map-marker-alt"></i>
+                행사 장소
+            </h2>
+            <div class="info-content">
+                <p class="font-bold text-xl mb-2">대한성공회 서울 주교좌 성당</p>
+                <p class="text-gray-700 mb-2">서울특별시 중구 세종대로21길 15</p>
+                <p class="text-blue-600"><i class="fas fa-subway mr-2"></i>시청역 3번 출구에서 195m</p>
+            </div>
+        </div>
+
+    
+
+        <!-- 오시는 길 안내 -->
+        <div class="info-card">
+            <h2 class="card-title">
+                <i class="fas fa-walking"></i>
+                오시는 길
+            </h2>
+            <div class="direction-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <strong>시청역 3번 출구</strong>로 나오세요.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        출구에서 나온 후 <strong>오른쪽</strong>으로 돌아 직진하세요.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <strong>첫 번째 골목</strong>에서 오른쪽으로 들어가세요.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">
+                        약 <strong>100m</strong> 정도 직진하면 <strong>왼쪽</strong>에 성당이 보입니다.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-text">
+                        총 소요 시간은 도보로 약 <strong>3분</strong> 내외입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 교통편 정보 -->
+        <div class="info-card">
+            <h2 class="card-title">
+                <i class="fas fa-subway"></i>
+                교통편 안내
+            </h2>
+            <div class="info-content">
+                <p class="mb-3"><strong>지하철:</strong> 1호선, 2호선 시청역 3번 출구</p>
+                <p><strong>버스:</strong> 시청 앞 하차 (간선: 103, 150, 401 / 지선: 7016, 7022)</p>
+            </div>
+        </div>
+
+        <!-- 문의 정보 -->
+        <div class="info-card">
+            <h2 class="card-title">
+                <i class="fas fa-phone-alt"></i>
+                문의사항
+            </h2>
+            <div class="info-content">
+                <p class="mb-2">이메일: mindwellpath@example.com</p>
+                <p>사무실 전화: 02-725-7525</p>
+                <p>휴대폰: 010-5385-0793</p>
+            </div>
+        </div>
+
+      
+    </div>
+

@@ -96,6 +96,17 @@ $(document).ready(function(){
            $('#form_e11').prop("action", "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfj3nf7V2Qk99ggWaPL23jhxAlWsykioa6cUnHNR-w5GTnPkA/formResponse");
            $('#send_message').attr({'disabled' : 'true', 'value' : '잠시만 기다려주세요.' });
            
+$('#send_message').css({
+    transition: "1s",
+    background: "#222222",
+    color: "#fff"
+  });
+  
+  // 2초 후 → 텍스트 변경
+  setTimeout(function () {
+    $('#send_message').val("3초 후 구매 안내 페이지로 이동합니다.");
+  }, 800);
+
         //    setSubmittedCookie();
      $('#send_message').prop("disabled", false);
     $('#send_message').css({transition:"1s"});
@@ -141,11 +152,12 @@ function maxLengthCheck(object){
  
  function hoa(){
     setTimeout( function(){
-        alert("설문 참여 감사합니다.\n여러분의 고민을 날려버릴 수 있는\n프로그램을 기획하여 초대드리겠습니다.\n\n마음건강 길");
-        $(window).scrollTop(0);
+        alert("참여 신청 감사합니다. 결제 안내 페이지로 이동합니다.\n\n마음건강 길");
+        // $(window).scrollTop(0);
         // window.location.reload();
-        window.location.href='./result.html';
-       },1500);
+        // window.location.href='https://event-us.kr/mindgil21/event/103555';
+        window.location.assign('https://event-us.kr/mindgil21/event/103555');
+       },1200);
 
  }
  
@@ -176,6 +188,7 @@ function maxLengthCheck(object){
     var name = $('#name').val();
     var age = $('#age').val();
     var dropdown = $('#dropdown').val();
+    var radioChecked = $('input[name="radio1"]:checked').val();
     var email = $('#email').val();
     var ph = $('#phone').val();
     // var message = $('#message').val();
@@ -215,12 +228,12 @@ function maxLengthCheck(object){
                                                                 if( name.length > 1 )
                                                                 {
 
-                                                                    if( regex.test(age) && age.length == 2 && age >=23 && age <56 )
+                                                                    if( regex.test(age) && age.length == 2 && age >=20 && age <99 )
                                                                     {
                                                                             
-                                                                                if( dropdown != null )
-                                                                                {
-
+                                                                        if( $('.gender-radio:checked').length > 0 )
+                                                                        {
+                                                                         
                                                                                         //  if(email.match(regExp) != null)
                                                                                         // {
 
@@ -238,7 +251,7 @@ function maxLengthCheck(object){
                                                                                                                                     {
                                                                                                                                         $('#send_message').css({transition:"1s"});
                                                                                                                                     $('#send_message').prop("disabled", false);
-                                                                                                                                    $('#send_message').prop("value", "설문 제출하고 혜택받기");
+                                                                                                                                    $('#send_message').prop("value", "컨퍼런스 신청하기");
                                                                                                                                     $('#send_message').css({background:"#0e3b64"});
                                                                                                                                     $('#send_message').css({cursor:"pointer"});
                                                                                                                                     }
@@ -514,7 +527,7 @@ function maxLengthCheck(object){
 
 
 $(function(){
- $('#name,#phone,#problem1,#problem2,#problem3,#hope1,#hope2,#hope3,#agree11,#question3,#question4,#age, #dropdown, #email, #ph, #selectedOption, #selectedOption1, .option, .option1').bind("keyup click change",form_check);
- $('#name,#phone,#problem1,#problem2,#problem3,#hope1,#hope2,#hope3,#agree11,#question3,#question4,#age, #dropdown, #email, #selectedOption, #selectedOption1, .option, .option1').bind("keyup click change",form_check1);
+ $('#name,#phone,#problem1,#problem2,#problem3,#hope1,#hope2,#hope3,#agree11,#question3,#question4,#age, #dropdown, #email, #ph, #selectedOption, #selectedOption1, .option, .option1, .gender-radio').bind("keyup click change",form_check);
+ $('#name,#phone,#problem1,#problem2,#problem3,#hope1,#hope2,#hope3,#agree11,#question3,#question4,#age, #dropdown, #email, #selectedOption, #selectedOption1, .option, .option1, .gender-radio').bind("keyup click change",form_check1);
 //  $('#license').bind("keyup click change",lic_pick);
 })

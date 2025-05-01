@@ -1,0 +1,135 @@
+
+  <style>
+    #howto {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      position: relative;
+    }
+
+    #howto::before {
+      content: "";
+      position: absolute;
+      top: 140px;
+      left: 50%;
+      width: 4px;
+      height: calc(100% - 140px);
+      background-color: #f0c087;
+      transform: translateX(-50%);
+      border-radius: 4px;
+      z-index: 0;
+    }
+
+    #howto .section-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 60px;
+      color: #111;
+      position: relative;
+      z-index: 2;
+    }
+
+    #howto .step-box {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 100px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #howto .step-img {
+      width: 48%;
+      position: relative;
+      z-index: 2;
+    }
+
+    #howto .step-img img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    #howto .step-text {
+      width: 48%;
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 2;
+    }
+
+    #howto .step-text h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1f1f1f;
+    }
+
+    #howto .step-text p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    #howto .step-box.reverse {
+      flex-direction: row-reverse;
+    }
+
+    @media (max-width: 768px) {
+      #howto::before {
+        top: 140px;
+        height: calc(100% - 140px);
+        left: 50%;
+        width: 4px;
+        background-color: #f0c087;
+        transform: translateX(-50%);
+        display: block;
+      }
+      #howto .step-box, #howto .step-box.reverse {
+        flex-direction: column;
+        align-items: center;
+      }
+      #howto .step-img,
+      #howto .step-text {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <div id="howto">
+    <h2 class="section-title">신청부터 완료까지, 한 걸음씩 진행됩니다</h2>
+
+    <div class="step-box">
+      <div class="step-img">
+        <img src="step1.png" alt="신청 방법">
+      </div>
+      <div class="step-text">
+        <h3>STEP 1. 신청폼 작성</h3>
+        <p>이름, 연락처 등을 간단히 기입해 주세요.<br>접수 후 자동으로 안내 페이지로 이동됩니다.</p>
+      </div>
+    </div>
+
+    <div class="step-box reverse">
+      <div class="step-img">
+        <img src="step2.png" alt="결제 방법">
+      </div>
+      <div class="step-text">
+        <h3>STEP 2. 결제 및 확인</h3>
+        <p>안내된 링크로 참가비 결제를 완료하시면 최종 예약이 완료됩니다.<br>확인 문자와 함께 프로그램 안내를 드립니다.</p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-img">
+        <img src="step3.png" alt="최종 참가">
+      </div>
+      <div class="step-text">
+        <h3>STEP 3. 프로그램 참가</h3>
+        <p>안내된 일정에 맞춰 현장 또는 온라인으로 참여해 주세요.<br>따뜻한 분위기에서 여러분을 기다리고 있겠습니다.</p>
+      </div>
+    </div>
+  </div>
