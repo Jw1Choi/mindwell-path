@@ -2,41 +2,10 @@
 <html lang="ko">
 <head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2YFNZXVNW3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2YFNZXVNW3');
-</script>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WTZWMSKS');</script>
-  <!-- End Google Tag Manager -->
-
-<!-- Hotjar Tracking Code for mindgil -->
-<script>
-  (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:5089314,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-
-
 <!-- Danggeun Market Code -->
-<script src="https://karrot-pixel.business.daangn.com/0.2/karrot-pixel.umd.js"></script>
+<script src="https://karrot-pixel.business.daangn.com/0.4/karrot-pixel.umd.js"></script>
 <script>
-  window.karrotPixel.init('1722899700153500001');
+  window.karrotPixel.init('1746137749301800001');
   window.karrotPixel.track('ViewPage');
 </script>
 <!-- End Danggeun Market Code -->
@@ -89,22 +58,6 @@
     <link href="css/style_conference.css" rel="stylesheet"  />
     <link rel="stylesheet" href="css/contact-style.css">
 
-  <!-- Danggeun Market Code -->
-  <script src="https://karrot-pixel.business.daangn.com/0.4/karrot-pixel.umd.js"></script>
-  <script>
-    window.karrotPixel.init('1732690867266600001');
-    window.karrotPixel.init('1733227518392200001');
-    
-    window.karrotPixel.track('ViewPage');
-  </script>
-  <!-- End Danggeun Market Code -->
-
-  <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
-<script type="text/javascript">
-      kakaoPixel('5248031303957790605').pageView();
-      
-</script>
-
     
   </head>
 
@@ -156,7 +109,7 @@
           5월 가정의 달,<br><br>가족 안에서 느끼는<br>외로움과 고독감을 넘어<br><br>우울을 치유하고 새로운 삶을<br> 시작하는 길을 함께 찾아갑니다.
           <br></strong><br>
         
-        <a href="#form-survey" class="scroll btn-main wow fadeInDown" style="border-radius:10px;padding:15px 40px;opacity: 0.85;margin:0px;">
+        <a href="#choice_p" class="scroll btn-main wow fadeInDown" style="border-radius:10px;padding:15px 40px;opacity: 0.85;margin:0px;">
           <span class="blink" style="font-family: 'GowunBatang-Regular';font-weight:700;">컨퍼런스 바로 신청하기 ></span> 
        </a>
         <!-- <p>CUT & CUT DIET</p> -->
@@ -787,9 +740,37 @@ About Us Section
 <hr style="width:100%;">
 <h3 class="title-main">📅&nbsp;&nbsp;행사 정보</h3>
 
-  <div style="text-align:-webkit-center">
-  <img src="./img/schedule2.png" style="width:100%">
-  </div>
+<div class="responsive-schedule">
+  <img src="./img/schedule2.png" class="pc-schedule" alt="PC 스케줄 이미지">
+  <img src="./img/mobile-schedule.png" class="mobile-schedule" alt="모바일 스케줄 이미지">
+</div>
+
+<style>
+  .responsive-schedule {
+    text-align: center;
+  }
+
+  .responsive-schedule img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: none;
+  }
+
+  .responsive-schedule .pc-schedule {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .responsive-schedule .pc-schedule {
+      display: none;
+    }
+
+    .responsive-schedule .mobile-schedule {
+      display: block;
+    }
+  }
+</style>
 
 
 
@@ -812,7 +793,7 @@ About Us Section
     예전 방식으로 감량이 안된다는 것은<br>여러분의 체질이 바뀌었다는 걸 의미합니다.<br>감량 방식도 바뀐 체질에 맞게 달라져야 합니다.</p> -->
   </div>
   
-  <div class="row">
+  <div class="row" >
     <div class="col-lg-12 col-md-12 wow fadeInUp">
       <div class="member" style="text-align:-webkit-center;">
         <img src="./img/happy1.png" class="img-fluid" alt="" style="max-width:600px;width:95%;"/>
@@ -823,14 +804,186 @@ About Us Section
   
   
   
-  
+    <div id="choice_p" ></div>
   </div>
   
   </div>
   </section>
 
+
   
-  <style>
+<!-- ✅ CSS -->
+<style>
+  #choice {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Helvetica Neue", sans-serif;
+  }
+
+  .faq-headline {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .faq-subtext {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .faq-card {
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 24px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .faq-toggle:hover {
+    background-color: #f9fafb;
+  }
+
+  .icon {
+    font-size: 24px;
+    color: #2563eb;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-content {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    font-size: 20px;
+    color: #4b5563;
+    background: #f9fafb;
+    transition: all 0.4s ease;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .faq-card.active .faq-content {
+    padding: 20px 24px;
+    max-height: 470px;
+  }
+
+  .faq-card.active .icon {
+    transform: rotate(45deg);
+  }
+
+  #toggleSection {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.6s ease;
+  }
+
+  #toggleSection.active {
+    max-height: 2000px;
+  }
+</style>
+
+<!-- ✅ FAQ Section -->
+<div id="choice">
+  <h2 class="faq-headline">컨퍼런스 신청 방법</h2>
+  <p class="faq-subtext">원하는 조건에 맞는<br>방식을 안내드립니다.</p>
+
+  <div class="faq-card">
+    <button class="faq-toggle">
+      <span class="faq-title"><b>1. 간편 계좌이체</b></span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-content">
+      가장 간편하게 이용할 수 있는 방식으로<br><br>  
+      <b>[계좌번호: KB 002801-04-264807 마음건강길]</b><br><br>로 입금 진행해주시면 됩니다 
+      <br><br>
+      <b style="color:red;">5월 7일까지만! 선착순 60명 한정</b>으로<br>
+      <b></b> <del>20,000</del> -> <b style="color:red;">17,000원!</b> (15% 할인 혜택 제공!)<br>
+      추후 프로그램 할인 혜택까지 제공하니<br>기한 마감 전에 빠르게 신청하세요.<br><Br>
+      ※ 현금영수증 발행 가능<br>
+      문의전화 : 02-725-7525, 010-8798-2396<br>
+          
+    </div>
+  </div>
+
+  <div class="faq-card">
+    <button class="faq-toggle">
+      <span class="faq-title"><b>2. 현장 결제 (현금 결제, 계좌 이체만 가능)</b></span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-content">
+      단, 정원 160석 티켓 여분이 남아 있을 경우 가능합니다.<br>
+티켓 판매 상황을 알아보려면 문의해주십시오.<br><br>문의전화 : 02-725-7525, 010-8798-2396<br>
+※ 현금영수증 발행 가능
+    </div>
+  </div>
+
+  <div class="faq-card">
+    <button class="faq-toggle">
+      <span class="faq-title"><b>3. 신용카드, 가상계좌 이용방법</b></span>
+      <span class="icon">+</span>
+    </button>
+    <!-- <div class="faq-content">
+      혼자만의 고립감을 구구해내는 치유 경험과 공동체 연결 방법을 알려드립니다.
+    </div> -->
+  </div>
+</div>
+
+<!-- ✅ Toggle Section (Initially Hidden) -->
+
+
+
+<!-- ✅ JavaScript -->
+<script>
+  document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.faq-card');
+      const alreadyActive = card.classList.contains('active');
+      const toggleSection = document.getElementById("toggleSection");
+
+      // Remove all active states
+      document.querySelectorAll('#choice .faq-card').forEach(c => c.classList.remove('active'));
+      if (!alreadyActive) card.classList.add('active');
+
+      // Toggle section only for 3rd item (index 2)
+      if (index === 2) {
+        if (!toggleSection.classList.contains("active")) {
+          toggleSection.classList.add("active");
+          toggleSection.style.maxHeight = toggleSection.scrollHeight + "px";
+        } else {
+          toggleSection.classList.remove("active");
+          toggleSection.style.maxHeight = "0px";
+        }
+      } else {
+        toggleSection.classList.remove("active");
+        toggleSection.style.maxHeight = "0px";
+      }
+    });
+  });
+</script>
+
+
+
+<div id="toggleSection">
+   <style>
     #howto {
       max-width: 1080px;
       margin: 0 auto;
@@ -1363,7 +1516,7 @@ About Us Section
     <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf71R5G5n8UVJvdo6yXYDC9rX9MPhJClQJxyxKdYqVOjpJ25Q/formResponse"
       id="form_e11" method="POST" target="hidden_iframe11" onsubmit="dll(); submitted=true;">
       
-      <input type="hidden" name="entry.1533466749" id="from" value="문자" />
+      <input type="hidden" name="entry.1533466749" id="from" value="포스터-H버전" />
  
 
       <label><p>1. 성함</p>
@@ -1393,6 +1546,8 @@ About Us Section
       <iframe name="hidden_iframe11" id="hidden_iframe11" style="display:none;" onload=""></iframe>
     </form>
   </div>
+</div>
+
 </div>
 
 <hr style="width:100%;">
@@ -1828,7 +1983,19 @@ Footer
   setInterval(animateBoxes1, 1000);
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const submitBtn = document.getElementById("send_message");
 
+    if (submitBtn) {
+      submitBtn.addEventListener("click", function () {
+        if (typeof window.karrotPixel !== "undefined") {
+          window.karrotPixel.track("Purchase");
+        }
+      });
+    }
+  });
+</script>
     <!-- <script src="js/slick.js"></script> -->
     <!-- <script src="./js/countdown.js"></script> -->
   </body>
