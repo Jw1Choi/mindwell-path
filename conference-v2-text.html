@@ -56,21 +56,6 @@
     <link href="css/style_conference1.css" rel="stylesheet"  />
     <link rel="stylesheet" href="css/contact-style.css">
 
-  <!-- Danggeun Market Code -->
-  <script src="https://karrot-pixel.business.daangn.com/0.4/karrot-pixel.umd.js"></script>
-  <script>
-    window.karrotPixel.init('1732690867266600001');
-    window.karrotPixel.init('1733227518392200001');
-    
-    window.karrotPixel.track('ViewPage');
-  </script>
-  <!-- End Danggeun Market Code -->
-
-  <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/kas/static/kp.js"></script>
-<script type="text/javascript">
-      kakaoPixel('5248031303957790605').pageView();
-      
-</script>
 
     
   </head>
@@ -405,6 +390,466 @@ About Us Section
     </section>
     
 
+
+    <style>
+
+
+      #schedule {
+        padding: 60px 20px;
+      }
+  
+      #schedule h2 {
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        color: #111827;
+        line-height: 1.4;
+      }
+  
+      #schedule .subtitle {
+        text-align: center;
+        font-size: 16px;
+        color: #6b7280;
+        margin-bottom: 50px;
+      }
+  
+      #schedule .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+  
+      #schedule .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        width: 2px;
+        background: #ededed;
+      }
+  
+     
+  
+      #schedule .session {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 40px;
+        padding-left: 40px;
+      }
+  
+      #schedule .session::before {
+        content: '';
+        position: absolute;
+        top: 27px;
+        left: 14px;
+        width: 14px;
+        height: 14px;
+        background: #3b82f6;
+        border-radius: 50%;
+        z-index: 2;
+      }
+  
+     
+  
+      #schedule .card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        flex: 1;
+        width: 100%;
+      }
+  
+  
+      @media screen and (max-width:530px) {
+          
+      
+          #schedule .timeline::before {
+          display:none;
+          }
+      
+          #schedule .session::before {
+            display: none;
+          }
+      
+          }
+  
+      #schedule .card .time {
+        display: inline-block;
+        background: #3b82f6;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 6px;
+        margin-bottom: 14px;
+      }
+  
+      #schedule .card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 10px;
+      }
+  
+      #schedule .card p {
+        font-size: 15px;
+        color: #374151;
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+  
+      /* 강연자 정보 */
+      #schedule .profile {
+        display: flex;
+        align-items: center;
+        margin-top: 12px;
+      }
+  
+      #schedule .profile img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 12px;
+      }
+  
+      #schedule .profile-text {
+        display: flex;
+        flex-direction: column;
+      }
+  
+      #schedule .profile-text .name {
+        font-size: 14px;
+        font-weight: 600;
+        color: #374151;
+      }
+  
+      #schedule .profile-text .title {
+        font-size: 13px;
+        color: #9ca3af;
+      }
+  
+      /* 반응형 */
+      @media (max-width: 768px) {
+        #schedule {
+          padding: 40px 16px;
+        }
+        #schedule h2 {
+          font-size: 24px;
+        }
+        #schedule .subtitle {
+          font-size: 14px;
+          margin-bottom: 40px;
+        }
+        #schedule .timeline {
+          padding-left: 0;
+        }
+        #schedule .session {
+          flex-direction: column;
+          align-items: flex-start;
+          padding-left: 30px;
+        }
+        #schedule .session::before {
+          left: 13.6px;
+        }
+        #schedule .card {
+          margin-left: 0;
+          padding: 20px;
+          width: 100%;
+        }
+      }
+  
+      @media screen and (max-width:530px) {
+          
+      
+          #schedule .session {
+          flex-direction: column;
+          align-items: flex-start;
+          padding-left: 0px;
+        }
+        #schedule .session::before {
+          left: 13px;
+        }
+        #schedule .card {
+          margin-left: 0;
+          padding: 20px auto;
+          width: 100%;
+        }
+      
+          }
+  
+  
+    </style>
+  
+  
+<style>
+  #event1 {
+      font-family: 'Noto Sans KR', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      color: #333;
+  }
+  
+  #event1 .event-header {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 30px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+  }
+
+  #event1 .event-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+  }
+
+  #event1 .event-subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      opacity: 0.9;
+  }
+
+  #event1 .info-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease;
+  }
+  
+  #event1 .info-card:hover {
+      transform: translateY(-5px);
+  }
+
+  #event1 .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2575fc;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+  }
+
+  #event1 .card-title i {
+      margin-right: 10px;
+  }
+
+  #event1 .info-content {
+      font-size: 1.1rem;
+      line-height: 1.6;
+  }
+
+  #event1 .map-container {
+      position: relative;
+      height: 300px;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 25px;
+  }
+
+  #event1 .map-overlay {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+  }
+
+  #event1 .map-marker {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+  }
+
+  #event1 .direction-steps {
+      background-color: #f0f7ff;
+      border-left: 4px solid #2575fc;
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 25px;
+  }
+
+  #event1 .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+  }
+
+  #event1 .step:last-child {
+      margin-bottom: 0;
+  }
+
+  #event1 .step-number {
+      background-color: #2575fc;
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+  }
+
+  #event1 .step-text {
+      flex-grow: 1;
+      line-height: 1.5;
+  }
+
+  #event1 .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+      font-size: 0.9rem;
+  }
+</style>
+
+<div id="event1">
+  <!-- 행사 헤더 -->
+  <div style="text-align:-webkit-center;margin:40px;">
+  <h2><b>행사 일시</b></h2>
+  </div>
+  <!-- 날짜 및 시간 정보 -->
+  <div class="info-card">
+      <h2 class="card-title">
+          <i class="fas fa-calendar-alt"></i>
+          행사 일시
+      </h2>
+      <div class="info-content">
+          <p class="font-bold text-xl mb-2">2025년 5월 21일 수요일</p>
+          <p class="text-gray-700">오후 3시 ~ 5시</p>
+      </div>
+  </div>
+
+  <!-- 장소 정보 -->
+  <div class="info-card">
+      <h2 class="card-title">
+          <i class="fas fa-map-marker-alt"></i>
+          행사 장소
+      </h2>
+      <div class="info-content">
+          <p class="font-bold text-xl mb-2">대한성공회 서울 주교좌성당 프란시스홀</p>
+          <p class="text-gray-700 mb-2">서울특별시 중구 세종대로21길 15</p>
+          <p class="text-blue-600"><i class="fas fa-subway mr-2"></i>시청역 3번 출구에서 195m</p>
+      </div>
+  </div>
+
+
+
+
+
+
+</div>
+  
+  <section id="schedule">
+    <h2><span style=" font-family: 'GowunBatang-Regular';font-size:20px;color:#3a94f5;"><b>병원 밖 마음 치유공간</b></span><br><span style="font-family: 'HakgyoansimAllimjangTTF-B';color:green;">'마음 디톡스'</span><br>프로그램 소개</h2><br>
+    
+  
+    <div class="timeline">
+  
+      <div class="session">
+        <div class="card">
+          <div class="time">15:00 ~ 15:30 (30분)</div>
+          <h3>닫힌 마음을 여는 가족 대화법</h3>
+          <p>가족 속 외로움과 단절, 그리고 마음의 소통을 회복하는 길을 안내합니다.</p>
+          <div class="profile">
+            <img src="./img/profile1.jpg" alt="윤종모 주교 프로필">
+            <div class="profile-text">
+              <span class="name">윤종모 주교</span>
+              <span class="title">대한성공회 주교</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="session">
+        <div class="card">
+          <div class="time">15:30 ~ 16:00 (30분)</div>
+          <h3>외로움 너머, 다시 나를 사랑하는 길</h3>
+          <p>고립과 무너진 자존감을 다시 세우는 치유의 길을 전합니다.</p>
+          <div class="profile">
+            <img src="./img/profile2.jpg" alt="마가스님 프로필">
+            <div class="profile-text">
+              <span class="name">마가스님</span>
+              <span class="title">자비명상 대표</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="session">
+        <div class="card">
+          <div class="time">16:00 ~ 16:10 (10분)</div>
+          <h3>휴식 및 질문 작성</h3>
+          <p>여러분의 질문을 자유롭게 적어보는 시간입니다.</p>
+        </div>
+      </div>
+  
+      <div class="session">
+        <div class="card">
+          <div class="time">16:10 ~ 16:30 (20분)</div>
+          <h3>작은 우울을 매일 비우는 연습</h3>
+          <p>반복되는 자책과 우울감을 사라지게 만드는 실천적 노하우를 전합니다.</p>
+          <div class="profile">
+            <img src="./img/profile3.jpg" >
+            <div class="profile-text">
+              <span class="name">함영준 대표</span>
+              <span class="title">마음건강 길 대표</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="session">
+        <div class="card">
+          <div class="time">16:30 ~ 17:00 (30분)</div>
+          <h3>청중과의 마음 대화</h3>
+          <p>청중의 질문을 토대로 세 강연자와 함께하는 힐링형 토크 시간입니다.</p>
+          <div class="profile">
+            <!-- <img src="https://via.placeholder.com/48" alt="패널 토크 프로필"> -->
+            <div class="profile-text">
+              <span class="name">윤종모 주교, 마가스님, 함영준 대표</span>
+              <span class="title">패널 토크 세션</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
 
 
     <style>
@@ -875,532 +1320,9 @@ About Us Section
 </div>
 </section>
 
-
-
-
-  <style>
-
-
-    #schedule {
-      padding: 60px 20px;
-    }
-
-    #schedule h2 {
-      font-size: 28px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 10px;
-      color: #111827;
-      line-height: 1.4;
-    }
-
-    #schedule .subtitle {
-      text-align: center;
-      font-size: 16px;
-      color: #6b7280;
-      margin-bottom: 50px;
-    }
-
-    #schedule .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    #schedule .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 20px;
-      width: 2px;
-      background: #ededed;
-    }
-
-   
-
-    #schedule .session {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 40px;
-      padding-left: 40px;
-    }
-
-    #schedule .session::before {
-      content: '';
-      position: absolute;
-      top: 27px;
-      left: 14px;
-      width: 14px;
-      height: 14px;
-      background: #3b82f6;
-      border-radius: 50%;
-      z-index: 2;
-    }
-
-   
-
-    #schedule .card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      flex: 1;
-      width: 100%;
-    }
-
-
-    @media screen and (max-width:530px) {
-        
-    
-        #schedule .timeline::before {
-        display:none;
-        }
-    
-        #schedule .session::before {
-          display: none;
-        }
-    
-        }
-
-    #schedule .card .time {
-      display: inline-block;
-      background: #3b82f6;
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 6px;
-      margin-bottom: 14px;
-    }
-
-    #schedule .card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 10px;
-    }
-
-    #schedule .card p {
-      font-size: 15px;
-      color: #374151;
-      margin-bottom: 8px;
-      line-height: 1.6;
-    }
-
-    /* 강연자 정보 */
-    #schedule .profile {
-      display: flex;
-      align-items: center;
-      margin-top: 12px;
-    }
-
-    #schedule .profile img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 12px;
-    }
-
-    #schedule .profile-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    #schedule .profile-text .name {
-      font-size: 14px;
-      font-weight: 600;
-      color: #374151;
-    }
-
-    #schedule .profile-text .title {
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    /* 반응형 */
-    @media (max-width: 768px) {
-      #schedule {
-        padding: 40px 16px;
-      }
-      #schedule h2 {
-        font-size: 24px;
-      }
-      #schedule .subtitle {
-        font-size: 14px;
-        margin-bottom: 40px;
-      }
-      #schedule .timeline {
-        padding-left: 0;
-      }
-      #schedule .session {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 30px;
-      }
-      #schedule .session::before {
-        left: 13.6px;
-      }
-      #schedule .card {
-        margin-left: 0;
-        padding: 20px;
-        width: 100%;
-      }
-    }
-
-    @media screen and (max-width:530px) {
-        
-    
-        #schedule .session {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 0px;
-      }
-      #schedule .session::before {
-        left: 13px;
-      }
-      #schedule .card {
-        margin-left: 0;
-        padding: 20px auto;
-        width: 100%;
-      }
-    
-        }
-
-
-  </style>
-</head>
-<body>
-
-<section id="schedule">
-  <h2><span style=" font-family: 'GowunBatang-Regular';font-size:20px;color:#3a94f5;"><b>병원 밖 마음 치유공간</b></span><br><span style="font-family: 'HakgyoansimAllimjangTTF-B';color:green;">'마음 디톡스'</span><br>프로그램 소개</h2><br>
-  
-
-  <div class="timeline">
-
-    <div class="session">
-      <div class="card">
-        <div class="time">15:00 ~ 15:30 (30분)</div>
-        <h3>닫힌 마음을 여는 가족 대화법</h3>
-        <p>가족 속 외로움과 단절, 그리고 마음의 소통을 회복하는 길을 안내합니다.</p>
-        <div class="profile">
-          <img src="./img/profile1.jpg" alt="윤종모 주교 프로필">
-          <div class="profile-text">
-            <span class="name">윤종모 주교</span>
-            <span class="title">대한성공회 주교</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="session">
-      <div class="card">
-        <div class="time">15:30 ~ 16:00 (30분)</div>
-        <h3>외로움 너머, 다시 나를 사랑하는 길</h3>
-        <p>고립과 무너진 자존감을 다시 세우는 치유의 길을 전합니다.</p>
-        <div class="profile">
-          <img src="./img/profile2.jpg" alt="마가스님 프로필">
-          <div class="profile-text">
-            <span class="name">마가스님</span>
-            <span class="title">자비명상 대표</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="session">
-      <div class="card">
-        <div class="time">16:00 ~ 16:10 (10분)</div>
-        <h3>휴식 및 질문 작성</h3>
-        <p>여러분의 질문을 자유롭게 적어보는 시간입니다.</p>
-      </div>
-    </div>
-
-    <div class="session">
-      <div class="card">
-        <div class="time">16:10 ~ 16:30 (20분)</div>
-        <h3>작은 우울을 매일 비우는 연습</h3>
-        <p>반복되는 자책과 우울감을 사라지게 만드는 실천적 노하우를 전합니다.</p>
-        <div class="profile">
-          <img src="./img/profile3.jpg" >
-          <div class="profile-text">
-            <span class="name">함영준 대표</span>
-            <span class="title">마음건강 길 대표</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="session">
-      <div class="card">
-        <div class="time">16:30 ~ 17:00 (30분)</div>
-        <h3>청중과의 마음 대화</h3>
-        <p>청중의 질문을 토대로 세 강연자와 함께하는 힐링형 토크 시간입니다.</p>
-        <div class="profile">
-          <!-- <img src="https://via.placeholder.com/48" alt="패널 토크 프로필"> -->
-          <div class="profile-text">
-            <span class="name">윤종모 주교, 마가스님, 함영준 대표</span>
-            <span class="title">패널 토크 세션</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<style>
-  #event1 {
-      font-family: 'Noto Sans KR', sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      background-color: #f9f9f9;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      border-radius: 12px;
-      color: #333;
-  }
-  
-  #event1 .event-header {
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      border-radius: 8px;
-      padding: 30px;
-      margin-bottom: 30px;
-      color: white;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
-  }
-
-  #event1 .event-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.5px;
-  }
-
-  #event1 .event-subtitle {
-      font-size: 1.2rem;
-      font-weight: 300;
-      opacity: 0.9;
-  }
-
-  #event1 .info-card {
-      background-color: white;
-      border-radius: 8px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-      transition: transform 0.3s ease;
-  }
-  
-  #event1 .info-card:hover {
-      transform: translateY(-5px);
-  }
-
-  #event1 .card-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #2575fc;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-  }
-
-  #event1 .card-title i {
-      margin-right: 10px;
-  }
-
-  #event1 .info-content {
-      font-size: 1.1rem;
-      line-height: 1.6;
-  }
-
-  #event1 .map-container {
-      position: relative;
-      height: 300px;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 25px;
-  }
-
-  #event1 .map-overlay {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-  }
-
-  #event1 .map-marker {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 2rem;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
-  }
-
-  #event1 .direction-steps {
-      background-color: #f0f7ff;
-      border-left: 4px solid #2575fc;
-      padding: 15px;
-      border-radius: 0 8px 8px 0;
-      margin-bottom: 25px;
-  }
-
-  #event1 .step {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 15px;
-  }
-
-  #event1 .step:last-child {
-      margin-bottom: 0;
-  }
-
-  #event1 .step-number {
-      background-color: #2575fc;
-      color: white;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 0.8rem;
-      font-weight: bold;
-      margin-right: 15px;
-      flex-shrink: 0;
-  }
-
-  #event1 .step-text {
-      flex-grow: 1;
-      line-height: 1.5;
-  }
-
-  #event1 .footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #666;
-      font-size: 0.9rem;
-  }
-</style>
-
-<div id="event1">
-  <!-- 행사 헤더 -->
-  <div style="text-align:-webkit-center;margin:40px;">
-  <h2><b>컨퍼런스 일정</b></h2>
-  </div>
-  <!-- 날짜 및 시간 정보 -->
-  <div class="info-card">
-      <h2 class="card-title">
-          <i class="fas fa-calendar-alt"></i>
-          행사 일정
-      </h2>
-      <div class="info-content">
-          <p class="font-bold text-xl mb-2">2025년 5월 21일 수요일</p>
-          <p class="text-gray-700">오후 3시 ~ 5시</p>
-      </div>
-  </div>
-
-  <!-- 장소 정보 -->
-  <div class="info-card">
-      <h2 class="card-title">
-          <i class="fas fa-map-marker-alt"></i>
-          행사 장소
-      </h2>
-      <div class="info-content">
-          <p class="font-bold text-xl mb-2">대한성공회 서울 주교좌성당 프란시스홀</p>
-          <p class="text-gray-700 mb-2">서울특별시 중구 세종대로21길 15</p>
-          <p class="text-blue-600"><i class="fas fa-subway mr-2"></i>시청역 3번 출구에서 195m</p>
-      </div>
-  </div>
-
-
-
-  <!-- 오시는 길 안내 -->
-  <div class="info-card">
-      <h2 class="card-title">
-          <i class="fas fa-walking"></i>
-          오시는 길
-      </h2>
-      <div class="direction-steps">
-          <div class="step">
-              <div class="step-number">1</div>
-              <div class="step-text">
-                  <strong>시청역 3번 출구</strong>로 나오세요.
-              </div>
-          </div>
-          <div class="step">
-              <div class="step-number">2</div>
-              <div class="step-text">
-                  광화문 방향으로 직진하세요.
-              </div>
-          </div>
-          <div class="step">
-              <div class="step-number">3</div>
-              <div class="step-text">
-                  왼쪽 덕수궁 담 끝나는 지점에서 좌회전하세요.
-              </div>
-          </div>
-          <div class="step">
-              <div class="step-number">4</div>
-              <div class="step-text">
-                  약 50m 정도 직진하면, 오른쪽에 성당이 보입니다.
-              </div>
-          </div>
-          <div class="step">
-              <div class="step-number">5</div>
-              <div class="step-text">
-                  총 소요 시간은 도보로 약 <strong>2분</strong> 내외입니다.
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <!-- 교통편 정보 -->
-  <div class="info-card">
-      <h2 class="card-title">
-          <i class="fas fa-subway"></i>
-          교통편 안내
-      </h2>
-      <div class="info-content">
-          <p class="mb-3"><strong>지하철:</strong> 1호선, 2호선 시청역 3번 출구</p>
-          <p><strong>버스:</strong> 시청이나 덕수궁 앞 하차<br>(간선: 103, 150, 401 등 / 지선:  7013, 7015, 7016, 7017, 7019, 7020, 7021 등)</p>
-      </div>
-  </div>
-
-  <!-- 문의 정보 -->
-  <div class="info-card">
-      <h2 class="card-title">
-          <i class="fas fa-phone-alt"></i>
-          문의사항
-      </h2>
-      <div class="info-content">
-          <p class="mb-2">이메일: mindwellpath@gmail.com, mindgil21@naver.com</p>
-          <p>사무실 전화: 02-725-7525</p>
-          <p>휴대폰: 010-5385-0793</p>
-      </div>
-  </div>
 <div id="choice_p"></div>
 
-</div>
+
 
 
 <!-- ✅ CSS -->
@@ -1495,7 +1417,7 @@ About Us Section
 <!-- ✅ FAQ Section -->
 <div id="choice">
   <h2 class="faq-headline">컨퍼런스 신청 방법</h2>
-  <p class="faq-subtext">원하는 조건에 맞는<br>방식을 안내드립니다.</p>
+  <p class="faq-subtext">조건에 맞는<br>산청 방법을 안내드립니다.</p>
 
   <div class="faq-card">
     <button class="faq-toggle">
@@ -2140,6 +2062,235 @@ About Us Section
 </div>
 
 </div>
+
+<style>
+  #event1 {
+      font-family: 'Noto Sans KR', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      color: #333;
+  }
+  
+  #event1 .event-header {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 30px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+  }
+
+  #event1 .event-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+  }
+
+  #event1 .event-subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      opacity: 0.9;
+  }
+
+  #event1 .info-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease;
+  }
+  
+  #event1 .info-card:hover {
+      transform: translateY(-5px);
+  }
+
+  #event1 .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2575fc;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+  }
+
+  #event1 .card-title i {
+      margin-right: 10px;
+  }
+
+  #event1 .info-content {
+      font-size: 1.1rem;
+      line-height: 1.6;
+  }
+
+  #event1 .map-container {
+      position: relative;
+      height: 300px;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 25px;
+  }
+
+  #event1 .map-overlay {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+  }
+
+  #event1 .map-marker {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+  }
+
+  #event1 .direction-steps {
+      background-color: #f0f7ff;
+      border-left: 4px solid #2575fc;
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 25px;
+  }
+
+  #event1 .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+  }
+
+  #event1 .step:last-child {
+      margin-bottom: 0;
+  }
+
+  #event1 .step-number {
+      background-color: #2575fc;
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+  }
+
+  #event1 .step-text {
+      flex-grow: 1;
+      line-height: 1.5;
+  }
+
+  #event1 .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+      font-size: 0.9rem;
+  }
+</style>
+
+<div id="event1">
+  <!-- 행사 헤더 -->
+  <div style="text-align:-webkit-center;margin:40px;">
+  <h2><b>오시는 길 안내</b></h2>
+  </div>
+ 
+
+ 
+
+
+  <!-- 오시는 길 안내 -->
+  <div class="info-card">
+      <h2 class="card-title">
+          <i class="fas fa-walking"></i>
+          오시는 길
+      </h2>
+      <div class="direction-steps">
+          <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-text">
+                  <strong>시청역 3번 출구</strong>로 나오세요.
+              </div>
+          </div>
+          <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-text">
+                  광화문 방향으로 직진하세요.
+              </div>
+          </div>
+          <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-text">
+                  왼쪽 덕수궁 담 끝나는 지점에서 좌회전하세요.
+              </div>
+          </div>
+          <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-text">
+                  약 50m 정도 직진하면, 오른쪽에 성당이 보입니다.
+              </div>
+          </div>
+          <div class="step">
+              <div class="step-number">5</div>
+              <div class="step-text">
+                  총 소요 시간은 도보로 약 <strong>2분</strong> 내외입니다.
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- 교통편 정보 -->
+  <div class="info-card">
+      <h2 class="card-title">
+          <i class="fas fa-subway"></i>
+          교통편 안내
+      </h2>
+      <div class="info-content">
+          <p class="mb-3"><strong>지하철:</strong> 1호선, 2호선 시청역 3번 출구</p>
+          <p><strong>버스:</strong> 시청이나 덕수궁 앞 하차<br>(간선: 103, 150, 401 등 / 지선:  7013, 7015, 7016, 7017, 7019, 7020, 7021 등)</p>
+      </div>
+  </div>
+
+  <!-- 문의 정보 -->
+  <div class="info-card">
+      <h2 class="card-title">
+          <i class="fas fa-phone-alt"></i>
+          문의사항
+      </h2>
+      <div class="info-content">
+          <p class="mb-2">이메일: mindwellpath@gmail.com, mindgil21@naver.com</p>
+          <p>사무실 전화: 02-725-7525</p>
+          <p>휴대폰: 010-5385-0793</p>
+      </div>
+  </div>
+<div id="choice_p"></div>
+
+</div>
+
 
 <hr style="width:100%;">
 <h3 class="title-main">📣 매체 소개</h3>
