@@ -2824,6 +2824,7 @@ Footer
       submitBtn.addEventListener("click", function () {
         if (typeof window.karrotPixel !== "undefined") {
           window.karrotPixel.track("Purchase");
+          kakaoPixel('2846734625737127038').purchase();
         }
       });
     }
