@@ -1954,6 +1954,14 @@ Footer
       submitBtn.addEventListener("click", function () {
         if (typeof window.karrotPixel !== "undefined") {
           window.karrotPixel.track("Purchase");
+         
+  gtag('event', 'conversion', {
+      'send_to': 'AW-11061217748/XRTLCNuz4ccaENSTs5op',
+      'value': 20000,
+      'currency': 'KRW',
+      'transaction_id': ''
+  });
+
         }
       });
     }
