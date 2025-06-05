@@ -58,10 +58,15 @@
     <link href="css/style_conference.css" rel="stylesheet"  />
     <link rel="stylesheet" href="css/contact-style.css">
 
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+      Kakao.init('3fe1872b3399dd8667310c00ab406028'); // 여기에 카카오 JavaScript 키 입력
+    </script>
     
   </head>
 
   <body>
+
 
     <!--==========================
   Header
@@ -1679,7 +1684,7 @@ Footer
         <a href=""   target="_self">일반 전화번호 : 02-725-7525</a><br>
         <a href=""   target="_self">이메일 : mindwellpath@gmail.com</a><br>
         <a href=""  target="_self">주소: 서울시 중구 세종대로72 대영빌딩 7층 802호</a>
-
+        <button id="kakao-link-btn">카카오톡으로 공유하기</button>
         </div>
       </div>
     </div>
@@ -1949,6 +1954,32 @@ Footer
         }
       });
     }
+  });
+</script>
+
+<script>
+  document.getElementById('kakao-link-btn').addEventListener('click', function () {
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '마음건강길 컨퍼런스',
+        description: '우울·불면·공황을 극복한 실제 이야기, 지금 확인하세요!',
+        imageUrl: 'https://mindwellpath.co.kr/assets/img/poster_main.png',
+        link: {
+          mobileWebUrl: 'https://mindwellpath.co.kr/cnf-v1-text.html',
+          webUrl: 'https://mindwellpath.co.kr/cnf-v1-text.html'
+        }
+      },
+      buttons: [
+        {
+          title: '자세히 보기',
+          link: {
+            mobileWebUrl: 'https://mindwellpath.co.kr/cnf-v1-text.html',
+            webUrl: 'https://mindwellpath.co.kr/cnf-v1-text.html'
+          }
+        }
+      ]
+    });
   });
 </script>
     <!-- <script src="js/slick.js"></script> -->
