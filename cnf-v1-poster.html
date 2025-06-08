@@ -842,12 +842,179 @@ About Us Section
   
   
   
-    <div id="choice_p" ></div>
+
   </div>
   
   </div>
   </section>
 
+
+  
+<hr style="width:100%;">
+<h3 class="title-main">💌 프로그램 후기</h3>
+
+
+
+
+
+<style>
+  /* ─────────  LOAN TESTIMONIALS ONLY  ───────── */
+  #testimonials,
+  #testimonials *{box-sizing:border-box;font-family:'Noto Sans KR',sans-serif;}
+  
+  /* 컬러 팔레트 (필요하면 여기만 수정) */
+  #testimonials{
+    --bg:#ffffff;            /* 섹션 배경 */
+    --text:#111111;          /* 기본 글자색 */
+    --muted:#6f6f75;         /* 보조 글자 */
+    --primary:#0062ff;       /* 딥블루 포인트 */
+    --card-bg:#f9fafc;       /* 카드 배경 */
+    --card-border:#e8ebf0;   /* 카드 테두리 */
+  }
+  
+  /* 섹션 레이아웃 */
+  #testimonials{
+    background:var(--bg);
+    color:var(--text);
+    padding:80px 5vw;
+    overflow:hidden;
+  }
+  #testimonials h2{
+    font-size:36px;
+    font-weight:800;
+    text-align:center;
+    line-height:1.3;
+    margin-bottom:56px;
+  }
+  
+  /* 슬라이드 행 */
+  #testimonials .marquee-row{
+    display:flex;
+    gap:32px;
+    will-change:transform;
+  }
+  
+  /* 카드 디자인 */
+  #testimonials .testimonial-card{
+    flex:0 0 320px;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    padding:32px 28px;
+    line-height:1.5;
+    box-shadow:0 12px 28px rgba(0,0,0,.06);
+    transition:transform .3s;
+  }
+  #testimonials .testimonial-card:hover{
+    transform:translateY(-6px);
+  }
+  #testimonials .testimonial-card q{
+    display:block;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:24px;
+  }
+  #testimonials .testimonial-card .author{
+    font-size:15px;
+    color:var(--muted);
+  }
+  
+  /* 두 행 사이 여백 */
+  #testimonials .row-gap{height:36px;}
+  
+  /* ─ 모바일 ─ */
+  @media(max-width:768px){
+    #testimonials{padding:60px 4vw;}
+    #testimonials h2{font-size:26px;margin-bottom:36px;}
+    #testimonials .testimonial-card{
+      flex:0 0 240px;
+      padding:26px 22px;
+    }
+    #testimonials .testimonial-card q{font-size:16px;}
+  }
+  </style>
+  
+  
+  <section id="testimonials">
+    <h2>참가자 분들의 실제 후기</h2>
+  
+    <!-- 위쪽 행(→) -->
+    <div class="marquee-row top">
+      <article class="testimonial-card">
+        <q>세 분의 전문가분 모두 삶의 깊이가 느껴져 큰 공감이 됐습니다.<br>실제 사례와 경험을 바탕으로 마음을 다루는 방법을 배울 수 있었어요.</q>
+        <p class="author">50대 여성 참가자</p>
+      </article>
+      <article class="testimonial-card">
+        <q>실생활에 바로 적용 가능한 대화법과 우울, 불면 해소법을 들으며<br>안정감을 찾을 수 있었습니다. 진솔한 강연이 인상 깊었어요.</q>
+        <p class="author">30대 직장인</p>
+      </article>
+      <article class="testimonial-card">
+        <q>강연장 분위기도 좋았고, 영상자료와 음악, 다양한 프로그램 구성이 모두 만족스러웠습니다.</q>
+        <p class="author">60대 남성 참가자</p>
+      </article>
+      <article class="testimonial-card">
+        <q>대표님 강연이 특히 좋았습니다. 구체적이고 명료해서, 우울증 극복에 실질적 해법을 얻었습니다.</q>
+        <p class="author">40대 참가자</p>
+      </article>
+      <article class="testimonial-card">
+        <q>짧은 시간이었지만, 내실 있고 실제 생활에 응용할 수 있는 유익한 팁을 많이 얻었습니다.</q>
+        <p class="author">50대 주부</p>
+      </article>
+    </div>
+    
+    <div class="row-gap"></div>
+    
+    <div class="marquee-row bottom">
+      <article class="testimonial-card">
+        <q>익숙한 강의 내용을 내 삶에 직접 적용해보고 싶은 구체적인 방법까지 배웠습니다.</q>
+        <p class="author">40대 참가자</p>
+      </article>
+      <article class="testimonial-card">
+        <q>각 연사의 시간이 짧아 조금 아쉬웠지만, 실질적인 도움이 많이 됐어요.<br>다음엔 QnA 시간을 더 길게 해주시면 좋겠습니다.</q>
+        <p class="author">50대 남성 참가자</p>
+      </article>
+      <article class="testimonial-card">
+        <q>개인적인 경험담과 우울증 극복의 구체적 사례를 들으면서, 공감과 희망을 얻었습니다.</q>
+        <p class="author">30대 여성 참가자</p>
+      </article>
+      <article class="testimonial-card">
+        <q>청중 참여형 프로그램과 실천하기 좋은 생활수행법 덕분에 긍정 마인드를 갖게 됐습니다.</q>
+        <p class="author">60대 참가자</p>
+      </article>
+      <article class="testimonial-card">
+        <q>마음건강에 실제로 도움이 되는 강연이었습니다. 꾸준히 이런 프로그램이 계속되길 바랍니다.</q>
+        <p class="author">50대 여성 참가자</p>
+      </article>
+    </div>
+    
+    <div id="choice_p" ></div>
+  </section>
+  
+  <script>
+  /* ─── 무한 슬라이드 ─── */
+  function initMarquee(row,{direction='left',speed=30}={}){
+    const originals=[...row.children];
+    originals.forEach(c=>row.appendChild(c.cloneNode(true)));
+  
+    const origW = originals.reduce((w,el)=>w+el.getBoundingClientRect().width+32,-32);
+    const dir = direction==='left'?-1:1;
+    let pos=0,last=performance.now();
+  
+    function step(now){
+      const dt=(now-last)/1000; last=now; pos+=dir*speed*dt;
+      if(dir===-1 && Math.abs(pos)>=origW) pos+=origW;
+      if(dir=== 1 && pos>=0)              pos-=origW;
+      row.style.transform=`translateX(${pos}px)`;
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  
+  window.addEventListener('DOMContentLoaded',()=>{
+    initMarquee(document.querySelector('#testimonials .top'),    {direction:'right',speed:30});
+    initMarquee(document.querySelector('#testimonials .bottom'), {direction:'left', speed:30});
+  });
+  </script>
 
   
 <!-- ✅ CSS -->
@@ -1654,6 +1821,198 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
 </div>
 
 </div>
+
+<hr style="width:100%;">
+<h3 class="title-main">📷 컨퍼런스 현황</h3>
+
+<section id="conf-gallery">
+  <div style="text-align: -webkit-center;">
+  <h2>6차 컨퍼런스 현황</h2>
+</div>
+  <div class="conf-gallery__viewport">
+    <div class="conf-gallery__track">
+      <div class="conf-gallery__slide active">
+        <img src="./img/con1.jpg" alt="컨퍼런스 강의1">
+      </div>
+      <div class="conf-gallery__slide">
+        <img src="./img/con2.jpg" alt="컨퍼런스 강의2">
+      </div>
+      <div class="conf-gallery__slide">
+        <img src="./img/con4.jpg" alt="컨퍼런스 강의3">
+      </div>
+      <div class="conf-gallery__slide">
+        <img src="./img/con5.jpg" alt="컨퍼런스 강의3">
+      </div>
+      <div class="conf-gallery__slide">
+        <img src="./img/con6.jpg" alt="컨퍼런스 강의3">
+      </div>
+    </div>
+    <button class="conf-gallery__arrow left">&#10094;</button>
+    <button class="conf-gallery__arrow right">&#10095;</button>
+    <div class="conf-gallery__dots"></div>
+  </div>
+  <div class="conf-gallery__thumbs">
+    <!-- 썸네일은 JS에서 자동 생성 -->
+  </div>
+</section>
+
+<style>
+#conf-gallery { width:100%; max-width:740px; margin:40px auto 36px auto; padding:0; font-family:'San Francisco','Segoe UI','Noto Sans KR',Arial,sans-serif;}
+
+#conf-gallery h2{
+    font-size:36px;
+    font-weight:800;
+    text-align:center;
+    line-height:1.3;
+    margin-bottom:56px;
+  }
+.conf-gallery__viewport {position:relative;overflow:visible;border-radius:26px;box-shadow:0 10px 42px 0 rgba(46,51,68,0.13),0 2px 10px 0 rgba(110,120,170,0.08);background:#fff;}
+.conf-gallery__track {display:flex;transition:transform .55s cubic-bezier(.66,.1,.33,.9);will-change:transform;touch-action:pan-y;}
+.conf-gallery__slide {min-width:100%;user-select:none;pointer-events:none;opacity:.55;transform:scale(.97);transition:opacity .42s,transform .44s;display:flex;align-items:center;justify-content:center;background:#f7f8fa;filter:grayscale(.12) brightness(.98);}
+.conf-gallery__slide.active {opacity:1;pointer-events:auto;filter:none;z-index:2;transform:scale(1);}
+.conf-gallery__slide img {display:block;width:100%;height:360px;object-fit:cover;border-radius:26px;box-shadow:0 4px 18px 0 rgba(37,99,235,0.07);background:#f5f7fb;transition:box-shadow .3s;}
+.conf-gallery__arrow {position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.90);border:none;outline:none;font-size:2.4rem;font-weight:600;color:#3669c9;box-shadow:0 1px 8px #d3d8e4;border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;opacity:.94;transition:background .23s,color .23s,box-shadow .23s;backdrop-filter:blur(2px);}
+.conf-gallery__arrow.left { left: 18px;}
+.conf-gallery__arrow.right { right: 18px;}
+.conf-gallery__arrow:hover, .conf-gallery__arrow:focus { background: #3669c9; color: #fff;}
+.conf-gallery__dots {position:absolute;bottom:12px;left:0;width:100%;text-align:center;z-index:20;}
+.conf-gallery__dots .dot {display:inline-block;width:10px;height:10px;margin:0 5px;background:#e5e8f5;border-radius:50%;box-shadow:0 1px 5px #e5e9f6;cursor:pointer;transition:background .25s, border .18s;border:2px solid #f0f2fa;}
+.conf-gallery__dots .dot.active {background:#3669c9;border:2px solid #a5c0e9;}
+.conf-gallery__thumbs {display:flex;gap:10px;justify-content:center;margin:16px auto 0 auto;padding:0 4px;overflow-x:auto;max-width:98vw;}
+.conf-gallery__thumbs img {width:74px;height:44px;object-fit:cover;border-radius:12px;cursor:pointer;opacity:.48;border:2.5px solid #eaecee;box-shadow:0 2px 6px #e9eef4;transition:opacity .25s, border .26s;}
+.conf-gallery__thumbs img.active {opacity:1;border:2.5px solid #3669c9;}
+@media (max-width:900px) {#conf-gallery{max-width:100vw;}.conf-gallery__slide img{border-radius:17px;}}
+@media (max-width:600px) {.conf-gallery__slide img{border-radius:11px;}.conf-gallery__viewport{border-radius:14px;}}
+
+@media(max-width:768px){
+   
+  #conf-gallery h2{font-size:26px;margin-bottom:36px;}
+  }
+</style>
+
+<script>
+(() => {
+  document.addEventListener('DOMContentLoaded', () => {
+    const sec = document.getElementById('conf-gallery');
+    if (!sec) return;
+    const track = sec.querySelector('.conf-gallery__track');
+    let slides = [...sec.querySelectorAll('.conf-gallery__slide')];
+    const leftBtn = sec.querySelector('.conf-gallery__arrow.left');
+    const rightBtn = sec.querySelector('.conf-gallery__arrow.right');
+    const dotsBox = sec.querySelector('.conf-gallery__dots');
+    const thumbsBox = sec.querySelector('.conf-gallery__thumbs');
+    let cur = 0, down = false, sx = 0, dx = 0, auto;
+    const SLIDE_MS = 4800;
+    let slideCount = slides.length;
+
+    // 무한 슬라이드 복제
+    const cloneFirst = slides[0].cloneNode(true);
+    const cloneLast = slides[slideCount-1].cloneNode(true);
+    track.insertBefore(cloneLast, slides[0]);
+    track.appendChild(cloneFirst);
+    slides = [...sec.querySelectorAll('.conf-gallery__slide')];
+
+    // 도트 & 썸네일
+    for(let i=0; i<slideCount; ++i) {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsBox.appendChild(dot);
+
+      const img = slides[i+1].querySelector('img');
+      const thumb = document.createElement('img');
+      thumb.src = img.src; thumb.alt = img.alt||'';
+      thumb.className = (i===0 ? 'active':'');
+      thumb.addEventListener('click', () => goTo(i));
+      thumbsBox.appendChild(thumb);
+    }
+    const dots = [...dotsBox.children], thumbs = [...thumbsBox.children];
+
+    // 트랙 위치
+    function updatePosition(jump) {
+      track.style.transition = jump ? 'none' : 'transform .55s cubic-bezier(.66,.1,.33,.9)';
+      track.style.transform = `translateX(${-((cur+1)*100)}%)`;
+      slides.forEach(s=>s.classList.remove('active'));
+      slides[cur+1].classList.add('active');
+      dots.forEach(d=>d.classList.remove('active'));
+      dots[(cur+slideCount)%slideCount].classList.add('active');
+      thumbs.forEach(t=>t.classList.remove('active'));
+      thumbs[(cur+slideCount)%slideCount].classList.add('active');
+    }
+
+    function goTo(idx, manual = true) {
+      cur = idx;
+      updatePosition(false);
+      if (manual) resetAuto();
+    }
+    function next() { goTo(cur+1); }
+    function prev() { goTo(cur-1); }
+    function resetAuto() {
+      clearInterval(auto);
+      auto = setInterval(() => goTo(cur+1, false), SLIDE_MS);
+    }
+    resetAuto();
+
+    // 트랙 시작 위치
+    updatePosition(true);
+
+    // 트랜지션 끝: 점프도 부드럽게! (requestAnimationFrame)
+    track.addEventListener('transitionend', () => {
+      if (cur < 0) {
+        cur = slideCount-1;
+        // 트랜지션 끄고 바로 점프(끊김 방지)
+        requestAnimationFrame(() => {
+          updatePosition(true);
+        });
+      } else if (cur >= slideCount) {
+        cur = 0;
+        requestAnimationFrame(() => {
+          updatePosition(true);
+        });
+      }
+    });
+
+    leftBtn.addEventListener('click', prev);
+    rightBtn.addEventListener('click', next);
+
+    // 드래그/터치
+    track.addEventListener('mousedown', e => { down=true;sx=e.clientX;dx=0;track.style.transition='none';e.preventDefault();});
+    track.addEventListener('mousemove', e => {
+      if (!down) return;
+      dx = e.clientX - sx;
+      track.style.transform = `translateX(${-((cur+1)*100)+(dx/track.offsetWidth*100)}%)`;
+    });
+    track.addEventListener('mouseup', e => {
+      if (!down) return;
+      if (dx > 40) prev();
+      else if (dx < -40) next();
+      else updatePosition(false);
+      down = false; dx = 0;
+    });
+    track.addEventListener('mouseleave', () => { if (down) updatePosition(false); down = false; dx=0; });
+
+    // 이미지 드래그 미리보기 방지
+    sec.querySelectorAll('img').forEach(img => {
+      img.addEventListener('dragstart', e => e.preventDefault());
+    });
+
+    // 모바일 터치
+    track.addEventListener('touchstart', e => { sx=e.touches[0].clientX; down=true;dx=0;track.style.transition='none'; });
+    track.addEventListener('touchmove', e => {
+      if (!down) return;
+      dx = e.touches[0].clientX - sx;
+      track.style.transform = `translateX(${-((cur+1)*100)+(dx/track.offsetWidth*100)}%)`;
+    });
+    track.addEventListener('touchend', e => {
+      if (!down) return;
+      if (dx > 24) prev();
+      else if (dx < -24) next();
+      else updatePosition(false);
+      down = false; dx = 0;
+    });
+  });
+})();
+</script>
 
 
 <hr style="width:100%;">
