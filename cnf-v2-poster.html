@@ -276,7 +276,13 @@ About Us Section
     /* ✅ 추가된 부분 */
     overflow-y: auto;
     max-height: 90vh;
-  }
+
+    scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE, Edge */
+}
+#profile1 .modal1::-webkit-scrollbar { /* Chrome, Safari, Opera */
+  display: none;
+}
 
   #profile1 .close-btn {
     position: absolute;
@@ -332,6 +338,22 @@ About Us Section
   font-size: 24px;
   font-weight: 700;
   color: #111827;
+}
+
+@media screen and (max-width:600px) {
+  
+  #profile1 .card-body .name-row h3 {
+
+  font-size: 18px;
+ 
+}
+
+#profile1 .card-body p {
+
+font-size: 15px;
+
+}
+
 }
 
 #profile1 .card-body .name-row .subtitle {
