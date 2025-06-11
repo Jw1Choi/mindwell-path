@@ -843,6 +843,12 @@ font-size: 15px;
   /* 탭 */
   .tab-wrap { display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; }
   .tab-btn { padding: 8px 24px; border-radius: 18px; font-size: 16px; font-weight: 600; border: 1.5px solid #2563eb; background: #fff; color: #2563eb; cursor: pointer; transition: .2s; }
+
+  @media screen and (max-width:600px) {
+
+    .tab-btn { font-size:14px; }
+
+  }
   .tab-btn.active { background: #2563eb; color: #fff; }
   .tab-panel { display: none; }
   .tab-panel.show { display: block; }
