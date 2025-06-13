@@ -528,6 +528,6 @@ function maxLengthCheck(object){
 
 $(function(){
  $('#1name,#1phone,#problem1,#problem2,#problem3,#hope1,#hope2,#hope3,#1agree11,#1question,#question4,#age, #dropdown, #email, #1ph, #selectedOption, #selectedOption1, .option, .option1, .gender-radio').bind("keyup click change",form1_check);
- $('#1name,#1phone,#problem1,#problem2,#problem3,#hope1,#hope2,#hope3,#1agree11,#1question,#question4,#age, #dropdown, #email, #selectedOption, #selectedOption1, .option, .option1, .gender-radio').bind("keyup click change",form_check1);
+//  $('#1name,#1phone,#problem1,#problem2,#problem3,#hope1,#hope2,#hope3,#1agree11,#1question,#question4,#age, #dropdown, #email, #selectedOption, #selectedOption1, .option, .option1, .gender-radio').bind("keyup click change",form1_check1);
 //  $('#1license').bind("keyup click change",lic_pick);
 })
