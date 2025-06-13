@@ -156,7 +156,7 @@ function maxLengthCheck(object){
         // $(window).scrollTop(0);
         // window.location.reload();
         // window.location.href='https://event-us.kr/mindgil21/event/103555';
-        window.location.assign('https://event-us.kr/mindgil21/event/103555');
+        window.location.assign('https://event-us.kr/mindgil21/event/106043');
        },1200);
 
  }
