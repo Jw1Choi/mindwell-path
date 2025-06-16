@@ -2722,23 +2722,65 @@ Footer
         description: '우울·불면·공황을 극복한 실제 이야기, 지금 확인하세요!',
         imageUrl: './img/poster7.png',
         link: {
-          mobileWebUrl: 'https://mindwellpath.co.kr/cnf-v1-text.html',
-          webUrl: 'https://mindwellpath.co.kr/cnf-v1-text.html'
+          mobileWebUrl: 'https://mindwellpath.co.kr/cnf-v1-meta.html',
+          webUrl: 'https://mindwellpath.co.kr/cnf-v1-meta.html'
         }
       },
       buttons: [
         {
           title: '자세히 보기',
           link: {
-            mobileWebUrl: 'https://mindwellpath.co.kr/cnf-v1-text.html',
-            webUrl: 'https://mindwellpath.co.kr/cnf-v1-text.html'
+            mobileWebUrl: 'https://mindwellpath.co.kr/cnf-v1-meta.html',
+            webUrl: 'https://mindwellpath.co.kr/cnf-v1-meta.html'
           }
         }
       ]
     });
   });
 </script>
-    <!-- <script src="js/slick.js"></script> -->
-    <!-- <script src="./js/countdown.js"></script> -->
+
+<script>
+  // Google 전환 추적 함수
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) !== 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-11061217748/XRTLCNuz4ccaENSTs5op',
+      'value': 16000.0,
+      'currency': 'KRW',
+      'transaction_id': '',
+      'event_callback': callback
+    });
+    return false;
+  }
+
+  // Meta, Kakao, Danggeun 전환 픽셀 호출
+  function fireAllConversionPixels() {
+  
+    if (typeof kakaoPixel === 'function') {
+      kakaoPixel('track', 'Purchase');
+    }
+    if (typeof danggeunPixel === 'function') {
+      danggeunPixel('track', 'Purchase');
+    }
+  }
+
+  // 세 버튼에 이벤트 통합 적용
+  ['#send_message', '#2send_message', '#3send_message'].forEach(function(selector) {
+    const btn = document.querySelector(selector);
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        fireAllConversionPixels();
+        gtag_report_conversion();
+      });
+    }
+  });
+</script>
+
+
+
   </body>
 </html>
