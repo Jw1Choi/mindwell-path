@@ -2738,7 +2738,46 @@ Footer
     });
   });
 </script>
-    <!-- <script src="js/slick.js"></script> -->
-    <!-- <script src="./js/countdown.js"></script> -->
+
+<script>
+  // Google 전환 추적 함수
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) !== 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-11061217748/XRTLCNuz4ccaENSTs5op',
+      'value': 16000.0,
+      'currency': 'KRW',
+      'transaction_id': '',
+      'event_callback': callback
+    });
+    return false;
+  }
+
+  // Meta, Kakao, Danggeun 전환 픽셀 호출
+  function fireAllConversionPixels() {
+  
+    if (typeof kakaoPixel === 'function') {
+      kakaoPixel('2846734625737127038').purchase('v1');
+    }
+    if (typeof danggeunPixel === 'function') {
+      window.karrotPixel.track('Purchase');
+    }
+  }
+
+  // 세 버튼에 이벤트 통합 적용
+  ['#send_message', '#2send_message', '#3send_message'].forEach(function(selector) {
+    const btn = document.querySelector(selector);
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        fireAllConversionPixels();
+        gtag_report_conversion();
+      });
+    }
+  });
+</script>
   </body>
 </html>

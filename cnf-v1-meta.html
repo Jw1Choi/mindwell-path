@@ -2761,10 +2761,10 @@ Footer
   function fireAllConversionPixels() {
   
     if (typeof kakaoPixel === 'function') {
-      kakaoPixel('track', 'Purchase');
+      kakaoPixel('2846734625737127038').purchase('v1');
     }
     if (typeof danggeunPixel === 'function') {
-      danggeunPixel('track', 'Purchase');
+      window.karrotPixel.track('Purchase');
     }
   }
 
