@@ -552,3 +552,21 @@ html, body {font-family:"NotoSansCJK", sans-serif; word-break:keep-all; width:10
 .best{background:#f5f5f5;box-sizing:border-box;padding:20px 20px 0}
 .fixbt{position:fixed;right:10px;bottom:10px;z-index:1;display:none}
 .fixbt img{width:90px}
+
+
+.button_detail{
+    padding:15px 40px;
+    width:200px;
+    background: #2d87ff;
+    color:#fff !important;
+    font-weight:bold;
+    margin:40px 0;
+    border-radius: 10px;
+  }
+
+  .button_detail:hover{
+    color: #245ebb !important;
+    background:#fff;
+    border:1px solid #245ebb;
+    transition:1s;
+  }
