@@ -2039,33 +2039,58 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
     </article>
   </div>
 </section>
-
+<script>
+  /* ─── 무한 슬라이드 (부드러운 멈춤/재시작 포함) ─── */
+  function initMarquee(row, { direction = 'left', speed = 30 } = {}) {
+    const originals = [...row.children];
+    originals.forEach(c => row.appendChild(c.cloneNode(true)));
   
-  <script>
-  /* ─── 무한 슬라이드 ─── */
-  function initMarquee(row,{direction='left',speed=30}={}){
-    const originals=[...row.children];
-    originals.forEach(c=>row.appendChild(c.cloneNode(true)));
+    const origW = originals.reduce((w, el) => w + el.getBoundingClientRect().width + 32, -32);
+    const dir = direction === 'left' ? -1 : 1;
+    let pos = 0;
+    let last = performance.now();
+    let isPaused = false;
+    let rafId;
   
-    const origW = originals.reduce((w,el)=>w+el.getBoundingClientRect().width+32,-32);
-    const dir = direction==='left'?-1:1;
-    let pos=0,last=performance.now();
+    function step(now) {
+      if (!isPaused) {
+        const dt = (now - last) / 1000;
+        pos += dir * speed * dt;
   
-    function step(now){
-      const dt=(now-last)/1000; last=now; pos+=dir*speed*dt;
-      if(dir===-1 && Math.abs(pos)>=origW) pos+=origW;
-      if(dir=== 1 && pos>=0)              pos-=origW;
-      row.style.transform=`translateX(${pos}px)`;
-      requestAnimationFrame(step);
+        if (dir === -1 && Math.abs(pos) >= origW) pos += origW;
+        if (dir === 1 && pos >= 0) pos -= origW;
+  
+        row.style.transform = `translateX(${pos}px)`;
+        last = now;
+      }
+      rafId = requestAnimationFrame(step);
     }
-    requestAnimationFrame(step);
+  
+    function pause() {
+      isPaused = true;
+    }
+  
+    function resume() {
+      last = performance.now(); // resume 기준 시간 초기화
+      isPaused = false;
+    }
+  
+    // 이벤트 리스너
+    row.addEventListener('mouseenter', pause); // PC
+    row.addEventListener('mouseleave', resume);
+    row.addEventListener('touchstart', pause, { passive: true }); // Mobile
+    row.addEventListener('touchend', resume);
+  
+    // 슬라이드 시작
+    rafId = requestAnimationFrame(step);
   }
   
-  window.addEventListener('DOMContentLoaded',()=>{
-    initMarquee(document.querySelector('#testimonials .top'),    {direction:'right',speed:30});
-    initMarquee(document.querySelector('#testimonials .bottom'), {direction:'left', speed:30});
+  window.addEventListener('DOMContentLoaded', () => {
+    initMarquee(document.querySelector('#testimonials .top'), { direction: 'right', speed: 55 });
+    initMarquee(document.querySelector('#testimonials .bottom'), { direction: 'left', speed: 55 });
   });
   </script>
+  
 
 <section id="blog-news-slider2">
   <div class="bns2-viewport">
