@@ -1,0 +1,156 @@
+<!-- ──────────────────────────────────────────
+     Benefit Section (복사-붙여넣기용 완전 코드)
+────────────────────────────────────────── -->
+<section id="benefit">
+    <div class="dr-grid">
+      <!-- ── TITLE ── -->
+      <header class="dr-heading">
+        <h2>
+          컨퍼런스 신청을 통해<br>
+          얻을 수 있는 <em>특별한 장점</em>
+        </h2>
+      </header>
+  
+      <!-- ── CARD LIST ── -->
+      <ul class="dr-cards">
+        <li>
+          <figure class="dr-icon">
+            <img src="https://cdn.jsdelivr.net/gh/icons8/flat-color-icons@master/svg/briefcase.svg" alt="">
+          </figure>
+          <p>약에만 의존하지 않고도 얻을 수 있는 평화와 행복</p>
+        </li>
+        <li>
+          <figure class="dr-icon">
+            <img src="https://cdn.jsdelivr.net/gh/icons8/flat-color-icons@master/svg/no_audio.svg" alt="">
+          </figure>
+          <p>37년 임상 경험으로 전하는 다양한 치유・예방법</p>
+        </li>
+        <li>
+          <figure class="dr-icon">
+            <img src="https://cdn.jsdelivr.net/gh/icons8/flat-color-icons@master/svg/judge.svg" alt="">
+          </figure>
+          <p>실제로 우울을 이겨낸 사람의 실전 노하우</p>
+        </li>
+        <li>
+          <figure class="dr-icon">
+            <img src="https://cdn.jsdelivr.net/gh/icons8/flat-color-icons@master/svg/money_bag.svg" alt="">
+          </figure>
+          <p>청중과의 직접 대화를 통한 실질적 해법 모색</p>
+        </li>
+      </ul>
+    </div>
+  
+    <style>
+      /* ───────────────── benefit - STYLES ───────────────── */
+      #benefit{
+        /* 문서 흐름 고정 & 외부 z-index 격리 */
+        position:relative; isolation:isolate;
+  
+        /* 색상 토큰 */
+        --dr-bg-grad:linear-gradient(135deg,#e6f0ff 0%,#fcfdff 60%);
+        --dr-card-bg:rgba(255,255,255,0.55);
+        --dr-card-filter:blur(12px) saturate(135%);
+        --dr-border:1px solid rgba(255,255,255,0.4);
+        --dr-shadow:0 8px 20px rgba(0,0,0,.06);
+        --dr-txt:#333;
+        --dr-accent:#4f6df5;
+  
+        font-family:'Pretendard','Noto Sans KR',sans-serif;
+        color:var(--dr-txt);
+        background:var(--dr-bg-grad);
+        padding:4rem 1.25rem;
+      }
+  
+      /* Grid : mobile 1col → desktop 2col */
+      #benefit .dr-grid{
+        position:relative;
+        display:grid;
+        gap:2.5rem;
+        max-width:1200px;
+        margin:0 auto;
+      }
+      @media (min-width:992px){
+        #benefit .dr-grid{
+          grid-template-columns:1fr 1fr;
+          align-items:center;      /* 두 컬럼 높이 맞춘 뒤 가운데 정렬 */
+        }
+      }
+  
+      /* ── Heading ── */
+      #benefit .dr-heading h2{
+        margin:0;
+        font-size:clamp(1.6rem,4vw,2.4rem);
+        font-weight:800;
+        line-height:1.35;
+        text-align:center;
+      }
+      #benefit .dr-heading em{color:var(--dr-accent);font-style:normal;}
+  
+      @media (min-width:992px){
+        #benefit .dr-heading{
+          display:flex;
+          align-items:center;   /* 제목 세로 중앙 */
+          height:100%;
+        }
+        #benefit .dr-heading h2{text-align:left;}
+      }
+  
+      /* ── Card List ── */
+      #benefit .dr-cards{
+        list-style:none;
+        margin:0; padding:0;
+        display:flex; flex-direction:column; gap:1.25rem;
+      }
+      #benefit .dr-cards li{
+        position:relative;
+        display:flex; gap:1rem; align-items:center;
+        padding:1.35rem 1.45rem;
+        border-radius:18px;
+        background:var(--dr-card-bg);
+        backdrop-filter:var(--dr-card-filter);
+        -webkit-backdrop-filter:var(--dr-card-filter);
+        border:var(--dr-border);
+        box-shadow:var(--dr-shadow);
+  
+        /* reveal animation 초기값 */
+        opacity:0; transform:translateY(28px);
+        transition:opacity .7s cubic-bezier(.45,.1,.2,1),
+                   transform .7s cubic-bezier(.45,.1,.2,1);
+      }
+      #benefit .dr-cards li.visible{opacity:1; transform:translateY(0);}
+      #benefit .dr-cards li:hover{transform:translateY(-4px);}
+  
+      #benefit .dr-cards p{
+        margin:0; font-size:1.05rem; font-weight:600;
+      }
+  
+      #benefit .dr-icon{
+        flex-shrink:0;
+        margin:0;
+        width:40px; height:40px;
+        display:grid; place-items:center;
+      }
+      #benefit .dr-icon img{
+        width:100%; height:100%; object-fit:contain;
+      }
+    </style>
+  
+    <script>
+      /* ── 카드 순차 등장 ── */
+      (()=>{
+        const cards=document.querySelectorAll('#benefit .dr-cards li');
+        const io=new IntersectionObserver((entries)=>{
+          entries.forEach((entry,i)=>{
+            if(entry.isIntersecting){
+              entry.target.style.transitionDelay=`${i*0.07}s`;
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        },{threshold:0.25});
+        cards.forEach(card=>io.observe(card));
+      })();
+    </script>
+  </section>
+  <!-- ────────────────────────────────────────── -->
+  
