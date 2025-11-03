@@ -1,0 +1,93 @@
+<section id="leaderMissionHero" aria-label="리더십 미션 섹션">
+  <style>
+    /* ================= Scope: #leaderMissionHero only ================= */
+    #leaderMissionHero {
+      --bg:url('./img/intro-8.jpg'); /* ✅ 배경 이미지 교체 가능 */
+      --overlay:rgba(0,0,0,0.55);
+      --ink:#ffffff;
+      --muted:rgba(255,255,255,0.72);
+      font-family: "Pretendard","Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--ink);
+      background: var(--overlay) left/cover no-repeat, var(--bg) center/cover no-repeat;
+    }
+
+    #leaderMissionHero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+     background: url(./img/intro-8.jpg) left/cover no-repeat;
+      z-index: 0;
+    }
+
+    #leaderMissionHero .leader-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      padding: 0 20px;
+      text-align: left;
+    }
+
+    #leaderMissionHero .leader-quote {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 36px;
+      letter-spacing: -0.5px;
+    }
+
+    #leaderMissionHero .leader-quote span {
+      display: block;
+    }
+
+    #leaderMissionHero .leader-sub {
+      font-size: 17px;
+      line-height: 1.9;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    #leaderMissionHero .quote-mark {
+      color: #d9c6a5;
+      font-size: 48px;
+      font-weight: 600;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      #leaderMissionHero {
+        height: auto;
+        padding: 120px 0;
+        text-align: left;
+      }
+      #leaderMissionHero .leader-quote {
+        font-size: 32px;
+        line-height: 1.45;
+      }
+      #leaderMissionHero .leader-sub {
+        font-size: 15px;
+      }
+    }
+  </style>
+
+  <div class="leader-wrap">
+    <h2 class="leader-quote">
+      <span class="quote-mark">“</span>어떻게 <br>일터에 변화를 만듭니다.
+    </h2>
+    <p class="leader-sub">
+      우리의 목표는 리더의 의식 진전을 통해 삶과 일터의 변화를 만드는 것입니다.<br>
+      현업 리더들이 창조성을 발휘하고, 팀의 성공을 만들 수 있도록<br>
+      명상을 비롯한 다양한 웰니스 기법을 제안합니다.<br>
+      교육을 넘어 내면의 성찰, 더 큰 영역으로 성장을,<br>
+      그리고 변화를 만드는 동료 리더를 만나는 ‘연결’을<br>
+      이끌어낼 수 있도록 센터원이 함께 하겠습니다.
+    </p>
+  </div>
+</section>
