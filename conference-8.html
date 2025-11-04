@@ -515,211 +515,452 @@ About Us Section
    
 
 
+
 <style>
-  .title-main {
+
+.title-main {
     font-size:26px;
     font-weight:bold;
     margin-left:110px;
   }
-  @media screen and (max-width:768px){
-    .title-main{ margin-left:30px; }
+
+  @media screen and (max-width:768px) {
+
+    
+  .title-main {
+    
+    margin-left:30px;
+  }
+
+    
   }
 
   /* 기본 스타일 */
-  #profile1{
-    font-family:'Pretendard','Noto Sans',sans-serif;
-    padding:100px 20px;
-    background:#f9fafb;
-    min-height:100vh;
+  #profile1 {
+    font-family: 'Pretendard', 'Noto Sans', sans-serif;
+    padding: 100px 20px;
+    background: #f9fafb;
+    min-height: 100vh;
   }
 
   /* 헤드라인 섹션 */
-  #profile1 .headline-section{ text-align:center; margin-bottom:80px; }
-  #profile1 .headline-section h1{ font-size:42px; font-weight:700; color:#111827; margin-bottom:20px; }
-  #profile1 .headline-section p{ font-size:22px; color:#6b7280; }
-
-  #profile1 .profile-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    max-width:1200px;
-    margin:0 auto;
+  #profile1 .headline-section {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  #profile1 .headline-section h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 20px;
+  }
+  #profile1 .headline-section p {
+    font-size: 22px;
+    color: #6b7280;
   }
 
-  #profile1 .card{
-    background:#fff; border-radius:20px; overflow:hidden;
-    box-shadow:0 8px 24px rgba(0,0,0,.08);
-    transition:all .4s ease; cursor:pointer; display:flex; flex-direction:column;
+  #profile1 .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  #profile1 .card:hover{ transform:translateY(-8px); box-shadow:0 12px 30px rgba(0,0,0,.1); }
 
-  #profile1 .card-img-wrapper{ overflow:hidden; height:400px; }
-  #profile1 .card-img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
-  #profile1 .card:hover .card-img{ transform:scale(1.05); }
+  #profile1 .card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
 
-  #profile1 .card-body{ padding:30px; }
-  #profile1 .card-body h3{ font-size:24px; font-weight:700; color:#111827; margin-bottom:10px; }
-  #profile1 .card-body .subtitle{ font-size:18px; color:#6b7280; margin-bottom:14px; }
-  #profile1 .card-body .quote{ font-size:18px; color:#374151; font-style:italic; }
+  #profile1 .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  #profile1 .card-img-wrapper {
+    overflow: hidden;
+    height: 400px;
+  }
+
+  #profile1 .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  #profile1 .card:hover .card-img {
+    transform: scale(1.05);
+  }
+
+  #profile1 .card-body {
+    padding: 30px;
+  }
+
+  #profile1 .card-body h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 10px;
+  }
+
+  #profile1 .card-body .subtitle {
+    font-size: 18px;
+    color: #6b7280;
+    margin-bottom: 14px;
+  }
+
+  #profile1 .card-body .quote {
+    font-size: 18px;
+    color: #374151;
+    font-style: italic;
+  }
 
   /* 모달 스타일 */
-  #profile1 .modal-overlay{
-    position:fixed; inset:0; background:rgba(0,0,0,.4);
-    display:none; justify-content:center; align-items:center; z-index:1000;
-    animation:fadeIn .4s forwards; padding:20px;
-  }
-  #profile1 .modal1{
-    background:#fff; border-radius:20px; padding:50px 40px; max-width:620px; width:100%; position:relative;
-    box-shadow:0 10px 40px rgba(0,0,0,.25); animation:slideUp .4s forwards; text-align:center;
-    overflow-y:auto; max-height:90vh; scrollbar-width:none; -ms-overflow-style:none;
-  }
-  #profile1 .modal1::-webkit-scrollbar{ display:none; }
-  #profile1 .close-btn{
-    position:absolute; top:7px; right:14px; background:none; border:none; font-size:32px; cursor:pointer;
-    color:#9ca3af; transition:color .3s;
-  }
-  #profile1 .close-btn:hover{ color:#6b7280; }
-  #profile1 #modalInner{ text-align:center; }
-  #profile1 #modalInner img{ width:100%; height:auto; object-fit:contain; border-radius:12px; margin-bottom:24px; }
-  #profile1 #modalInner h2{ font-size:25px; color:#111827; margin-bottom:16px; text-align:left; }
-
-  /* 본문 글자 기본(카드 요약) */
-  #profile1 .card-body p{ font-size:1.45rem; }
-
-  /* 모바일 글자 크기 조정 */
-  @media screen and (max-width:600px){
-    #profile1 #modalInner h2{ font-size:22px; }
-    #profile1 .card-body .name-row h3{ font-size:18px; }
-    #profile1 .card-body p{ font-size:18px; }
+  #profile1 .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.4s forwards;
+    padding: 20px;
   }
 
-  #profile1 .card-body .name-row{
-    display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;
-  }
-  #profile1 .card-body .name-row h3{ margin:0; font-size:24px; font-weight:700; color:#111827; }
-  #profile1 .card-body .name-row .subtitle{
-    margin:0; font-size:16px; color:#6b7280; font-weight:400; white-space:nowrap;
+  #profile1 .modal1 {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 620px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.4s forwards;
+    text-align: center;
+    
+    /* ✅ 추가된 부분 */
+    overflow-y: auto;
+    max-height: 90vh;
+
+    scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE, Edge */
+}
+#profile1 .modal1::-webkit-scrollbar { /* Chrome, Safari, Opera */
+  display: none;
+}
+
+  #profile1 .close-btn {
+    position: absolute;
+    top: 7px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: color 0.3s;
   }
 
-  /* ====== 불릿 들여쓰기(줄바꿈 시 hanging indent) ====== */
-  #profile1 .dot-list{
-    list-style:none; margin:0; padding:0; text-align:left;
-    font-size:26px; line-height:1.7; color:#4b5563;
+  #profile1 .close-btn:hover {
+    color: #6b7280;
   }
-  #profile1 .dot-list li{
-    position:relative;
-    padding-left:1.2em;        /* 불릿 너비 */
-    margin:6px 0;
-    word-break:keep-all;
+
+  #profile1 #modalInner {
+    text-align: center;
   }
-  #profile1 .dot-list li::before{
-    content:"•";
-    position:absolute; left:0; top:0;
-    line-height:1.7;
+
+  #profile1 #modalInner img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 24px;
   }
+
+  #profile1 #modalInner h2 {
+    font-size: 25px;
+    color: #111827;
+    margin-bottom: 16px;
+  }
+
+  #profile1 #modalInner p {
+    font-size: 26px;
+    color: #4b5563;
+    margin-top: 12px;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  
+#profile1 .card-body p {
+
+font-size: 1.45rem;
+
+}
+
+  @media screen and (max-width:600px) {
+  
+    #profile1 #modalInner p {
+    font-size: 19px;
+    
+  }
+  }
+
+  #profile1 .card-body .name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#profile1 .card-body .name-row h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+@media screen and (max-width:600px) {
+  
+  #profile1 .card-body .name-row h3 {
+
+  font-size: 18px;
+ 
+}
+
+#profile1 .card-body p {
+
+font-size: 18px;
+
+}
+
+}
+
+#profile1 .card-body .name-row .subtitle {
+  margin: 0;
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: 400;
+  white-space: nowrap;
+}
 
   /* 애니메이션 */
-  @keyframes fadeIn{ from{opacity:0} to{opacity:1} }
-  @keyframes slideUp{ from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
 
   /* 반응형 */
-  @media (max-width:980px){ #profile1 .profile-grid{ grid-template-columns:1fr; } }
-  @media (max-width:640px){ #profile1 .card-img-wrapper{ height:350px; } }
+  @media (max-width: 980px) {
+    #profile1 .profile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    #profile1 .card-img-wrapper {
+      height: 350px;
+    }
+  }
 </style>
 
 <hr style="width:100%;">
 <h3 class="title-main">🤵🏼‍♂️ 연사 소개</h3>
 
-<div id="profile1" style="padding-top:0!important; padding-bottom:20px;">
-  <div class="headline-section"></div>
 
+
+
+<!-- <section id="team" class="section-bg" style="padding:40px 0 0;">
+  <div class="container">
+    <div class="section-header" style="padding-bottom:0;">
+     
+
+      <h3>
+        최준식 | 이화여대 명예교수
+      </h3>
+      <h5 style="text-align:center">
+        죽음학의 선구자로서 전하는<br>사후생을 긍정하는 다섯 가지 통찰
+      </h5>
+      <br><br>
+
+      <h3>
+        함영준 | 前 조선일보 사회부장
+      </h3>
+      <h5 style="text-align:center">
+        삶과 죽음을 잇는 시선으로<br>“죽음을 통해 삶을 다시 배우는 시간”을 전하다
+      </h5>
+      <br><br>
+
+       <h3>
+        홍진의 | 서울대병원 완화의료 간호사
+      </h3>
+      <h5 style="text-align:center">
+        수많은 임종 현장에서 깨달은<br>‘잘 죽는 법’보다 ‘어떻게 살아야 하는가’의 메시지
+      </h5>
+      <br><br>
+
+      <h3>
+        정수지 피아니스트 · 이한나 소프라노
+      </h3>
+      <h5 style="text-align:center">
+        음악이 전하는 위로와 명상의 울림으로<br>마음을 정화하는 힐링 아티스트
+      </h5>
+      <br><br>
+
+      <h3>
+        학문・경험・감정・예술이<br>만나는 순간,<br>
+        삶과 죽음의 본질을 마주하고<Br>평정과 회복의 길을 함께 걸어보세요.
+      </h3>
+    </div>
+  </div>
+</section> -->
+
+
+<div id="profile1" style="padding-top:0px !important;padding-bottom:20px;">
+  <div class="headline-section">
+    
+  </div>
+  
   <div class="profile-grid">
     <div class="card" onclick="openModal1('최준식 | 이화여대 명예교수')">
       <div class="card-img-wrapper">
         <img src="./img/8-1pro.jpg" alt="최준식 | 이화여대 명예교수" class="card-img" style="transform:scaleX(-1);">
+
       </div>
       <div class="card-body">
         <div class="name-row">
           <h3>최준식 | 이화여대 한국학 명예교수</h3>
+          <!-- <p class="subtitle">서울성모병원 정신건강의학과</p> -->
         </div>
-        <p>
-          국내 원로 종교학자이자 죽음학의 선구자.<br>
-          “사후생(死後生)을 긍정하는 다섯 가지 근거”를 통해<br>죽음 이후의 존재와 의식, 그리고 영생의 세계를 보여줍니다.
-        </p>
-        <br><br>
-        <a class="button_detail">자세히 더 보기</a>
+        <p >
+         국내 원로 종교학자이자 죽음학의 선구자.<br>
+         “사후생(死後生)을 긍정하는 다섯 가지 근거”를 통해<br>죽음 이후의 존재와 의식, 그리고 영생의 세계를 보여줍니다.
+
+          </p>
+          
+         
+<br><Br>
+          <a class="button_detail">
+            자세히 더 보기
+          </a>
       </div>
     </div>
-
+  
+   
+  
     <div class="card" onclick="openModal1('함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표')">
       <div class="card-img-wrapper">
         <img src="https://cdn.mdjournal.kr/news/photo/202507/41496_22872_3630.jpg" alt="함영준 대표" class="card-img">
       </div>
       <div class="card-body">
         <div class="name-row">
-          <h3>함영준 | 前 조선일보 사회부장 ・ 마음건강 길 대표</h3>
+        <h3>함영준 | 前 조선일보 사회부장 ・ 마음건강 길 대표</h3>
+        <!-- <p class="subtitle">마음건강 길 대표</p> -->
         </div>
         <p>
-          수십 년간 인간 군상과 생사의 현장을 기록해온 저널리스트.<br>
-          “사형수의 마지막 순간에서 본 인간의 본성”을 통해<br>삶을 다시 배우는 시간을 전합니다.
+         수십 년간 인간 군상과 생사의<br>현장을 기록해온 저널리스트.<br>“사형수의 마지막 순간에서 본 인간의 본성”을 통해<br>삶을 다시 배우는 시간을 전합니다.
+
+        
         </p>
-        <br><br>
-        <a class="button_detail">자세히 더 보기</a>
+
+        <br><Br>
+          <a class="button_detail">
+            자세히 더 보기
+          </a>
       </div>
     </div>
 
-    <div class="card" onclick="openModal1('홍진의 | 서울대학병원 완화의료 간호사')">
+
+        <div class="card" onclick="openModal1('홍진의 | 서울대학병원 완화의료 간호사')">
       <div class="card-img-wrapper">
-        <img src="./img/8-3pro.jpg" alt="홍진의" class="card-img">
+        <img src="./img/8-3pro.jpg" alt="함영준 대표" class="card-img">
       </div>
       <div class="card-body">
         <div class="name-row">
-          <h3>홍진의 | 서울대병원 완화의료 간호사</h3>
+        <h3>홍진의 | 서울대병원 완화의료 간호사</h3>
+        <!-- <p class="subtitle">마음건강 길 대표</p> -->
         </div>
         <p>
-          수많은 임종 현장을 지켜보며 ‘잘 죽는 법’보다<br>‘어떻게 살아야 하는가’를 묻는 간호사.<br>
-          삶의 마무리를 돌보는 현장에서 배운 진정한 웰다잉의 의미를 나눕니다.
+         
+
+  수많은 임종 현장을 지켜보며 ‘잘 죽는 법’보다<br>‘어떻게 살아야 하는가’를 묻는 간호사.<br>삶의 마무리를 돌보는 현장에서 배운 진정한 웰다잉의 의미를 나눕니다.
+          
+        
         </p>
-        <br><br>
-        <a class="button_detail">자세히 더 보기</a>
+
+        <br><Br>
+          <a class="button_detail">
+            자세히 더 보기
+          </a>
       </div>
     </div>
 
-    <div class="card" onclick="openModal1('정수지 | 명상 피아니스트')">
-      <div class="card-img-wrapper">
-        <img src="./img/8-4pro.jpg" alt="정수지" class="card-img">
-      </div>
-      <div class="card-body">
-        <div class="name-row">
-          <h3>정수지 | 명상 피아니스트</h3>
-        </div>
-        <p>
-          명상과 음악을 통해 삶의 절망과 고통을 희망과 치유로 바꾸는 아티스트.<br>
-          자작곡 <b>⌜Step into Fall⌟</b>, 일본 가요 <b>⌜천개의 바람이 되어⌟</b> 등으로 삶과 죽음 사이의 울림을 전합니다.
-        </p>
-        <br><br>
-        <a class="button_detail">자세히 더 보기</a>
-      </div>
-    </div>
 
-    <div class="card" onclick="openModal1('이한나 | 소프라노, 호서대 초빙교수')">
+        <div class="card" onclick="openModal1('정수지 | 명상 피아니스트')">
       <div class="card-img-wrapper">
-        <img src="./img/8-5pro.jpg" alt="이한나" class="card-img">
+        <img src="./img/8-4pro.jpg" alt="함영준 대표" class="card-img">
       </div>
       <div class="card-body">
         <div class="name-row">
-          <h3>이한나 | 소프라노, 호서대 초빙교수</h3>
+        <h3>정수지 | 명상 피아니스트</h3>
+        <!-- <p class="subtitle">마음건강 길 대표</p> -->
         </div>
         <p>
-          한예종 전체 수석의 뛰어난 기량과 음악성, 깊은 영성으로 삶과 죽음을 노래하는 성악가.<br>
-          국내외 사랑받는 레퍼토리로 마음의 울림을 전합니다.
+
+          명상과 음악을 통해 삶의 절망과 고통을<br>
+희망과 치유로 바꿔주는 아티스트.<br>자작곡 <b>⌜Step into Fall⌟</b>과 일본 가요 <b>⌜천개의 바람이 되어⌟</b> 등을 
+통해 삶과 죽음 사이의 울림을 전합니다.
+
+
         </p>
-        <br><br>
-        <a class="button_detail">자세히 더 보기</a>
+
+        <br><Br>
+          <a class="button_detail">
+            자세히 더 보기
+          </a>
       </div>
     </div>
+       <div class="card" onclick="openModal1('이한나 | 소프라노, 호서대 초빙교수')">
+      <div class="card-img-wrapper">
+        <img src="./img/8-5pro.jpg" alt="함영준 대표" class="card-img">
+      </div>
+      <div class="card-body">
+        <div class="name-row">
+        <h3>이한나 | 소프라노, 호서대 초빙교수</h3>
+        <!-- <p class="subtitle">마음건강 길 대표</p> -->
+        </div>
+        <p>
+         한예종 전체 수석의 뛰어난 기량과 음악성,<br>깊은 영성으로 삶과 죽음을 노래하는 성악가.<br>마음을 울리는 가곡 <b>⌜내 영혼 바람 되어⌟</b> 등<br>
+국내외 사랑받는 노래로 삶의 울림을 전합니다.
+
+        
+        </p>
+
+        <br><Br>
+          <a class="button_detail">
+            자세히 더 보기
+          </a>
+      </div>
+    </div>
+   
   </div>
-
+  <!-- <div class="section-header" style="text-align:center;margin:40px 0;padding-bottom:0;">
+      
+    <h3><br>7월 15일<br>내 삶을 변화시켜 줄<br>이 두 사람을 만나보세요.</h3>
+  </div> -->
   <!-- Modal -->
   <div id="modalOverlay1" class="modal-overlay" onclick="closeModal1()">
     <div class="modal1" onclick="event.stopPropagation()">
@@ -727,88 +968,114 @@ About Us Section
       <div id="modalInner"></div>
     </div>
   </div>
-</div>
-
-<script>
-  function openModal1(name){
+  </div>
+  
+  <script>
+  function openModal1(name) {
     const modal = document.getElementById('modalOverlay1');
     const inner = document.getElementById('modalInner');
     let imgSrc = '';
     let content = '';
+  
+    if (name === '최준식 | 이화여대 명예교수') {
+    imgSrc = "https://wimg.munhwa.com/news/legacy/gen_news/201805/2018053101032412047001_b.jpg";
+    content = `
+      <h2 style="text-align:left">최준식 | 이화여대 명예교수</h2>
+      <p>
+       
+        <img src="https://wimg.munhwa.com/news/legacy/gen_news/201805/2018053101032412047001_b.jpg" alt="최준식 | 이화여대 명예교수"><br><br>
+       • 서강대 역사학, 미국 템플대 종교학 박사<br>
+• 이화여대 한국학과 교수<Br>
+• 한국죽음학회 설립, 국내 죽음학 연구 선구자<br>
+• ⌜너무 늦기 전에 들어야 할 죽음학 강의⌟, ⌜한국 사자의 서⌟, ⌜사후생⌟ 등 저서 다수
 
-    if(name === '최준식 | 이화여대 명예교수'){
-      imgSrc = "https://wimg.munhwa.com/news/legacy/gen_news/201805/2018053101032412047001_b.jpg";
-      content = `
-        <h2>최준식 | 이화여대 명예교수</h2>
-        <img src="${imgSrc}" alt="최준식 | 이화여대 명예교수">
-        <ul class="dot-list">
-          <li>서강대 역사학, 미국 템플대 종교학 박사</li>
-          <li>이화여대 한국학과 교수</li>
-          <li>한국죽음학회 설립, 국내 죽음학 연구 선구자</li>
-          <li>저서 ⌜너무 늦기 전에 들어야 할 죽음학 강의⌟, ⌜한국 사자의 서⌟, ⌜사후생⌟ 등 다수</li>
-        </ul>
-      `;
-    } else if(name === '홍진의 | 서울대학병원 완화의료 간호사'){
+
+      </p>
+    `;
+  } else if (name === '홍진의 | 서울대학병원 완화의료 간호사') {
       imgSrc = "./img/8-3pro.jpg";
       content = `
-        <h2>홍진의 | 서울대병원 완화의료 간호사</h2>
-        <img src="${imgSrc}" alt="홍진의 | 서울대병원 완화의료 간호사">
-        <ul class="dot-list">
-          <li>서울대 간호학과 학사 · 석사</li>
-          <li>가톨릭대 성인간호학 박사 수료</li>
-          <li>前 서울대병원 간호사</li>
-          <li>現 서울대병원 완화의료임상윤리센터 간호사</li>
-        </ul>
+        
+        <h2 style="text-align:left">홍진의 | 서울대학병원 완화의료 간호사</h2>
+   <img src="${imgSrc}" alt="홍진의 | 서울대학병원 완화의료 간호사"><br><br>
+<p>
+   • 서울대 간호학과 학사 ・ 석사<br>
+• 가톨릭대 성인간호학 박사 수료<br>
+• 前 서울대병원 간호사<br>
+• 現 서울대병원 완화의료임상윤리센터 간호사
+
+
+  </p>
       `;
-    } else if(name === '함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표'){
+    } else if (name === '함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표') {
       imgSrc = "./img/7-4.jpg";
       content = `
-        <h2>함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표</h2>
-        <img src="${imgSrc}" alt="함영준 대표">
-        <ul class="dot-list">
-          <li>조선일보 사회부장, 국제부장</li>
-          <li>청와대 문화체육비서관 · 한국방송광고진흥공사 전무</li>
-          <li>고려대 미디어학부 초빙교수</li>
-          <li>저서 ⌜우울탈출법⌟, ⌜내려올 때 보인다⌟ 등 다수</li>
-        </ul>
+        
+        <h2 style="text-align:left">함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표</h2>
+        
+  <img src="${imgSrc}" alt="함영준 대표">
+  <p> 
+  • 조선일보 사회부장, 국제부장<br>
+• 청와대 문화체육비서관<br>• 한국방송광고진흥공사 전무<br>
+• 고려대 미디어학부 초빙교수<br>
+• ⌜우울탈출법⌟, ⌜내려올 때 보인다⌟ 등 저서 다수
+
+
+  </p>
       `;
-    } else if(name === '정수지 | 명상 피아니스트'){
+    } else if (name === '정수지 | 명상 피아니스트') {
       imgSrc = "https://imgprism.ehyundai.com/derivedImage/fileValue/202101/29/c9995c67-2c9e-4f23-a2a2-9693d18c6808_01.jpg";
       content = `
-        <h2>정수지 | 명상 피아니스트</h2>
-        <img src="${imgSrc}" alt="정수지 | 명상 피아니스트">
-        <ul class="dot-list">
-          <li>연세대 국문과 졸업</li>
-          <li>미국 레슬리대 심신통합치유 석사</li>
-          <li>스위스 EGS 표현예술 박사 수료</li>
-          <li>前 한예종 무용원 명상 강사, 現 명상공간 ‘숨SOUM’ 원장</li>
-          <li>저서 ⌜내가 나를 낫게 한다⌟, 피아노 앨범 3집 발매</li>
-        </ul>
+        
+        <h2 style="text-align:left">정수지 | 명상 피아니스트</h2>
+     
+  
+ 
+  <img src="${imgSrc}" alt="정수지 | 명상 피아니스트">
+ <p>
+          • 연세대 국문과 졸업.<br> 
+          • 미국 레슬리대 심신통합치유 석사<br>
+          • 스위스 EGS 표현예술 박사 수료<br>
+          • 前 한예종 무용원 명상 강사<br>
+          • 現 명상공간 '숨SOUM' 원장.<br>
+          • 저서 ⌜내가 나를 낫게 한다⌟<br>
+          • 피아노 앨범 1집 ‘Life(2016)’ 등 3집 발매<br>
+       
+        
+
+  </p>
       `;
-    } else if(name === '이한나 | 소프라노, 호서대 초빙교수'){
-      imgSrc = "https://i.ytimg.com/vi/Cpgc6RgsON8/hq720.jpg";
+    } else if (name === '이한나 | 소프라노, 호서대 초빙교수') {
+      imgSrc = "https://i.ytimg.com/vi/Cpgc6RgsON8/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGHIgSCg7MA8=&rs=AOn4CLD9SpwewvWUufiCiQsW-A5YuQprMQ";
       content = `
-        <h2>이한나 | 소프라노, 호서대 초빙교수</h2>
-        <img src="${imgSrc}" alt="이한나 | 소프라노, 호서대 초빙교수">
-        <ul class="dot-list">
-          <li>한예종 음악원 전체 수석 졸업</li>
-          <li>텍사스 오스틴 주립대 석 · 박사</li>
-          <li>미국, 멕시코, 독일 등 다수의 국제 페스티벌에서 주역으로 활동</li>
-          <li>오페라 &lt;피가로의 결혼&gt;, &lt;여자는 다그래&gt; 등 주역으로 국내외 출연</li>
-          <li>객석 &lt;세계 오페라 무대를 빛내는 한국의 젊은 성악가 75인&gt; 선정</li>
-        </ul>
+        
+        <h2 style="text-align:left">이한나 | 소프라노, 호서대 초빙교수</h2>
+
+  
+  
+  <img src="${imgSrc}" alt="이한나 | 소프라노, 호서대 초빙교수">
+  <p>
+          • 한예종 음악원 전체 수석 졸업<br>
+          • 텍사스 오스틴 주립대 석 ・ 박사<br>
+          • 미국, 멕시코, 독일 등 다수의 국제 페스티벌에서 주역으로 활동<br>
+• 오페라 <피가로의 결혼>, <여자는 다그래> 등 다수 오페라 주역으로 국내외 출연<br>
+• 객석 <세계 오페라 무대를 빛내는 한국의 젊은 성악가 75인> 선정<br>
+
+
+  </p>
       `;
     }
 
+
+  
     inner.innerHTML = content;
     modal.style.display = 'flex';
   }
-
-  function closeModal1(){
+  
+  function closeModal1() {
     document.getElementById('modalOverlay1').style.display = 'none';
   }
-</script>
-
+  </script>
   
 
   <hr style="width:100%;">
