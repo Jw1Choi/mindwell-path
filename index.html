@@ -55,15 +55,15 @@
 	<meta property="og:site_name" content="마음건강 길">
 	<meta property="og:type" content="website">
 
-  <meta property="og:image" content="./img/poster7-1.png?ver=4" />		
+  <meta property="og:image" content="./img/poster-8.png" />		
     <link rel="apple-touch-icon" href="./img/logo-introduce.png" sizes="180x180"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="16x16"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="32x32"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="192x192"/>
     <link rel="icon" href="./img/logo-introduce.png" type="image/svg+xml"/>
 
-    <title> 7월 하계 휴가 특집!| 마음건강 길 - 마음디톡스 : 마음 편안하고 잠 잘 자는
-      7가지 마음기술</title>
+    <title> 11월 송년 특집!| 마음디톡스 8 -  웰 다잉 & 사후생 | 죽음이 우리 삶에 던지는 메시지  :  “어떻게 살아가야 할까?” 
+      </title>
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="css/font.css">
@@ -126,41 +126,382 @@
 </style>
 
   <template id="headerTemplate"></template>
-  <!-- <template id="landing_body"></template> -->
-  <div id="intro_img" style="margin-bottom:0px !important;">
-    <!-- <div class="box-img"><img src="img/020.png" class="br30" style="object-position: top;"></div> -->
-    <div class="box-img">
-      <picture>
-        <source srcset="img/bg-mindgil.png" media="(min-width: 800px)">
-        <img src="img/bg-mindgil.png" class="br90" style="object-position: bottom;" alt="Responsive Image">
-      </picture>
-    </div>
-    
-    <div class="box-copy" style="color:#fff;font-size:18px;line-height: 140%;text-shadow: rgb(0, 0, 0, .1) 2px 2px;">  
-      <a href="#sec05" class="scroll box">
-            
-        <span class="timer" style="color:#fff;font-size:13px;font-weight:700;border:1px solid #fff;padding: 10px 20px;border-radius:5px;">
-          접수 마감일 | <span id="day" style="font-weight:700;"></span> ( <span id="countdown" style="font-weight:700;"></span>)
-          </span>
-        </a> <br><br><br>
-        <strong style="line-height: 180%;font-family: 'GowunBatang-Regular';font-weight:bold;font-size:22px;">
-          <b style="font-family: 'GowunBatang-bold'"></b>
-          “왜 잠이 안 올까?”<br>"왜 마음이 늘 불안할까?"<br>"왜 온 몸이 소진된 느낌인가?"<br>"약만으로는 부족한 걸까?"<br><br>답답하고 힘든 마음,<br>어떻게 하면 다시 평정과<br>휴식을 되찾을 수 있을까요?<br><br>
-         혹시 당신이나, 주변에 이처럼<br>무기력∙불안∙불면∙번아웃으로<br>고생하시는 분들 계시나요?<br><br><b style="color:yellow;text-decoration: underline;">10년 우울을 이겨낸 경험자</b>와<br><b style="color:yellow;text-decoration: underline;">37년간 3만명을 치료한<br>정신건강 명의</b>가<br>실전 해법을 가르쳐 드립니다.
-         <Br>
 
-        </strong>
-        <br><br>
+  <section id="saitoHitoriBowl" aria-label="사이토 히토리 ‘그릇’ 포스터">
+  <style>
+    /* ================= Scope: #saitoHitoriBowl only ================= */
+    #saitoHitoriBowl{
+      
+      /* ======= Theme Tokens (필요 시 수정) ======= */
+      --bg:url('./img/intro-8.jpg');             /* 배경 이미지 (교체 가능) */
+      --ink:#e7efe9;                              /* 기본 텍스트 */
+      --muted:#cfe0d9;                            /* 보조 텍스트 */
+      --title:#cfe7e1;                            /* 상단 영문 타이틀 */
+      --accent:#ffd84a;                           /* 노란 하이라이트 */
+      --accent-ink:#253433;                       /* 하이라이트 텍스트 */
+      --shadow:rgba(0,0,0,.35);                   /* 그림자 공통 */
+      --panel:rgba(0,0,0,.28);                    /* 카드 배경 톤 */
+      --radius:16px;
+      --maxW:520px;                               /* 카드 가로폭 */
+      --ff-base:"Pretendard","Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      --ff-title:"BookkMyungjo","Times New Roman",serif; /* 상단 영문 느낌 */
+
+      position:relative; display:block; width:100%;
+      margin:60px 0 0;
+      padding:36px 16px 48px;                     /* 섹션 여백 */
+      background:
+        radial-gradient(60% 28% at 50% 10%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, rgba(7,43,47,.94) 0%, rgba(7,43,47,.96) 100%);
+      overflow:hidden; box-sizing:border-box;
+      font-family:var(--ff-base);
+      text-align:center;                          /* 전체 중앙 정렬 */
+    }
+    /* 배경 이미지 + 폭죽 라이트(블렌드) */
+    #saitoHitoriBowl::before{
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background:
+        var(--bg) left/cover no-repeat,
+        radial-gradient(240px 240px at 80% 78%, rgba(255,255,255,.12), transparent 60%),
+        radial-gradient(200px 200px at 18% 72%, rgba(255,255,255,.10), transparent 62%),
+        radial-gradient(140px 140px at 72% 30%, rgba(255,255,255,.08), transparent 62%);
+      mix-blend-mode:screen; opacity:.85;
+    }
+    #saitoHitoriBowl::after{               /* 어둡게 덮어 컬러 톤 맞춤 */
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
     
-        <a href="#choice_p" class="scroll btn-main wow fadeInDown" style="border-radius:10px;padding:15px 40px;opacity: 0.85;margin:0px;">
-          <span class="blink" style="font-family: 'GowunBatang-Regular';font-weight:700;">
-            신청하고 마음피트니스 시작하기 >
-          </span> 
-        </a>
-        <!-- <p>CUT & CUT DIET</p> -->
+    }
+
+    /* ===== 카드 래퍼 ===== */
+    #saitoHitoriBowl .shb-wrap{
+      position:relative; z-index:2; margin:0 auto; max-width:var(--maxW);
+      padding:34px 22px 40px; border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(5,36,40,.55), rgba(5,36,40,.65));
+      /* box-shadow:0 10px 42px var(--shadow), inset 0 0 0 1px rgba(255,255,255,.06); */
+    }
+
+    /* ===== 상단 영문 타이틀 ===== */
+    #saitoHitoriBowl .shb-stit{
+         font-family: 'GounBatang-t';
+      font-weight:700; letter-spacing:.04em; color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,.25);
+      margin:0 0 10px; line-height:1.4;
+      font-size:36px;                 /* 모바일 기본 */
+    }
+
+    /* ===== 큰 인용문(따옴표 포함) ===== */
+    #saitoHitoriBowl .shb-quote{
+      color:var(--ink); opacity:.95; margin:0 0 18px; line-height:1.8;
+      font-weight:600; font-size:18px; /* 모바일 */
+    }
+    #saitoHitoriBowl .shb-quote em{ color:#ffffff; font-style:normal; }
+
+    /* ===== 책 이미지 (별도 삽입) ===== */
+    #saitoHitoriBowl .shb-book{
+      width:235px; margin:14px auto 18px; position:relative;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));
+      transform:translateZ(0);
+    }
+    #saitoHitoriBowl .shb-book img{ width:100%; height:auto; display:block; border-radius:6px; }
+
+    /* ===== 회색 본문 (재출간 알림) ===== */
+    #saitoHitoriBowl .shb-lead{     color: var(--muted);
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 14px 0 10px; }
+
+    /* ===== 노란 하이라이트 배지 (두 줄) ===== */
+    #saitoHitoriBowl .shb-badge{
+      display:inline-block; background:#4fb1bc; color:#fff;
+      padding:10px 14px; border-radius:10px; font-weight:800; font-size:18px;
+      line-height:140%;
+      /* box-shadow:0 6px 22px rgba(255,216,74,.28); line-height:1.25; margin:10px 0 8px; */
+    }
+
+    /* ===== 상세 카피(리스트 느낌의 본문) ===== */
+    #saitoHitoriBowl .shb-copy{ color:var(--muted); font-size:14.5px; line-height:1.95; margin-top:6px; }
+    #saitoHitoriBowl .shb-copy .em{ color:#ffe16a; font-weight:800; }
+    #saitoHitoriBowl .shb-copy .st{ color:#ffffff; font-weight:800; }
+
+    /* ===== 하단 문구 ===== */
+    #saitoHitoriBowl .shb-foot{ margin-top:16px; color:var(--ink); font-size:14.5px; line-height:1.9; }
+    #saitoHitoriBowl .shb-foot .em{ color:#ffe16a; font-weight:800; }
+
+    /* ===== 살짝 떠오르는 미세 애니메이션 (책) ===== */
+    @keyframes shb-float{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-3px) } 100%{ transform:translateY(0) } }
+    #saitoHitoriBowl .shb-book{ animation:shb-float 4.6s ease-in-out infinite; }
+
+    /* ===== 반응형 ===== */
+    @media (min-width:480px){
+      #saitoHitoriBowl .shb-stit{ font-size:34px }
+      #saitoHitoriBowl .shb-quote{ font-size:19px }
+      #saitoHitoriBowl .shb-book{ width:250px }
+    }
+    @media (min-width:768px){
+      #saitoHitoriBowl{ padding:46px 20px 64px }
+      #saitoHitoriBowl .shb-wrap{ max-width:560px; padding:38px 28px 44px }
+      #saitoHitoriBowl .shb-stit{ font-size:38px }
+      #saitoHitoriBowl .shb-quote{ font-size:20px }
+      #saitoHitoriBowl .shb-book{ width:268px }
+    }
+  </style>
+
+  <div class="shb-wrap">
+    <h1 class="shb-stit" >삶의 길과 의미를<br>되찾는 시간</h1><br>
+    <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">죽음은 삶의 끝이 아니라<br> 
+또 다른 시작에 대한 질문입니다.
+</em></p>
+
+    <!-- ✅ 책 이미지를 별도 삽입: 경로만 교체하면 됨 -->
+    <figure class="shb-book">
+      <img src="./img/death.jpg" alt="사이토 히토리 ‘그릇’ 도서 표지">
+    </figure>
+    
+    <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">이번 <b style=" font-family: 'SchoolSafetyNotification-d';color:#4ed250;">마음 디톡스 ⑧</b> 는 삶과 죽음<br>
+그리고 그 너머의 세계를<br>
+함께 성찰하는 자리입니다. 
+</em></p>
+
+    <!-- 회색 리드 카피 (중앙정렬) -->
+    <p class="shb-lead"></b></p>
+
+    <!-- 노란 하이라이트 CTA 라인 -->
+    <div class="shb-badge" style="font-size:1.5rem;">우리는 이 시간을 통해<br>
+이생에서 어떻게<br>잘 살아갈 것인가를 
+묻고자 합니다.   </div>
+<br><br>
+    <!-- 상세 카피 -->
+    <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">학문과 예술<br>
+그리고 인간의 깊은 경험이
+<br>한데 어우러지는<br><Br>
+가장 인간적인<br>
+‘마음 치유의 시간’을 만나보세요. 
+
+</em></p>
+
+    
+  </div>
+</section>
+
+
+  <!-- <template id="landing_body"></template> -->
+<section id="mindDetoxPremium8" aria-label="마음 디톡스 8 안내 포스터">
+  <style>
+
+    @font-face {
+    font-family: 'SchoolSafetyNotification-t';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification-d';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'GounBatang-t';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GounBatang-b';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GimpoPeaceFoundation';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/GimpoBatang00.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GimpoPeaceFoundation-b';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/GimpoBatang00.woff') format('woff');
+    font-weight: bold;
+    font-display: swap;
+}
+
+
+
+
+
+
+    /* ================= Scope: #mindDetoxPremium8 only ================= */
+    #mindDetoxPremium8{
+      --maxW: 1400px;
+      --ink: #1a1a1a;
+      --muted: #4b4b4b;
+      --titleGreen: #2c662d;
+      --accentRed: #b03a2e;
+      --subBlue: #2264c5;
+      --shadow: 0 16px 60px rgba(0,0,0,.08);
+
+      /* ✅ 교체 가능한 배경 이미지 (상대/절대 주소 모두 OK) */
+      --bg-url: url('./img/8-intro2.png');
+      /* ✅ 배경 밝기 (1 = 원본, 0.7 = 어둡게, 1.2 = 밝게) */
+      --bg-brightness: 0.8;
+      --bg-opacity: 0.5;
+
+      font-family: "Pretendard","Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      position: relative;
+      isolation: isolate;        /* 자식 스택 격리 */
+      overflow: hidden;
+      text-align: center;
+      padding: 80px 24px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: transparent;   /* 다른 전역 배경과 충돌 방지 */
+      padding-top:100px !important;
+      /* margin-top:30px; */
+    }
+
+    /* ✅ 배경 이미지 레이어 (밝기 전용) */
+    #mindDetoxPremium8::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background-image: url(./img/8-intro2.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* filter: brightness(var(--bg-brightness)); */
+      transition: filter .3s ease;
+      pointer-events:none;       /* 이벤트 차단 */
+    }
+
+
+    /* ✅ 가독성 보정 레이어 (텍스트 위 X) */
+    #mindDetoxPremium8::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;                 /* 콘텐츠보다 아래, 배경과 같은 레벨 */
+      /* background-image: linear-gradient(to bottom, rgba(255,255,255,.95), rgba(255,255,255,.95)); */
+      pointer-events:none;
+    }
+
+    /* ✅ 실제 콘텐츠(텍스트)는 항상 위 */
+    #mindDetoxPremium8 .mdp8-inner{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: var(--maxW);
+    }
+
+    /* 텍스트 스타일 (필요 최소만 유지) */
+    #mindDetoxPremium8 .subtitle{
+      color:#3185ff;font-weight:600;font-size:1.05rem;margin-bottom:10px;letter-spacing:.03em;font-family: 'GounBatang-t';
+    }
+    #mindDetoxPremium8 .title{
+      font-size:2.4rem;font-weight:900;color:var(--titleGreen);letter-spacing:-.04em;margin-bottom:30px;   font-family: 'SchoolSafetyNotification-d';
+    }
+    #mindDetoxPremium8 .headline{
+      font-size:1.7rem;font-weight:600;line-height:1.7;color:var(--ink);
+      border-top:2px solid #222;border-bottom:2px solid #222;padding:22px 0; max-width: 400px;
+    margin: 0 auto 30px;    font-family: 'GimpoPeaceFoundation';
+    }
+    #mindDetoxPremium8 .desc{font-size:1.05rem;line-height:1.9;color:var(--muted);margin-bottom:40px;    font-family: 'GimpoPeaceFoundation';}
+    #mindDetoxPremium8 .desc span{color:var(--accentRed);font-weight:700}
+    #mindDetoxPremium8 .info{font-size:1.2rem;line-height:1.8;font-weight:600;color:#222}
+
+    @media (max-width:600px){
+      #mindDetoxPremium8{padding:60px 18px 80px}
+      #mindDetoxPremium8 .title{font-size:1.9rem}
+      #mindDetoxPremium8 .headline{font-size:1.3rem;padding:16px 0}
+      #mindDetoxPremium8 .desc{font-size:.95rem}
+    }
+
+
+     @media screen and (max-width:940px) {
+     
+    #mindDetoxPremium8::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background-image: url(./img/8-intro2.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover !important;
+
+    }
+
+
+    }
+
+
+
+    @media screen and (max-width:500px) {
+     
+        /* ✅ 배경 이미지 레이어 (밝기 전용) */
+    #mindDetoxPremium8::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background-image: url(./img/8-intro2.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* filter: brightness(var(--bg-brightness)); */
+      transition: filter .3s ease;
+      pointer-events:none;       /* 이벤트 차단 */
+    }
+
+
+    }
+  </style>
+
+  <!-- ✅ 콘텐츠 래퍼 (항상 위에 표시) -->
+  <div class="mdp8-inner">
+    <div class="subtitle">병원 밖 마음 치유공간</div>
+
+    <div class="title" >
+      마음 디톡스 <span style="font-family:'SchoolSafetyNotification-t';">⑧</span>
     </div>
-</div>
-<!-- #intro -->
+
+    <div class="headline">
+      웰 다잉 & 사후생<br>
+     
+    </div>
+
+    <div class="desc" style="font-size:1.3rem;">
+      
+      <u style="text-decoration: none;font-size:1.5rem;">죽음이 우리 삶에 던지는 메세지</u><br>
+      <b style="font-size:1.7rem;">"어떻게 살아가야 할까?"</b></b><br><br>
+
+
+
+
+     <b style="color:#ee0e66;   font-family: 'SchoolSafetyNotification-d';font-size:1.5rem;">잘 살고 있는지 의문이 들 때</b><br>
+      <b>삶의 의미를 회복하고<br>내면의 평화를 찾는 시간</b><br><br>
+
+         <b>삶의 의미, 죽음의 존엄,<br>
+그리고 그 이후의 세계를<br>
+학자, 언론인, 호스피스, 예술인과<br> 함께 성찰해봅니다.</b>
+      
+    </div>
+
+    <div class="info">
+     <b> 일시: 2025년 11월 22일 (토) 오후 2시~5시<br>
+      장소: 서울 용산구 신흥로 11, 캐럿글로벌 센터원</b><br>(6호선 녹사평역 2번 출구에서 직진 600m)
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -220,7 +561,7 @@ About Us Section
 
   #profile1 .profile-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
@@ -345,7 +686,7 @@ About Us Section
   }
 
   #profile1 #modalInner h2 {
-    font-size: 30px;
+    font-size: 25px;
     color: #111827;
     margin-bottom: 16px;
   }
@@ -442,30 +783,50 @@ font-size: 18px;
 
 
 
-<section id="team" class="section-bg" style="padding:40px 0 0;">
+<!-- <section id="team" class="section-bg" style="padding:40px 0 0;">
   <div class="container">
-  <div class="section-header" style="padding-bottom:0;">
-    <h3>
-    채정호 교수
-    </h3>
-    <h5 style="text-align:center">
-      37년간 3만여 명의 환자를 치료한<br>정신건강의 최고 권위자 (서울성모병원)
-    </h5>
-<br><br>
-    <h3>
-      함영준 대표
-      </h3>
-      <h5 style="text-align:center">
-        10년 넘게 우울증을 직접 극복한 경험 담아<br>신간 ⌜우울탈출법⌟ 펴낸 마음건강 길 대표
-      </h5><br><Br>
+    <div class="section-header" style="padding-bottom:0;">
+     
 
       <h3>
-        이 두 사람의 생생한 체험과<br>지식을 통해 진정한<br>평정과 휴식을 가져다주는<br>마음 기술과 치료법을 만나보세요.
-        </h3>
-  </div>
+        최준식 | 이화여대 명예교수
+      </h3>
+      <h5 style="text-align:center">
+        죽음학의 선구자로서 전하는<br>사후생을 긍정하는 다섯 가지 통찰
+      </h5>
+      <br><br>
 
+      <h3>
+        함영준 | 前 조선일보 사회부장
+      </h3>
+      <h5 style="text-align:center">
+        삶과 죽음을 잇는 시선으로<br>“죽음을 통해 삶을 다시 배우는 시간”을 전하다
+      </h5>
+      <br><br>
+
+       <h3>
+        홍진의 | 서울대병원 완화의료 간호사
+      </h3>
+      <h5 style="text-align:center">
+        수많은 임종 현장에서 깨달은<br>‘잘 죽는 법’보다 ‘어떻게 살아야 하는가’의 메시지
+      </h5>
+      <br><br>
+
+      <h3>
+        정수지 피아니스트 · 이한나 소프라노
+      </h3>
+      <h5 style="text-align:center">
+        음악이 전하는 위로와 명상의 울림으로<br>마음을 정화하는 힐링 아티스트
+      </h5>
+      <br><br>
+
+      <h3>
+        학문・경험・감정・예술이<br>만나는 순간,<br>
+        삶과 죽음의 본질을 마주하고<Br>평정과 회복의 길을 함께 걸어보세요.
+      </h3>
+    </div>
   </div>
-  </section>
+</section> -->
 
 
 <div id="profile1" style="padding-top:0px !important;padding-bottom:20px;">
@@ -474,20 +835,20 @@ font-size: 18px;
   </div>
   
   <div class="profile-grid">
-    <div class="card" onclick="openModal1('채정호 교수')">
+    <div class="card" onclick="openModal1('최준식 | 이화여대 명예교수')">
       <div class="card-img-wrapper">
-        <img src="./img/prof-c.jpeg" alt="채정호 교수" class="card-img" style="transform:scaleX(-1);">
+        <img src="./img/8-1pro.jpg" alt="최준식 | 이화여대 명예교수" class="card-img" style="transform:scaleX(-1);">
 
       </div>
       <div class="card-body">
         <div class="name-row">
-          <h3>채정호 | 가톨릭의대 교수</h3>
+          <h3>최준식 | 이화여대 한국학 명예교수</h3>
           <!-- <p class="subtitle">서울성모병원 정신건강의학과</p> -->
         </div>
         <p >
-          • 서울성모병원 정신건강의학과 교수<br>
-          • 우울・불안・불면증・공황발작 최고 권위자
-          <br>• 대한불안의학회이사장, 한국트라우마스트레스학회장
+         국내 원로 종교학자이자 죽음학의 선구자.<br>
+         “사후생(死後生)을 긍정하는 다섯 가지 근거”를 통해<br>죽음 이후의 존재와 의식, 그리고 영생의 세계를 보여줍니다.
+
           </p>
           
          
@@ -498,33 +859,93 @@ font-size: 18px;
       </div>
     </div>
   
-    <!-- <div class="card" onclick="openModal1('마가스님')">
-      <div class="card-img-wrapper">
-        <img src="./img/profile2.jpg" alt="마가스님" class="card-img" style="object-position:center;">
-      </div>
-      <div class="card-body">
-        <div class="name-row">
-        <h3>마가스님</h3>
-        <p class="subtitle">자비명상 대표</p>
-        </div>
-        <p >"청소년기 아버지에 대한 깊은 원망과 가난 속에서 방황하다,출가와 수행을 통해 마음속 증오를 감사로 승화시켰다.<br>유장하고 깊은 목소리로 무너진 자존감을 바로 세우는 길을 들려준다.
-          "</p>
-      </div>
-    </div> -->
+   
   
-    <div class="card" onclick="openModal1('함영준 대표')">
+    <div class="card" onclick="openModal1('함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표')">
       <div class="card-img-wrapper">
-        <img src="./img/profile-ha.jpeg" alt="함영준 대표" class="card-img">
+        <img src="https://cdn.mdjournal.kr/news/photo/202507/41496_22872_3630.jpg" alt="함영준 대표" class="card-img">
       </div>
       <div class="card-body">
         <div class="name-row">
-        <h3>함영준 | 작가 ・ 마음건강 길 대표</h3>
+        <h3>함영준 | 前 조선일보 사회부장 ・ 마음건강 길 대표</h3>
         <!-- <p class="subtitle">마음건강 길 대표</p> -->
         </div>
         <p>
-          • 언론인・청와대 비서관・대학교수 등 역임<br> 
-          • 우울증 극복한 노하우 바탕, 신간『우울탈출법』출간<br>
-          • 운동·일·명상·영성·심리학 등 7가지 ‘마음기술’ 전파<br>
+         수십 년간 인간 군상과 생사의<br>현장을 기록해온 저널리스트.<br>“사형수의 마지막 순간에서 본 인간의 본성”을 통해<br>삶을 다시 배우는 시간을 전합니다.
+
+        
+        </p>
+
+        <br><Br>
+          <a class="button_detail">
+            자세히 더 보기
+          </a>
+      </div>
+    </div>
+
+
+        <div class="card" onclick="openModal1('홍진의 | 서울대학병원 완화의료 간호사')">
+      <div class="card-img-wrapper">
+        <img src="./img/8-3pro.jpg" alt="함영준 대표" class="card-img">
+      </div>
+      <div class="card-body">
+        <div class="name-row">
+        <h3>홍진의 | 서울대병원 완화의료 간호사</h3>
+        <!-- <p class="subtitle">마음건강 길 대표</p> -->
+        </div>
+        <p>
+         
+
+  수많은 임종 현장을 지켜보며 ‘잘 죽는 법’보다<br>‘어떻게 살아야 하는가’를 묻는 간호사.<br>삶의 마무리를 돌보는 현장에서 배운 진정한 웰다잉의 의미를 나눕니다.
+          
+        
+        </p>
+
+        <br><Br>
+          <a class="button_detail">
+            자세히 더 보기
+          </a>
+      </div>
+    </div>
+
+
+        <div class="card" onclick="openModal1('정수지 | 명상 피아니스트')">
+      <div class="card-img-wrapper">
+        <img src="./img/8-4pro.jpg" alt="함영준 대표" class="card-img">
+      </div>
+      <div class="card-body">
+        <div class="name-row">
+        <h3>정수지 | 명상 피아니스트</h3>
+        <!-- <p class="subtitle">마음건강 길 대표</p> -->
+        </div>
+        <p>
+
+          명상과 음악을 통해 삶의 절망과 고통을<br>
+희망과 치유로 바꿔주는 아티스트.<br>자작곡 <b>⌜Step into Fall⌟</b>과 일본 가요 <b>⌜천개의 바람이 되어⌟</b> 등을 
+통해 삶과 죽음 사이의 울림을 전합니다.
+
+
+        </p>
+
+        <br><Br>
+          <a class="button_detail">
+            자세히 더 보기
+          </a>
+      </div>
+    </div>
+       <div class="card" onclick="openModal1('이한나 | 소프라노, 호서대 초빙교수')">
+      <div class="card-img-wrapper">
+        <img src="./img/8-5pro.jpg" alt="함영준 대표" class="card-img">
+      </div>
+      <div class="card-body">
+        <div class="name-row">
+        <h3>이한나 | 소프라노, 호서대 초빙교수</h3>
+        <!-- <p class="subtitle">마음건강 길 대표</p> -->
+        </div>
+        <p>
+         한예종 전체 수석의 뛰어난 기량과 음악성,<br>깊은 영성으로 삶과 죽음을 노래하는 성악가.<br>마음을 울리는 가곡 <b>⌜내 영혼 바람 되어⌟</b> 등<br>
+국내외 사랑받는 노래로 삶의 울림을 전합니다.
+
         
         </p>
 
@@ -556,59 +977,96 @@ font-size: 18px;
     let imgSrc = '';
     let content = '';
   
-    if (name === '채정호 교수') {
-    imgSrc = "https://file.scourt.go.kr/crosseditor/images/000001/20200507205832677_A69ISYLB.jpg";
+    if (name === '최준식 | 이화여대 명예교수') {
+    imgSrc = "https://wimg.munhwa.com/news/legacy/gen_news/201805/2018053101032412047001_b.jpg";
     content = `
-      <h2 style="text-align:left">채정호 교수</h2>
+      <h2 style="text-align:left">최준식 | 이화여대 명예교수</h2>
       <p>
-        <b>과학과 명상으로 마음을 치유하는 의사</b><br><br>
-        채정호 교수는 37년간 우울, 불안, 공황장애 등으로 고통받는 3만 명 이상의 환자를 치료해 온 국내 대표적인 정신의학 명의다. 인지행동치료를 중심으로 PTSD와 트라우마, 재난 정신건강 분야의 권위자로 평가받는다.<br><br>
-        가톨릭의대를 졸업하고 정신과학 석·박사 학위를 취득했으며, 현재는 서울성모병원 정신건강의학과 교수로 재직 중이다. 미국 사우스캐롤라이나대 뇌자극 클리닉에서 연수했고, 대한불안의학회 이사장과 한국트라우마스트레스학회, 대한명상의학회 회장을 지냈다.<br><Br>
-        <img src="https://file.scourt.go.kr/crosseditor/images/000001/20200507205832677_A69ISYLB.jpg" alt="채정호 교수"><br><br>
-        채 교수는 약물이나 상담만이 아닌 운동, 명상, 종교활동, 인간관계 등을 통한 ‘심리 자원 강화’를 강조한다. 그는 외적 상황보다 개인 내면의 수용력과 유연성을 회복하는 것이 진정한 치유의 길이라고 본다.<br><Br>
+       
+        <img src="https://wimg.munhwa.com/news/legacy/gen_news/201805/2018053101032412047001_b.jpg" alt="최준식 | 이화여대 명예교수"><br><br>
+       • 서강대 역사학, 미국 템플대 종교학 박사<br>
+• 이화여대 한국학과 교수<Br>
+• 한국죽음학회 설립, 국내 죽음학 연구 선구자<br>
+• ⌜너무 늦기 전에 들어야 할 죽음학 강의⌟, ⌜한국 사자의 서⌟, ⌜사후생⌟ 등 저서 다수
 
-교회 장로이기도 한 그는 동료 의사들과 명상을 함께하며, ‘대한명상의학회’를 설립해 실천과 연구를 병행하고 있다. 지금까지 『진정한 행복의 7가지 조건』 등 10여 권의 저서와 200편 이상의 논문을 통해 우울·불안·트라우마 치유에 대한 통찰을 전하고 있다.
 
       </p>
     `;
-  } else if (name === '마가스님') {
-      imgSrc = "./img/profile2-1.jpeg";
+  } else if (name === '홍진의 | 서울대학병원 완화의료 간호사') {
+      imgSrc = "./img/8-3pro.jpg";
       content = `
         
-        <h2 style="text-align:left">마가스님</h2>
-        
-        <p><b>마음의 고요를 찾아주는 명상의 동반자</b><br><br>
-  
-  1960년 전남 고흥에서 태어난 마가 스님은 가족을 버리고 떠난 아버지에 대한 깊은 상처와 가난 속에서 성장했다. 마음속에 쌓인 분노와 외로움은 결국 스무 살 무렵 자살 시도로 터져 나왔고, 오대산 깊은 산속에서 생을 마감하려 했다. 그러나 월정사의 스님들에 의해 극적으로 구조되었고, 이 인연으로 출가의 길에 들어섰다.<br><br>
-  
-  출가 후 수행과 공부에 매진하여 중앙승가대 사회복지과를 졸업하고, 한신대에서 종교문화학 석사, 중앙승가대에서 문학박사 학위를 받았다. 
-  수행의 길 위에서 마음 깊이 박혀 있던 아버지에 대한 증오를 '감사'로 승화시키는 순간, 그는 비로소 고통을 넘어서 치유자가 되었다. 
-  <br><br>
-   <img src="${imgSrc}" alt="마가스님"><br><br>
-  중앙대 겸임교수, 동국대 정각원 교법사 등을 역임하며 명상과 치유를 대중에게 알리는 데 힘썼고, 옥천사 주지를 거쳐 현재는 자비명상 대표로 활동하고 있다.『내 안에서 찾는 붓다』, 『고마워요 자비명상』, 『마음충전』 등 다수의 저서와 KBS, 불교TV, BBS 등 방송을 통해 자비명상의 가치를 전파했다. 늙은 어머니를 모시고 효도 관광을 다녀온 뒤 영화로 기록하며, 출가자의 길 위에서도 가족 사랑을 잊지 않았다.<br><br>
-  
-  어린 시절의 고립감, 청년기의 분노, 수행을 통한 내적 치유를 꿋꿋이 걸어온 마가 스님은, 이번 마음디톡스에서 은은하지만 단단한 목소리로 가족 안의 고립과 떨어진 자존삼을 회복시키는 길을 안내할 것이다.
+        <h2 style="text-align:left">홍진의 | 서울대학병원 완화의료 간호사</h2>
+   <img src="${imgSrc}" alt="홍진의 | 서울대학병원 완화의료 간호사"><br><br>
+<p>
+   • 서울대 간호학과 학사 ・ 석사<br>
+• 가톨릭대 성인간호학 박사 수료<br>
+• 前 서울대병원 간호사<br>
+• 現 서울대병원 완화의료임상윤리센터 간호사
+
+
   </p>
       `;
-    } else if (name === '함영준 대표') {
-      imgSrc = "./img/con9.jpeg";
+    } else if (name === '함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표') {
+      imgSrc = "./img/7-4.jpg";
       content = `
         
-        <h2 style="text-align:left">함영준 대표</h2>
-        <p><b>우울을 삶의 지혜로 바꾼 치유 저널리스트
-</b><br><br>
-  
-  함영준 대표는 50대 후반 찾아온 우울증을 인생의 숙제로 받아들이고, 이를 극복하며 더욱 성숙한 삶으로 바꾼 경험자다. <br><br>
-
-반복되는 부정적 사고인 ‘루미네이션’과, 약해진 심신 변화에 맞서 운동, 자연, 일, 명상 등 7가지 마음기술을 실천했고, 이를 『우울탈출법』이란 책에 담아 세상과 나누고 있다.<br><br>
+        <h2 style="text-align:left">함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표</h2>
+        
   <img src="${imgSrc}" alt="함영준 대표">
-  그는 언론인이던 아버지를 일찍 여의고 조부모 손에 자랐으며, 조선일보 기자, 청와대 비서관 등 다양한 경력을 거쳐 외적 성공을 이루었지만 내면엔 공허와 우울이 자리했다. 이 감정과 마주한 끝에 2019년, 정신건강 전문 온라인 매체 ‘마음건강 길’을 창간, 운영하고 있다.<br><Br>
+  <p> 
+  • 조선일보 사회부장, 국제부장<br>
+• 청와대 문화체육비서관<br>• 한국방송광고진흥공사 전무<br>
+• 고려대 미디어학부 초빙교수<br>
+• ⌜우울탈출법⌟, ⌜내려올 때 보인다⌟ 등 저서 다수
 
-조선일보에 '함영준의 마음PT' 칼럼을 통해 우울과 회복에 대한 생생한 목소리를 전하고 있으며, 유튜브 채널, 강연 등을 통해 대중과도 활발히 소통하고 있다. 저서로는 『내려올 때 보인다』 『나, 요즘 마음이 힘들어서』  『마흔이 내게 준 선물』 등이 있다.
+
+  </p>
+      `;
+    } else if (name === '정수지 | 명상 피아니스트') {
+      imgSrc = "https://imgprism.ehyundai.com/derivedImage/fileValue/202101/29/c9995c67-2c9e-4f23-a2a2-9693d18c6808_01.jpg";
+      content = `
+        
+        <h2 style="text-align:left">정수지 | 명상 피아니스트</h2>
+     
+  
+ 
+  <img src="${imgSrc}" alt="정수지 | 명상 피아니스트">
+ <p>
+          • 연세대 국문과 졸업.<br> 
+          • 미국 레슬리대 심신통합치유 석사<br>
+          • 스위스 EGS 표현예술 박사 수료<br>
+          • 前 한예종 무용원 명상 강사<br>
+          • 現 명상공간 '숨SOUM' 원장.<br>
+          • 저서 ⌜내가 나를 낫게 한다⌟<br>
+          • 피아노 앨범 1집 ‘Life(2016)’ 등 3집 발매<br>
+       
+        
+
+  </p>
+      `;
+    } else if (name === '이한나 | 소프라노, 호서대 초빙교수') {
+      imgSrc = "https://i.ytimg.com/vi/Cpgc6RgsON8/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGHIgSCg7MA8=&rs=AOn4CLD9SpwewvWUufiCiQsW-A5YuQprMQ";
+      content = `
+        
+        <h2 style="text-align:left">이한나 | 소프라노, 호서대 초빙교수</h2>
+
+  
+  
+  <img src="${imgSrc}" alt="이한나 | 소프라노, 호서대 초빙교수">
+  <p>
+          • 한예종 음악원 전체 수석 졸업<br>
+          • 텍사스 오스틴 주립대 석 ・ 박사<br>
+          • 미국, 멕시코, 독일 등 다수의 국제 페스티벌에서 주역으로 활동<br>
+• 오페라 <피가로의 결혼>, <여자는 다그래> 등 다수 오페라 주역으로 국내외 출연<br>
+• 객석 <세계 오페라 무대를 빛내는 한국의 젊은 성악가 75인> 선정<br>
+
 
   </p>
       `;
     }
+
+
   
     inner.innerHTML = content;
     modal.style.display = 'flex';
@@ -1011,15 +1469,221 @@ font-size: 18px;
         행사 일시
     </h2>
     <div class="info-content">
-        <p class="font-bold text-xl mb-2"><b>🗓️ 7월 15일 (화) 오후 3시 ~ 5시</p>
-        <p class="font-bold text-xl mb-2"><b>📍대한성공회 서울주교좌성당 프란시스홀<br>&nbsp;&nbsp;(시청역 3번 출구 190m)</b></p>
-        <p class="font-bold text-xl mb-2">💻 ZOOM 생중계 신청 가능</b></p>
+        <p class="font-bold text-xl mb-2"><b>🗓️ 11월 22일 (토) 오후 2시 ~ 5시</p>
+        <p class="font-bold text-xl mb-2"><b>📍서울 용산구 신흥로 11, 캐럿글로벌 센터원 갤러리<br>&nbsp;&nbsp;(6호선 녹사평역 2번 출구에서 직진 600m)</b></p>
+        <p class="font-bold text-xl mb-2">💻 ZOOM 생중계 신청 가능</b></p><br>
+           <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;">ZOOM 컨퍼런스 신청하기</a></p><br>
     </div>
 </div>
 </div>
 
 
 </div>
+
+<!-- ===================== 오시는 길 섹션 (카카오맵 퍼가기 코드 적용 + 100% 너비/높이 · 모바일에서 글자(패널)가 지도 위로) ===================== -->
+<section id="RouteS1" aria-label="오시는 길 섹션 (지도 + 정보 패널)">
+  <style>
+    /* ===== Scope Reset: #RouteS1 내부만 초기화 (외부 레이아웃 간섭 방지) ===== */
+    #RouteS1{ box-sizing:border-box; }
+    #RouteS1 *, #RouteS1 *::before, #RouteS1 *::after{ box-sizing:inherit; }
+
+    /* ================= Scope: #RouteS1 only ================= */
+    #RouteS1{
+      --panel:#2b2c30;            /* 우측 패널 배경 */
+      --ink:#f4f4f5;              /* 본문 텍스트(다크 배경용) */
+      --muted:#c7c7cb;            /* 보조 텍스트 */
+      --label:#9ca3af;            /* 항목 라벨 색 */
+      --em:#d9b58a;               /* 포인트(전화번호) */
+      --line:rgba(255,255,255,.12);
+      --ring:rgba(255,255,255,.05);/* 워터마크 링 */
+      --maxW:1280px;
+      --gap:0;
+
+      font-family:"Pretendard","Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      color:var(--ink);
+
+      /* Grid + 안전한 독립 섹션 */
+      display:grid;
+      grid-template-columns: 1fr 520px;   /* 좌: 지도 / 우: 패널 */
+      grid-template-areas: "map panel";   /* 데스크톱 기본 배치 */
+      gap:var(--gap);
+      align-items:stretch;
+
+      width:100%; max-width:var(--maxW);
+      /* padding-left:4%; */
+      /* padding-right:4%; */
+      margin:100px auto;         
+      background:#fff;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.25);
+      position:relative; z-index:0;
+      contain:layout paint style;
+    }
+
+    /* 지도 영역 */
+    #RouteS1 .mapWrap{
+      grid-area:map;
+      position:relative;
+      min-height:clamp(420px, 70vh, 820px); /* 화면 높이에 자연스럽게 맞춤 */
+      background:#0e0e0f;
+      isolation:isolate;
+      /* 모바일 손가락 드래그 제스처 허용 */
+      touch-action:auto;
+    }
+
+    /* ✅ kakao roughmap 컨테이너를 강제로 섹션에 100% 채우고 포인터 이벤트 허용 */
+    #RouteS1 .root_daum_roughmap{
+      position:absolute; inset:0;
+      width:100% !important; height:100% !important;
+      pointer-events:auto;
+      z-index:1; /* 지도를 최상단으로 */
+    }
+    /* 내부 요소 높이 상쇄 및 드래그 이벤트 통과 */
+    #RouteS1 .root_daum_roughmap .wrap_map,
+    #RouteS1 .root_daum_roughmap .map_border,
+    #RouteS1 .root_daum_roughmap .map{
+      height:100% !important;
+      pointer-events:auto;
+    }
+
+    #RouteS1 .mapFallback{ /* iframe/지도 로드 실패 시 노출용 */
+      position:absolute; inset:0; display:grid; place-items:center;
+      color:#e5e7eb; background:linear-gradient(135deg,#202124,#16181d);
+      font-weight:600; letter-spacing:.05em;
+      pointer-events:none; /* ✅ 지도 조작 방해 금지 */
+      z-index:0;
+    }
+
+    /* 정보 패널 */
+    #RouteS1 .panel{
+      grid-area:panel;
+      background:
+        radial-gradient(480px 480px at 90% 20%, var(--ring) 0 60%, transparent 62%),
+        var(--panel);
+      padding:56px 48px 52px;
+      color:#f7f7f8;
+    }
+    #RouteS1 .title{
+      font-size:44px; line-height:1.15; font-weight:800; letter-spacing:-0.02em; margin:4px 0 36px;
+    }
+    #RouteS1 .rows{ display:grid; gap:22px; }
+    #RouteS1 .row{
+      display:grid; grid-template-columns: 96px 1fr; gap:18px; align-items:start;
+      padding:18px 0; border-top:1px solid var(--line);
+    }
+    #RouteS1 .row:first-child{ border-top:0; padding-top:0; }
+    #RouteS1 .label{ color:var(--label); font-size:14px; letter-spacing:.08em; font-weight:700; padding-top:2px; }
+    #RouteS1 .content{ color:var(--ink); font-size:16px; line-height:1.75; }
+    #RouteS1 .content .dim{ color:var(--muted); }
+
+    #RouteS1 .phoneBox{ padding-top:24px; margin-top:10px; }
+    #RouteS1 .phone{ font-size:42px; line-height:1.2; font-weight:800; letter-spacing:.02em; color:var(--em); white-space:nowrap; }
+
+    /* 반응형: 모바일에서 글자(패널)가 지도보다 위로 오도록 순서 전환 */
+    @media (max-width: 1100px){
+      #RouteS1{ grid-template-columns: 1fr 1fr;}
+    }
+    @media (max-width: 900px){
+      #RouteS1{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "panel"   /* 1) 패널 먼저 */
+          "map";    /* 2) 지도 다음 */
+        border-radius:0px;
+        margin:0 auto;
+      }
+      #RouteS1 .mapWrap{ min-height:60vh; }
+      #RouteS1 .panel{ padding:36px 22px 32px; }
+      #RouteS1 .title{ font-size:34px; margin-bottom:26px; }
+      #RouteS1 .row{ grid-template-columns: 1fr; gap:14px; padding:16px 20px; }
+      #RouteS1 .phone{ font-size:34px; }
+    }
+  </style>
+
+  <!-- 좌측: 지도 (카카오 지도 퍼가기 - 화면 너비/높이에 맞춰 자동 확장) -->
+  <div class="mapWrap">
+    <!-- 1) 지도 노드 -->
+    <div id="daumRoughmapContainer1762229503959" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+    <!-- 2) 설치 스크립트 (여러 지도를 쓸 경우, 페이지 전체에 1회만 포함) -->
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+    <!-- 3) 실행 스크립트 : 폭/높이를 100%로 세팅하여 섹션에 완전 맞춤 -->
+    <script charset="UTF-8">
+      (function(){
+        /* 카카오 퍼가기 실행 (요청하신 key/timestamp로 교체) */
+        new daum.roughmap.Lander({
+          "timestamp" : "1762229503959",
+          "key"       : "bkv9dz5rsn6",
+          "mapWidth"  : "100%",
+          "mapHeight" : "100%"
+        }).render();
+
+        /* 렌더 후에도 100% 유지 (일부 환경에서 인라인 px 강제되는 경우 보정) */
+        function fitKakaoMap(){
+          var sec  = document.getElementById('RouteS1');
+          if(!sec) return;
+          var wrap = sec.querySelector('.mapWrap');
+          var box  = sec.querySelector('.root_daum_roughmap'); /* ✅ ID 대신 클래스로 일반화 */
+          if(wrap && box){
+            box.style.width  = '100%';
+            box.style.height = wrap.clientHeight + 'px';
+            box.style.pointerEvents = 'auto'; /* ✅ 드래그 가능 */
+            box.style.zIndex = '1';
+          }
+          var mapInner = sec.querySelector('.root_daum_roughmap .map');
+          if(mapInner){ mapInner.style.pointerEvents = 'auto'; }
+        }
+        window.addEventListener('resize', fitKakaoMap, {passive:true});
+        /* 초기/비동기 렌더링 대비 다회 호출 */
+        setTimeout(fitKakaoMap, 200);
+        setTimeout(fitKakaoMap, 800);
+        setTimeout(fitKakaoMap, 1600);
+      })();
+    </script>
+
+    <div class="mapFallback" aria-hidden="true">MAP PREVIEW</div>
+  </div>
+
+  <!-- 우측: 정보 패널 -->
+  <aside class="panel">
+    <h2 class="title">오시는 길</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="label">지하철 이용시</div>
+        <div class="content">
+          6호선 녹사평역 2번 출구에서 직진 600m<br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="label">근처 버스</div>
+        <div class="content">
+          <span style="color:#87c800">용산02, 용산03</span><br><span style="color:#386de8">143, 401, 406</span><br>
+        <span style="color:#fc5852">4104, 5104, 9007</span></strong><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="label">주차이용</div>
+        <div class="content">
+          <strong>주차 이용 불가<br>대중교통 이용해주세요.</strong><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="label">문의 전화</div>
+        <div class="content phoneBox">
+          <div class="phone"><a href="tel:02-725-7525" style="color:#d9b58a;text-decoration:none;cursor:pointer;"><b>02-725-7525</b></a></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
+
+
+
 
 <section id="schedule1">
   <h2>
@@ -1032,12 +1696,12 @@ font-size: 18px;
 
     <div class="session">
       <div class="card">
-        <div class="time">15:00 ~ 15:40</div>
-        <h3>평정과 휴식으로 이끄는 7가지 마음기술</h3>
+        <div class="time">14:00 ~ 14:20</div>
+        <h3>강연1. 사형수 최후모습에서 본 인간의 본성</h3>
         <div class="profile">
           <!-- <img src="./img/profile3.jpg" > -->
           <div class="profile-text">
-            <span class="name">함영준 | 마음건강 길 대표</span>
+            <span class="name">함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표</span>
             <!-- <span class="title">마음건강 길 대표</span> -->
           </div>
         </div>
@@ -1046,13 +1710,13 @@ font-size: 18px;
 
     <div class="session">
       <div class="card">
-        <div class="time">15:50 ~ 16:30</div>
-        <h3>공황・불면・불안장애의 실전 치료법</h3>
+        <div class="time">14:20 ~ 15:00</div>
+        <h3>강연2. 수많은 임종현장에서 느낀 웰 다잉</h3>
         <!-- <p>고립과 무너진 자존감을 다시 세우는 치유의 길을 전합니다.</p> -->
         <div class="profile">
-          <!-- <img src="./img/prof-c.jpeg" alt="채정호 교수님"> -->
+          <!-- <img src="./img/prof-c.jpeg" alt="최준식 | 이화여대 명예교수님"> -->
           <div class="profile-text">
-            <span class="name">채정호 | 서울성모병원 정신의학과 교수</span>
+            <span class="name">홍진의 | 서울대학교병원 완화의료 간호사</span>
             <span class="title"></span>
           </div>
         </div>
@@ -1061,9 +1725,55 @@ font-size: 18px;
 
     <div class="session">
       <div class="card">
-        <div class="time">16:30 ~ 17:00</div>
-        <h3>청중과의 대화(Q&A), 사인회</h3>
+        <div class="time">15:00 ~ 15:10</div>
+        <h3>휴식</h3>
         <!-- <p>여러분의 질문을 자유롭게 적어보는 시간입니다.</p> -->
+      </div>
+    </div>
+
+       <div class="session">
+      <div class="card">
+        <div class="time">15:10 ~ 15:40</div>
+        <h3>공연</h3>
+        <!-- <p>고립과 무너진 자존감을 다시 세우는 치유의 길을 전합니다.</p> -->
+        <div class="profile">
+          <!-- <img src="./img/prof-c.jpeg" alt="최준식 | 이화여대 명예교수님"> -->
+          <div class="profile-text">
+            <span class="name">정수지 | 명상 피아니스트<br>이한나 | 소프라노 </span>
+            <span class="title"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+       <div class="session">
+      <div class="card">
+        <div class="time">15:40 ~ 16:30</div>
+        <h3>강연3. 사후생(死後生)을 긍정하는 5가지 근거</h3>
+        <!-- <p>고립과 무너진 자존감을 다시 세우는 치유의 길을 전합니다.</p> -->
+        <div class="profile">
+          <!-- <img src="./img/prof-c.jpeg" alt="최준식 | 이화여대 명예교수님"> -->
+          <div class="profile-text">
+            <span class="name">최준식 | 이화여대 한국학 명예교수</span>
+            <span class="title"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+       <div class="session">
+      <div class="card">
+        <div class="time">16:30 ~ 17:00</div>
+        <h3>청중과의 대화 (Q&A)</h3>
+        <!-- <p>고립과 무너진 자존감을 다시 세우는 치유의 길을 전합니다.</p> -->
+        <div class="profile">
+          <!-- <img src="./img/prof-c.jpeg" alt="최준식 | 이화여대 명예교수님"> -->
+          <div class="profile-text">
+            <span class="name">사회 : 함영준</span>
+            <span class="title"></span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1281,7 +1991,8 @@ font-size: 18px;
       </h2>
       <div class="info-content">
           <p class="font-bold text-xl mb-2">현장 참석 : 20,000원 <span style="color:#0062ff"></span></p>
-          <p class="font-bold text-xl mb-2">ZOOM 참여 : 10,000원 <span style="color:red;font-weight:bold;" class="blink">(연락처 기재 필수!)</span></p>
+          <p class="font-bold text-xl mb-2">ZOOM 참여 : 20,000원 <span style="color:red;font-weight:bold;" class="blink">(아래 링크로 신청 가능!)</span><br><br>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;">ZOOM 컨퍼런스 신청하기</a></p><br>
           <p class="font-bold text-xl mb-2">📞 02-725-7525 / 010-5385-0793</b></p>
           <p class="font-bold text-xl mb-2">📩 mindwellpath@gmail.com</b></p>
       </div>
@@ -1308,43 +2019,39 @@ font-size: 18px;
      Benefit Section (복사-붙여넣기용 완전 코드)
 ────────────────────────────────────────── -->
 <section id="benefit">
-  <div class="dr-grid">
-    <!-- ── TITLE ── -->
-    <!-- <div class="dr-heading">
-      <h2>
-        컨퍼런스 신청을 통해<br>
-        얻을 수 있는 <em><b>특별한 장점</b></em>
-      </h2>
-    </div> -->
+<div class="dr-grid">
+  <!-- ── TITLE ── -->
+  <!-- <div class="dr-heading">
+    <h2>
+      컨퍼런스 신청을 통해<br>
+      얻을 수 있는 <em><b>특별한 장점</b></em>
+    </h2>
+  </div> -->
 
-    <!-- ── CARD LIST ── -->
-    <ul class="dr-cards">
-      <li>
-        <figure class="dr-icon">
-          <span style="font-size:25px;">✅</span>
-        </figure>
-        <p>약에만 의존하지 않고도 얻을 수 있는 평화와 행복</p>
-      </li>
-      <li>
-        <figure class="dr-icon">
-          <span style="font-size:25px;">✅</span>
-        </figure>
-        <p>37년 임상 경험으로 전하는 다양한 치유・예방법</p>
-      </li>
-      <li>
-        <figure class="dr-icon">
-          <span style="font-size:25px;">✅</span>
-        </figure>
-        <p>실제로 우울을 이겨낸 사람의 실전 노하우</p>
-      </li>
-      <li>
-        <figure class="dr-icon">
-          <span style="font-size:25px;">✅</span>
-        </figure>
-        <p>청중과의 직접 대화를 통한 실질적 해법 모색</p>
-      </li>
-    </ul>
-  </div>
+  <!-- ── CARD LIST ── -->
+  <ul class="dr-cards">
+    <li>
+      <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+      <p>죽음학의 통찰을 통해 삶의 의미와 방향을 다시 찾습니다. </p>
+    </li>
+    <li>
+      <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+      <p>사후생에 대한 이해로 두려움을 줄이고 평온을 얻습니다.</p>
+    </li>
+    <li>
+      <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+      <p>임종 현장의 경험을 통해 삶의 소중함을 체감합니다.</p>
+    </li>
+    <li>
+      <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+      <p>음악 명상을 통해 내면이 정화되고 고요해집니다. </p>
+    </li>
+    <li>
+      <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+      <p>죽음을 성찰함으로써 현실에 더욱 진심으로 임하게 됩니다.</p>
+    </li>
+  </ul>
+</div>
 
   <style>
     /* ───────────────── benefit - STYLES ───────────────── */
@@ -1466,8 +2173,8 @@ font-size: 18px;
 <h3 class="title-main">📅&nbsp;&nbsp;프로그램 요약</h3>
 
 <div class="responsive-schedule">
-  <img src="./img/detail_pc.png" class="pc-schedule" alt="PC 스케줄 이미지">
-  <img src="./img/detail_mobile.png" class="mobile-schedule" alt="모바일 스케줄 이미지">
+  <img src="./img/8-pc.png" class="pc-schedule" alt="PC 스케줄 이미지">
+  <img src="./img/8-mobile.png" class="mobile-schedule" alt="모바일 스케줄 이미지">
 
   <div id="choice_p" ></div>
 </div>
@@ -1549,194 +2256,234 @@ font-size: 18px;
 </style>
 
 
-<!-- ✅ FAQ Section -->
-<div id="choice">
+<!-- 컨퍼런스 신청 (현장 버튼 + ZOOM 버튼: 가운데 정렬, 펼침 높이 자동 보정) -->
+<section id="choice" aria-label="컨퍼런스 신청 방법">
+  <style>
+    /* ====== Base ====== */
+    #choice{max-width:820px;margin:0 auto;padding:28px 20px;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Helvetica Neue",sans-serif}
+    .faq-headline{font-size:30px;font-weight:800;color:#111827;margin-bottom:8px;text-align:center}
+    .faq-subtext{font-size:20px;color:#6b7280;margin:0 auto 22px;text-align:center}
+
+    /* ====== CTA 버튼 (요청 디자인) ====== */
+    .cta-wrap{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:18px 0 24px;    flex-direction: column;}
+    .cta-btn{
+      appearance:none;border:1px solid #2563eb;
+      padding:14px 26px;border-radius:18px;
+      background:#2563eb;color:#fff;font-weight:800;font-size:20px;line-height:1;
+      /* box-shadow:0 4px 14px rgba(37,99,235,.18); */
+      transition:transform .06s ease,filter .2s ease,box-shadow .2s ease;
+      text-decoration:none;display:inline-flex;align-items:center;justify-content:center;
+    }
+ 
+    
+    .cta-btn:focus-visible{outline:3px solid rgba(37,99,235,.4);outline-offset:2px;border-radius:20px}
+
+    /* ====== 섹션 소제목 ====== */
+    .apply-label{font-size:22px;font-weight:900;margin:26px 0 12px;color:#0f172a;text-align:left}
+
+    /* ====== FAQ Cards ====== */
+    .faq-card{border-radius:16px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.06);margin-bottom:16px;overflow:hidden;transition:box-shadow .25s ease}
+    .faq-card:focus-within{box-shadow:0 6px 18px rgba(37,99,235,.16)}
+    .faq-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:transparent;border:none;font-size:18px;font-weight:700;color:#111827;cursor:pointer}
+    .faq-toggle:hover{background:#f9fafb}
+    .icon{font-size:24px;color:#2563eb;transition:transform .3s ease}
+    .faq-content{padding:0 22px;max-height:0;overflow:hidden;font-size:20px;color:#374151;background:#f9fafb;transition:max-height .35s ease,padding .2s ease;border-top:1px solid #e5e7eb}
+
+    .faq-card.active .faq-content{padding:18px 22px}
+    .faq-card.active .icon{transform:rotate(45deg)}
+
+    /* ====== 내부 토글 컨테이너 (기존 아이디 유지) ====== */
+    #toggleSection,#toggleSection1,#toggleSection2,#toggleSection3{overflow:hidden;max-height:0;transition:max-height .35s ease}
+    #toggleSection.active,#toggleSection1.active,#toggleSection2.active,#toggleSection3.active{max-height:2000px}
+
+    /* ====== Blink (요청에 존재하던 클래스) ====== */
+    .blink{animation:blinkFade 1.1s linear infinite}
+    @keyframes blinkFade{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
+
+    /* ====== Responsive ====== */
+    @media (max-width:560px){
+      .cta-btn{width:100%;font-size:18px;padding:14px 18px;border-radius:16px}
+      .faq-content{font-size:18px}
+    }
+    @media (max-width:400px){.faq-content{font-size:18px}}
+  </style>
+
   <h2 class="faq-headline">컨퍼런스 신청 방법</h2>
-  <p class="faq-subtext">원하는 조건에 맞는<br>방식을 안내드립니다.</p>
+  <p class="faq-subtext">원하는 방식으로 바로 신청하세요. 아래 상세 안내는 기본으로 모두 펼쳐져 있습니다.</p>
 
-  <!-- 탭 -->
-  <div class="tab-wrap">
-    <button class="tab-btn active" data-target="offlineTab">현장참가</button>
-    <button class="tab-btn" data-target="onlineTab">ZOOM(온라인) 시청</button>
+  <!-- 가운데 정렬 CTA 버튼 두 개 -->
+  <div class="cta-wrap" role="navigation" aria-label="신청 바로가기">
+    <a  class="cta-btn" data-open="offline" style="background:#fff;color:#0062ff;">현장참가</a>
+    
   </div>
 
-  <!-- 오프라인 신청 (원본 FAQ 그대로) -->
-  <div id="offlineTab" class="tab-panel show">
-    <div class="faq-card">
-      <button class="faq-toggle">
-        <span class="faq-title"><b>1. 간편 계좌이체</b></span>
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-content">
-        가장 간편하게 이용할 수 있는 방식입니다.<br><br>
-<b>[계좌번호: KB 002801-04-264807 마음건강길]</b><br><br>
-위 계좌로 입금(2만원)해주시면 신청이 완료됩니다.<br><br>
-<span class="blink" style="color:red;"><b>* 단 ZOOM은 [ZOOM(온라인) 시청]에서 하세요.</b></span>
-<br><br>
+  <!-- ====== 현장참가 ====== -->
 
-문의전화 : 02-725-7525, 010-5385-0793<br><br>
+  <!-- 1. 현장 간편 계좌이체 (기본 펼침) -->
+  <div class="faq-card active" data-group="offline">
+    <button class="faq-toggle" type="button" aria-expanded="true">
+      <span class="faq-title"><b>1. 간편 계좌이체</b></span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-content">
+      가장 간편하게 이용할 수 있는 방식입니다.<br><br>
+      <b>[계좌번호: KB 002801-04-264807 마음건강길]</b><br><br>
+      위 계좌로 입금(2만원)해주시면 신청이 완료됩니다.<br><br>
+      <span class="blink" style="color:#ef4444"><b>* ZOOM 시청은 아래 ‘ZOOM(온라인) 시청’ 안내를 확인하세요.</b></span>
+      <br><br>
+      문의전화 : 02-725-7525, 010-5385-0793<br><br>
+
+      <!-- 기존 숨김 컨테이너 유지 + 기본 활성화 -->
+      <div id="toggleSection3" class="active">
+        <!-- (필요 시 간편 등록 폼 위치) -->
       </div>
-      
-    <div id="toggleSection3">
-  
-      
-      <!-- <div id="form-survey" style="background: #fff;width:98%;border:1px solid #000;">
-       <div class="intro">
-       
-         <h1 style="line-height:160%;">간편 등록 후<br>행사 소식 및 정보 받기</h1>
-       </div>
-      
-       <div class="container">
-         <form action=""
-           id="1form_e11" method="POST" target="1hidden_iframe11" onsubmit="dll(); submitted=true;">
-           
-           <input type="hidden" name="entry.1533466749" id="1from" value="오프라인 계좌이체-소식혜택받기-포스터-v1" />
-      
-      
-           <label><p>1. 성함</p>
-             <input type="text" name="entry.323610470" id="1name" placeholder="성함 혹은 닉네임" maxlength="4" />
-           </label>
-      
-    
-      
-           <label><p>2. 휴대폰 번호 </p>
-             <input type="text" name="entry.1143600273" id="1phone" placeholder="휴대폰 번호" maxlength="11" />
-           </label>
-
-      
-           <label>
-             <input type="checkbox" checked id="1agree11" value="front-end" /> 개인정보동의
-           </label>
-      
-           <br><br>
-           <input class="submit-btn" type="submit" id="1send_message" disabled value="소식, 혜택 받기" />
-           <iframe name="1hidden_iframe11" id="1hidden_iframe11" style="display:none;" onload=""></iframe>
-         </form>
-       </div>
-      </div> -->
-      <br>
-      </div>
-    </div>
-
-
-
-    <div class="faq-card">
-      <button class="faq-toggle">
-        <span class="faq-title"><b>2. 현장 결제 (현금결제, 계좌이체)</b></span>
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-content">
-        단, 정원 120석 티켓 중 여분이 남아 있을 경우 가능합니다.<br>
-        티켓 판매 상황을 알아보려면 문의해주십시오.<br><br>문의전화 : 02-725-7525, 010-5385-0793<br>
-      </div>
-    </div>
-    <div class="faq-card">
-      <button class="faq-toggle">
-        <span class="faq-title"><b>3. 신용카드, 가상계좌 이용방법</b></span>
-        <span class="icon">+</span>
-      </button>
-      <!-- <div class="faq-content">
-        혼자만의 고립감을 구구해내는 치유 경험과 공동체 연결 방법을 알려드립니다.
-      </div> -->
     </div>
   </div>
 
-  <!-- 온라인 신청 (원본 FAQ 복제, 필요시 내부 문구만 별도 조정) -->
-  <div id="onlineTab" class="tab-panel">
-     <div class="faq-card">
-      <button class="faq-toggle">
-        <span class="faq-title"><b>1. ZOOM 간편 계좌이체</b></span>
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-content">
-        1. 아래 'ZOOM 컨퍼런스 신청하기' 버튼을 누르세요.<br>
-        2. 신청 이후 나타나는 계좌번호로 입금 진행<br>
-        3. 컨퍼런스 전날과 당일 날 접속 ZOOM 링크를 문자로 전달드립니다.
-        <br><br>
-   
-        문의전화 : 02-725-7525, 010-8798-2396<br><Br>
-
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 40px; color:#fff;background-color: #2563eb;border-radius:10px;">ZOOM 컨퍼런스 신청하기</a>
-    
-<br><br>
-      </div>
+  <!-- 2. 현장 결제 (기본 펼침) -->
+  <div class="faq-card active" data-group="offline">
+    <button class="faq-toggle" type="button" aria-expanded="true">
+      <span class="faq-title"><b>2. 현장 결제 (현금결제, 계좌이체)</b></span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-content">
+      단, 티켓 중 여분이 남아 있을 경우 가능합니다.<br>
+      티켓 판매 상황을 알아보려면 문의해주십시오.<br><br>
+      문의전화 : 02-725-7525, 010-5385-0793<br>
+      <div id="toggleSection" class="active"></div>
     </div>
+  </div><br><br><br>
+
+  <!-- ====== ZOOM(온라인) 시청 ====== -->
+
+   <div class="cta-wrap" role="navigation" aria-label="신청 바로가기">
+       <a  class="cta-btn" data-open="offline" style="background:#fff;color:#0062ff;">ZOOM (온라인) 신청</a>
     
-   
-    <div class="faq-card">
-      <button class="faq-toggle">
-        <span class="faq-title"><b>2. ZOOM 신용카드, 가상계좌 결제</b></span>
-        <span class="icon">+</span>
-      </button>
-      <!-- <div class="faq-content">
-        ZOOM 강좌 신용카드/가상계좌 결제 문의: 010-5385-0793
-      </div> -->
+  </div>
+
+
+
+    
+
+  <!-- 1. ZOOM 간편 계좌이체 (기본 펼침) -->
+  <div class="faq-card active" data-group="online">
+    <button class="faq-toggle" type="button" aria-expanded="true">
+      <span class="faq-title"><b>1. ZOOM 간편 계좌이체</b></span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-content">
+      1) 아래 ‘ZOOM 컨퍼런스 신청하기’를 누르세요<br>
+      2) 신청 이후 나타나는 계좌번호로 입금 진행<br>
+      3) 컨퍼런스 전날/당일 접속 ZOOM 링크를 문자로 전달드립니다.
+      <br><br>
+      문의전화 : 02-725-7525, 010-8798-2396<br><br>
+      <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" target="_blank" rel="noopener">ZOOM 컨퍼런스 신청하기</a>
+      <br><br>
+      <div id="toggleSection2" class="active"></div>
     </div>
   </div>
-</div>
 
-<!-- ✅ Toggle Section (Initially Hidden) -->
 
-<script>
-// 카테고리 탭
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('show'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.target).classList.add('show');
-    // FAQ 토글 초기화 (모든 toggleSection 닫기)
-    document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('active'));
-    ['toggleSection','toggleSection1','toggleSection2','toggleSection3'].forEach(id=>{
-      const el = document.getElementById(id); 
-      if(el) { el.classList.remove('active'); el.style.maxHeight = "0px"; }
-    });
-  });
-});
 
-// FAQ 토글
-document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
-  button.addEventListener('click', () => {
-    const card = button.closest('.faq-card');
-    const toggleSection   = document.getElementById("toggleSection");
-    const toggleSection1  = document.getElementById("toggleSection1");
-    const toggleSection2  = document.getElementById("toggleSection2");
-    const toggleSection3  = document.getElementById("toggleSection3");
-    const title = button.querySelector('.faq-title').textContent.trim();
+  <script>
+    (function(){
+      const root = document.getElementById('choice');
+      if(!root) return;
 
-    // 어떤 토글을 눌렀는지에 따라 targetSection 지정
-    let targetSection = null;
+      const cards = root.querySelectorAll('.faq-card');
 
-    if (title.includes("ZOOM 간편 계좌이체")) {
-      targetSection = toggleSection2;
-    } else if (title.includes("ZOOM 신용카드") || title.includes("ZOOM 가상계좌")) {
-      targetSection = toggleSection1;
-    } else if (index === 2 && toggleSection) {
-      targetSection = toggleSection;
-    } else if (title.includes("간편 계좌이체")) { // 오프라인 간편 계좌이체
-      targetSection = toggleSection3;
-    }
-
-    // 현재 클릭된 카드/섹션이 이미 열려 있다면 닫고, 아니면 열기
-    const alreadyActive = card.classList.contains('active');
-    card.parentElement.querySelectorAll('.faq-card').forEach(c => c.classList.remove('active'));
-    [toggleSection, toggleSection1, toggleSection2, toggleSection3].forEach(sec => {
-      if (sec) { sec.classList.remove("active"); sec.style.maxHeight = "0px"; }
-    });
-
-    if (!alreadyActive) {
-      card.classList.add('active');
-      if (targetSection) {
-        targetSection.classList.add("active");
-        targetSection.style.maxHeight = targetSection.scrollHeight + "px";
+      function setOpenHeight(content){
+        // 콘텐츠 실제 높이로 max-height 보정
+        content.style.maxHeight = content.scrollHeight + 'px';
       }
-    }
-    // else: 이미 열려있는 경우 → 모두 닫음 (위에서 처리)
-  });
-});
+      function expandInnerSections(content){
+        content.querySelectorAll('#toggleSection,#toggleSection1,#toggleSection2,#toggleSection3').forEach(sec=>{
+          if(sec.classList.contains('active')) sec.style.maxHeight = sec.scrollHeight + 'px';
+        });
+      }
+      function openCard(card){
+        const content = card.querySelector('.faq-content');
+        if(!content) return;
+        card.classList.add('active');
+        card.querySelector('.faq-toggle').setAttribute('aria-expanded','true');
+        expandInnerSections(content);
+        setOpenHeight(content);
+      }
+      function closeCard(card){
+        const content = card.querySelector('.faq-content');
+        if(!content) return;
+        card.classList.remove('active');
+        card.querySelector('.faq-toggle').setAttribute('aria-expanded','false');
+        content.style.maxHeight = '0px';
+        content.querySelectorAll('#toggleSection,#toggleSection1,#toggleSection2,#toggleSection3').forEach(sec=>{
+          sec.style.maxHeight = '0px';
+        });
+      }
 
+      // 초기: 모두 펼침 + 높이 보정
+      cards.forEach(openCard);
 
-</script>
+      // 리사이즈/폰트로드/이미지로드 시 높이 재계산
+      let tick;
+      function recomputeHeights(){
+        clearTimeout(tick);
+        tick = setTimeout(()=>{
+          cards.forEach(card=>{
+            if(card.classList.contains('active')){
+              const content = card.querySelector('.faq-content');
+              if(content){
+                setOpenHeight(content);
+                expandInnerSections(content);
+              }
+            }
+          });
+        }, 120);
+      }
+      window.addEventListener('resize', recomputeHeights);
+      document.fonts && document.fonts.ready && document.fonts.ready.then(recomputeHeights);
+      // 이미지 로딩 감지
+      root.querySelectorAll('img').forEach(img=>{
+        if(!img.complete){ img.addEventListener('load', recomputeHeights, {once:true}); }
+      });
+
+      // MutationObserver로 내부 DOM 변경 시 높이 자동 보정
+      const mo = new MutationObserver(recomputeHeights);
+      mo.observe(root, {subtree:true,childList:true,characterData:true});
+
+      // 토글 클릭(개별 카드 접기/펼치기)
+      root.querySelectorAll('.faq-toggle').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const card = btn.closest('.faq-card');
+          if(card.classList.contains('active')){ closeCard(card); }
+          else{ openCard(card); }
+        });
+        btn.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); btn.click(); }});
+      });
+
+      // 상단 CTA 버튼: 해당 그룹을 모두 펼치고 스크롤 이동
+      root.querySelectorAll('.cta-btn[data-open]').forEach(a=>{
+        a.addEventListener('click', (e)=>{
+          // 앵커 기본 스크롤은 유지(부드러운 사용자 환경을 위해 아래서 스무스 스크롤 재실행)
+          const targetGroup = a.dataset.open; // 'offline' | 'online'
+          const targetHeader = document.getElementById(targetGroup==='offline' ? 'offlineStart' : 'onlineStart');
+
+          // 해당 그룹 카드 모두 열기
+          cards.forEach(card=>{
+            if(card.dataset.group === targetGroup){ openCard(card); }
+          });
+
+          // 약간의 지연 후 스무스 스크롤 (높이 계산 완료 보장)
+          setTimeout(()=>{
+            if(targetHeader){
+              targetHeader.scrollIntoView({behavior:'smooth',block:'start'});
+            }
+          }, 60);
+        });
+      });
+    })();
+  </script>
+</section>
+
 
 
 
@@ -2200,231 +2947,252 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
 </div>
 
 <hr style="width:100%;">
-<h3 class="title-main">📷 지난 마음디톡스 ⑥</h3>
+<h3 class="title-main">📷 지난 마음디톡스</h3>
 
-<section id="conf-gallery">
-  <div style="text-align: -webkit-center;">
-  <img src="./img/poster6.png" style="width:96%;max-width:700px;border-radius:5px;"><br><br>
-</div>
-  <div class="conf-gallery__viewport">
-    <div class="conf-gallery__track">
-      <div class="conf-gallery__slide active">
-        <img src="./img/con4.jpg" alt="컨퍼런스 강의1">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con8.jpeg" alt="컨퍼런스 강의2">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con9.jpeg" alt="컨퍼런스 강의2">
-      </div>
-    
-      <div class="conf-gallery__slide">
-        <img src="./img/con11.jpeg" alt="컨퍼런스 강의2">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con2.jpg" alt="컨퍼런스 강의2">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con1.jpg" alt="컨퍼런스 강의3">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con5.jpg" alt="컨퍼런스 강의3">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con6.jpg" alt="컨퍼런스 강의3">
-      </div>
+
+<section id="confSwitch">
+  <style>
+    #confSwitch{
+      --ink:#0f172a;
+      --brand:#3669c9;
+      --panel:#ffffff;
+      --ring:#e8ecf7;
+      --shadow:0 10px 42px rgba(46,51,68,.13), 0 2px 10px rgba(110,120,170,.08);
+      font-family:'San Francisco','Segoe UI','Noto Sans KR',system-ui,-apple-system,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      padding:24px 12px 56px;
+    }
+    #confSwitch .cs-wrap{max-width:980px;margin:0 auto;}
+    #confSwitch .cs-header{display:flex;gap:8px;justify-content:center;align-items:center;margin:6px auto 18px;flex-wrap:wrap;}
+    #confSwitch .cs-tab{appearance:none;border:1.5px solid var(--ring);background:#fff;color:var(--ink);border-radius:999px;padding:.65rem 1.1rem;font-weight:700;font-size:.98rem;cursor:pointer;box-shadow:0 1px 4px rgba(15,23,42,.05);transition:.2s;}
+    #confSwitch .cs-tab:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(15,23,42,.06);}
+    #confSwitch .cs-tab[aria-selected="true"]{background:var(--brand);color:#fff;border-color:#a5c0e9;box-shadow:0 6px 18px rgba(54,105,201,.28);}
+    #confSwitch .conf-gallery{width:100%;max-width:740px;margin:18px auto 36px;display:none;}
+    #confSwitch .conf-gallery.is-active{display:block;}
+    #confSwitch .conf-poster{text-align:-webkit-center;margin:0 auto 30px;}
+    #confSwitch .conf-poster img{width:96%;max-width:700px;border-radius:6px;display:block;box-shadow:0 10px 24px rgba(15,23,42,.08);}
+    #confSwitch .conf-gallery__viewport{position:relative;overflow:hidden;border-radius:26px;box-shadow:var(--shadow);background:var(--panel);}
+    #confSwitch .conf-gallery__track{display:flex;transition:transform .55s cubic-bezier(.66,.1,.33,.9);touch-action:pan-y;}
+    #confSwitch .conf-gallery__slide{min-width:100%;user-select:none;pointer-events:none;opacity:.55;transform:scale(.97);transition:.42s;display:flex;align-items:center;justify-content:center;background:#f7f8fa;filter:grayscale(.12) brightness(.98);}
+    #confSwitch .conf-gallery__slide.active{opacity:1;pointer-events:auto;filter:none;z-index:2;transform:scale(1);}
+    #confSwitch .conf-gallery__slide img{display:block;width:100%;height:360px;object-fit:cover;border-radius:26px;box-shadow:0 4px 18px rgba(37,99,235,.07);background:#f5f7fb;}
+    #confSwitch .conf-gallery__arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.92);border:none;font-size:2.4rem;font-weight:600;color:var(--brand);box-shadow:0 1px 8px #d3d8e4;border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;opacity:.94;transition:.23s;}
+    #confSwitch .conf-gallery__arrow.left{left:18px;}
+    #confSwitch .conf-gallery__arrow.right{right:18px;}
+    #confSwitch .conf-gallery__arrow:hover{background:var(--brand);color:#fff;}
+    #confSwitch .conf-gallery__dots{position:absolute;bottom:12px;left:0;width:100%;text-align:center;z-index:20;}
+    #confSwitch .conf-gallery__dots .dot{display:inline-block;width:10px;height:10px;margin:0 5px;background:#e5e8f5;border-radius:50%;box-shadow:0 1px 5px #e5e9f6;cursor:pointer;transition:.25s;border:2px solid #f0f2fa;}
+    #confSwitch .conf-gallery__dots .dot.active{background:var(--brand);border:2px solid #a5c0e9;}
+    #confSwitch .conf-gallery__thumbs{display:flex;gap:10px;justify-content:center;margin:16px auto 0;padding:0 4px;overflow-x:auto;max-width:98vw;}
+    #confSwitch .conf-gallery__thumbs img{width:74px;height:44px;object-fit:cover;border-radius:12px;cursor:pointer;opacity:.48;border:2.5px solid #eaecee;box-shadow:0 2px 6px #e9eef4;transition:.25s;}
+    #confSwitch .conf-gallery__thumbs img.active{opacity:1;border:2.5px solid var(--brand);}
+    @media(max-width:900px){#confSwitch .conf-gallery{max-width:100vw;}#confSwitch .conf-gallery__slide img{border-radius:17px;}}
+    @media(max-width:600px){#confSwitch .conf-gallery__slide img{border-radius:11px;}#confSwitch .conf-gallery__viewport{border-radius:14px;}}
+  </style>
+  <div class="cs-wrap">
+    <div class="cs-header" role="tablist">
+      <button class="cs-tab" role="tab" aria-selected="true" data-target="md7">마음디톡스 7</button>
+      <button class="cs-tab" role="tab" aria-selected="false" data-target="md6">마음디톡스 6</button>
     </div>
-    <button class="conf-gallery__arrow left">&#10094;</button>
-    <button class="conf-gallery__arrow right">&#10095;</button>
-    <div class="conf-gallery__dots"></div>
-  </div>
-  <div class="conf-gallery__thumbs">
-    <!-- 썸네일은 JS에서 자동 생성 -->
+    <section id="md7" class="conf-gallery is-active">
+      <div class="conf-poster"><img src="./img/poster-7.png" alt="마음디톡스 7 포스터"></div>
+      <div class="conf-gallery__viewport">
+        <div class="conf-gallery__track">
+          <div class="conf-gallery__slide active"><img src="./img/7-11.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/7-2.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/7-3.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/7-4.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/7-5.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/7-6.jpg" alt=""></div>
+        </div>
+        <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
+        <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
+        <div class="conf-gallery__dots" aria-hidden="true"></div>
+      </div>
+      <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
+    </section>
+    <section id="md6" class="conf-gallery">
+      <div class="conf-poster"><img src="./img/poster6.png" alt="마음디톡스 6 포스터"></div>
+      <div class="conf-gallery__viewport">
+        <div class="conf-gallery__track">
+          <div class="conf-gallery__slide active"><img src="./img/con4.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con8.jpeg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con9.jpeg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con11.jpeg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con2.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con1.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con5.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con6.jpg" alt=""></div>
+        </div>
+        <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
+        <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
+        <div class="conf-gallery__dots" aria-hidden="true"></div>
+      </div>
+      <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
+    </section>
   </div>
 </section>
 
-<style>
-#conf-gallery { width:100%; max-width:740px; margin:40px auto 36px auto; padding:0; font-family:'San Francisco','Segoe UI','Noto Sans KR',Arial,sans-serif;}
-
-#conf-gallery h2{
-    font-size:36px;
-    font-weight:800;
-    text-align:center;
-    line-height:1.3;
-    margin-bottom:56px;
-  }
-.conf-gallery__viewport {position:relative;overflow:hidden;border-radius:26px;box-shadow:0 10px 42px 0 rgba(46,51,68,0.13),0 2px 10px 0 rgba(110,120,170,0.08);background:#fff;}
-.conf-gallery__track {display:flex;transition:transform .55s cubic-bezier(.66,.1,.33,.9);will-change:transform;touch-action:pan-y;}
-.conf-gallery__slide {min-width:100%;user-select:none;pointer-events:none;opacity:.55;transform:scale(.97);transition:opacity .42s,transform .44s;display:flex;align-items:center;justify-content:center;background:#f7f8fa;filter:grayscale(.12) brightness(.98);}
-.conf-gallery__slide.active {opacity:1;pointer-events:auto;filter:none;z-index:2;transform:scale(1);}
-.conf-gallery__slide img {display:block;width:100%;height:360px;object-fit:cover;border-radius:26px;box-shadow:0 4px 18px 0 rgba(37,99,235,0.07);background:#f5f7fb;transition:box-shadow .3s;}
-.conf-gallery__arrow {position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.90);border:none;outline:none;font-size:2.4rem;font-weight:600;color:#3669c9;box-shadow:0 1px 8px #d3d8e4;border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;opacity:.94;transition:background .23s,color .23s,box-shadow .23s;backdrop-filter:blur(2px);}
-.conf-gallery__arrow.left { left: 18px;}
-.conf-gallery__arrow.right { right: 18px;}
-.conf-gallery__arrow:hover, .conf-gallery__arrow:focus { background: #3669c9; color: #fff;}
-.conf-gallery__dots {position:absolute;bottom:12px;left:0;width:100%;text-align:center;z-index:20;}
-.conf-gallery__dots .dot {display:inline-block;width:10px;height:10px;margin:0 5px;background:#e5e8f5;border-radius:50%;box-shadow:0 1px 5px #e5e9f6;cursor:pointer;transition:background .25s, border .18s;border:2px solid #f0f2fa;}
-.conf-gallery__dots .dot.active {background:#3669c9;border:2px solid #a5c0e9;}
-.conf-gallery__thumbs {display:flex;gap:10px;justify-content:center;margin:16px auto 0 auto;padding:0 4px;overflow-x:auto;max-width:98vw;}
-.conf-gallery__thumbs img {width:74px;height:44px;object-fit:cover;border-radius:12px;cursor:pointer;opacity:.48;border:2.5px solid #eaecee;box-shadow:0 2px 6px #e9eef4;transition:opacity .25s, border .26s;}
-.conf-gallery__thumbs img.active {opacity:1;border:2.5px solid #3669c9;}
-@media (max-width:900px) {#conf-gallery{max-width:100vw;}.conf-gallery__slide img{border-radius:17px;}}
-@media (max-width:600px) {.conf-gallery__slide img{border-radius:11px;}.conf-gallery__viewport{border-radius:14px;}}
-
-@media(max-width:768px){
-   
-  #conf-gallery h2{font-size:26px;margin-bottom:36px;}
-  }
-</style>
-
 <script>
-(() => {
-  document.addEventListener('DOMContentLoaded', () => {
-    const sec = document.getElementById('conf-gallery');
-    if (!sec) return;
-    const track = sec.querySelector('.conf-gallery__track');
-    let slides = [...sec.querySelectorAll('.conf-gallery__slide')];
-    const leftBtn = sec.querySelector('.conf-gallery__arrow.left');
-    const rightBtn = sec.querySelector('.conf-gallery__arrow.right');
-    const dotsBox = sec.querySelector('.conf-gallery__dots');
-    const thumbsBox = sec.querySelector('.conf-gallery__thumbs');
-    let cur = 0, down = false, sx = 0, dx = 0, auto;
-    const SLIDE_MS = 4800;
-    let slideCount = slides.length;
+(function(){
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const root = document.getElementById('confSwitch');
+    const tabs = [...root.querySelectorAll('.cs-tab')];
+    const galleries = [...root.querySelectorAll('.conf-gallery')];
 
-    // 무한 슬라이드 복제
-    const cloneFirst = slides[0].cloneNode(true);
-    const cloneLast = slides[slideCount-1].cloneNode(true);
-    track.insertBefore(cloneLast, slides[0]);
-    track.appendChild(cloneFirst);
-    slides = [...sec.querySelectorAll('.conf-gallery__slide')];
+    // ▼ ▼ 콘텐츠 스위칭 제어: con-6 / con-7 섹션 토글 (본문 어디에 있어도 작동)
+    const CONTENT_SELECTOR_6 = '.con-6';
+    const CONTENT_SELECTOR_7 = '.con-7';
 
-    // 도트 & 썸네일
-    for(let i=0; i<slideCount; ++i) {
-      const dot = document.createElement('span');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => goTo(i));
-      dotsBox.appendChild(dot);
-
-      const img = slides[i+1].querySelector('img');
-      const thumb = document.createElement('img');
-      thumb.src = img.src; thumb.alt = img.alt||'';
-      thumb.className = (i===0 ? 'active':'');
-      thumb.addEventListener('click', () => goTo(i));
-      thumbsBox.appendChild(thumb);
-    }
-    const dots = [...dotsBox.children], thumbs = [...thumbsBox.children];
-
-    // 트랙 위치
-    function updatePosition(jump) {
-      track.style.transition = jump ? 'none' : 'transform .55s cubic-bezier(.66,.1,.33,.9)';
-      track.style.transform = `translateX(${-((cur+1)*100)}%)`;
-      slides.forEach(s=>s.classList.remove('active'));
-      slides[cur+1].classList.add('active');
-      dots.forEach(d=>d.classList.remove('active'));
-      dots[(cur+slideCount)%slideCount].classList.add('active');
-      thumbs.forEach(t=>t.classList.remove('active'));
-      thumbs[(cur+slideCount)%slideCount].classList.add('active');
+    function setContentVisibility(targetId){
+      document.body.setAttribute('data-conf', targetId); // CSS 훅
+      const showSel = (targetId==='md7') ? CONTENT_SELECTOR_7 : CONTENT_SELECTOR_6;
+      const hideSel = (targetId==='md7') ? CONTENT_SELECTOR_6 : CONTENT_SELECTOR_7;
+      document.querySelectorAll(showSel).forEach(el=>{ el.style.display=''; el.hidden=false; });
+      document.querySelectorAll(hideSel).forEach(el=>{ el.style.display='none'; el.hidden=true; });
+      // 보이는 섹션 내 슬라이더/마키 재가동
+      resumeIn(document.querySelectorAll(showSel));
+      pauseIn(document.querySelectorAll(hideSel));
     }
 
-    function goTo(idx, manual = true) {
-      cur = idx;
-      updatePosition(false);
-      if (manual) resetAuto();
+    function activateConf(targetId){
+      galleries.forEach(sec=>sec.classList.toggle('is-active', sec.id===targetId));
+      tabs.forEach(btn=>btn.setAttribute('aria-selected', btn.dataset.target===targetId ? 'true':'false'));
+      setContentVisibility(targetId);
     }
-    function next() { goTo(cur+1); }
-    function prev() { goTo(cur-1); }
-    function resetAuto() {
-      clearInterval(auto);
-      auto = setInterval(() => goTo(cur+1, false), SLIDE_MS);
-    }
-    resetAuto();
 
-    // 트랙 시작 위치
-    updatePosition(true);
+    tabs.forEach(btn=>btn.addEventListener('click', ()=>activateConf(btn.dataset.target)));
 
-    // 트랜지션 끝: 점프도 부드럽게! (requestAnimationFrame)
-    track.addEventListener('transitionend', () => {
-      if (cur < 0) {
-        cur = slideCount-1;
-        // 트랜지션 끄고 바로 점프(끊김 방지)
-        requestAnimationFrame(() => {
-          updatePosition(true);
+    // ▼ ▼ 갤러리 클래스 (원본 유지 + 경계/재가동 개선)
+    class ConfGallery{
+      constructor(section){
+        this.sec=section; this.track=section.querySelector('.conf-gallery__track');
+        this.slides=[...section.querySelectorAll('.conf-gallery__slide')];
+        this.leftBtn=section.querySelector('.conf-gallery__arrow.left');
+        this.rightBtn=section.querySelector('.conf-gallery__arrow.right');
+        this.dotsBox=section.querySelector('.conf-gallery__dots');
+        this.thumbsBox=section.querySelector('.conf-gallery__thumbs');
+        this.cur=0; this.auto=null; this.SLIDE_MS=4800; this.slideCount=this.slides.length;
+
+        const firstClone=this.slides[0].cloneNode(true);
+        const lastClone=this.slides[this.slideCount-1].cloneNode(true);
+        this.track.insertBefore(lastClone, this.slides[0]);
+        this.track.appendChild(firstClone);
+        this.slides=[...section.querySelectorAll('.conf-gallery__slide')];
+
+        for(let i=0;i<this.slideCount;i++){
+          const dot=document.createElement('span');
+          dot.className='dot'+(i===0?' active':'');
+          dot.onclick=()=>this.goTo(i);
+          this.dotsBox.appendChild(dot);
+
+          const img=this.slides[i+1].querySelector('img');
+          const th=document.createElement('img');
+          th.src=img.src;
+          th.className=(i===0?'active':'');
+          th.loading='lazy';
+          th.decoding='async';
+          th.onclick=()=>this.goTo(i);
+          this.thumbsBox.appendChild(th);
+        }
+        this.dots=[...this.dotsBox.children];
+        this.thumbs=[...this.thumbsBox.children];
+
+        this.updatePosition(true);
+        this.resetAuto();
+
+        this.leftBtn.onclick=()=>this.prev();
+        this.rightBtn.onclick=()=>this.next();
+
+        const drag = {
+          down:false, sx:0, dx:0
+        };
+        const applyDragMove = (x)=> {
+          drag.dx = x - drag.sx;
+          this.track.style.transform = `translateX(${-((this.cur+1)*100)+(drag.dx/this.track.offsetWidth*100)}%)`;
+        };
+        this.track.addEventListener('mousedown',e=>{drag.down=true;drag.sx=e.clientX;drag.dx=0;this.track.style.transition='none';});
+        this.track.addEventListener('mousemove',e=>{if(!drag.down) return; applyDragMove(e.clientX);});
+        window.addEventListener('mouseup',()=>{if(!drag.down) return; if(drag.dx>40)this.prev(); else if(drag.dx<-40)this.next(); else this.updatePosition(false); drag.down=false;});
+
+        this.track.addEventListener('touchstart',e=>{drag.down=true;drag.sx=e.touches[0].clientX;drag.dx=0;this.track.style.transition='none';},{passive:true});
+        window.addEventListener('touchmove',e=>{if(!drag.down) return; applyDragMove(e.touches[0].clientX);},{passive:true});
+        window.addEventListener('touchend',()=>{if(!drag.down) return; if(drag.dx>24)this.prev(); else if(drag.dx<-24)this.next(); else this.updatePosition(false); drag.down=false;});
+
+        this.track.addEventListener('transitionend',()=>{
+          if(this.cur<0){ this.cur=this.slideCount-1; requestAnimationFrame(()=>this.updatePosition(true)); }
+          else if(this.cur>=this.slideCount){ this.cur=0; requestAnimationFrame(()=>this.updatePosition(true)); }
         });
-      } else if (cur >= slideCount) {
-        cur = 0;
-        requestAnimationFrame(() => {
-          updatePosition(true);
-        });
+
+        this.sec.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.preventDefault()));
+
+        // 뷰포트 기반 일시정지/재시작
+        const io = new IntersectionObserver(entries=>{
+          entries.forEach(en=>{
+            if(en.isIntersecting) this.resetAuto();
+            else this.pauseAuto();
+          });
+        },{threshold:0.1});
+        io.observe(this.sec);
       }
-    });
+      updatePosition(jump){
+        this.track.style.transition = jump?'none':'transform .55s cubic-bezier(.66,.1,.33,.9)';
+        this.track.style.transform = `translateX(${-((this.cur+1)*100)}%)`;
+        this.slides.forEach(s=>s.classList.remove('active'));
+        this.slides[this.cur+1]?.classList.add('active');
+        const idx=(this.cur+this.slideCount)%this.slideCount;
+        this.dots.forEach(d=>d.classList.remove('active'));
+        this.thumbs.forEach(t=>t.classList.remove('active'));
+        this.dots[idx]?.classList.add('active');
+        this.thumbs[idx]?.classList.add('active');
+      }
+      resetAuto(){
+        this.pauseAuto();
+        this.auto=setInterval(()=>this.goTo(this.cur+1,false), this.SLIDE_MS);
+      }
+      pauseAuto(){ clearInterval(this.auto); this.auto=null; }
+      goTo(i,manual=true){ this.cur=i; this.updatePosition(false); if(manual) this.resetAuto(); }
+      next(){ this.goTo(this.cur+1); }
+      prev(){ this.goTo(this.cur-1); }
+    }
 
-    leftBtn.addEventListener('click', prev);
-    rightBtn.addEventListener('click', next);
+    galleries.forEach(sec=>new ConfGallery(sec));
 
-    // 드래그/터치
-    track.addEventListener('mousedown', e => { down=true;sx=e.clientX;dx=0;track.style.transition='none';e.preventDefault();});
-    track.addEventListener('mousemove', e => {
-      if (!down) return;
-      dx = e.clientX - sx;
-      track.style.transform = `translateX(${-((cur+1)*100)+(dx/track.offsetWidth*100)}%)`;
-    });
-    track.addEventListener('mouseup', e => {
-      if (!down) return;
-      if (dx > 40) prev();
-      else if (dx < -40) next();
-      else updatePosition(false);
-      down = false; dx = 0;
-    });
-    track.addEventListener('mouseleave', () => { if (down) updatePosition(false); down = false; dx=0; });
+    // 초기가시 상태 세팅
+    activateConf('md7');
 
-    // 이미지 드래그 미리보기 방지
-    sec.querySelectorAll('img').forEach(img => {
-      img.addEventListener('dragstart', e => e.preventDefault());
-    });
-
-    // 모바일 터치
-    track.addEventListener('touchstart', e => { sx=e.touches[0].clientX; down=true;dx=0;track.style.transition='none'; });
-    track.addEventListener('touchmove', e => {
-      if (!down) return;
-      dx = e.touches[0].clientX - sx;
-      track.style.transform = `translateX(${-((cur+1)*100)+(dx/track.offsetWidth*100)}%)`;
-    });
-    track.addEventListener('touchend', e => {
-      if (!down) return;
-      if (dx > 24) prev();
-      else if (dx < -24) next();
-      else updatePosition(false);
-      down = false; dx = 0;
-    });
+    // 유틸: 보이는/숨김 컨테이너내 애니메이션 일시정지/재개
+    function pauseIn(nodeList){
+      nodeList.forEach(el=>{
+        el.querySelectorAll('[data-marquee-id]').forEach(n=>n.__pause && n.__pause());
+        el.querySelectorAll('.bns2-viewport').forEach(v=>v.__pause && v.__pause());
+      });
+    }
+    function resumeIn(nodeList){
+      nodeList.forEach(el=>{
+        el.querySelectorAll('[data-marquee-id]').forEach(n=>n.__resume && n.__resume());
+        el.querySelectorAll('.bns2-viewport').forEach(v=>v.__resume && v.__resume());
+      });
+    }
   });
 })();
 </script>
 
-
 <hr style="width:100%;">
 <h3 class="title-main">💌 프로그램 후기</h3>
-
-
-
-
 
 <style>
   /* ─────────  LOAN TESTIMONIALS ONLY  ───────── */
   #testimonials,
   #testimonials *{box-sizing:border-box;font-family:'Noto Sans KR',sans-serif;}
-  
-  /* 컬러 팔레트 (필요하면 여기만 수정) */
   #testimonials{
-    --bg:#ffffff;            /* 섹션 배경 */
-    --text:#111111;          /* 기본 글자색 */
-    --muted:#6f6f75;         /* 보조 글자 */
-    --primary:#0062ff;       /* 딥블루 포인트 */
-    --card-bg:#f9fafc;       /* 카드 배경 */
-    --card-border:#e8ebf0;   /* 카드 테두리 */
+    --bg:#ffffff;
+    --text:#111111;
+    --muted:#6f6f75;
+    --primary:#0062ff;
+    --card-bg:#f9fafc;
+    --card-border:#e8ebf0;
   }
-  
-  /* 섹션 레이아웃 */
   #testimonials{
     background:var(--bg);
     color:var(--text);
@@ -2438,15 +3206,11 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
     line-height:1.3;
     margin-bottom:56px;
   }
-  
-  /* 슬라이드 행 */
   #testimonials .marquee-row{
     display:flex;
     gap:32px;
     will-change:transform;
   }
-  
-  /* 카드 디자인 */
   #testimonials .testimonial-card{
     flex:0 0 320px;
     background:var(--card-bg);
@@ -2457,40 +3221,37 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
     box-shadow:0 12px 28px rgba(0,0,0,.06);
     transition:transform .3s;
   }
-  #testimonials .testimonial-card:hover{
-    transform:translateY(-6px);
-  }
+  #testimonials .testimonial-card:hover{ transform:translateY(-6px); }
   #testimonials .testimonial-card q{
     display:block;
     font-size:18px;
     font-weight:600;
     margin-bottom:24px;
   }
-  #testimonials .testimonial-card .author{
-    font-size:15px;
-    color:var(--muted);
-  }
-  
-  /* 두 행 사이 여백 */
+  #testimonials .testimonial-card .author{ font-size:15px; color:var(--muted); }
   #testimonials .row-gap{height:36px;}
-  
-  /* ─ 모바일 ─ */
   @media(max-width:768px){
     #testimonials{padding:60px 4vw;}
     #testimonials h2{font-size:26px;margin-bottom:36px;}
-    #testimonials .testimonial-card{
-      flex:0 0 240px;
-      padding:26px 22px;
-    }
+    #testimonials .testimonial-card{flex:0 0 240px;padding:26px 22px;}
     #testimonials .testimonial-card q{font-size:16px;}
   }
-  </style>
-  
-  <section id="testimonials">
-  <h2>참가자 분들의 실제 후기</h2>
 
-  <!-- 위쪽 행(→) -->
-  <div class="marquee-row top">
+  /* ▼ 탭에 따른 내용 표시 제어 */
+  .con-6,.con-7{display:none;}
+  body[data-conf="md6"] .con-6{display:block;}
+  body[data-conf="md7"] .con-7{display:block;}
+</style>
+
+<section id="testimonials" class="con-6">
+  <h2>참가자 분들의 실제 후기</h2>
+  <div class="marquee-row top" data-marquee-row></div>
+  <script>
+    // 원본 내용 그대로 유지 (JS로 주입하여 중복 ID 안전 초기화)
+    (function(){
+      const host = document.currentScript.previousElementSibling;
+      if(host && host.matches('.marquee-row.top')){
+        host.innerHTML = `
     <article class="testimonial-card">
       <q>세 분의 전문가 모두 깊은 삶의 통찰을 나눠주셔서 감동이 컸습니다.<br>
       특히 마가스님의 생활 수행법은 일상에서 바로 실천할 수 있어 큰 도움이 됐어요.</q>
@@ -2510,14 +3271,19 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
       <q>청중과의 대화 시간 덕분에 쉽게 드러내기 어려운 우울의 이야기도 진솔하게 나눌 수 있었고,<br>
         직접 그 시간을 견뎌온 분들의 진심 어린 답변 덕분에 큰 위로와 힘을 얻었습니다.</q>
       <p class="author">50대 참가자 한xx</p>
-    </article>
-    
-  </div>
+    </article>`;
+      }
+    })();
+  </script>
 
   <div class="row-gap"></div>
 
-  <!-- 아래쪽 행(←) -->
-  <div class="marquee-row bottom">
+  <div class="marquee-row bottom" data-marquee-row></div>
+  <script>
+    (function(){
+      const host = document.currentScript.previousElementSibling;
+      if(host && host.matches('.marquee-row.bottom')){
+        host.innerHTML = `
     <article class="testimonial-card">
       <q>실제 상황에 적용 가능한 내용이 많아 바로 실천할 수 있겠다는 자신감이 생겼습니다.<br>
       특히 마가스님과 함영준 대표님의 강의가 인상 깊었어요.</q>
@@ -2537,103 +3303,215 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
       <q>마가스님의 강의를 들으며, 그동안 자책하던 나 자신을 조금씩 사랑하고 보듬을 수 있게 되었습니다.<br>
         무엇보다 바로 실천할 수 있다는 점이 큰 도움이 되었어요.</q>
       <p class="author">60대 참가자 조xx</p>
-    </article>
-  </div>
+    </article>`;
+      }
+    })();
+  </script>
 </section>
 
-  
+<section id="testimonials" class="con-7">
+  <h2>참가자 분들의 실제 후기</h2>
+  <div class="marquee-row top" data-marquee-row></div>
+  <script>
+    (function(){
+      const host = document.currentScript.previousElementSibling;
+      if(host && host.matches('.marquee-row.top')){
+        host.innerHTML = `
+    <article class="testimonial-card">
+      <q>채정호 교수님 강연 중 가장 중요한 건 수용이라고 하는게 인상적이었고<br>질병이든 뭐든 의지로 재단하는게 위험하다는 말씀도 인상적이었다.</q>
+      <p class="author">30대 참가자 신xx</p>
+    </article>
+    <article class="testimonial-card">
+      <q>마음기술 + 마음 근력 + 선업.
+내 인생을 그대로 받아들이지 않으면 우울하다는 것을 크게 느꼈습니다.</q>
+      <p class="author">참가자 (익명)</p>
+    </article>
+    <article class="testimonial-card">
+      <q>제가 평소에 느꼈던 일들에 대하여 의학적 관점에서 이해할 수 있었습니다.</q>
+      <p class="author">70대 참가자 박xx</p>
+    </article>`;
+      }
+    })();
+  </script>
+
+  <div class="row-gap"></div>
+
+  <div class="marquee-row bottom" data-marquee-row></div>
+  <script>
+    (function(){
+      const host = document.currentScript.previousElementSibling;
+      if(host && host.matches('.marquee-row.bottom')){
+        host.innerHTML = `
+    <article class="testimonial-card">
+      <q>기대 이상으로 내용도 알차고 실질적인 도움도 되었습니다 솔직하고 진실한 경험담이 와닿았습니다</q>
+      <p class="author">50대 참가자(익명)</p>
+    </article>
+    <article class="testimonial-card">
+      <q>정신건강에 있어 간단 명료한 강의에 인상 깊었고,
+치료법 또한 명료한 답을 주시는 것 같아 인상 깊었습니다.
+</q>
+      <p class="author">50대 참가자(익명)</p>
+    </article>
+    <article class="testimonial-card">
+      <q>7가지 치유법, 우울증의 세분화 강의 두분의 강의는 최고였습니다!</q>
+      <p class="author">60대 참가자 (익명)</p>
+    </article>
+    <article class="testimonial-card">
+      <q>불안과 우울, 공화 장체는 병이 아니라는 것이 인상 깊었다.
+뜻 깊은 강연을 들을 수 있어 좋았습니다.</q>
+      <p class="author">20대 참가자 박xx</p>
+    </article>`;
+      }
+    })();
+  </script>
+</section>
+
 <script>
-  /* ─── 무한 슬라이드 (부드러운 멈춤/재시작 포함) ─── */
+/* ─── 무한 슬라이드 (뷰포트 기반 일시정지/재시작 포함, 재진입시 자동 재개) ─── */
+(function(){
+  let marqueeCounter = 0;
+
   function initMarquee(row, { direction = 'left', speed = 30 } = {}) {
+    if (!row || row.__inited) return;
+    row.__inited = true;
+
     const originals = [...row.children];
+    // 아무 카드도 없으면 종료
+    if (originals.length === 0) return;
+
     originals.forEach(c => row.appendChild(c.cloneNode(true)));
-  
-    const origW = originals.reduce((w, el) => w + el.getBoundingClientRect().width + 32, -32);
+
+    const gap = 32;
+    const origW = originals.reduce((w, el) => w + el.getBoundingClientRect().width + gap, -gap);
     const dir = direction === 'left' ? -1 : 1;
     let pos = 0;
     let last = performance.now();
     let isPaused = false;
     let rafId;
-  
+
+    const id = ++marqueeCounter;
+    row.dataset.marqueeId = id;
+
     function step(now) {
-      if (!isPaused) {
+      if (!isPaused && row.offsetParent !== null) {
         const dt = (now - last) / 1000;
         pos += dir * speed * dt;
-  
+
         if (dir === -1 && Math.abs(pos) >= origW) pos += origW;
         if (dir === 1 && pos >= 0) pos -= origW;
-  
+
         row.style.transform = `translateX(${pos}px)`;
         last = now;
+      } else {
+        last = now; // 일시정지 동안 시간 기준점 갱신
       }
       rafId = requestAnimationFrame(step);
     }
-  
-    function pause() {
-      isPaused = true;
-    }
-  
-    function resume() {
-      last = performance.now(); // resume 기준 시간 초기화
-      isPaused = false;
-    }
-  
-    // 이벤트 리스너
-    row.addEventListener('mouseenter', pause); // PC
+
+    function pause(){ isPaused = true; }
+    function resume(){ last = performance.now(); isPaused = false; }
+
+    row.__pause = pause;
+    row.__resume = resume;
+
+    row.addEventListener('mouseenter', pause);
     row.addEventListener('mouseleave', resume);
-    row.addEventListener('touchstart', pause, { passive: true }); // Mobile
+    row.addEventListener('touchstart', pause, { passive: true });
     row.addEventListener('touchend', resume);
-  
-    // 슬라이드 시작
+
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(en=>{
+        if (en.isIntersecting) resume();
+        else pause();
+      });
+    },{threshold:0.05});
+    io.observe(row);
+
     rafId = requestAnimationFrame(step);
   }
-  
-  window.addEventListener('DOMContentLoaded', () => {
-    initMarquee(document.querySelector('#testimonials .top'), { direction: 'right', speed: 55 });
-    initMarquee(document.querySelector('#testimonials .bottom'), { direction: 'left', speed: 55 });
-  });
-  </script>
 
-<section id="blog-news-slider2">
+  window.addEventListener('DOMContentLoaded', () => {
+    // 중복 ID가 있어도 모든 testimonials 섹션 처리
+    document.querySelectorAll('section#testimonials').forEach(sec=>{
+      const topRow = sec.querySelector('.marquee-row.top');
+      const bottomRow = sec.querySelector('.marquee-row.bottom');
+      initMarquee(topRow, { direction: 'right', speed: 55 });
+      initMarquee(bottomRow, { direction: 'left', speed: 55 });
+    });
+    // 초기 탭 상태 반영 (상단 스크립트에서 body[data-conf] 세팅)
+    if(!document.body.hasAttribute('data-conf')) document.body.setAttribute('data-conf','md7');
+  });
+})();
+</script>
+
+<section id="blog-news-slider2" class="con-7">
   <div class="bns2-viewport">
     <div class="bns2-track">
-      <a href="https://kor.theasian.asia/archives/383668" class="bns2-slide" target="_blank">
-        <img src="./img/con4.jpg" class="bns2-thumb" alt="뉴스2">
+      <a href="https://www.viva100.com/article/20250715501554" class="bns2-slide con-7" target="_blank" rel="noopener">
+        <img src="https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2025/07/15/.cache/512/20250715501550.jpg" class="bns2-thumb" alt="뉴스2">
         <div class="bns2-desc">
-          <h4 class="bns2-title">외로움과 우울, 어떻게 치유할까? ‘마음디톡스 컨퍼런스’서 길 찾는다 <img src="https://kor.theasian.asia/wp-content/uploads/2025/02/logo_theasian.png" style="width:80px;margin-left:10px;"></h4>
-          <p class="bns2-summary">이번 행사는 2018년 시작되어 꾸준히 이어져온 ‘마음디톡스’ 프로그램의 일환으로...</p>
+          <h4 class="bns2-title">[비바 2080] 우울 불안 공황에 ‘마음디톡스’… “마음이 살아야 몸이 산다, 그리고 ‘괜별그’ 마인드로 무장하라” </h4>
+          <p class="bns2-summary">함영준 ‘마음건강 길’ 대표가 운영하는 ‘마음디톡스 특강’이 15일 오후 대한성공회 서울주교좌성당 프란시스홀에서 열렸다....</p>
         </div>
       </a>
-     
-      <a href="https://blog.naver.com/fthursday/223873695548" class="bns2-slide" target="_blank">
-        <img src="./img/thumb2.jpg" class="bns2-thumb" alt="뉴스1">
+      <a href="https://monthly.chosun.com/client/news/viw.asp?ctcd=E&nNewsNumb=202509100052" class="bns2-slide con-7" target="_blank" rel="noopener">
+        <img src="http://monthly.chosun.com/upload/2509/2509_404_1.jpg" class="bns2-thumb" alt="뉴스2">
         <div class="bns2-desc">
-          <h4 class="bns2-title">마가스님 자비명상특강 <img src="./img/blog1.png" style="width:40px;"></h4>
-          <p class="bns2-summary">
-            최근 한국인들 마음건강의 적신호에 깊은
-            공감과 소명을 느껴 마가스님과 윤종모 주교님을 모시고 3인3색 토크쇼를 열었다...
-            </p>
+          <h4 class="bns2-title">[이 사람] 《우울탈출법》 펴낸 치유 저널리스트 함영준 </h4>
+          <p class="bns2-summary">언론·정부 일 하며 어느 순간 극심한 '소진' 지나 몸과 마음 무너져 ⊙ 자기 돌봄의 지혜 담은 신간 《우울탈출법》 펴내....</p>
         </div>
       </a>
-      <a href="https://m.blog.naver.com/fthursday/223873682570" class="bns2-slide" target="_blank">
-        <img src="https://mblogthumb-phinf.pstatic.net/MjAyNTA1MjJfMjg2/MDAxNzQ3ODU4NzMxMTYy.HtjHfb6Y1TsC3f1P3PXR6rGgrY5j7Ikjp_xsv7r8hE8g.lX6o90tPAudIehrxz8lHcn7ssiEAP88U-AbzdtX6Q1Eg.JPEG/900%EF%BC%BF20250521%EF%BC%BF150128.jpg?type=w800" class="bns2-thumb" alt="썸네일1">
+      <a href="https://www.chosun.com/medical/2025/07/01/D34VAHUJGVB5BEZGT6NF4S2HX4/" class="bns2-slide con-7" target="_blank" rel="noopener">
+        <img src="https://www.chosun.com/resizer/v2/VS6QEIBCLRAJFEWU2I75B47QHQ.jpg?auth=444f19623d09b5395bf897c4586c83546f45013ff6b9e67ee38b50b5184da8a5&width=616" class="bns2-thumb" alt="뉴스2">
         <div class="bns2-desc">
-          <h4 class="bns2-title">함영준 대표님 마음건강 특강 <img src="./img/blog1.png" style="width:40px;"></h4>
-          <p class="bns2-summary">함영준 대표님 특강! 본인 스스로 심한 우울증을  겪고 나서 마음건강의 중요성을 절감하고...</p>
+          <h4 class="bns2-title">[함영준의 마음PT] 우울증·공황장애·불면증…전문가가 전하는 치유 솔루션 </h4>
+          <p class="bns2-summary">마음의 병, 약으로만 해결될까?
+
+우울증, 공황장애, 불안장애, 불면증…. 이른바 마음의 병이 요즘 정말 많다....</p>
         </div>
       </a>
-      <a href="https://www.sisajournal.com/news/articleView.html?idxno=334185" class="bns2-slide" target="_blank">
-        <img src="./img/con7.jpeg" class="bns2-thumb" alt="블로그2">
-        <div class="bns2-desc">
-          <h4 class="bns2-title">우울증 극복을 통한 마음 건강 회복 이야기 <img src="https://cdn.sisajournal.com/image/logo/toplogo_20240513034706.png" style="width:80px;margin-left:10px;"></h4>
-          <p class="bns2-summary">겨우 한 살 때, 아버지를 사고로 잃었고, 어머니는 재혼 후 나를 떠났다. 조부모님의 극진한 사랑 속에서 성장했으나...</p>
-        </div>
-      </a>
-    
     </div>
     <button class="bns2-arrow bns2-prev" aria-label="이전">&lt;</button>
     <button class="bns2-arrow bns2-next" aria-label="다음">&gt;</button>
-    <!-- <div class="bns2-pagination"></div> -->
+  </div>
+</section>
+
+<section id="blog-news-slider2" class="con-6">
+  <div class="bns2-viewport">
+    <div class="bns2-track">
+      <a href="https://kor.theasian.asia/archives/383668" class="bns2-slide con-6" target="_blank" rel="noopener">
+        <img src="./img/con4.jpg" class="bns2-thumb" alt="뉴스2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">외로움과 우울, 어떻게 치유할까? ‘마음디톡스 컨퍼런스’서 길 찾는다 <img src="https://kor.theasian.asia/wp-content/uploads/2025/02/logo_theasian.png" style="width:80px;margin-left:10px;" alt=""></h4>
+          <p class="bns2-summary">이번 행사는 2018년 시작되어 꾸준히 이어져온 ‘마음디톡스’ 프로그램의 일환으로...</p>
+        </div>
+      </a>
+      <a href="https://blog.naver.com/fthursday/223873695548" class="bns2-slide con-6" target="_blank" rel="noopener">
+        <img src="./img/thumb2.jpg" class="bns2-thumb" alt="뉴스1">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">마가스님 자비명상특강 <img src="./img/blog1.png" style="width:40px;" alt=""></h4>
+          <p class="bns2-summary">최근 한국인들 마음건강의 적신호에 깊은
+            공감과 소명을 느껴 마가스님과 윤종모 주교님을 모시고 3인3색 토크쇼를 열었다...
+          </p>
+        </div>
+      </a>
+      <a href="https://m.blog.naver.com/fthursday/223873682570" class="bns2-slide con-6" target="_blank" rel="noopener">
+        <img src="https://mblogthumb-phinf.pstatic.net/MjAyNTA1MjJfMjg2/MDAxNzQ3ODU4NzMxMTYy.HtjHfb6Y1TsC3f1P3PXR6rGgrY5j7Ikjp_xsv7r8hE8g.lX6o90tPAudIehrxz8lHcn7ssiEAP88U-AbzdtX6Q1Eg.JPEG/900%EF%BC%BF20250521%EF%BC%BF150128.jpg?type=w800" class="bns2-thumb" alt="썸네일1">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">함영준 대표님 마음건강 특강 <img src="./img/blog1.png" style="width:40px;" alt=""></h4>
+          <p class="bns2-summary">함영준 대표님 특강! 본인 스스로 심한 우울증을  겪고 나서 마음건강의 중요성을 절감하고...</p>
+        </div>
+      </a>
+      <a href="https://www.sisajournal.com/news/articleView.html?idxno=334185" class="bns2-slide con-6" target="_blank" rel="noopener">
+        <img src="./img/con7.jpeg" class="bns2-thumb" alt="블로그2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">우울증 극복을 통한 마음 건강 회복 이야기 <img src="https://cdn.sisajournal.com/image/logo/toplogo_20240513034706.png" style="width:80px;margin-left:10px;" alt=""></h4>
+          <p class="bns2-summary">겨우 한 살 때, 아버지를 사고로 잃었고, 어머니는 재혼 후 나를 떠났다. 조부모님의 극진한 사랑 속에서 성장했으나...</p>
+        </div>
+      </a>
+    </div>
+    <button class="bns2-arrow bns2-prev" aria-label="이전">&lt;</button>
+    <button class="bns2-arrow bns2-next" aria-label="다음">&gt;</button>
   </div>
 </section>
 
@@ -2642,7 +3520,7 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
 #blog-news-slider2 .bns2-viewport { position: relative; overflow: hidden; width: 100%; border-radius: 20px; background: #f8f8f8; box-shadow: 0 6px 24px rgba(0,0,0,.08); min-height: 410px;}
 #blog-news-slider2 .bns2-track { display: flex; transition: transform 0.38s cubic-bezier(.85,.02,.19,.99); will-change: transform; cursor: grab; user-select: none;}
 #blog-news-slider2 .bns2-slide { background: #fff; border-radius: 16px; box-shadow: 0 4px 18px rgba(0,0,0,.08); overflow: hidden; text-decoration: none; color: #232323; display: flex; flex-direction: column; align-items: stretch; pointer-events: auto; user-drag: none; -webkit-user-drag: none;}
-#blog-news-slider2 .bns2-thumb { width: 100%; height: 260px; object-fit: cover; border-bottom:1px solid #f2f2f2; user-drag: none; -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; pointer-events: auto; background: #ececec;}
+#blog-news-slider2 .bns2-thumb { width: 100%; height: 300px; object-fit: cover; border-bottom:1px solid #f2f2f2; user-drag: none; -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; pointer-events: auto; background: #ececec;}
 #blog-news-slider2 .bns2-desc {padding: 22px 20px 16px 20px;}
 #blog-news-slider2 .bns2-title {font-size: 1.17rem; font-weight: 800; margin-bottom: 0.6em; color: #2563eb;}
 #blog-news-slider2 .bns2-summary {font-size: 1rem; color: #2c2c2c;}
@@ -2653,151 +3531,170 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
 #blog-news-slider2 .bns2-pagination { display: flex; gap: 8px; justify-content: center; margin: 16px 0 6px 0;}
 #blog-news-slider2 .bns2-dot { width: 11px; height: 11px; border-radius:50%; background:#E5E7EB; transition: background .2s; cursor: pointer;}
 #blog-news-slider2 .bns2-dot.active {background:#2563eb;}
-/* 동적 슬라이드 크기 조정 */
 #blog-news-slider2 .bns2-slide { transition: box-shadow .2s;}
 #blog-news-slider2 .bns2-slide:active { box-shadow: 0 2px 12px rgba(0,0,0,.12);}
 </style>
 
 <script>
 (function(){
-  // ------- 슬라이드 동시 표시 개수 옵션 --------
-  const visibleCountByBreakpoints = [
-    { maxWidth: 650, count: 1 },
-    { maxWidth: 900, count: 2 },
-    { maxWidth: 1200, count: 2},
-    { maxWidth: 9999, count: 3 }
-  ];
-  // 사용 예: 위 배열을 원하는대로 수정(최소/최대값 바꾸면 모든 크기 커버됨)
+  // 모든 blog-news-slider2 섹션(중복 ID 포함)에 대해 각각 독립 초기화
+  const sections = document.querySelectorAll('section#blog-news-slider2');
 
-  // ------- 동작 코드 --------
-  const section = document.getElementById("blog-news-slider2");
-  const track = section.querySelector(".bns2-track");
-  const slides = Array.from(section.querySelectorAll(".bns2-slide"));
-  const prevBtn = section.querySelector(".bns2-prev");
-  const nextBtn = section.querySelector(".bns2-next");
-  const pagination = section.querySelector(".bns2-pagination");
-  const slideCount = slides.length;
-  let current = 0, dragging = false, startX = 0, curX = 0, animating = false, dragMoved = false;
-  let visibleCount = 1.3, slideWidth = 0, gapPx = 32; // 기본값
+  sections.forEach(section=>{
+    if (section.__inited) return;
+    section.__inited = true;
 
-  // 이미지 드래그 방지
-  slides.forEach(slide=>{
-    slide.querySelectorAll('img').forEach(img=>{
-      img.addEventListener('dragstart',e=>e.preventDefault());
-    });
-  });
+    const visibleCountByBreakpoints = [
+      { maxWidth: 650, count: 1 },
+      { maxWidth: 900, count: 2 },
+      { maxWidth: 1200, count: 2 },
+      { maxWidth: 9999, count: 3 }
+    ];
 
-  // 반응형 visibleCount & slideWidth 계산
-  function updateSlideLayout() {
-    // 뷰포트 크기별 visibleCount 결정
-    let ww = window.innerWidth;
-    visibleCount = visibleCountByBreakpoints.find(bp => ww <= bp.maxWidth).count;
-    // Gap(px)은 브레이크포인트마다 맞게 조정
-    if (ww <= 650) gapPx = 10;
-    else if (ww <= 900) gapPx = 18;
-    else if (ww <= 1200) gapPx = 24;
-    else gapPx = 32;
-    // slideWidth = (viewport-전체패딩) / visibleCount - gap
-    const viewport = section.querySelector('.bns2-viewport');
-    let totalW = viewport.clientWidth || 1100;
-    slideWidth = (totalW - gapPx * (visibleCount-1)) / visibleCount;
+    const track = section.querySelector(".bns2-track");
+    const slides = Array.from(section.querySelectorAll(".bns2-slide"));
+    const prevBtn = section.querySelector(".bns2-prev");
+    const nextBtn = section.querySelector(".bns2-next");
+    // 페이지네이션 노드가 없는 마크업을 유지하기 위해 필요 시 동적 생성
+    let pagination = section.querySelector(".bns2-pagination");
+    if(!pagination){
+      pagination = document.createElement('div');
+      pagination.className = 'bns2-pagination';
+      section.appendChild(pagination);
+    }
+
+    const slideCount = slides.length;
+    let current = 0, dragging = false, startX = 0, curX = 0, dragMoved = false;
+    let visibleCount = 1.3, slideWidth = 0, gapPx = 32;
+
     slides.forEach(slide=>{
-      slide.style.minWidth = slide.style.maxWidth = slide.style.width = slideWidth+'px';
-      slide.style.marginLeft = '0';
-      slide.style.marginRight = gapPx+'px';
+      slide.querySelectorAll('img').forEach(img=>{
+        img.addEventListener('dragstart',e=>e.preventDefault());
+        img.loading = 'lazy';
+        img.decoding = 'async';
+      });
     });
-    slides[slides.length-1].style.marginRight = '0';
-    goTo(current, false);
-  }
-  window.addEventListener('resize', updateSlideLayout);
 
-  // 슬라이드 이동 함수
-  function goTo(idx, animate=true) {
-    current = Math.max(0, Math.min(idx, slideCount-Math.ceil(visibleCount)));
-    if (animate) {
-      track.style.transition = 'transform 0.38s cubic-bezier(.85,.02,.19,.99)';
-    } else {
+    function updateSlideLayout() {
+      let ww = window.innerWidth;
+      visibleCount = visibleCountByBreakpoints.find(bp => ww <= bp.maxWidth).count;
+      if (ww <= 650) gapPx = 10;
+      else if (ww <= 900) gapPx = 18;
+      else if (ww <= 1200) gapPx = 24;
+      else gapPx = 32;
+
+      const viewport = section.querySelector('.bns2-viewport');
+      let totalW = viewport.clientWidth || 1100;
+      slideWidth = (totalW - gapPx * (visibleCount-1)) / visibleCount;
+
+      slides.forEach(slide=>{
+        slide.style.minWidth = slide.style.maxWidth = slide.style.width = slideWidth+'px';
+        slide.style.marginLeft = '0';
+        slide.style.marginRight = gapPx+'px';
+      });
+      if(slides.length) slides[slides.length-1].style.marginRight = '0';
+      goTo(current, false);
+      updatePagination(); // 반응형 변경 시 페이지 수가 달라질 수 있음
+    }
+    window.addEventListener('resize', updateSlideLayout, {passive:true});
+
+    function goTo(idx, animate=true) {
+      const maxIdx = Math.max(0, slideCount - Math.ceil(visibleCount));
+      current = Math.max(0, Math.min(idx, maxIdx));
+      track.style.transition = animate ? 'transform 0.38s cubic-bezier(.85,.02,.19,.99)' : 'none';
+      const offset = -current * (slideWidth+gapPx);
+      track.style.transform = `translateX(${offset}px)`;
+      section.querySelectorAll('.bns2-dot').forEach((dot,i)=>dot.classList.toggle('active',i===current));
+      if (animate) setTimeout(()=>{track.style.transition='';},410);
+    }
+
+    function updatePagination() {
+      pagination.innerHTML = '';
+      const pageCount = Math.max(1, slideCount - Math.ceil(visibleCount) + 1);
+      for (let i=0;i<pageCount;i++) {
+        const dot = document.createElement('div');
+        dot.className = 'bns2-dot' + (i===current?' active':'');
+        dot.addEventListener('click', ()=>goTo(i));
+        pagination.appendChild(dot);
+      }
+    }
+
+    function onDragStart(e) {
+      if (dragging) return;
+      dragging = true; dragMoved = false;
+      startX = (e.touches ? e.touches[0].clientX : e.clientX);
+      curX = startX;
       track.style.transition = 'none';
+      track.classList.add('dragging');
     }
-    const offset = -current * (slideWidth+gapPx);
-    track.style.transform = `translateX(${offset}px)`;
-    // pagination dot
-    section.querySelectorAll('.bns2-dot').forEach((dot,i)=>dot.classList.toggle('active',i===current));
-    setTimeout(()=>{track.style.transition='';},410);
-  }
-
-  // 페이지네이션 생성
-  function updatePagination() {
-    pagination.innerHTML = '';
-    let pageCount = slideCount - Math.ceil(visibleCount) + 1;
-    for (let i=0;i<pageCount;i++) {
-      const dot = document.createElement('div');
-      dot.className = 'bns2-dot' + (i===0?' active':'');
-      dot.addEventListener('click', ()=>goTo(i));
-      pagination.appendChild(dot);
+    function onDragMove(e) {
+      if (!dragging) return;
+      const x = (e.touches ? e.touches[0].clientX : e.clientX);
+      curX = x;
+      let moveX = x - startX;
+      if (Math.abs(moveX) > 6) dragMoved = true;
+      const maxIdx = Math.max(0, slideCount - Math.ceil(visibleCount));
+      if (current===0 && moveX>0) moveX = moveX/3;
+      if (current>=maxIdx && moveX<0) moveX = moveX/3;
+      track.style.transform = `translateX(${-current*(slideWidth+gapPx) + moveX}px)`;
     }
-  }
-
-  // 화살표
-  prevBtn.addEventListener('click',()=>goTo(current-1));
-  nextBtn.addEventListener('click',()=>goTo(current+1));
-
-  // 드래그/스와이프
-  function onDragStart(e) {
-    if (animating) return;
-    dragging = true;
-    dragMoved = false;
-    startX = (e.touches ? e.touches[0].clientX : e.clientX);
-    curX = startX;
-    track.style.transition = 'none';
-    track.classList.add('dragging');
-  }
-  function onDragMove(e) {
-    if (!dragging) return;
-    const x = (e.touches ? e.touches[0].clientX : e.clientX);
-    curX = x;
-    let moveX = x - startX;
-    if (Math.abs(moveX) > 6) dragMoved = true; // 실제 이동했을 때만
-    if (current===0 && moveX>0) moveX = moveX/3;
-    if (current>=(slideCount-Math.ceil(visibleCount)) && moveX<0) moveX = moveX/3;
-    track.style.transform = `translateX(${-current*(slideWidth+gapPx) + moveX}px)`;
-  }
-  function onDragEnd(e) {
-    if (!dragging) return;
-    dragging = false;
-    track.classList.remove('dragging');
-    let moveX = curX - startX;
-    if (Math.abs(moveX) > slideWidth/4) {
-      if (moveX < 0 && current < slideCount-Math.ceil(visibleCount)) goTo(current+1);
-      else if (moveX > 0 && current > 0) goTo(current-1);
-      else goTo(current);
-    } else {
-      goTo(current);
+    function onDragEnd() {
+      if (!dragging) return;
+      dragging = false;
+      track.classList.remove('dragging');
+      let moveX = curX - startX;
+      if (Math.abs(moveX) > slideWidth/4) {
+        const maxIdx = Math.max(0, slideCount - Math.ceil(visibleCount));
+        if (moveX < 0 && current < maxIdx) goTo(current+1);
+        else if (moveX > 0 && current > 0) goTo(current-1);
+        else goTo(current);
+      } else {
+        goTo(current);
+      }
     }
-  }
-  // 마우스
-  track.addEventListener('mousedown', onDragStart);
-  window.addEventListener('mousemove', onDragMove);
-  window.addEventListener('mouseup', onDragEnd);
-  // 터치
-  track.addEventListener('touchstart', onDragStart, {passive:true});
-  window.addEventListener('touchmove', onDragMove, {passive:false});
-  window.addEventListener('touchend', onDragEnd);
 
-  // 드래그 후 클릭 차단
-  slides.forEach(slide=>{
-    slide.addEventListener('click', function(e){
-      if (dragMoved) e.preventDefault();
+    prevBtn.addEventListener('click',()=>goTo(current-1));
+    nextBtn.addEventListener('click',()=>goTo(current+1));
+
+    track.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+
+    track.addEventListener('touchstart', onDragStart, {passive:true});
+    window.addEventListener('touchmove', onDragMove, {passive:false});
+    window.addEventListener('touchend', onDragEnd);
+
+    slides.forEach(slide=>{
+      slide.addEventListener('click', function(e){
+        if (dragMoved) e.preventDefault();
+      });
     });
+
+    updateSlideLayout();
+    updatePagination();
+    goTo(0,false);
+
+    // 뷰포트 기반 일시정지/재시작 훅
+    const viewport = section.querySelector('.bns2-viewport');
+    let paused=false;
+    function pause(){ if(paused) return; paused=true; track.style.transition=''; }
+    function resume(){ paused=false; goTo(current,false); }
+    viewport.__pause = pause;
+    viewport.__resume = resume;
+
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting) resume();
+        else pause();
+      });
+    },{threshold:0.1});
+    io.observe(section);
   });
 
-  // 초기실행
-  updateSlideLayout();
-  updatePagination();
-  goTo(0,false);
-
+  // 탭 전환 시 con-6/con-7 보여지는 섹션만 재개 (상단 confSwitch 스크립트에서 호출)
 })();
 </script>
+
 
 
 <hr style="width:100%;">
@@ -3132,7 +4029,7 @@ Footer
     <!-- <script src="./js/form-dt.js"></script> -->
     <!-- <script src="./js/validation-dt.js"></script> -->
     <!-- Contact Form JavaScript File -->
-    <script src="lib/contactform/countdown-1d-7.js"></script>
+    <script src="lib/contactform/countdown-1d-8.js"></script>
     
 
     <!-- Template Main Javascript File -->
@@ -3256,20 +4153,20 @@ Footer
     Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-        title: '마음건강 길 : 마음디톡스 ⑦',
-        description: "정신건강 '최고명의'와 신간'우울탈출법' 저자 직강 & 즉석 대화!",
-        imageUrl: 'https://mindwellpath.co.kr/img/kakao-poster7-5.png?ver=3',
+        title: '11월 22일(토) 오후 2~5시',
+        description: "호스피스, 기자, 학자, 예술인이 말하는 삶과 죽음",
+        imageUrl: 'https://mindwellpath.co.kr/img/kakao-popup-8.jpg',
         link: {
-          mobileWebUrl: 'https://mindwellpath.co.kr/cnf-v1-poster.html',
-          webUrl: 'https://mindwellpath.co.kr/cnf-v1-poster.html'
+          mobileWebUrl: 'https://mindwellpath.co.kr/conference-8.html',
+          webUrl: 'https://mindwellpath.co.kr/conference-8.html'
         }
       },
       buttons: [
         {
           title: '참여 신청하기 👉',
           link: {
-            mobileWebUrl: 'https://mindwellpath.co.kr/cnf-v1-poster.html',
-            webUrl: 'https://mindwellpath.co.kr/cnf-v1-poster.html'
+            mobileWebUrl: 'https://mindwellpath.co.kr/conference-8.html',
+            webUrl: 'https://mindwellpath.co.kr/conference-8.html'
           }
         }
       ]
