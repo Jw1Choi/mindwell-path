@@ -2697,10 +2697,85 @@ About Us Section
       padding:24px 12px 56px;
     }
     #confSwitch .cs-wrap{max-width:980px;margin:0 auto;}
-    #confSwitch .cs-header{display:flex;gap:8px;justify-content:center;align-items:center;margin:6px auto 18px;flex-wrap:wrap;}
-    #confSwitch .cs-tab{appearance:none;border:1.5px solid var(--ring);background:#fff;color:var(--ink);border-radius:999px;padding:.65rem 1.1rem;font-weight:700;font-size:.98rem;cursor:pointer;box-shadow:0 1px 4px rgba(15,23,42,.05);transition:.2s;}
-    #confSwitch .cs-tab:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(15,23,42,.06);}
-    #confSwitch .cs-tab[aria-selected="true"]{background:var(--brand);color:#fff;border-color:#a5c0e9;box-shadow:0 6px 18px rgba(54,105,201,.28);}
+
+    /* 🔹 탭 버튼 캐러셀 래퍼 */
+    #confSwitch .cs-header-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      max-width:980px;
+      margin:4px auto 8px;
+    }
+
+    /* 🔹 좌우 화살표 버튼 */
+    #confSwitch .cs-nav-arrow{
+      width:30px;
+      height:30px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      color:#64748b;
+      cursor:pointer;
+      box-shadow:0 1px 4px rgba(15,23,42,.12);
+      transition:background .18s, color .18s, transform .18s;
+      flex-shrink:0;
+    }
+    #confSwitch .cs-nav-arrow:hover{
+      background:var(--brand);
+      color:#fff;
+      transform:translateY(-1px);
+    }
+
+    /* 🔹 가로 스크롤 가능한 탭 줄 */
+    #confSwitch .cs-header{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin:0;
+      padding:4px 4px 8px;
+      overflow-x:auto;
+      scrollbar-width:none;          /* Firefox */
+      -ms-overflow-style:none;       /* IE/Edge */
+      scroll-behavior:smooth;
+      max-width:900px;
+    }
+    #confSwitch .cs-header::-webkit-scrollbar{
+      display:none;                  /* Chrome/Safari */
+    }
+
+    /* 🔹 탭 버튼 */
+    #confSwitch .cs-tab{
+      appearance:none;
+      border:1.5px solid var(--ring);
+      background:#fff;
+      color:var(--ink);
+      border-radius:999px;
+      padding:.55rem 1.1rem;
+      font-weight:700;
+      font-size:.92rem;
+      cursor:pointer;
+      box-shadow:0 1px 4px rgba(15,23,42,.05);
+      transition:.2s;
+      white-space:nowrap;
+      flex-shrink:0;
+    }
+    #confSwitch .cs-tab:hover{
+      transform:translateY(-1px);
+      box-shadow:0 4px 14px rgba(15,23,42,.06);
+    }
+    #confSwitch .cs-tab[aria-selected="true"]{
+      background:var(--brand);
+      color:#fff;
+      border-color:#a5c0e9;
+      box-shadow:0 6px 18px rgba(54,105,201,.28);
+    }
+
+    /* 🔹 갤러리 공통 */
     #confSwitch .conf-gallery{width:100%;max-width:740px;margin:18px auto 36px;display:none;}
     #confSwitch .conf-gallery.is-active{display:block;}
     #confSwitch .conf-poster{text-align:-webkit-center;margin:0 auto 30px;}
@@ -2720,33 +2795,46 @@ About Us Section
     #confSwitch .conf-gallery__thumbs{display:flex;gap:10px;justify-content:center;margin:16px auto 0;padding:0 4px;overflow-x:auto;max-width:98vw;}
     #confSwitch .conf-gallery__thumbs img{width:74px;height:44px;object-fit:cover;border-radius:12px;cursor:pointer;opacity:.48;border:2.5px solid #eaecee;box-shadow:0 2px 6px #e9eef4;transition:.25s;}
     #confSwitch .conf-gallery__thumbs img.active{opacity:1;border:2.5px solid var(--brand);}
-    @media(max-width:900px){#confSwitch .conf-gallery{max-width:100vw;}#confSwitch .conf-gallery__slide img{border-radius:17px;}}
-    @media(max-width:600px){#confSwitch .conf-gallery__slide img{border-radius:11px;}#confSwitch .conf-gallery__viewport{border-radius:14px;}}
+
+    @media(max-width:900px){
+      #confSwitch .conf-gallery{max-width:100vw;}
+      #confSwitch .conf-gallery__slide img{border-radius:17px;}
+    }
+    @media(max-width:600px){
+      #confSwitch .conf-gallery__slide img{border-radius:11px;}
+      #confSwitch .conf-gallery__viewport{border-radius:14px;}
+    }
   </style>
+
   <div class="cs-wrap">
-    <div class="cs-header" role="tablist">
-      <button class="cs-tab" role="tab" aria-selected="true" data-target="md8">마음디톡스 8</button>
-      <button class="cs-tab" role="tab" aria-selected="false" data-target="md7">마음디톡스 7</button>
-      <button class="cs-tab" role="tab" aria-selected="false" data-target="md6">마음디톡스 6</button>
+
+    <!-- 🔹 버튼 캐러셀 + 좌우 화살표 -->
+    <div class="cs-header-wrap">
+      <button type="button" class="cs-nav-arrow cs-nav-prev" aria-label="이전 컨퍼런스">&lt;</button>
+      <div class="cs-header" role="tablist">
+        <!-- <button class="cs-tab" role="tab" aria-selected="true" data-target="md9">마음디톡스 9</button> -->
+        <button class="cs-tab" role="tab" aria-selected="true" data-target="md8">마음디톡스 8</button>
+        <button class="cs-tab" role="tab" aria-selected="false" data-target="md7">마음디톡스 7</button>
+        <button class="cs-tab" role="tab" aria-selected="false" data-target="md6">마음디톡스 6</button>
+        <!-- 이후 마음디톡스 9,10... 추가 시 여기 버튼만 늘리면 됨 -->
+      </div>
+      <button type="button" class="cs-nav-arrow cs-nav-next" aria-label="다음 컨퍼런스">&gt;</button>
     </div>
 
-    <!-- 🔹 마음디톡스 8 갤러리 (이미지 경로만 나중에 교체하면 됨) -->
+    <!-- 🔹 마음디톡스 8 갤러리 -->
     <section id="md8" class="conf-gallery">
       <div class="conf-poster">
-        <!-- TODO: 실제 마음디톡스 8 포스터 이미지로 교체 -->
         <img src="./img/poster-8.png" alt="마음디톡스 8 포스터">
       </div>
       <div class="conf-gallery__viewport">
         <div class="conf-gallery__track">
-          <!-- TODO: 실제 마음디톡스 8 사진들로 교체 -->
           <div class="conf-gallery__slide active"><img src="./img/8-0.jpeg" alt="마음디톡스 8 현장 사진 1"></div>
           <div class="conf-gallery__slide"><img src="./img/8-1.jpeg" alt="마음디톡스 8 현장 사진 2"></div>
           <div class="conf-gallery__slide"><img src="./img/8-2.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
-          <div class="conf-gallery__slide"><img src="./img/8-3.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
-          <div class="conf-gallery__slide"><img src="./img/8-4.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
-          <div class="conf-gallery__slide"><img src="./img/8-5.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
-          <div class="conf-gallery__slide"><img src="./img/8-6.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
-          
+          <div class="conf-gallery__slide"><img src="./img/8-3.jpeg" alt="마음디톡스 8 현장 사진 4"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-4.jpeg" alt="마음디톡스 8 현장 사진 5"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-5.jpeg" alt="마음디톡스 8 현장 사진 6"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-6.jpeg" alt="마음디톡스 8 현장 사진 7"></div>
         </div>
         <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
         <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
@@ -2755,7 +2843,7 @@ About Us Section
       <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
     </section>
 
-    <!-- 기존 md7 / md6 갤러리는 그대로 유지 -->
+    <!-- 🔹 마음디톡스 7 갤러리 -->
     <section id="md7" class="conf-gallery">
       <div class="conf-poster"><img src="./img/poster-7.png" alt="마음디톡스 7 포스터"></div>
       <div class="conf-gallery__viewport">
@@ -2772,6 +2860,7 @@ About Us Section
       <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
     </section>
 
+    <!-- 🔹 마음디톡스 6 갤러리 -->
     <section id="md6" class="conf-gallery">
       <div class="conf-poster"><img src="./img/poster6.png" alt="마음디톡스 6 포스터"></div>
       <div class="conf-gallery__viewport">
@@ -2791,6 +2880,7 @@ About Us Section
       </div>
       <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
     </section>
+
   </div>
 </section>
 
@@ -2802,6 +2892,9 @@ About Us Section
 
     const tabs = [...root.querySelectorAll('.cs-tab')];
     const galleries = [...root.querySelectorAll('.conf-gallery')];
+    const header = root.querySelector('.cs-header');
+    const prevArrow = root.querySelector('.cs-nav-prev');
+    const nextArrow = root.querySelector('.cs-nav-next');
 
     // 탭의 data-target 값(md8, md7, md6 ...)을 기반으로 .con-8, .con-7, .con-6 자동 매핑
     const confSelectors = [...new Set(
@@ -2842,11 +2935,32 @@ About Us Section
       galleries.forEach(sec=>sec.classList.toggle('is-active', sec.id===targetId));
       tabs.forEach(btn=>btn.setAttribute('aria-selected', btn.dataset.target===targetId ? 'true':'false'));
       setContentVisibility(targetId);
+
+      // 가로 스크롤 위치 맞추기
+      if (header) {
+        const activeTab = tabs.find(t=>t.dataset.target===targetId);
+        if (activeTab) {
+          activeTab.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+        }
+      }
     }
 
+    // 탭 클릭
     tabs.forEach(btn=>{
       btn.addEventListener('click', ()=>activateConf(btn.dataset.target));
     });
+
+    // 🔹 좌우 화살표로 탭 줄 슬라이드
+    if (prevArrow && header) {
+      prevArrow.addEventListener('click', ()=>{
+        header.scrollBy({left:-220, behavior:'smooth'});
+      });
+    }
+    if (nextArrow && header) {
+      nextArrow.addEventListener('click', ()=>{
+        header.scrollBy({left:220, behavior:'smooth'});
+      });
+    }
 
     // ▼ 갤러리(포스터/사진 슬라이더) 원본 기능 그대로 유지
     class ConfGallery{
@@ -2989,6 +3103,8 @@ About Us Section
   });
 })();
 </script>
+
+
 
 <hr style="width:100%;">
 <h3 class="title-main">💌 프로그램 후기</h3>
