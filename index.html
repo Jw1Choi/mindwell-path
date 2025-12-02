@@ -2684,7 +2684,6 @@ About Us Section
 <hr style="width:100%;">
 <h3 class="title-main">📷 지난 마음디톡스</h3>
 
-
 <section id="confSwitch">
   <style>
     #confSwitch{
@@ -2726,18 +2725,44 @@ About Us Section
   </style>
   <div class="cs-wrap">
     <div class="cs-header" role="tablist">
-      <button class="cs-tab" role="tab" aria-selected="true" data-target="md7">마음디톡스 7</button>
+      <button class="cs-tab" role="tab" aria-selected="true" data-target="md8">마음디톡스 8</button>
+      <button class="cs-tab" role="tab" aria-selected="false" data-target="md7">마음디톡스 7</button>
       <button class="cs-tab" role="tab" aria-selected="false" data-target="md6">마음디톡스 6</button>
     </div>
-    <section id="md7" class="conf-gallery is-active">
+
+    <!-- 🔹 마음디톡스 8 갤러리 (이미지 경로만 나중에 교체하면 됨) -->
+    <section id="md8" class="conf-gallery">
+      <div class="conf-poster">
+        <!-- TODO: 실제 마음디톡스 8 포스터 이미지로 교체 -->
+        <img src="./img/poster-8.png" alt="마음디톡스 8 포스터">
+      </div>
+      <div class="conf-gallery__viewport">
+        <div class="conf-gallery__track">
+          <!-- TODO: 실제 마음디톡스 8 사진들로 교체 -->
+          <div class="conf-gallery__slide active"><img src="./img/8-0.jpeg" alt="마음디톡스 8 현장 사진 1"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-1.jpeg" alt="마음디톡스 8 현장 사진 2"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-2.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-3.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-4.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-5.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-6.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
+          
+        </div>
+        <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
+        <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
+        <div class="conf-gallery__dots" aria-hidden="true"></div>
+      </div>
+      <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
+    </section>
+
+    <!-- 기존 md7 / md6 갤러리는 그대로 유지 -->
+    <section id="md7" class="conf-gallery">
       <div class="conf-poster"><img src="./img/poster-7.png" alt="마음디톡스 7 포스터"></div>
       <div class="conf-gallery__viewport">
         <div class="conf-gallery__track">
           <div class="conf-gallery__slide active"><img src="./img/7-11.jpg" alt=""></div>
           <div class="conf-gallery__slide"><img src="./img/7-2.jpg" alt=""></div>
           <div class="conf-gallery__slide"><img src="./img/7-3.jpg" alt=""></div>
-          <!-- <div class="conf-gallery__slide"><img src="./img/7-4.jpg" alt=""></div>
-          <div class="conf-gallery__slide"><img src="./img/7-5.jpg" alt=""></div> -->
           <div class="conf-gallery__slide"><img src="./img/7-6.jpg" alt=""></div>
         </div>
         <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
@@ -2746,6 +2771,7 @@ About Us Section
       </div>
       <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
     </section>
+
     <section id="md6" class="conf-gallery">
       <div class="conf-poster"><img src="./img/poster6.png" alt="마음디톡스 6 포스터"></div>
       <div class="conf-gallery__viewport">
@@ -2772,22 +2798,44 @@ About Us Section
 (function(){
   document.addEventListener('DOMContentLoaded', ()=>{
     const root = document.getElementById('confSwitch');
+    if (!root) return;
+
     const tabs = [...root.querySelectorAll('.cs-tab')];
     const galleries = [...root.querySelectorAll('.conf-gallery')];
 
-    // ▼ ▼ 콘텐츠 스위칭 제어: con-6 / con-7 섹션 토글 (본문 어디에 있어도 작동)
-    const CONTENT_SELECTOR_6 = '.con-6';
-    const CONTENT_SELECTOR_7 = '.con-7';
+    // 탭의 data-target 값(md8, md7, md6 ...)을 기반으로 .con-8, .con-7, .con-6 자동 매핑
+    const confSelectors = [...new Set(
+      tabs.map(btn=>{
+        const id = btn.dataset.target || '';
+        const num = id.replace(/\D/g,''); // "md8" -> "8"
+        return num ? `.con-${num}` : null;
+      }).filter(Boolean)
+    )];
+
+    function getSelectorFor(targetId){
+      const num = (targetId || '').replace(/\D/g,'');
+      return num ? `.con-${num}` : '';
+    }
 
     function setContentVisibility(targetId){
-      document.body.setAttribute('data-conf', targetId); // CSS 훅
-      const showSel = (targetId==='md7') ? CONTENT_SELECTOR_7 : CONTENT_SELECTOR_6;
-      const hideSel = (targetId==='md7') ? CONTENT_SELECTOR_6 : CONTENT_SELECTOR_7;
-      document.querySelectorAll(showSel).forEach(el=>{ el.style.display=''; el.hidden=false; });
-      document.querySelectorAll(hideSel).forEach(el=>{ el.style.display='none'; el.hidden=true; });
-      // 보이는 섹션 내 슬라이더/마키 재가동
-      resumeIn(document.querySelectorAll(showSel));
-      pauseIn(document.querySelectorAll(hideSel));
+      const fallbackId = tabs[0]?.dataset.target || 'md8';
+      const showSel = getSelectorFor(targetId) || getSelectorFor(fallbackId);
+
+      document.body.setAttribute('data-conf', targetId || fallbackId);
+
+      const showNodes = showSel ? document.querySelectorAll(showSel) : [];
+      const hideNodes = [];
+
+      confSelectors.forEach(sel=>{
+        if (sel === showSel) return;
+        document.querySelectorAll(sel).forEach(el=>hideNodes.push(el));
+      });
+
+      showNodes.forEach(el=>{ el.style.display=''; el.hidden=false; });
+      hideNodes.forEach(el=>{ el.style.display='none'; el.hidden=true; });
+
+      resumeIn(showNodes);
+      pauseIn(hideNodes);
     }
 
     function activateConf(targetId){
@@ -2796,18 +2844,23 @@ About Us Section
       setContentVisibility(targetId);
     }
 
-    tabs.forEach(btn=>btn.addEventListener('click', ()=>activateConf(btn.dataset.target)));
+    tabs.forEach(btn=>{
+      btn.addEventListener('click', ()=>activateConf(btn.dataset.target));
+    });
 
-    // ▼ ▼ 갤러리 클래스 (원본 유지 + 경계/재가동 개선)
+    // ▼ 갤러리(포스터/사진 슬라이더) 원본 기능 그대로 유지
     class ConfGallery{
       constructor(section){
-        this.sec=section; this.track=section.querySelector('.conf-gallery__track');
+        this.sec=section;
+        this.track=section.querySelector('.conf-gallery__track');
         this.slides=[...section.querySelectorAll('.conf-gallery__slide')];
         this.leftBtn=section.querySelector('.conf-gallery__arrow.left');
         this.rightBtn=section.querySelector('.conf-gallery__arrow.right');
         this.dotsBox=section.querySelector('.conf-gallery__dots');
         this.thumbsBox=section.querySelector('.conf-gallery__thumbs');
         this.cur=0; this.auto=null; this.SLIDE_MS=4800; this.slideCount=this.slides.length;
+
+        if (!this.track || this.slides.length===0) return;
 
         const firstClone=this.slides[0].cloneNode(true);
         const lastClone=this.slides[this.slideCount-1].cloneNode(true);
@@ -2836,32 +2889,55 @@ About Us Section
         this.updatePosition(true);
         this.resetAuto();
 
-        this.leftBtn.onclick=()=>this.prev();
-        this.rightBtn.onclick=()=>this.next();
+        this.leftBtn && (this.leftBtn.onclick=()=>this.prev());
+        this.rightBtn && (this.rightBtn.onclick=()=>this.next());
 
-        const drag = {
-          down:false, sx:0, dx:0
-        };
+        const drag = { down:false, sx:0, dx:0 };
         const applyDragMove = (x)=> {
           drag.dx = x - drag.sx;
-          this.track.style.transform = `translateX(${-((this.cur+1)*100)+(drag.dx/this.track.offsetWidth*100)}%)`;
+          this.track.style.transform =
+            `translateX(${-((this.cur+1)*100)+(drag.dx/this.track.offsetWidth*100)}%)`;
         };
-        this.track.addEventListener('mousedown',e=>{drag.down=true;drag.sx=e.clientX;drag.dx=0;this.track.style.transition='none';});
-        this.track.addEventListener('mousemove',e=>{if(!drag.down) return; applyDragMove(e.clientX);});
-        window.addEventListener('mouseup',()=>{if(!drag.down) return; if(drag.dx>40)this.prev(); else if(drag.dx<-40)this.next(); else this.updatePosition(false); drag.down=false;});
+        this.track.addEventListener('mousedown',e=>{
+          drag.down=true;drag.sx=e.clientX;drag.dx=0;this.track.style.transition='none';
+        });
+        this.track.addEventListener('mousemove',e=>{
+          if(!drag.down) return; applyDragMove(e.clientX);
+        });
+        window.addEventListener('mouseup',()=>{
+          if(!drag.down) return;
+          if(drag.dx>40)this.prev();
+          else if(drag.dx<-40)this.next();
+          else this.updatePosition(false);
+          drag.down=false;
+        });
 
-        this.track.addEventListener('touchstart',e=>{drag.down=true;drag.sx=e.touches[0].clientX;drag.dx=0;this.track.style.transition='none';},{passive:true});
-        window.addEventListener('touchmove',e=>{if(!drag.down) return; applyDragMove(e.touches[0].clientX);},{passive:true});
-        window.addEventListener('touchend',()=>{if(!drag.down) return; if(drag.dx>24)this.prev(); else if(drag.dx<-24)this.next(); else this.updatePosition(false); drag.down=false;});
+        this.track.addEventListener('touchstart',e=>{
+          drag.down=true;drag.sx=e.touches[0].clientX;drag.dx=0;this.track.style.transition='none';
+        },{passive:true});
+        window.addEventListener('touchmove',e=>{
+          if(!drag.down) return; applyDragMove(e.touches[0].clientX);
+        },{passive:true});
+        window.addEventListener('touchend',()=>{
+          if(!drag.down) return;
+          if(drag.dx>24)this.prev();
+          else if(drag.dx<-24)this.next();
+          else this.updatePosition(false);
+          drag.down=false;
+        });
 
         this.track.addEventListener('transitionend',()=>{
-          if(this.cur<0){ this.cur=this.slideCount-1; requestAnimationFrame(()=>this.updatePosition(true)); }
-          else if(this.cur>=this.slideCount){ this.cur=0; requestAnimationFrame(()=>this.updatePosition(true)); }
+          if(this.cur<0){
+            this.cur=this.slideCount-1;
+            requestAnimationFrame(()=>this.updatePosition(true));
+          } else if(this.cur>=this.slideCount){
+            this.cur=0;
+            requestAnimationFrame(()=>this.updatePosition(true));
+          }
         });
 
         this.sec.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.preventDefault()));
 
-        // 뷰포트 기반 일시정지/재시작
         const io = new IntersectionObserver(entries=>{
           entries.forEach(en=>{
             if(en.isIntersecting) this.resetAuto();
@@ -2885,7 +2961,7 @@ About Us Section
         this.pauseAuto();
         this.auto=setInterval(()=>this.goTo(this.cur+1,false), this.SLIDE_MS);
       }
-      pauseAuto(){ clearInterval(this.auto); this.auto=null; }
+      pauseAuto(){ if(this.auto){ clearInterval(this.auto); this.auto=null; } }
       goTo(i,manual=true){ this.cur=i; this.updatePosition(false); if(manual) this.resetAuto(); }
       next(){ this.goTo(this.cur+1); }
       prev(){ this.goTo(this.cur-1); }
@@ -2893,10 +2969,11 @@ About Us Section
 
     galleries.forEach(sec=>new ConfGallery(sec));
 
-    // 초기가시 상태 세팅
-    activateConf('md7');
+    // 초기 상태: body[data-conf] 있으면 우선, 없으면 첫 번째 탭
+    const initialId = document.body.getAttribute('data-conf') || (tabs[0]?.dataset.target || 'md8');
+    activateConf(initialId);
 
-    // 유틸: 보이는/숨김 컨테이너내 애니메이션 일시정지/재개
+    // ▼ 후기/기사 영역 일시정지/재개 유틸 (기존 기능 유지)
     function pauseIn(nodeList){
       nodeList.forEach(el=>{
         el.querySelectorAll('[data-marquee-id]').forEach(n=>n.__pause && n.__pause());
@@ -2972,17 +3049,18 @@ About Us Section
     #testimonials .testimonial-card q{font-size:16px;}
   }
 
-  /* ▼ 탭에 따른 내용 표시 제어 */
-  .con-6,.con-7{display:none;}
+  /* ▼ 탭에 따른 내용 표시 제어 (6 / 7 / 8 공통) */
+  .con-6,.con-7,.con-8{display:none;}
   body[data-conf="md6"] .con-6{display:block;}
   body[data-conf="md7"] .con-7{display:block;}
+  body[data-conf="md8"] .con-8{display:block;}
 </style>
 
+<!-- 🔹 마음디톡스 6 후기 -->
 <section id="testimonials" class="con-6">
   <h2>참가자 분들의 실제 후기</h2>
   <div class="marquee-row top" data-marquee-row></div>
   <script>
-    // 원본 내용 그대로 유지 (JS로 주입하여 중복 ID 안전 초기화)
     (function(){
       const host = document.currentScript.previousElementSibling;
       if(host && host.matches('.marquee-row.top')){
@@ -3044,6 +3122,7 @@ About Us Section
   </script>
 </section>
 
+<!-- 🔹 마음디톡스 7 후기 -->
 <section id="testimonials" class="con-7">
   <h2>참가자 분들의 실제 후기</h2>
   <div class="marquee-row top" data-marquee-row></div>
@@ -3078,7 +3157,7 @@ About Us Section
       if(host && host.matches('.marquee-row.bottom')){
         host.innerHTML = `
     <article class="testimonial-card">
-      <q>기대 이상으로 내용도 알차고 실질적인 도움도 되었습니다 솔직하고 진실한 경험담이 와닿았습니다</q>
+      <q>기대 이상으로 내용도 알차고 실질적인 도움도 되었습니다 솔직하고 진실한 경험담이 와닽았습니다</q>
       <p class="author">50대 참가자(익명)</p>
     </article>
     <article class="testimonial-card">
@@ -3092,10 +3171,74 @@ About Us Section
       <p class="author">60대 참가자 (익명)</p>
     </article>
     <article class="testimonial-card">
-      <q>불안과 우울, 공화 장체는 병이 아니라는 것이 인상 깊었다.
+      <q>불안과 우울, 공황 상태는 병이 아니라는 것이 인상 깊었습니다.
 뜻 깊은 강연을 들을 수 있어 좋았습니다.</q>
       <p class="author">20대 참가자 박xx</p>
     </article>`;
+      }
+    })();
+  </script>
+</section>
+
+<!-- 🔹 마음디톡스 8 후기 (실제 내용으로 교체해서 사용) -->
+<section id="testimonials" class="con-8">
+  <h2>참가자 분들의 실제 후기</h2>
+  <div class="marquee-row top" data-marquee-row></div>
+  <script>
+    (function(){
+      const host = document.currentScript.previousElementSibling;
+      if(host && host.matches('.marquee-row.top')){
+        host.innerHTML = `
+    <article class="testimonial-card">
+      <q>강연 주제에서 연구주제를 찾게 되는 계기가 되고 학업의 방향성을 찾게 되었습니다.</q>
+      <p class="author">참가자 구xx</p>
+    </article>
+    <article class="testimonial-card">
+      <q>서울대병원 호스피스 간호사님의 진솔한 임종에 대한 이야기가 너무 인상 깊었습니다.</q>
+      <p class="author">60대 참가자 노xx</p>
+    </article>
+    <article class="testimonial-card">
+      <q>알고 있었던 이야기였지만 막연했던 것들에 대해 강사분들께서 쉽게 전달해주셔서 감사했습니다.</q>
+      <p class="author">참가자 장xx</p>
+    </article>
+      <article class="testimonial-card">
+      <q>알고 있었던 이야기였지만 막연했던 것들에 대해 강사분들께서 쉽게 전달해주셔서 감사했습니다.</q>
+      <p class="author">참가자 장xx</p>
+    </article>
+
+     
+    
+    `;
+      }
+    })();
+  </script>
+
+  <div class="row-gap"></div>
+
+  <div class="marquee-row bottom" data-marquee-row></div>
+  <script>
+    (function(){
+      const host = document.currentScript.previousElementSibling;
+      if(host && host.matches('.marquee-row.bottom')){
+        host.innerHTML = `
+    <article class="testimonial-card">
+      <q>임종 장면을 보면서 연명치료에 대한 생각을 정리하게 되는 계기가 되었습니다.</q>
+      <p class="author">60대 참가자 정xx</p>
+    </article>
+    <article class="testimonial-card">
+      <q>죽음 강연이 많지 않은데, 죽음에 대해 직접 대면해보고 앞으로의 삶에 도움이 된 것 같습니다.</q>
+      <p class="author">60대 참가자 오xx</p>
+    </article>
+    <article class="testimonial-card">
+      <q>남은 삶에 대한 나의 태도, 생각 마무리에 보탬이 된 것 같습니다.</q>
+      <p class="author">70대 참가자 김xx</p>
+    </article>
+     <article class="testimonial-card">
+      <q>강수지 피아니스트님의 음악을 듣고 있으니 나도 모르게 눈물이 났어요.</q>
+      <p class="author">60대 참가자 임xx</p>
+    </article>
+    
+    `;
       }
     })();
   </script>
@@ -3111,7 +3254,6 @@ About Us Section
     row.__inited = true;
 
     const originals = [...row.children];
-    // 아무 카드도 없으면 종료
     if (originals.length === 0) return;
 
     originals.forEach(c => row.appendChild(c.cloneNode(true)));
@@ -3122,7 +3264,6 @@ About Us Section
     let pos = 0;
     let last = performance.now();
     let isPaused = false;
-    let rafId;
 
     const id = ++marqueeCounter;
     row.dataset.marqueeId = id;
@@ -3138,9 +3279,9 @@ About Us Section
         row.style.transform = `translateX(${pos}px)`;
         last = now;
       } else {
-        last = now; // 일시정지 동안 시간 기준점 갱신
+        last = now;
       }
-      rafId = requestAnimationFrame(step);
+      requestAnimationFrame(step);
     }
 
     function pause(){ isPaused = true; }
@@ -3162,23 +3303,22 @@ About Us Section
     },{threshold:0.05});
     io.observe(row);
 
-    rafId = requestAnimationFrame(step);
+    requestAnimationFrame(step);
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    // 중복 ID가 있어도 모든 testimonials 섹션 처리
     document.querySelectorAll('section#testimonials').forEach(sec=>{
       const topRow = sec.querySelector('.marquee-row.top');
       const bottomRow = sec.querySelector('.marquee-row.bottom');
       initMarquee(topRow, { direction: 'right', speed: 55 });
       initMarquee(bottomRow, { direction: 'left', speed: 55 });
     });
-    // 초기 탭 상태 반영 (상단 스크립트에서 body[data-conf] 세팅)
-    if(!document.body.hasAttribute('data-conf')) document.body.setAttribute('data-conf','md7');
+    if(!document.body.hasAttribute('data-conf')) document.body.setAttribute('data-conf','md8');
   });
 })();
 </script>
 
+<!-- 🔹 기사/뉴스 슬라이더 (마음디톡스 7) -->
 <section id="blog-news-slider2" class="con-7">
   <div class="bns2-viewport">
     <div class="bns2-track">
@@ -3211,6 +3351,7 @@ About Us Section
   </div>
 </section>
 
+<!-- 🔹 기사/뉴스 슬라이더 (마음디톡스 6) -->
 <section id="blog-news-slider2" class="con-6">
   <div class="bns2-viewport">
     <div class="bns2-track">
@@ -3250,6 +3391,42 @@ About Us Section
   </div>
 </section>
 
+<!-- 🔹 기사/뉴스 슬라이더 (마음디톡스 8 – 기사 링크/이미지는 나중에 실제로 교체) -->
+<section id="blog-news-slider2" class="con-8">
+  <div class="bns2-viewport">
+    <div class="bns2-track">
+      <!-- TODO: 마음디톡스 8 관련 실제 기사/블로그 링크로 교체 -->
+      <a href="https://news.jkn.co.kr/post/855476" class="bns2-slide con-8" target="_blank" rel="noopener">
+        <img src="https://images.jkn.co.kr/data/images/full/982208/image.jpg?w=560" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 1">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">'웰 다잉 & 사후생’…마음건강 길, ‘마음 디톡스 8’ 성료</h4>
+          <p class="bns2-summary">죽음이라는 주제는 누구에게나 두렵지만, 동시에 삶의 본질을 되묻는 가장 깊은 질문이기도 하다...</p>
+        </div>
+      </a>
+      <a href="https://blog.naver.com/healingdiary/224088151043" class="bns2-slide con-8" target="_blank" rel="noopener">
+        <img src="./img/8-3.jpeg" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">11/22(토) "제 8회 마음 디톡스 컨퍼런스: 웰다잉&사후생" 명상 피아노 연주</h4>
+          <p class="bns2-summary">'죽음'에 대한 담론이 결코 가볍지 않은 주제인데, 생각보다 많은 분들이 참석해주셔서 놀라왔어요...</p>
+        </div>
+      </a>
+
+       <a href="https://www.chosun.com/medical/2025/11/25/45X2KJQC7JDD7NJ2WPCDJEUUJA/" class="bns2-slide con-8" target="_blank" rel="noopener">
+        <img src="https://www.chosun.com/resizer/v2/BNADKKY775BOZLUYUOFQNSGIIA.JPG?auth=dfefa1c4447b8955776c66c6d17fd6f1b19e4d726e4740766b2a28d68248a460&width=591&height=460&smart=true" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">죽음을 지켜본 사람들이 말하는 '좋은 죽음·웰다잉'</h4>
+          <p class="bns2-summary">50명이면 꽉 차는 지하 갤러리 공간은 토요일 오후 일찌감치 만석이었다....</p>
+        </div>
+      </a>
+
+
+      
+    </div>
+    <button class="bns2-arrow bns2-prev" aria-label="이전">&lt;</button>
+    <button class="bns2-arrow bns2-next" aria-label="다음">&gt;</button>
+  </div>
+</section>
+
 <style>
 #blog-news-slider2 { width: 98%; max-width: 1100px; margin: 3rem auto 2rem auto; font-family: 'Noto Sans KR', sans-serif;}
 #blog-news-slider2 .bns2-viewport { position: relative; overflow: hidden; width: 100%; border-radius: 20px; background: #f8f8f8; box-shadow: 0 6px 24px rgba(0,0,0,.08); min-height: 410px;}
@@ -3272,7 +3449,6 @@ About Us Section
 
 <script>
 (function(){
-  // 모든 blog-news-slider2 섹션(중복 ID 포함)에 대해 각각 독립 초기화
   const sections = document.querySelectorAll('section#blog-news-slider2');
 
   sections.forEach(section=>{
@@ -3290,7 +3466,6 @@ About Us Section
     const slides = Array.from(section.querySelectorAll(".bns2-slide"));
     const prevBtn = section.querySelector(".bns2-prev");
     const nextBtn = section.querySelector(".bns2-next");
-    // 페이지네이션 노드가 없는 마크업을 유지하기 위해 필요 시 동적 생성
     let pagination = section.querySelector(".bns2-pagination");
     if(!pagination){
       pagination = document.createElement('div');
@@ -3329,7 +3504,7 @@ About Us Section
       });
       if(slides.length) slides[slides.length-1].style.marginRight = '0';
       goTo(current, false);
-      updatePagination(); // 반응형 변경 시 페이지 수가 달라질 수 있음
+      updatePagination();
     }
     window.addEventListener('resize', updateSlideLayout, {passive:true});
 
@@ -3409,7 +3584,6 @@ About Us Section
     updatePagination();
     goTo(0,false);
 
-    // 뷰포트 기반 일시정지/재시작 훅
     const viewport = section.querySelector('.bns2-viewport');
     let paused=false;
     function pause(){ if(paused) return; paused=true; track.style.transition=''; }
@@ -3425,10 +3599,9 @@ About Us Section
     },{threshold:0.1});
     io.observe(section);
   });
-
-  // 탭 전환 시 con-6/con-7 보여지는 섹션만 재개 (상단 confSwitch 스크립트에서 호출)
 })();
 </script>
+
 
 
 
