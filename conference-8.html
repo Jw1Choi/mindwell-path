@@ -3431,7 +3431,7 @@ About Us Section
     overflow-y:visible;
     scroll-behavior:smooth;
     flex:1 1 auto;
-    padding:0;                /* ✅ 패딩 제거 – 끝까지 가도 카드가 안 사라지게 */
+    padding:0;                /* 끝까지 가도 카드가 안 사라지도록 패딩 제거 */
   }
   #testimonials .ts-viewport::-webkit-scrollbar{
     display:none;
@@ -3439,7 +3439,7 @@ About Us Section
 
   #testimonials .ts-track{
     display:flex;
-    gap:32px;                 /* ✅ 모든 컨퍼런스 동일 간격 */
+    gap:32px;                 /* 모든 컨퍼런스 동일 간격 */
     padding-bottom:4px;
   }
 
@@ -3467,7 +3467,7 @@ About Us Section
     background:rgba(15,23,42,.88);
     color:#ffffff;
     box-shadow:0 12px 28px rgba(15,23,42,.35);
-    transform:translateY(-1px);
+    transform:translateY(-1px); /* 너무 많이 안 내려가도록 살짝만 */
   }
 
   @media(max-width:768px){
@@ -3644,8 +3644,14 @@ About Us Section
 </section>
 
 <script>
-/* ▷ 자동 재생 없음 / 드래그 + 버튼 스크롤 전용 슬라이더 (양 끝 clamp) */
+/* ▷ 자동 재생 + 드래그 시 일시 정지 후 재시작
+   ▷ 버튼 클릭 시 자동 완전 종료
+   ▷ 버튼은 끝에서 루프하지 않고, 자동은 루프 유지 */
 (function(){
+  const AUTO_INTERVAL = 4500;          // 자동 이동 간격(ms)
+  const IDLE_AFTER_DRAG = 5000;        // 드래그 끝난 뒤 자동 재시작까지 대기시간
+  const DRAG_SENSITIVITY = 1.6;        // 드래그 감도 (값이 클수록 더 잘 움직임)
+
   function initTestimonialSection(sec){
     const viewport = sec.querySelector('.ts-viewport');
     const track    = sec.querySelector('.ts-track');
@@ -3658,7 +3664,7 @@ About Us Section
       return Math.max(0, track.scrollWidth - viewport.clientWidth);
     }
 
-    // 한 칸 스크롤 폭 계산 (카드 + gap)
+    // 한 칸 스크롤 폭 계산 (카드 + gap 기준)
     function getStep(){
       if (cards.length < 2) return cards[0].offsetWidth || viewport.clientWidth;
       const r0 = cards[0].getBoundingClientRect();
@@ -3667,17 +3673,94 @@ About Us Section
       return step > 0 ? step : (cards[0].offsetWidth + 32);
     }
 
-    function scrollByDir(dir){
+    // 1) 자동 재생용: 끝에서 루프
+    function scrollByDirLoop(dir){
       const step = getStep();
-      const targetRaw = viewport.scrollLeft + dir * step;
-      const clamped = Math.min(Math.max(0, targetRaw), maxScroll());
-      viewport.scrollTo({ left: clamped, behavior: 'smooth' });
+      const max  = maxScroll();
+      if (max === 0) return;
+
+      const current = viewport.scrollLeft;
+      let target;
+
+      if (dir > 0){
+        // 오른쪽: 끝 근처면 처음으로 루프
+        if (current + step + 5 >= max){
+          target = 0;
+        } else {
+          target = Math.min(current + step, max);
+        }
+      } else {
+        // 왼쪽: 처음 근처면 끝으로 루프
+        if (current - step - 5 <= 0){
+          target = max;
+        } else {
+          target = Math.max(current - step, 0);
+        }
+      }
+
+      viewport.scrollTo({ left: target, behavior: 'smooth' });
     }
 
-    prevBtn.addEventListener('click', ()=>scrollByDir(-1));
-    nextBtn.addEventListener('click', ()=>scrollByDir( 1));
+    // 2) 버튼용: 끝에서 더 이상 넘어가지 않고 멈춤(루프 X)
+    function scrollByDirClamp(dir){
+      const step = getStep();
+      const max  = maxScroll();
+      if (max === 0) return;
 
-    // 마우스 드래그로 좌우 스크롤
+      const current = viewport.scrollLeft;
+      let target;
+
+      if (dir > 0){
+        target = Math.min(current + step, max); // 끝 이상으로는 안 감
+      } else {
+        target = Math.max(current - step, 0);   // 처음 이전으로는 안 감
+      }
+
+      viewport.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    /* ───── 자동 재생 컨트롤 ───── */
+    let autoTimer = null;
+    let dragRestartTimer = null;
+    let autoStoppedByButton = false; // 버튼 눌렀으면 true → 자동 재생 영구 OFF
+
+    function stopAuto(){
+      if (autoTimer){
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function startAuto(){
+      if (autoStoppedByButton) return;  // 버튼으로 끈 경우 다시 켜지지 않음
+      if (autoTimer) return;
+      autoTimer = setInterval(()=>{ scrollByDirLoop(1); }, AUTO_INTERVAL);
+    }
+
+    function scheduleRestartAfterDrag(){
+      if (autoStoppedByButton) return;   // 버튼으로 끈 경우 재시작 안 함
+      stopAuto();
+      if (dragRestartTimer){
+        clearTimeout(dragRestartTimer);
+      }
+      dragRestartTimer = setTimeout(startAuto, IDLE_AFTER_DRAG);
+    }
+
+    /* ───── 버튼 클릭: 자동 재생 완전 종료 + 끝에서 루프 없음 ───── */
+    prevBtn.addEventListener('click', ()=>{
+      autoStoppedByButton = true;
+      stopAuto();
+      if (dragRestartTimer) clearTimeout(dragRestartTimer);
+      scrollByDirClamp(-1);
+    });
+    nextBtn.addEventListener('click', ()=>{
+      autoStoppedByButton = true;
+      stopAuto();
+      if (dragRestartTimer) clearTimeout(dragRestartTimer);
+      scrollByDirClamp(1);
+    });
+
+    /* ───── 마우스 드래그 ───── */
     let isDown = false;
     let startX = 0;
     let startScroll = 0;
@@ -3686,37 +3769,50 @@ About Us Section
       isDown = true;
       startX = e.pageX;
       startScroll = viewport.scrollLeft;
-      viewport.classList.add('is-dragging');
+      viewport.style.scrollBehavior = 'auto';   // 드래그 중에는 즉시 반응
+      scheduleRestartAfterDrag();
     });
+
     window.addEventListener('mousemove', e=>{
       if(!isDown) return;
-      const dx = e.pageX - startX;
+      const dx = (e.pageX - startX) * DRAG_SENSITIVITY;
       const targetRaw = startScroll - dx;
       const clamped = Math.min(Math.max(0, targetRaw), maxScroll());
       viewport.scrollLeft = clamped;
     });
+
     window.addEventListener('mouseup', ()=>{
+      if(!isDown) return;
       isDown = false;
-      viewport.classList.remove('is-dragging');
+      viewport.style.scrollBehavior = '';        // 다시 부드러운 스크롤로 복원
     });
 
-    // 터치 드래그
+    /* ───── 터치 드래그 (모바일) ───── */
     viewport.addEventListener('touchstart', e=>{
       if(!e.touches[0]) return;
       isDown = true;
       startX = e.touches[0].clientX;
       startScroll = viewport.scrollLeft;
+      viewport.style.scrollBehavior = 'auto';
+      scheduleRestartAfterDrag();
     }, {passive:true});
+
     window.addEventListener('touchmove', e=>{
       if(!isDown || !e.touches || !e.touches[0]) return;
-      const dx = e.touches[0].clientX - startX;
+      const dx = (e.touches[0].clientX - startX) * DRAG_SENSITIVITY;
       const targetRaw = startScroll - dx;
       const clamped = Math.min(Math.max(0, targetRaw), maxScroll());
       viewport.scrollLeft = clamped;
     }, {passive:true});
+
     window.addEventListener('touchend', ()=>{
+      if(!isDown) return;
       isDown = false;
+      viewport.style.scrollBehavior = '';
     });
+
+    // 초기 자동 재생 시작
+    startAuto();
   }
 
   window.addEventListener('DOMContentLoaded', ()=>{
@@ -3727,6 +3823,9 @@ About Us Section
   });
 })();
 </script>
+
+
+
 
 
 
