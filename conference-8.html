@@ -3644,13 +3644,12 @@ About Us Section
 </section>
 
 <script>
-/* ▷ 자동 재생 + 드래그 시 일시 정지 후 재시작
-   ▷ 버튼 클릭 시 자동 완전 종료
-   ▷ 버튼은 끝에서 루프하지 않고, 자동은 루프 유지 */
+/* ▷ 자동재생(루프) + 드래그 스냅 + 
+     버튼 클릭 시 자동 완전 종료 & 루프 없음 */
 (function(){
-  const AUTO_INTERVAL = 4500;          // 자동 이동 간격(ms)
-  const IDLE_AFTER_DRAG = 5000;        // 드래그 끝난 뒤 자동 재시작까지 대기시간
-  const DRAG_SENSITIVITY = 1.6;        // 드래그 감도 (값이 클수록 더 잘 움직임)
+  const AUTO_INTERVAL = 4500;
+  const IDLE_AFTER_DRAG = 5000;
+  const DRAG_SENSITIVITY = 1.25;
 
   function initTestimonialSection(sec){
     const viewport = sec.querySelector('.ts-viewport');
@@ -3658,160 +3657,128 @@ About Us Section
     const cards    = Array.from(track.children);
     const prevBtn  = sec.querySelector('.ts-prev');
     const nextBtn  = sec.querySelector('.ts-next');
-    if (!viewport || !track || cards.length === 0) return;
+    if (!viewport || !track || !cards.length) return;
+
+    let cardStep = 0;
+
+    function calcStep(){
+      if (cards.length < 2) {
+        cardStep = cards[0].offsetWidth;
+      } else {
+        const r0 = cards[0].getBoundingClientRect();
+        const r1 = cards[1].getBoundingClientRect();
+        cardStep = r1.left - r0.left;
+      }
+      if (!cardStep || cardStep <= 0) {
+        cardStep = cards[0].offsetWidth + 32;
+      }
+    }
+    calcStep();
+    window.addEventListener('resize', calcStep);
 
     function maxScroll(){
       return Math.max(0, track.scrollWidth - viewport.clientWidth);
     }
 
-    // 한 칸 스크롤 폭 계산 (카드 + gap 기준)
-    function getStep(){
-      if (cards.length < 2) return cards[0].offsetWidth || viewport.clientWidth;
-      const r0 = cards[0].getBoundingClientRect();
-      const r1 = cards[1].getBoundingClientRect();
-      const step = r1.left - r0.left;
-      return step > 0 ? step : (cards[0].offsetWidth + 32);
-    }
-
-    // 1) 자동 재생용: 끝에서 루프
-    function scrollByDirLoop(dir){
-      const step = getStep();
-      const max  = maxScroll();
-      if (max === 0) return;
-
+    /* 가장 가까운 카드 위치로 스냅 */
+    function snapToNearest(){
       const current = viewport.scrollLeft;
-      let target;
-
-      if (dir > 0){
-        // 오른쪽: 끝 근처면 처음으로 루프
-        if (current + step + 5 >= max){
-          target = 0;
-        } else {
-          target = Math.min(current + step, max);
-        }
-      } else {
-        // 왼쪽: 처음 근처면 끝으로 루프
-        if (current - step - 5 <= 0){
-          target = max;
-        } else {
-          target = Math.max(current - step, 0);
-        }
-      }
-
+      const index = Math.round(current / cardStep);
+      const target = Math.max(0, Math.min(index * cardStep, maxScroll()));
       viewport.scrollTo({ left: target, behavior: 'smooth' });
     }
 
-    // 2) 버튼용: 끝에서 더 이상 넘어가지 않고 멈춤(루프 X)
-    function scrollByDirClamp(dir){
-      const step = getStep();
-      const max  = maxScroll();
-      if (max === 0) return;
-
-      const current = viewport.scrollLeft;
-      let target;
-
-      if (dir > 0){
-        target = Math.min(current + step, max); // 끝 이상으로는 안 감
-      } else {
-        target = Math.max(current - step, 0);   // 처음 이전으로는 안 감
-      }
-
+    /* 자동 루프 스크롤 */
+    function scrollLoop(){
+      let target = viewport.scrollLeft + cardStep;
+      if (target >= maxScroll() - 5) target = 0;
       viewport.scrollTo({ left: target, behavior: 'smooth' });
     }
 
-    /* ───── 자동 재생 컨트롤 ───── */
+    /* 버튼용(루프 없음 / clamp) */
+    function scrollClamp(dir){
+      let target = viewport.scrollLeft + dir * cardStep;
+      target = Math.max(0, Math.min(target, maxScroll()));
+      viewport.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    /* 자동 재생 관리 */
     let autoTimer = null;
-    let dragRestartTimer = null;
-    let autoStoppedByButton = false; // 버튼 눌렀으면 true → 자동 재생 영구 OFF
+    let restartTimer = null;
+    let autoStoppedByButton = false;
 
     function stopAuto(){
-      if (autoTimer){
-        clearInterval(autoTimer);
-        autoTimer = null;
-      }
+      clearInterval(autoTimer);
+      autoTimer = null;
     }
-
     function startAuto(){
-      if (autoStoppedByButton) return;  // 버튼으로 끈 경우 다시 켜지지 않음
-      if (autoTimer) return;
-      autoTimer = setInterval(()=>{ scrollByDirLoop(1); }, AUTO_INTERVAL);
+      if (autoStoppedByButton || autoTimer) return;
+      autoTimer = setInterval(scrollLoop, AUTO_INTERVAL);
+    }
+    function scheduleRestart(){
+      if (autoStoppedByButton) return;
+      stopAuto();
+      clearTimeout(restartTimer);
+      restartTimer = setTimeout(startAuto, IDLE_AFTER_DRAG);
     }
 
-    function scheduleRestartAfterDrag(){
-      if (autoStoppedByButton) return;   // 버튼으로 끈 경우 재시작 안 함
-      stopAuto();
-      if (dragRestartTimer){
-        clearTimeout(dragRestartTimer);
-      }
-      dragRestartTimer = setTimeout(startAuto, IDLE_AFTER_DRAG);
-    }
-
-    /* ───── 버튼 클릭: 자동 재생 완전 종료 + 끝에서 루프 없음 ───── */
-    prevBtn.addEventListener('click', ()=>{
+    /* 버튼 이벤트 */
+    prevBtn.addEventListener('click',()=>{
       autoStoppedByButton = true;
       stopAuto();
-      if (dragRestartTimer) clearTimeout(dragRestartTimer);
-      scrollByDirClamp(-1);
-    });
-    nextBtn.addEventListener('click', ()=>{
-      autoStoppedByButton = true;
-      stopAuto();
-      if (dragRestartTimer) clearTimeout(dragRestartTimer);
-      scrollByDirClamp(1);
+      scrollClamp(-1);
     });
 
-    /* ───── 마우스 드래그 ───── */
+    nextBtn.addEventListener('click',()=>{
+      autoStoppedByButton = true;
+      stopAuto();
+      scrollClamp(1);
+    });
+
+    /* 드래그 처리 */
     let isDown = false;
     let startX = 0;
     let startScroll = 0;
 
-    viewport.addEventListener('mousedown', e=>{
+    function dragStart(x){
       isDown = true;
-      startX = e.pageX;
-      startScroll = viewport.scrollLeft;
-      viewport.style.scrollBehavior = 'auto';   // 드래그 중에는 즉시 반응
-      scheduleRestartAfterDrag();
-    });
-
-    window.addEventListener('mousemove', e=>{
-      if(!isDown) return;
-      const dx = (e.pageX - startX) * DRAG_SENSITIVITY;
-      const targetRaw = startScroll - dx;
-      const clamped = Math.min(Math.max(0, targetRaw), maxScroll());
-      viewport.scrollLeft = clamped;
-    });
-
-    window.addEventListener('mouseup', ()=>{
-      if(!isDown) return;
-      isDown = false;
-      viewport.style.scrollBehavior = '';        // 다시 부드러운 스크롤로 복원
-    });
-
-    /* ───── 터치 드래그 (모바일) ───── */
-    viewport.addEventListener('touchstart', e=>{
-      if(!e.touches[0]) return;
-      isDown = true;
-      startX = e.touches[0].clientX;
+      startX = x;
       startScroll = viewport.scrollLeft;
       viewport.style.scrollBehavior = 'auto';
-      scheduleRestartAfterDrag();
-    }, {passive:true});
+      scheduleRestart();
+    }
 
-    window.addEventListener('touchmove', e=>{
-      if(!isDown || !e.touches || !e.touches[0]) return;
-      const dx = (e.touches[0].clientX - startX) * DRAG_SENSITIVITY;
-      const targetRaw = startScroll - dx;
-      const clamped = Math.min(Math.max(0, targetRaw), maxScroll());
-      viewport.scrollLeft = clamped;
-    }, {passive:true});
+    function dragMove(x){
+      if(!isDown) return;
+      const dx = (x - startX) * DRAG_SENSITIVITY;
+      const raw = startScroll - dx;
+      viewport.scrollLeft = Math.max(0, Math.min(raw, maxScroll()));
+    }
 
-    window.addEventListener('touchend', ()=>{
+    function dragEnd(){
       if(!isDown) return;
       isDown = false;
       viewport.style.scrollBehavior = '';
-    });
+      snapToNearest();
+    }
 
-    // 초기 자동 재생 시작
+    /* 마우스 */
+    viewport.addEventListener('mousedown',e=>dragStart(e.pageX));
+    window.addEventListener('mousemove',e=>dragMove(e.pageX));
+    window.addEventListener('mouseup',dragEnd);
+
+    /* 터치 */
+    viewport.addEventListener('touchstart',e=>{
+      if(e.touches[0]) dragStart(e.touches[0].clientX);
+    },{passive:true});
+
+    window.addEventListener('touchmove',e=>{
+      if(e.touches[0]) dragMove(e.touches[0].clientX);
+    },{passive:true});
+
+    window.addEventListener('touchend',dragEnd);
+
+    /* 시작 */
     startAuto();
   }
 
@@ -3821,8 +3788,10 @@ About Us Section
       document.body.setAttribute('data-conf','md8');
     }
   });
+
 })();
 </script>
+
 
 
 
