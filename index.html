@@ -3162,12 +3162,15 @@ About Us Section
       pauseIn(hideNodes);
     }
 
-    function activateConf(targetId){
+    // ✅ scrollIntoView를 옵션으로 제어할 수 있게 수정
+    function activateConf(targetId, options = {}){
+      const { skipScroll = false } = options;
+
       galleries.forEach(sec=>sec.classList.toggle('is-active', sec.id===targetId));
       tabs.forEach(btn=>btn.setAttribute('aria-selected', btn.dataset.target===targetId ? 'true':'false'));
       setContentVisibility(targetId);
 
-      if (header) {
+      if (!skipScroll && header) {
         const activeTab = tabs.find(t=>t.dataset.target===targetId);
         if (activeTab) {
           activeTab.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
@@ -3329,11 +3332,13 @@ About Us Section
     galleries.forEach(sec=>new ConfGallery(sec));
 
     const initialId = document.body.getAttribute('data-conf') || (tabs[0]?.dataset.target || 'md8');
-    activateConf(initialId);
+    // ✅ 최초 로드 시에는 스크롤 이동 없이 상태만 세팅
+    activateConf(initialId, { skipScroll: true });
 
   });
 })();
 </script>
+
 
 
 
