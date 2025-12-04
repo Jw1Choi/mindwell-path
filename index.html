@@ -3649,12 +3649,14 @@ About Us Section
 </section>
 
 <script>
-/* ▷ 자동재생(루프) + 드래그 스냅 + 
+/* ▷ 자동재생(루프) + 짧은 드래그 스냅 + 
      버튼 클릭 시 자동 완전 종료 & 루프 없음 */
+
 (function(){
   const AUTO_INTERVAL = 4500;
   const IDLE_AFTER_DRAG = 5000;
-  const DRAG_SENSITIVITY = 1.25;
+  const DRAG_SENSITIVITY = 1.6;       // ✅ 드래그 감도 상향
+  const SWIPE_RATIO = 0.12;           // ✅ 카드 폭 대비 12% 이동 시 스와이프 인정
 
   function initTestimonialSection(sec){
     const viewport = sec.querySelector('.ts-viewport');
@@ -3674,6 +3676,7 @@ About Us Section
         const r1 = cards[1].getBoundingClientRect();
         cardStep = r1.left - r0.left;
       }
+
       if (!cardStep || cardStep <= 0) {
         cardStep = cards[0].offsetWidth + 32;
       }
@@ -3685,49 +3688,59 @@ About Us Section
       return Math.max(0, track.scrollWidth - viewport.clientWidth);
     }
 
-    /* 가장 가까운 카드 위치로 스냅 */
+    /* 가장 가까운 카드 스냅 */
     function snapToNearest(){
       const current = viewport.scrollLeft;
-      const index = Math.round(current / cardStep);
-      const target = Math.max(0, Math.min(index * cardStep, maxScroll()));
+      const index   = Math.round(current / cardStep);
+      const target  = Math.max(0, Math.min(index * cardStep, maxScroll()));
       viewport.scrollTo({ left: target, behavior: 'smooth' });
     }
 
-    /* 자동 루프 스크롤 */
+    /* 자동 이동 (루프 전용) */
     function scrollLoop(){
+      if(maxScroll() === 0) return;
+
       let target = viewport.scrollLeft + cardStep;
-      if (target >= maxScroll() - 5) target = 0;
-      viewport.scrollTo({ left: target, behavior: 'smooth' });
+      if (target >= maxScroll() - 4) target = 0;
+      viewport.scrollTo({ left: target, behavior:'smooth' });
     }
 
-    /* 버튼용(루프 없음 / clamp) */
+    /* 버튼 이동 (루프 없음) */
     function scrollClamp(dir){
       let target = viewport.scrollLeft + dir * cardStep;
       target = Math.max(0, Math.min(target, maxScroll()));
-      viewport.scrollTo({ left: target, behavior: 'smooth' });
+      viewport.scrollTo({ left: target, behavior:'smooth' });
     }
 
-    /* 자동 재생 관리 */
+    /* -----------------------------
+       자동 재생 컨트롤
+    ----------------------------- */
     let autoTimer = null;
     let restartTimer = null;
     let autoStoppedByButton = false;
 
     function stopAuto(){
-      clearInterval(autoTimer);
-      autoTimer = null;
+      if(autoTimer){
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
     }
+
     function startAuto(){
-      if (autoStoppedByButton || autoTimer) return;
+      if(autoStoppedByButton || autoTimer) return;
       autoTimer = setInterval(scrollLoop, AUTO_INTERVAL);
     }
+
     function scheduleRestart(){
-      if (autoStoppedByButton) return;
+      if(autoStoppedByButton) return;
       stopAuto();
       clearTimeout(restartTimer);
       restartTimer = setTimeout(startAuto, IDLE_AFTER_DRAG);
     }
 
-    /* 버튼 이벤트 */
+    /* -----------------------------
+       버튼 이벤트
+    ----------------------------- */
     prevBtn.addEventListener('click',()=>{
       autoStoppedByButton = true;
       stopAuto();
@@ -3740,13 +3753,17 @@ About Us Section
       scrollClamp(1);
     });
 
-    /* 드래그 처리 */
+    /* -----------------------------
+       드래그 처리
+    ----------------------------- */
     let isDown = false;
     let startX = 0;
     let startScroll = 0;
+    let moveX = 0;
 
     function dragStart(x){
       isDown = true;
+      moveX = 0;
       startX = x;
       startScroll = viewport.scrollLeft;
       viewport.style.scrollBehavior = 'auto';
@@ -3755,8 +3772,8 @@ About Us Section
 
     function dragMove(x){
       if(!isDown) return;
-      const dx = (x - startX) * DRAG_SENSITIVITY;
-      const raw = startScroll - dx;
+      moveX = (x - startX) * DRAG_SENSITIVITY;
+      const raw = startScroll - moveX;
       viewport.scrollLeft = Math.max(0, Math.min(raw, maxScroll()));
     }
 
@@ -3764,24 +3781,33 @@ About Us Section
       if(!isDown) return;
       isDown = false;
       viewport.style.scrollBehavior = '';
-      snapToNearest();
+
+      const threshold = cardStep * SWIPE_RATIO; // ✅ 짧은 드래그 판정 기준
+
+      if(moveX > threshold){
+        scrollClamp(-1);
+      } else if(moveX < -threshold){
+        scrollClamp(1);
+      } else {
+        snapToNearest();
+      }
     }
 
     /* 마우스 */
-    viewport.addEventListener('mousedown',e=>dragStart(e.pageX));
-    window.addEventListener('mousemove',e=>dragMove(e.pageX));
-    window.addEventListener('mouseup',dragEnd);
+    viewport.addEventListener('mousedown', e=>dragStart(e.pageX));
+    window.addEventListener('mousemove', e=>dragMove(e.pageX));
+    window.addEventListener('mouseup', dragEnd);
 
     /* 터치 */
-    viewport.addEventListener('touchstart',e=>{
+    viewport.addEventListener('touchstart', e=>{
       if(e.touches[0]) dragStart(e.touches[0].clientX);
-    },{passive:true});
+    }, {passive:true});
 
-    window.addEventListener('touchmove',e=>{
+    window.addEventListener('touchmove', e=>{
       if(e.touches[0]) dragMove(e.touches[0].clientX);
-    },{passive:true});
+    }, {passive:true});
 
-    window.addEventListener('touchend',dragEnd);
+    window.addEventListener('touchend', dragEnd);
 
     /* 시작 */
     startAuto();
@@ -3789,6 +3815,7 @@ About Us Section
 
   window.addEventListener('DOMContentLoaded', ()=>{
     document.querySelectorAll('section#testimonials').forEach(initTestimonialSection);
+
     if(!document.body.hasAttribute('data-conf')){
       document.body.setAttribute('data-conf','md8');
     }
@@ -3796,6 +3823,7 @@ About Us Section
 
 })();
 </script>
+
 
 
 
