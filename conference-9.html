@@ -55,7 +55,7 @@
 	<meta property="og:site_name" content="마음건강 길">
 	<meta property="og:type" content="website">
 
-  <meta property="og:image" content="./img/poster-8.png" />		
+  <meta property="og:image" content="./img/9-poster.jpg" />		
     <link rel="apple-touch-icon" href="./img/logo-introduce.png" sizes="180x180"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="16x16"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="32x32"/>
@@ -133,7 +133,7 @@
     #saitoHitoriBowl{
       
       /* ======= Theme Tokens (필요 시 수정) ======= */
-      --bg:url('./img/intro-8.jpg');             /* 배경 이미지 (교체 가능) */
+      --bg:url('./img/9-intro.jpg');             /* 배경 이미지 (교체 가능) */
       --ink:#e7efe9;                              /* 기본 텍스트 */
       --muted:#cfe0d9;                            /* 보조 텍스트 */
       --title:#cfe7e1;                            /* 상단 영문 타이틀 */
@@ -247,7 +247,7 @@
   </style>
 
   <div class="shb-wrap">
-    <h1 class="shb-stit">죽음을 넘어,<br>삶을 다시 바라보는 시간</h1><br>
+    <h1 class="shb-stit">의학이 말하는<br>죽음 이후의 의식<br></h1><br>
     <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';"><b style="color:#4ed250;">“육체의 죽음 뒤에도 의식은 지속된다”</b><br><br>이 말은 종교적 믿음이나<Br>철학적 위안이 아니라,<br><br>
 수십 년에 걸쳐<br>축적된 자료와<br><br>
 세계적으로 명망 있는<br>과학자와 의사들이<br><br>임종·임사체험·사후세계 연구를 통해<br>
@@ -256,7 +256,7 @@
 
     <!-- ✅ 책 이미지를 별도 삽입: 경로만 교체하면 됨 -->
     <figure class="shb-book">
-      <img src="./img/death.jpg" alt="사이토 히토리 ‘그릇’ 도서 표지">
+      <img src="./img/9-img.jpg" alt="사이토 히토리 ‘그릇’ 도서 표지">
     </figure>
     
     <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">이번 <b style=" font-family: 'SchoolSafetyNotification-d';color:#4ed250;">마음 디톡스 ⑨</b> 는<br>40년 의사 생활과<br>국제 연구 자료,<br>실제 사례를 바탕으로
@@ -346,10 +346,10 @@
       --shadow: 0 16px 60px rgba(0,0,0,.08);
 
       /* ✅ 교체 가능한 배경 이미지 (상대/절대 주소 모두 OK) */
-      --bg-url: url('./img/8-intro2.png');
+      --bg-url: url('./img/9-intro-1.jpg');
       /* ✅ 배경 밝기 (1 = 원본, 0.7 = 어둡게, 1.2 = 밝게) */
       --bg-brightness: 0.8;
-      --bg-opacity: 0.5;
+      --bg-opacity: 0.3;
 
       font-family: "Pretendard","Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       position: relative;
@@ -372,13 +372,14 @@
       position:absolute;
       inset:0;
       z-index:0;
-      background-image: url(./img/8-intro2.png);
+      background-image: url(./img/9-intro-1.jpg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       /* filter: brightness(var(--bg-brightness)); */
       transition: filter .3s ease;
       pointer-events:none;       /* 이벤트 차단 */
+      opacity: 0.3;
     }
 
 
@@ -437,7 +438,7 @@
       position:absolute;
       inset:0;
       z-index:0;
-      background-image: url(./img/8-intro2.png);
+          background-image: url(./img/9-intro-1.jpg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover !important;
@@ -457,7 +458,7 @@
       position:absolute;
       inset:0;
       z-index:0;
-      background-image: url(./img/8-intro2.png);
+      background-image: url(./img/9-intro-1.jpg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -2079,29 +2080,30 @@ About Us Section
   <!-- 가운데 정렬 CTA 버튼 두 개 -->
   <div class="cta-wrap" role="navigation" aria-label="신청 바로가기">
     <a  class="cta-btn" data-open="offline" style="background:#fff;color:#0062ff;">현장참가<br>
-      <p style="color:red;font-weight:bold;" class="blink"> &nbsp; [전석 매진]</p></a>
+      <!-- <p style="color:red;font-weight:bold;" class="blink"> &nbsp; [전석 매진]</p> -->
+    </a>
     
   </div>
 
   <!-- ====== 현장참가 ====== -->
 
-  <!-- <div class="faq-card active" data-group="offline">
+  <div class="faq-card active" data-group="offline">
     <button class="faq-toggle" type="button" aria-expanded="true">
-      <span class="faq-title"><b>1. 간편 계좌이체</b></span>
+      <span class="faq-title"><b>간편 계좌이체</b></span>
       <span class="icon">+</span>
     </button>
     <div class="faq-content">
       가장 간편하게 이용할 수 있는 방식입니다.<br><br>
       <b>[계좌번호: KB 002801-04-264807 마음건강길]</b><br><br>
       위 계좌로 입금(2만원)해주시면 신청이 완료됩니다.<br><br>
-      <span class="blink" style="color:#ef4444"><b>* ZOOM 시청은 아래 ‘ZOOM(온라인) 시청’ 안내를 확인하세요.</b></span>
-      <br><br>
+      <!-- <span class="blink" style="color:#ef4444"><b>* ZOOM 시청은 아래 ‘ZOOM(온라인) 시청’ 안내를 확인하세요.</b></span> -->
+      <!-- <br><br> -->
       문의전화 : 02-725-7525, 010-5385-0793<br><br>
 
       <div id="toggleSection3" class="active">
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- 2. 현장 결제 (기본 펼침) -->
   <!-- <div class="faq-card active" data-group="offline">
@@ -2129,7 +2131,7 @@ About Us Section
     
 
   <!-- 1. ZOOM 간편 계좌이체 (기본 펼침) -->
-  <div class="faq-card active" data-group="online">
+  <!-- <div class="faq-card active" data-group="online">
     <button class="faq-toggle" type="button" aria-expanded="true">
       <span class="faq-title"><b>1. ZOOM 간편 계좌이체</b></span>
       <span class="icon">+</span>
@@ -2144,7 +2146,7 @@ About Us Section
       <br><br>
       <div id="toggleSection2" class="active"></div>
     </div>
-  </div>
+  </div> -->
 
 
 
@@ -4604,18 +4606,18 @@ Footer
       content: {
         title: '2월 28일(토) 오후 2~4시',
         description: "서울대 의대 명예교수가 말하는 임종 • 임사체험 • 사후세계의 과학적 진실",
-        imageUrl: 'https://mindwellpath.co.kr/img/kakao-popup-9.jpg',
+        imageUrl: 'https://mindwellpath.co.kr/img/9-kakao-2.jpg',
         link: {
-          mobileWebUrl: 'https://mindwellpath.co.kr/conference-8.html',
-          webUrl: 'https://mindwellpath.co.kr/conference-8.html'
+          mobileWebUrl: 'https://mindwellpath.co.kr/conference-9.html',
+          webUrl: 'https://mindwellpath.co.kr/conference-9.html'
         }
       },
       buttons: [
         {
           title: '자세히 알아보기 👉',
           link: {
-            mobileWebUrl: 'https://mindwellpath.co.kr/conference-8.html',
-            webUrl: 'https://mindwellpath.co.kr/conference-8.html'
+            mobileWebUrl: 'https://mindwellpath.co.kr/conference-9.html',
+            webUrl: 'https://mindwellpath.co.kr/conference-9.html'
           }
         }
       ]
