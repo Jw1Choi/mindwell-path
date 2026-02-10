@@ -5,7 +5,7 @@ template.innerHTML = `
     <a class="logo"  target="_self" href="#">
      <!-- <p class="logo-font" style="font-size:13px;">마음건강 길</p> -->
       <img  src="../img/logo-menu3.png" >
-    <p class="logo-font blink" style="marin-top:20px;font-size:1rem;color:red;">[신청 마감 임박]</p>
+    <p class="logo-font blink" style="marin-top:20px;font-size:1rem;color:red;"></p>
     </a>
     <div class="menu-btn">
        <button class=" Event_Menu" onclick="location.href='#choice_p';">바로 신청하기</button>
