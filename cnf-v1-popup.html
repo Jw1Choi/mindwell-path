@@ -2200,236 +2200,747 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
 </div>
 
 <hr style="width:100%;">
-<h3 class="title-main">📷 지난 마음디톡스 ⑥</h3>
+<h3 class="title-main">📷 지난 마음디톡스</h3>
 
-<section id="conf-gallery">
-  <div style="text-align: -webkit-center;">
-  <img src="./img/poster6.png" style="width:96%;max-width:700px;border-radius:5px;"><br><br>
-</div>
-  <div class="conf-gallery__viewport">
-    <div class="conf-gallery__track">
-      <div class="conf-gallery__slide active">
-        <img src="./img/con4.jpg" alt="컨퍼런스 강의1">
+
+<section id="confSwitch">
+  <style>
+    /* ================== 공통 색/폰트/레이아웃 ================== */
+    #confSwitch{
+      --ink:#0f172a;
+      --brand:#3669c9;
+      --panel:#ffffff;
+      --ring:#e8ecf7;
+      --shadow:0 10px 42px rgba(46,51,68,.13), 0 2px 10px rgba(110,120,170,.08);
+      font-family:'San Francisco','Segoe UI','Noto Sans KR',system-ui,-apple-system,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      padding:24px 12px 56px;
+    }
+    #confSwitch .cs-wrap{max-width:980px;margin:0 auto;}
+
+    /* =============== 탭 버튼 캐러셀 / 헤더 영역 =============== */
+    #confSwitch .cs-header-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      max-width:980px;
+      margin:4px auto 8px;
+    }
+
+    /* 좌우 화살표 (컨퍼런스 전환용) */
+    #confSwitch .cs-nav-arrow{
+      width:30px;
+      height:30px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      color:#64748b;
+      cursor:pointer;
+      box-shadow:0 1px 4px rgba(15,23,42,.12);
+      transition:background .18s, color .18s, transform .18s;
+      flex-shrink:0;
+    }
+    #confSwitch .cs-nav-arrow:hover{
+      background:var(--brand);
+      color:#fff;
+      transform:translateY(-1px);
+    }
+
+    /* 가로 스크롤 가능한 탭 줄 */
+    #confSwitch .cs-header{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin:0;
+      padding:4px 4px 8px;
+      overflow-x:auto;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      scroll-behavior:smooth;
+      max-width:900px;
+    }
+    #confSwitch .cs-header::-webkit-scrollbar{
+      display:none;
+    }
+
+    /* 탭 버튼 스타일 */
+    #confSwitch .cs-tab{
+      appearance:none;
+      border:1.5px solid var(--ring);
+      background:#fff;
+      border-radius:999px;
+      padding:.55rem 1.1rem;
+      font-weight:700;
+      font-size:.92rem;
+      cursor:pointer;
+      box-shadow:0 1px 4px rgba(15,23,42,.05);
+      transition:.2s;
+      white-space:nowrap;
+      flex-shrink:0;
+    }
+    #confSwitch .cs-tab:hover{
+      transform:translateY(-1px);
+      box-shadow:0 4px 14px rgba(15,23,42,.06);
+    }
+    #confSwitch .cs-tab[aria-selected="true"]{
+      background:var(--brand);
+      color:#fff;
+      border-color:#a5c0e9;
+      box-shadow:0 6px 18px rgba(54,105,201,.28);
+    }
+
+    /* =============== 컨퍼런스 포토 갤러리 =============== */
+    #confSwitch .conf-gallery{
+      width:100%;
+      max-width:740px;
+      margin:18px auto 36px;
+      display:none;
+    }
+    #confSwitch .conf-gallery.is-active{display:block;}
+
+    #confSwitch .conf-poster{
+      text-align:-webkit-center;
+      margin:0 auto 30px;
+    }
+    #confSwitch .conf-poster img{
+      width:96%;
+      max-width:700px;
+      border-radius:6px;
+      display:block;
+      box-shadow:0 10px 24px rgba(15,23,42,.08);
+    }
+
+    #confSwitch .conf-gallery__viewport{
+      position:relative;
+      overflow:hidden;
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      background:var(--panel);
+    }
+    #confSwitch .conf-gallery__track{
+      display:flex;
+      transition:transform .55s cubic-bezier(.66,.1,.33,.9);
+      touch-action:pan-y;
+    }
+    #confSwitch .conf-gallery__slide{
+      min-width:100%;
+      user-select:none;
+      pointer-events:none;
+      opacity:.55;
+      transform:scale(.97);
+      transition:.42s;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#f7f8fa;
+      filter:grayscale(.12) brightness(.98);
+    }
+    #confSwitch .conf-gallery__slide.active{
+      opacity:1;
+      pointer-events:auto;
+      filter:none;
+      z-index:2;
+      transform:scale(1);
+    }
+    #confSwitch .conf-gallery__slide img{
+      display:block;
+      width:100%;
+      height:360px;
+      object-fit:cover;
+      border-radius:26px;
+      box-shadow:0 4px 18px rgba(37,99,235,.07);
+      background:#f5f7fb;
+    }
+
+    /* 갤러리 좌우 화살표 (슬라이드 전환) */
+    #confSwitch .conf-gallery__arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,.92);
+      border:none;
+      font-size:2.4rem;
+      font-weight:600;
+      color:var(--brand);
+      box-shadow:0 1px 8px #d3d8e4;
+      border-radius:50%;
+      width:46px;
+      height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      z-index:10;
+      opacity:.94;
+      transition:.23s;
+    }
+    #confSwitch .conf-gallery__arrow.left{left:18px;}
+    #confSwitch .conf-gallery__arrow.right{right:18px;}
+    #confSwitch .conf-gallery__arrow:hover{
+      background:var(--brand);
+      color:#fff;
+    }
+
+    /* 슬라이드 하단 도트 & 썸네일 */
+    #confSwitch .conf-gallery__dots{
+      position:absolute;
+      bottom:12px;
+      left:0;
+      width:100%;
+      text-align:center;
+      z-index:20;
+    }
+    #confSwitch .conf-gallery__dots .dot{
+      display:inline-block;
+      width:10px;
+      height:10px;
+      margin:0 5px;
+      background:#e5e8f5;
+      border-radius:50%;
+      box-shadow:0 1px 5px #e5e9f6;
+      cursor:pointer;
+      transition:.25s;
+      border:2px solid #f0f2fa;
+    }
+    #confSwitch .conf-gallery__dots .dot.active{
+      background:var(--brand);
+      border:2px solid #a5c0e9;
+    }
+    #confSwitch .conf-gallery__thumbs{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin:16px auto 0;
+      padding:0 4px;
+      overflow-x:auto;
+      max-width:98vw;
+    }
+    #confSwitch .conf-gallery__thumbs img{
+      width:74px;
+      height:44px;
+      object-fit:cover;
+      border-radius:12px;
+      cursor:pointer;
+      opacity:.48;
+      border:2.5px solid #eaecee;
+      box-shadow:0 2px 6px #e9eef4;
+      transition:.25s;
+    }
+    #confSwitch .conf-gallery__thumbs img.active{
+      opacity:1;
+      border:2.5px solid var(--brand);
+    }
+
+    /* ✅ 후기 testimonials 영역 폭 제한 (.con-6/7/8 섹션) */
+    .con-6,
+    .con-7,
+    .con-8{
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    @media(max-width:900px){
+      #confSwitch .conf-gallery{max-width:100vw;}
+      #confSwitch .conf-gallery__slide img{border-radius:17px;}
+    }
+    @media(max-width:600px){
+      #confSwitch .conf-gallery__slide img{border-radius:11px;}
+      #confSwitch .conf-gallery__viewport{border-radius:14px;}
+    }
+
+    /* ===================== ✅ testimonials 슬라이더 ===================== */
+    /* id="testimonials" 섹션을 좌우 버튼으로만 이동하는 슬라이더로 변경 */
+
+    #testimonials{
+      position:relative;
+      max-width:1200px;
+      margin:40px auto;
+      overflow:hidden;         /* article이 밖으로 넘치지 않도록 */
+    }
+
+    /* JS에서 articles를 ts-track 안으로 감싸서 가로 슬라이드로 만듦 */
+    #testimonials .ts-track{
+      display:flex;
+      transition:transform .5s cubic-bezier(.33,.7,.24,1); /* 부드러운 이동 */
+      will-change:transform;
+    }
+
+    /* 각 article을 100% 폭의 슬라이드로 처리 */
+    #testimonials article{
+      flex:0 0 100%;
+      max-width:100%;
+    }
+
+    /* 좌우 네비 버튼 */
+    #testimonials .ts-arrow{
+      position:absolute;
+      top:50%;
+      /* transform:translateY(-50%); */
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      color:#64748b;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(15,23,42,.18);
+      transition:background .18s, color .18s, transform .18s, box-shadow .18s;
+      z-index:5;
+    }
+/* 기존 hover 제거하고 이걸로 교체 */
+#testimonials .ts-arrow:hover{
+  background:rgba(15,23,42,.88);
+  color:#ffffff;
+  box-shadow:0 12px 28px rgba(15,23,42,.35);
+  /* 위치 변경 없음 */
+  transform:none;
+}
+    #testimonials .ts-prev{left:10px;}
+    #testimonials .ts-next{right:10px;}
+
+    /* 모바일일 때 버튼 조금 작게 */
+    @media(max-width:600px){
+      #testimonials .ts-arrow{
+        width:34px;
+        height:34px;
+        font-size:16px;
+      }
+    }
+  </style>
+
+  <div class="cs-wrap">
+
+    <!-- 🔹 버튼 캐러셀 + 좌우 화살표 -->
+    <div class="cs-header-wrap">
+      <button type="button" class="cs-nav-arrow cs-nav-prev" aria-label="이전 컨퍼런스">&lt;</button>
+      <div class="cs-header" role="tablist">
+        <button class="cs-tab" role="tab" aria-selected="true" data-target="md9">마음디톡스 9</button>
+        <button class="cs-tab" role="tab" aria-selected="true" data-target="md8">마음디톡스 8</button>
+        <button class="cs-tab" role="tab" aria-selected="false" data-target="md7">마음디톡스 7</button>
+        <button class="cs-tab" role="tab" aria-selected="false" data-target="md6">마음디톡스 6</button>
       </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con8.jpeg" alt="컨퍼런스 강의2">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con9.jpeg" alt="컨퍼런스 강의2">
-      </div>
-    
-      <div class="conf-gallery__slide">
-        <img src="./img/con11.jpeg" alt="컨퍼런스 강의2">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con2.jpg" alt="컨퍼런스 강의2">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con1.jpg" alt="컨퍼런스 강의3">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con5.jpg" alt="컨퍼런스 강의3">
-      </div>
-      <div class="conf-gallery__slide">
-        <img src="./img/con6.jpg" alt="컨퍼런스 강의3">
-      </div>
+      <button type="button" class="cs-nav-arrow cs-nav-next" aria-label="다음 컨퍼런스">&gt;</button>
     </div>
-    <button class="conf-gallery__arrow left">&#10094;</button>
-    <button class="conf-gallery__arrow right">&#10095;</button>
-    <div class="conf-gallery__dots"></div>
-  </div>
-  <div class="conf-gallery__thumbs">
-    <!-- 썸네일은 JS에서 자동 생성 -->
+
+     <!-- 🔹 마음디톡스 8 갤러리 -->
+    <section id="md9" class="conf-gallery">
+      <div class="conf-poster">
+        <img src="./img/9-poster.png" alt="마음디톡스 9 포스터">
+      </div>
+      <div class="conf-gallery__viewport">
+        <div class="conf-gallery__track">
+          <div class="conf-gallery__slide active"><img src="./img/9-1.jpg" alt="마음디톡스 9 현장 사진 1"></div>
+          <div class="conf-gallery__slide"><img src="./img/9-2.jpg" alt="마음디톡스 9 현장 사진 2"></div>
+          <div class="conf-gallery__slide"><img src="./img/9-3.jpg" alt="마음디톡스 9 현장 사진 3"></div>
+          <div class="conf-gallery__slide"><img src="./img/9-4.jpg" alt="마음디톡스 9 현장 사진 5"></div>
+          <div class="conf-gallery__slide"><img src="./img/9-5.jpg" alt="마음디톡스 9 현장 사진 6"></div>
+          <div class="conf-gallery__slide"><img src="./img/9-6.jpg" alt="마음디톡스 9 현장 사진 7"></div>
+        </div>
+        <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
+        <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
+        <div class="conf-gallery__dots" aria-hidden="true"></div>
+      </div>
+      <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
+    </section>
+
+
+
+    <!-- 🔹 마음디톡스 8 갤러리 -->
+    <section id="md8" class="conf-gallery">
+      <div class="conf-poster">
+        <img src="./img/poster-8.png" alt="마음디톡스 8 포스터">
+      </div>
+      <div class="conf-gallery__viewport">
+        <div class="conf-gallery__track">
+          <div class="conf-gallery__slide active"><img src="./img/8-0.jpeg" alt="마음디톡스 8 현장 사진 1"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-1.jpeg" alt="마음디톡스 8 현장 사진 2"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-2.jpeg" alt="마음디톡스 8 현장 사진 3"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-3.jpeg" alt="마음디톡스 8 현장 사진 4"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-4.jpeg" alt="마음디톡스 8 현장 사진 5"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-5.jpeg" alt="마음디톡스 8 현장 사진 6"></div>
+          <div class="conf-gallery__slide"><img src="./img/8-6.jpeg" alt="마음디톡스 8 현장 사진 7"></div>
+        </div>
+        <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
+        <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
+        <div class="conf-gallery__dots" aria-hidden="true"></div>
+      </div>
+      <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
+    </section>
+
+    <!-- 🔹 마음디톡스 7 갤러리 -->
+    <section id="md7" class="conf-gallery">
+      <div class="conf-poster"><img src="./img/poster-7.png" alt="마음디톡스 7 포스터"></div>
+      <div class="conf-gallery__viewport">
+        <div class="conf-gallery__track">
+          <div class="conf-gallery__slide active"><img src="./img/7-11.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/7-2.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/7-3.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/7-6.jpg" alt=""></div>
+        </div>
+        <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
+        <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
+        <div class="conf-gallery__dots" aria-hidden="true"></div>
+      </div>
+      <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
+    </section>
+
+    <!-- 🔹 마음디톡스 6 갤러리 -->
+    <section id="md6" class="conf-gallery">
+      <div class="conf-poster"><img src="./img/poster6.png" alt="마음디톡스 6 포스터"></div>
+      <div class="conf-gallery__viewport">
+        <div class="conf-gallery__track">
+          <div class="conf-gallery__slide active"><img src="./img/con4.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con8.jpeg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con9.jpeg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con11.jpeg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con2.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con1.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con5.jpg" alt=""></div>
+          <div class="conf-gallery__slide"><img src="./img/con6.jpg" alt=""></div>
+        </div>
+        <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
+        <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
+        <div class="conf-gallery__dots" aria-hidden="true"></div>
+      </div>
+      <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
+    </section>
+
   </div>
 </section>
 
-<style>
-#conf-gallery { width:100%; max-width:740px; margin:40px auto 36px auto; padding:0; font-family:'San Francisco','Segoe UI','Noto Sans KR',Arial,sans-serif;}
-
-#conf-gallery h2{
-    font-size:36px;
-    font-weight:800;
-    text-align:center;
-    line-height:1.3;
-    margin-bottom:56px;
-  }
-.conf-gallery__viewport {position:relative;overflow:hidden;border-radius:26px;box-shadow:0 10px 42px 0 rgba(46,51,68,0.13),0 2px 10px 0 rgba(110,120,170,0.08);background:#fff;}
-.conf-gallery__track {display:flex;transition:transform .55s cubic-bezier(.66,.1,.33,.9);will-change:transform;touch-action:pan-y;}
-.conf-gallery__slide {min-width:100%;user-select:none;pointer-events:none;opacity:.55;transform:scale(.97);transition:opacity .42s,transform .44s;display:flex;align-items:center;justify-content:center;background:#f7f8fa;filter:grayscale(.12) brightness(.98);}
-.conf-gallery__slide.active {opacity:1;pointer-events:auto;filter:none;z-index:2;transform:scale(1);}
-.conf-gallery__slide img {display:block;width:100%;height:360px;object-fit:cover;border-radius:26px;box-shadow:0 4px 18px 0 rgba(37,99,235,0.07);background:#f5f7fb;transition:box-shadow .3s;}
-.conf-gallery__arrow {position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.90);border:none;outline:none;font-size:2.4rem;font-weight:600;color:#3669c9;box-shadow:0 1px 8px #d3d8e4;border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;opacity:.94;transition:background .23s,color .23s,box-shadow .23s;backdrop-filter:blur(2px);}
-.conf-gallery__arrow.left { left: 18px;}
-.conf-gallery__arrow.right { right: 18px;}
-.conf-gallery__arrow:hover, .conf-gallery__arrow:focus { background: #3669c9; color: #fff;}
-.conf-gallery__dots {position:absolute;bottom:12px;left:0;width:100%;text-align:center;z-index:20;}
-.conf-gallery__dots .dot {display:inline-block;width:10px;height:10px;margin:0 5px;background:#e5e8f5;border-radius:50%;box-shadow:0 1px 5px #e5e9f6;cursor:pointer;transition:background .25s, border .18s;border:2px solid #f0f2fa;}
-.conf-gallery__dots .dot.active {background:#3669c9;border:2px solid #a5c0e9;}
-.conf-gallery__thumbs {display:flex;gap:10px;justify-content:center;margin:16px auto 0 auto;padding:0 4px;overflow-x:auto;max-width:98vw;}
-.conf-gallery__thumbs img {width:74px;height:44px;object-fit:cover;border-radius:12px;cursor:pointer;opacity:.48;border:2.5px solid #eaecee;box-shadow:0 2px 6px #e9eef4;transition:opacity .25s, border .26s;}
-.conf-gallery__thumbs img.active {opacity:1;border:2.5px solid #3669c9;}
-@media (max-width:900px) {#conf-gallery{max-width:100vw;}.conf-gallery__slide img{border-radius:17px;}}
-@media (max-width:600px) {.conf-gallery__slide img{border-radius:11px;}.conf-gallery__viewport{border-radius:14px;}}
-
-@media(max-width:768px){
-   
-  #conf-gallery h2{font-size:26px;margin-bottom:36px;}
-  }
-</style>
-
 <script>
-(() => {
-  document.addEventListener('DOMContentLoaded', () => {
-    const sec = document.getElementById('conf-gallery');
-    if (!sec) return;
-    const track = sec.querySelector('.conf-gallery__track');
-    let slides = [...sec.querySelectorAll('.conf-gallery__slide')];
-    const leftBtn = sec.querySelector('.conf-gallery__arrow.left');
-    const rightBtn = sec.querySelector('.conf-gallery__arrow.right');
-    const dotsBox = sec.querySelector('.conf-gallery__dots');
-    const thumbsBox = sec.querySelector('.conf-gallery__thumbs');
-    let cur = 0, down = false, sx = 0, dx = 0, auto;
-    const SLIDE_MS = 4800;
-    let slideCount = slides.length;
+(function(){
+  document.addEventListener('DOMContentLoaded', ()=>{
+    /* ================================
+       0) testimonials 수동 슬라이더
+       ================================= */
+    (function initTestimonialsSlider(){
+      const root = document.getElementById('testimonials');
+      if(!root) return;
 
-    // 무한 슬라이드 복제
-    const cloneFirst = slides[0].cloneNode(true);
-    const cloneLast = slides[slideCount-1].cloneNode(true);
-    track.insertBefore(cloneLast, slides[0]);
-    track.appendChild(cloneFirst);
-    slides = [...sec.querySelectorAll('.conf-gallery__slide')];
+      const articles = Array.from(root.querySelectorAll('article'));
+      if(articles.length === 0) return;
 
-    // 도트 & 썸네일
-    for(let i=0; i<slideCount; ++i) {
-      const dot = document.createElement('span');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => goTo(i));
-      dotsBox.appendChild(dot);
+      if(root.querySelector('.ts-track')) return;
 
-      const img = slides[i+1].querySelector('img');
-      const thumb = document.createElement('img');
-      thumb.src = img.src; thumb.alt = img.alt||'';
-      thumb.className = (i===0 ? 'active':'');
-      thumb.addEventListener('click', () => goTo(i));
-      thumbsBox.appendChild(thumb);
-    }
-    const dots = [...dotsBox.children], thumbs = [...thumbsBox.children];
+      const track = document.createElement('div');
+      track.className = 'ts-track';
 
-    // 트랙 위치
-    function updatePosition(jump) {
-      track.style.transition = jump ? 'none' : 'transform .55s cubic-bezier(.66,.1,.33,.9)';
-      track.style.transform = `translateX(${-((cur+1)*100)}%)`;
-      slides.forEach(s=>s.classList.remove('active'));
-      slides[cur+1].classList.add('active');
-      dots.forEach(d=>d.classList.remove('active'));
-      dots[(cur+slideCount)%slideCount].classList.add('active');
-      thumbs.forEach(t=>t.classList.remove('active'));
-      thumbs[(cur+slideCount)%slideCount].classList.add('active');
-    }
+      articles.forEach(article=>{
+        track.appendChild(article);
+      });
 
-    function goTo(idx, manual = true) {
-      cur = idx;
-      updatePosition(false);
-      if (manual) resetAuto();
-    }
-    function next() { goTo(cur+1); }
-    function prev() { goTo(cur-1); }
-    function resetAuto() {
-      clearInterval(auto);
-      auto = setInterval(() => goTo(cur+1, false), SLIDE_MS);
-    }
-    resetAuto();
+      root.appendChild(track);
 
-    // 트랙 시작 위치
-    updatePosition(true);
+      const prevBtn = document.createElement('button');
+      prevBtn.type = 'button';
+      prevBtn.className = 'ts-arrow ts-prev';
+      prevBtn.setAttribute('aria-label','이전 후기 보기');
+      prevBtn.innerHTML = '&#10094;';
 
-    // 트랜지션 끝: 점프도 부드럽게! (requestAnimationFrame)
-    track.addEventListener('transitionend', () => {
-      if (cur < 0) {
-        cur = slideCount-1;
-        // 트랜지션 끄고 바로 점프(끊김 방지)
-        requestAnimationFrame(() => {
-          updatePosition(true);
-        });
-      } else if (cur >= slideCount) {
-        cur = 0;
-        requestAnimationFrame(() => {
-          updatePosition(true);
-        });
+      const nextBtn = document.createElement('button');
+      nextBtn.type = 'button';
+      nextBtn.className = 'ts-arrow ts-next';
+      nextBtn.setAttribute('aria-label','다음 후기 보기');
+      nextBtn.innerHTML = '&#10095;';
+
+      root.appendChild(prevBtn);
+      root.appendChild(nextBtn);
+
+      let index = 0;
+      const last = articles.length;
+
+      function update(){
+        if(index < 0) index = 0;
+        if(index > last-1) index = last-1;
+        const offsetPercent = -(index * 100);
+        track.style.transform = `translateX(${offsetPercent}%)`;
       }
+
+      prevBtn.addEventListener('click', ()=>{
+        index -= 1;
+        update();
+      });
+
+      nextBtn.addEventListener('click', ()=>{
+        index += 1;
+        update();
+      });
+
+      update();
+    })();
+
+
+    /* ================================
+       1) confSwitch 탭/컨퍼런스 전환 세팅
+       ================================= */
+    const root = document.getElementById('confSwitch');
+    if (!root) return;
+
+    const tabs = [...root.querySelectorAll('.cs-tab')];
+    const galleries = [...root.querySelectorAll('.conf-gallery')];
+    const header = root.querySelector('.cs-header');
+    const prevArrow = root.querySelector('.cs-nav-prev');
+    const nextArrow = root.querySelector('.cs-nav-next');
+
+    const confSelectors = [...new Set(
+      tabs.map(btn=>{
+        const id = btn.dataset.target || '';
+        const num = id.replace(/\D/g,'');
+        return num ? `.con-${num}` : null;
+      }).filter(Boolean)
+    )];
+
+    function getSelectorFor(targetId){
+      const num = (targetId || '').replace(/\D/g,'');
+      return num ? `.con-${num}` : '';
+    }
+
+    function pauseIn(nodeList){
+      nodeList.forEach(el=>{
+        el.querySelectorAll('[data-marquee-id]').forEach(n=>n.__pause && n.__pause());
+      });
+    }
+    function resumeIn(nodeList){
+      nodeList.forEach(el=>{
+        el.querySelectorAll('[data-marquee-id]').forEach(n=>n.__resume && n.__resume());
+      });
+    }
+
+    function setContentVisibility(targetId){
+      const fallbackId = tabs[0]?.dataset.target || 'md8';
+      const showSel = getSelectorFor(targetId) || getSelectorFor(fallbackId);
+
+      document.body.setAttribute('data-conf', targetId || fallbackId);
+
+      const showNodes = showSel ? document.querySelectorAll(showSel) : [];
+      const hideNodes = [];
+
+      confSelectors.forEach(sel=>{
+        if (sel === showSel) return;
+        document.querySelectorAll(sel).forEach(el=>hideNodes.push(el));
+      });
+
+      showNodes.forEach(el=>{ el.hidden = false; });
+      hideNodes.forEach(el=>{ el.hidden = true; });
+
+      resumeIn(showNodes);
+      pauseIn(hideNodes);
+    }
+
+    // ✅ scrollIntoView를 옵션으로 제어할 수 있게 수정
+    function activateConf(targetId, options = {}){
+      const { skipScroll = false } = options;
+
+      galleries.forEach(sec=>sec.classList.toggle('is-active', sec.id===targetId));
+      tabs.forEach(btn=>btn.setAttribute('aria-selected', btn.dataset.target===targetId ? 'true':'false'));
+      setContentVisibility(targetId);
+
+      if (!skipScroll && header) {
+        const activeTab = tabs.find(t=>t.dataset.target===targetId);
+        if (activeTab) {
+          activeTab.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+        }
+      }
+    }
+
+    tabs.forEach(btn=>{
+      btn.addEventListener('click', ()=>activateConf(btn.dataset.target));
     });
 
-    leftBtn.addEventListener('click', prev);
-    rightBtn.addEventListener('click', next);
+    function getCurrentIndex(){
+      let idx = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+      if (idx < 0) idx = 0;
+      return idx;
+    }
 
-    // 드래그/터치
-    track.addEventListener('mousedown', e => { down=true;sx=e.clientX;dx=0;track.style.transition='none';e.preventDefault();});
-    track.addEventListener('mousemove', e => {
-      if (!down) return;
-      dx = e.clientX - sx;
-      track.style.transform = `translateX(${-((cur+1)*100)+(dx/track.offsetWidth*100)}%)`;
-    });
-    track.addEventListener('mouseup', e => {
-      if (!down) return;
-      if (dx > 40) prev();
-      else if (dx < -40) next();
-      else updatePosition(false);
-      down = false; dx = 0;
-    });
-    track.addEventListener('mouseleave', () => { if (down) updatePosition(false); down = false; dx=0; });
+    if (prevArrow) {
+      prevArrow.addEventListener('click', ()=>{
+        const cur = getCurrentIndex();
+        const nextIdx = (cur - 1 + tabs.length) % tabs.length;
+        const targetId = tabs[nextIdx].dataset.target;
+        activateConf(targetId);
+      });
+    }
 
-    // 이미지 드래그 미리보기 방지
-    sec.querySelectorAll('img').forEach(img => {
-      img.addEventListener('dragstart', e => e.preventDefault());
-    });
+    if (nextArrow) {
+      nextArrow.addEventListener('click', ()=>{
+        const cur = getCurrentIndex();
+        const nextIdx = (cur + 1) % tabs.length;
+        const targetId = tabs[nextIdx].dataset.target;
+        activateConf(targetId);
+      });
+    }
 
-    // 모바일 터치
-    track.addEventListener('touchstart', e => { sx=e.touches[0].clientX; down=true;dx=0;track.style.transition='none'; });
-    track.addEventListener('touchmove', e => {
-      if (!down) return;
-      dx = e.touches[0].clientX - sx;
-      track.style.transform = `translateX(${-((cur+1)*100)+(dx/track.offsetWidth*100)}%)`;
-    });
-    track.addEventListener('touchend', e => {
-      if (!down) return;
-      if (dx > 24) prev();
-      else if (dx < -24) next();
-      else updatePosition(false);
-      down = false; dx = 0;
-    });
+    /* ================================
+       2) 컨퍼런스 포토 갤러리 슬라이더
+       - 자동 재생 없음 (수동 전환 + 드래그/스와이프만)
+       ================================= */
+    class ConfGallery{
+      constructor(section){
+        this.sec = section;
+        this.track = section.querySelector('.conf-gallery__track');
+        this.slides = [...section.querySelectorAll('.conf-gallery__slide')];
+        this.leftBtn = section.querySelector('.conf-gallery__arrow.left');
+        this.rightBtn = section.querySelector('.conf-gallery__arrow.right');
+        this.dotsBox = section.querySelector('.conf-gallery__dots');
+        this.thumbsBox = section.querySelector('.conf-gallery__thumbs');
+        this.cur = 0;
+        this.slideCount = this.slides.length;
+
+        if (!this.track || this.slides.length === 0) return;
+
+        const firstClone = this.slides[0].cloneNode(true);
+        const lastClone = this.slides[this.slideCount-1].cloneNode(true);
+        this.track.insertBefore(lastClone, this.slides[0]);
+        this.track.appendChild(firstClone);
+        this.slides = [...section.querySelectorAll('.conf-gallery__slide')];
+
+        for(let i=0;i<this.slideCount;i++){
+          const dot = document.createElement('span');
+          dot.className = 'dot' + (i===0 ? ' active':'');
+          dot.onclick = ()=>this.goTo(i);
+          this.dotsBox.appendChild(dot);
+
+          const img = this.slides[i+1].querySelector('img');
+          const th = document.createElement('img');
+          th.src = img.src;
+          th.className = (i===0 ? 'active':'');
+          th.loading = 'lazy';
+          th.decoding = 'async';
+          th.onclick = ()=>this.goTo(i);
+          this.thumbsBox.appendChild(th);
+        }
+        this.dots = [...this.dotsBox.children];
+        this.thumbs = [...this.thumbsBox.children];
+
+        this.updatePosition(true);
+
+        this.leftBtn && (this.leftBtn.onclick = ()=>this.prev());
+        this.rightBtn && (this.rightBtn.onclick = ()=>this.next());
+
+        const drag = { down:false, sx:0, dx:0 };
+        const applyDragMove = (x)=> {
+          drag.dx = x - drag.sx;
+          this.track.style.transform =
+            `translateX(${-((this.cur+1)*100)+(drag.dx/this.track.offsetWidth*100)}%)`;
+        };
+        this.track.addEventListener('mousedown',e=>{
+          drag.down = true;
+          drag.sx = e.clientX;
+          drag.dx = 0;
+          this.track.style.transition = 'none';
+        });
+        this.track.addEventListener('mousemove',e=>{
+          if(!drag.down) return;
+          applyDragMove(e.clientX);
+        });
+        window.addEventListener('mouseup',()=>{
+          if(!drag.down) return;
+          if(drag.dx>40) this.prev();
+          else if(drag.dx<-40) this.next();
+          else this.updatePosition(false);
+          drag.down=false;
+        });
+
+        this.track.addEventListener('touchstart',e=>{
+          drag.down = true;
+          drag.sx = e.touches[0].clientX;
+          drag.dx = 0;
+          this.track.style.transition = 'none';
+        },{passive:true});
+        window.addEventListener('touchmove',e=>{
+          if(!drag.down) return;
+          if(!e.touches || !e.touches[0]) return;
+          applyDragMove(e.touches[0].clientX);
+        },{passive:true});
+        window.addEventListener('touchend',()=>{
+          if(!drag.down) return;
+          if(drag.dx>24) this.prev();
+          else if(drag.dx<-24) this.next();
+          else this.updatePosition(false);
+          drag.down=false;
+        });
+
+        this.track.addEventListener('transitionend',()=>{
+          if(this.cur<0){
+            this.cur=this.slideCount-1;
+            requestAnimationFrame(()=>this.updatePosition(true));
+          } else if(this.cur>=this.slideCount){
+            this.cur=0;
+            requestAnimationFrame(()=>this.updatePosition(true));
+          }
+        });
+
+        this.sec.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.preventDefault()));
+      }
+      updatePosition(jump){
+        this.track.style.transition = jump ? 'none' : 'transform .55s cubic-bezier(.66,.1,.33,.9)';
+        this.track.style.transform = `translateX(${-((this.cur+1)*100)}%)`;
+
+        this.slides.forEach(s=>s.classList.remove('active'));
+        this.slides[this.cur+1]?.classList.add('active');
+
+        const idx = (this.cur + this.slideCount) % this.slideCount;
+        this.dots.forEach(d=>d.classList.remove('active'));
+        this.thumbs.forEach(t=>t.classList.remove('active'));
+        this.dots[idx]?.classList.add('active');
+        this.thumbs[idx]?.classList.add('active');
+      }
+      goTo(i){
+        this.cur = i;
+        this.updatePosition(false);
+      }
+      next(){ this.goTo(this.cur+1); }
+      prev(){ this.goTo(this.cur-1); }
+    }
+
+    galleries.forEach(sec=>new ConfGallery(sec));
+
+    const initialId = document.body.getAttribute('data-conf') || (tabs[0]?.dataset.target || 'md8');
+    // ✅ 최초 로드 시에는 스크롤 이동 없이 상태만 세팅
+    activateConf(initialId, { skipScroll: true });
+
   });
 })();
 </script>
 
 
+
+
+
+
+
+
 <hr style="width:100%;">
 <h3 class="title-main">💌 프로그램 후기</h3>
-
-
-
-
-
 <style>
-  /* ─────────  LOAN TESTIMONIALS ONLY  ───────── */
+  /* ─────────  TESTIMONIALS 공통  ───────── */
   #testimonials,
-  #testimonials *{box-sizing:border-box;font-family:'Noto Sans KR',sans-serif;}
-  
-  /* 컬러 팔레트 (필요하면 여기만 수정) */
-  #testimonials{
-    --bg:#ffffff;            /* 섹션 배경 */
-    --text:#111111;          /* 기본 글자색 */
-    --muted:#6f6f75;         /* 보조 글자 */
-    --primary:#0062ff;       /* 딥블루 포인트 */
-    --card-bg:#f9fafc;       /* 카드 배경 */
-    --card-border:#e8ebf0;   /* 카드 테두리 */
+  #testimonials *{
+    box-sizing:border-box;
+    font-family:'Noto Sans KR',sans-serif;
   }
-  
-  /* 섹션 레이아웃 */
   #testimonials{
+    --bg:#ffffff;
+    --text:#111111;
+    --muted:#6f6f75;
+    --primary:#0062ff;
+    --card-bg:#f9fafc;
+    --card-border:#e8ebf0;
+
     background:var(--bg);
     color:var(--text);
     padding:80px 5vw;
-    overflow:hidden;
   }
   #testimonials h2{
     font-size:36px;
@@ -2438,15 +2949,8 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
     line-height:1.3;
     margin-bottom:56px;
   }
-  
-  /* 슬라이드 행 */
-  #testimonials .marquee-row{
-    display:flex;
-    gap:32px;
-    will-change:transform;
-  }
-  
-  /* 카드 디자인 */
+
+  /* 카드 공통 스타일 */
   #testimonials .testimonial-card{
     flex:0 0 320px;
     background:var(--card-bg);
@@ -2455,10 +2959,10 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
     padding:32px 28px;
     line-height:1.5;
     box-shadow:0 12px 28px rgba(0,0,0,.06);
-    transition:transform .3s;
+    transition:box-shadow .25s;    /* 위치 이동 X */
   }
   #testimonials .testimonial-card:hover{
-    transform:translateY(-6px);
+    box-shadow:0 14px 32px rgba(0,0,0,.08);
   }
   #testimonials .testimonial-card q{
     display:block;
@@ -2470,170 +2974,638 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
     font-size:15px;
     color:var(--muted);
   }
-  
-  /* 두 행 사이 여백 */
+
+  /* 섹션 간 여유 */
   #testimonials .row-gap{height:36px;}
-  
-  /* ─ 모바일 ─ */
+
+  /* 반응형 */
   @media(max-width:768px){
     #testimonials{padding:60px 4vw;}
     #testimonials h2{font-size:26px;margin-bottom:36px;}
     #testimonials .testimonial-card{
-      flex:0 0 240px;
+      flex:0 0 260px;
       padding:26px 22px;
     }
     #testimonials .testimonial-card q{font-size:16px;}
   }
-  </style>
-  
-  <section id="testimonials">
+
+  /* ▼ 탭에 따른 내용 표시 제어 (6 / 7 / 8 공통) */
+  .con-6,.con-7,.con-8{display:none;}
+  body[data-conf="md6"] .con-6{display:block;}
+  body[data-conf="md7"] .con-7{display:block;}
+  body[data-conf="md8"] .con-8{display:block;}
+
+  /* ─────────  슬라이더 레이아웃  ───────── */
+  #testimonials .ts-wrapper{
+    position:relative;
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;             /* 버튼 + 뷰포트 가로 배치 */
+    align-items:center;
+    gap:16px;
+  }
+
+  /* 가운데 영역: 실제 슬라이드 카드 */
+  #testimonials .ts-viewport{
+    overflow-x:auto;
+    overflow-y:visible;
+    scroll-behavior:smooth;
+    flex:1 1 auto;
+    padding:0;                /* 끝까지 가도 카드가 안 사라지도록 패딩 제거 */
+  }
+  #testimonials .ts-viewport::-webkit-scrollbar{
+    display:none;
+  }
+
+  #testimonials .ts-track{
+    display:flex;
+    gap:32px;                 /* 모든 컨퍼런스 동일 간격 */
+    padding-bottom:4px;
+  }
+
+  /* 반투명 swiper-style 버튼 (슬라이드 밖 고정) */
+  #testimonials .ts-arrow{
+    position:relative;
+    width:40px;
+    height:40px;
+    border-radius:999px;
+    border:1px solid rgba(148,163,184,.5);
+    background:rgba(255,255,255,.7);   /* 반투명 */
+    backdrop-filter:blur(6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    color:#4b5563;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(15,23,42,.18);
+    transition:background .18s, color .18s, box-shadow .18s, transform .18s;
+    flex:0 0 auto;
+    z-index:1;
+  }
+  #testimonials .ts-arrow:hover{
+    background:rgba(15,23,42,.88);
+    color:#ffffff;
+    box-shadow:0 12px 28px rgba(15,23,42,.35);
+    transform:translateY(-1px); /* 너무 많이 안 내려가도록 살짝만 */
+  }
+
+  @media(max-width:768px){
+    #testimonials .ts-wrapper{
+      gap:12px;
+    }
+    #testimonials .ts-arrow{
+      width:34px;
+      height:34px;
+      font-size:16px;
+    }
+  }
+</style>
+
+<!-- 🔹 마음디톡스 6 후기 -->
+<section id="testimonials" class="con-6">
   <h2>참가자 분들의 실제 후기</h2>
+  <div class="ts-wrapper">
+    <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
 
-  <!-- 위쪽 행(→) -->
-  <div class="marquee-row top">
-    <article class="testimonial-card">
-      <q>세 분의 전문가 모두 깊은 삶의 통찰을 나눠주셔서 감동이 컸습니다.<br>
-      특히 마가스님의 생활 수행법은 일상에서 바로 실천할 수 있어 큰 도움이 됐어요.</q>
-      <p class="author">60대 참가자 송xx</p>
-    </article>
-    <article class="testimonial-card">
-      <q>함영준 대표님의 강의에서 우울증을 극복한 실제 경험을 들으며 큰 위로를 받았습니다.<br>
-      마음을 다루는 구체적 방법을 배울 수 있었던 소중한 시간이었습니다.</q>
-      <p class="author">60대 참가자 김xx</p>
-    </article>
-    <article class="testimonial-card">
-      <q>윤종모 주교님의 강의를 통해 평소 외면했던 삶의 부분들을 다시 돌아보게 되었습니다.<br>
-      삶을 반성하고 새롭게 바라보는 계기가 되었어요.</q>
-      <p class="author">70대 참가자 박xx</p>
-    </article>
-    <article class="testimonial-card">
-      <q>청중과의 대화 시간 덕분에 쉽게 드러내기 어려운 우울의 이야기도 진솔하게 나눌 수 있었고,<br>
-        직접 그 시간을 견뎌온 분들의 진심 어린 답변 덕분에 큰 위로와 힘을 얻었습니다.</q>
-      <p class="author">50대 참가자 한xx</p>
-    </article>
-    
-  </div>
+    <div class="ts-viewport">
+      <div class="ts-track">
+        <article class="testimonial-card">
+          <q>세 분의 전문가 모두 깊은 삶의 통찰을 나눠주셔서 감동이 컸습니다.<br>
+          특히 마가스님의 생활 수행법은 일상에서 바로 실천할 수 있어 큰 도움이 됐어요.</q>
+          <p class="author">60대 참가자 송xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>함영준 대표님의 강의에서 우울증을 극복한 실제 경험을 들으며 큰 위로를 받았습니다.<br>
+          마음을 다루는 구체적 방법을 배울 수 있었던 소중한 시간이었습니다.</q>
+          <p class="author">60대 참가자 김xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>윤종모 주교님의 강의를 통해 평소 외면했던 삶의 부분들을 다시 돌아보게 되었습니다.<br>
+          삶을 반성하고 새롭게 바라보는 계기가 되었어요.</q>
+          <p class="author">70대 참가자 박xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>청중과의 대화 시간 덕분에 쉽게 드러내기 어려운 우울의 이야기도 진솔하게 나눌 수 있었고,<br>
+            직접 그 시간을 견뎌온 분들의 진심 어린 답변 덕분에 큰 위로와 힘을 얻었습니다.</q>
+          <p class="author">50대 참가자 한xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>실제 상황에 적용 가능한 내용이 많아 바로 실천할 수 있겠다는 자신감이 생겼습니다.<br>
+          특히 마가스님과 함영준 대표님의 강의가 인상 깊었어요.</q>
+          <p class="author">60대 참가자(익명)</p>
+        </article>
+        <article class="testimonial-card">
+          <q>함영준 대표님의 강연이 특히 좋았습니다.<br>
+          우울증 극복에 대한 구체적인 솔루션이 현실적으로 와닿았어요.</q>
+          <p class="author">70대 참가자(익명)</p>
+        </article>
+        <article class="testimonial-card">
+          <q>강연장의 분위기도 좋았고, 영상 자료도 몰입에 도움이 됐습니다.<br>
+          윤종모 주교님의 대화법 강의에서 새로운 소통 방식에 대해 배울 수 있었어요.</q>
+          <p class="author">70대 참가자 유xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>마가스님의 강의를 들으며, 그동안 자책하던 나 자신을 조금씩 사랑하고 보듬을 수 있게 되었습니다.<br>
+            무엇보다 바로 실천할 수 있다는 점이 큰 도움이 되었어요.</q>
+          <p class="author">60대 참가자 조xx</p>
+        </article>
+      </div>
+    </div>
 
-  <div class="row-gap"></div>
-
-  <!-- 아래쪽 행(←) -->
-  <div class="marquee-row bottom">
-    <article class="testimonial-card">
-      <q>실제 상황에 적용 가능한 내용이 많아 바로 실천할 수 있겠다는 자신감이 생겼습니다.<br>
-      특히 마가스님과 함영준 대표님의 강의가 인상 깊었어요.</q>
-      <p class="author">60대 참가자(익명)</p>
-    </article>
-    <article class="testimonial-card">
-      <q>함영준 대표님의 강연이 특히 좋았습니다.<br>
-      우울증 극복에 대한 구체적인 솔루션이 현실적으로 와닿았어요.</q>
-      <p class="author">70대 참가자(익명)</p>
-    </article>
-    <article class="testimonial-card">
-      <q>강연장의 분위기도 좋았고, 영상 자료도 몰입에 도움이 됐습니다.<br>
-      윤종모 주교님의 대화법 강의에서 새로운 소통 방식에 대해 배울 수 있었어요.</q>
-      <p class="author">70대 참가자 유xx</p>
-    </article>
-    <article class="testimonial-card">
-      <q>마가스님의 강의를 들으며, 그동안 자책하던 나 자신을 조금씩 사랑하고 보듬을 수 있게 되었습니다.<br>
-        무엇보다 바로 실천할 수 있다는 점이 큰 도움이 되었어요.</q>
-      <p class="author">60대 참가자 조xx</p>
-    </article>
+    <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
   </div>
 </section>
 
-  
-<script>
-  /* ─── 무한 슬라이드 (부드러운 멈춤/재시작 포함) ─── */
-  function initMarquee(row, { direction = 'left', speed = 30 } = {}) {
-    const originals = [...row.children];
-    originals.forEach(c => row.appendChild(c.cloneNode(true)));
-  
-    const origW = originals.reduce((w, el) => w + el.getBoundingClientRect().width + 32, -32);
-    const dir = direction === 'left' ? -1 : 1;
-    let pos = 0;
-    let last = performance.now();
-    let isPaused = false;
-    let rafId;
-  
-    function step(now) {
-      if (!isPaused) {
-        const dt = (now - last) / 1000;
-        pos += dir * speed * dt;
-  
-        if (dir === -1 && Math.abs(pos) >= origW) pos += origW;
-        if (dir === 1 && pos >= 0) pos -= origW;
-  
-        row.style.transform = `translateX(${pos}px)`;
-        last = now;
-      }
-      rafId = requestAnimationFrame(step);
-    }
-  
-    function pause() {
-      isPaused = true;
-    }
-  
-    function resume() {
-      last = performance.now(); // resume 기준 시간 초기화
-      isPaused = false;
-    }
-  
-    // 이벤트 리스너
-    row.addEventListener('mouseenter', pause); // PC
-    row.addEventListener('mouseleave', resume);
-    row.addEventListener('touchstart', pause, { passive: true }); // Mobile
-    row.addEventListener('touchend', resume);
-  
-    // 슬라이드 시작
-    rafId = requestAnimationFrame(step);
-  }
-  
-  window.addEventListener('DOMContentLoaded', () => {
-    initMarquee(document.querySelector('#testimonials .top'), { direction: 'right', speed: 55 });
-    initMarquee(document.querySelector('#testimonials .bottom'), { direction: 'left', speed: 55 });
-  });
-  </script>
+<!-- 🔹 마음디톡스 7 후기 -->
+<section id="testimonials" class="con-7">
+  <h2>참가자 분들의 실제 후기</h2>
+  <div class="ts-wrapper">
+    <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
 
-<section id="blog-news-slider2">
+    <div class="ts-viewport">
+      <div class="ts-track">
+        <article class="testimonial-card">
+          <q>채정호 교수님 강연 중 가장 중요한 건 수용이라고 하는게 인상적이었고<br>
+          질병이든 뭐든 의지로 재단하는게 위험하다는 말씀도 인상적이었다.</q>
+          <p class="author">30대 참가자 신xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>마음기술 + 마음 근력 + 선업. 내 인생을 그대로 받아들이지 않으면
+          우울하다는 것을 크게 느꼈습니다.</q>
+          <p class="author">참가자 (익명)</p>
+        </article>
+        <article class="testimonial-card">
+          <q>제가 평소에 느꼈던 일들에 대하여 의학적 관점에서 이해할 수 있었습니다.</q>
+          <p class="author">70대 참가자 박xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>기대 이상으로 내용도 알차고 실질적인 도움도 되었습니다.
+          솔직하고 진실한 경험담이 와닿았습니다.</q>
+          <p class="author">50대 참가자(익명)</p>
+        </article>
+        <article class="testimonial-card">
+          <q>정신건강에 있어 간단 명료한 강의에 인상 깊었고,
+          치료법 또한 명료한 답을 주시는 것 같아 인상 깊었습니다.</q>
+          <p class="author">50대 참가자(익명)</p>
+        </article>
+        <article class="testimonial-card">
+          <q>7가지 치유법, 우울증의 세분화 강의 두 분의 강의는 최고였습니다!</q>
+          <p class="author">60대 참가자 (익명)</p>
+        </article>
+        <article class="testimonial-card">
+          <q>불안과 우울, 공황 상태는 병이 아니라는 것이 인상 깊었습니다.
+          뜻 깊은 강연을 들을 수 있어 좋았습니다.</q>
+          <p class="author">20대 참가자 박xx</p>
+        </article>
+      </div>
+    </div>
+
+    <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+  </div>
+</section>
+
+<!-- 🔹 마음디톡스 8 후기 -->
+<section id="testimonials" class="con-8">
+  <h2>참가자 분들의 실제 후기</h2>
+  <div class="ts-wrapper">
+    <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+
+    <div class="ts-viewport">
+      <div class="ts-track">
+        <article class="testimonial-card">
+          <q>최준식 교수님의 강연을 듣고 남은 삶에 대한 나의 태도, 생각 마무리에 보탬이 된 것 같습니다.</q>
+          <p class="author">70대 참가자 김xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>홍진의 선생님의 강연을 통해 임종 장면을 보면서 연명치료에 대한 생각을 정리하게 되는 계기가 되었습니다.</q>
+          <p class="author">60대 참가자 정xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>함영준 선생님의 사형수 인간의 모습을 보면서 죽음에 대한 이해를 더 깊게 할 수 있는 시간이었습니다.</q>
+          <p class="author">참가자 노xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>정수지 피아니스트님 음악을 듣고 있으니 나도 모르게 눈물이 났어요.</q>
+          <p class="author">60대 참가자 임xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>이한나님의 노래에 전율이 확 올라오는 감동을 느꼈습니다.
+          깊이있는 강연과 음악이 함께하는 시간이 정말 좋았습니다.</q>
+          <p class="author">참가자 최xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>죽음과 연명치료 등 알고 있었던 이야기였지만 막연했던 것들에 대해 강사분들께서
+          쉽게 전달해주셔서 감사했습니다.</q>
+          <p class="author">참가자 장xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>죽음 강연이 많지 않은데, 죽음에 대해 직접 대면해보고 앞으로의 삶에 도움이 된 것 같습니다.</q>
+          <p class="author">60대 참가자 오xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>서울대병원 호스피스 간호사님의 진솔한 임종에 대한 이야기가 너무 인상 깊었습니다.</q>
+          <p class="author">60대 참가자 노xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>영적 존재, 사후세계에 대해서 긍정적이었습니다. 호흡 명상을 통해 인간의 능력이 무한함을 느꼈으며,
+          새삼 교육을 통해 재확인이 되어 만족스럽습니다.</q>
+          <p class="author">80대 참가자 서xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>뇌수술과 패혈증으로 죽기 직전까지 경험한 적이 있는데, 궁금했던 내용을 다뤄서 호기심을 갖게 되었습니다.</q>
+          <p class="author">참가자 오xx</p>
+        </article>
+      </div>
+    </div>
+
+    <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+  </div>
+</section>
+
+<!-- 🔹 마음디톡스 8 후기 -->
+<section id="testimonials" class="con-9">
+  <h2>참가자 분들의 실제 후기</h2>
+  <div class="ts-wrapper">
+    <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+
+    <div class="ts-viewport">
+      <div class="ts-track">
+        <article class="testimonial-card">
+          <q>죽음은 끝이 아니고 새로운 미지의 세계로의 여행이라는 생각이 들어 죽음에 대한 공포와 두려움을 극복할 수 있다는 생각이 듭니다.</q>
+          <p class="author">참가자 김xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>정현채 교수님의 경험을 바탕으로 한 진솔한 강의에 감사합니다. 교수님의 삶과 죽음에 대한 철학에 감동을 받았습니다.</q>
+          <p class="author">참가자 조xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>얼마전에 남편이 돌아가셨습니다. 종교가 불교라서 49제에 가서 진행중 나비가 수십마리가 떼를 지어 나타나고 이상하게 생각했는데 오늘, 나 잘 있다는 신호이다라는 말씀에 너무 좋았습니다. 많이 치유 받는 시간이 되었습니다. 감사합니다.</q>
+          <p class="author">참가자 육xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>일상에서 듣지 못하는 화두인 '죽음'에 관해 생각해 보는 기회가 되었어요. 기존에 접하기 어려운 내용을 전달해 주셔서 감사합니다.</q>
+          <p class="author">참가자 이xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>사후생에 대한 과학적인 근거와 경험을 들으면서 죽음에 대한 두려움이 줄어드는 좋은 강연이었습니다.</q>
+          <p class="author">참가자 김xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>죽음에 대한 어려운 학문을 다뤄주셔서 감사합니다. 조용하고 편안한 분위기도 좋았으며, 잔잔한 피아노 공연도 또한 감사합니다.</q>
+          <p class="author">참가자 김xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>주위에 죽음을 앞둔 사람도 있고 나이 많고 아픈 사람들이 많이 생겼어요. 나 또한 노인의 대열에 오게 되어 죽음에 대해 공부하게 되었는데 모르던 내용을 알게되어 감사해요.</q>
+          <p class="author">참가자 배xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>죽음은 끝이 아니고 새로운 미지의 세계로의 여행이라는 생각이 들어 죽음에 대한 공포와 두려움을 극복할 수 있다는 생각이 듭니다.</q>
+          <p class="author">참가자 권xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>죽음에 대한 의학적 관점에서 다양한 논의들을 들을 수 있었고, 강의와 음악의 조화가 좋았다.</q>
+          <p class="author">참가자 최xx</p>
+        </article>
+        <article class="testimonial-card">
+          <q>어려운 주제를 과학적 기록 등으로 가까이 접근할 수 있어 감사드립니다.</q>
+          <p class="author">참가자 박xx</p>
+        </article>
+      </div>
+    </div>
+
+    <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+  </div>
+</section>
+
+<script>
+/* ▷ 자동재생(루프) + 짧은 드래그 스냅 + 
+     버튼 클릭 시 자동 완전 종료 & 루프 없음 */
+
+(function(){
+  const AUTO_INTERVAL = 4500;
+  const IDLE_AFTER_DRAG = 5000;
+  const DRAG_SENSITIVITY = 1.6;       // ✅ 드래그 감도 상향
+  const SWIPE_RATIO = 0.12;           // ✅ 카드 폭 대비 12% 이동 시 스와이프 인정
+
+  function initTestimonialSection(sec){
+    const viewport = sec.querySelector('.ts-viewport');
+    const track    = sec.querySelector('.ts-track');
+    const cards    = Array.from(track.children);
+    const prevBtn  = sec.querySelector('.ts-prev');
+    const nextBtn  = sec.querySelector('.ts-next');
+    if (!viewport || !track || !cards.length) return;
+
+    let cardStep = 0;
+
+    function calcStep(){
+      if (cards.length < 2) {
+        cardStep = cards[0].offsetWidth;
+      } else {
+        const r0 = cards[0].getBoundingClientRect();
+        const r1 = cards[1].getBoundingClientRect();
+        cardStep = r1.left - r0.left;
+      }
+
+      if (!cardStep || cardStep <= 0) {
+        cardStep = cards[0].offsetWidth + 32;
+      }
+    }
+    calcStep();
+    window.addEventListener('resize', calcStep);
+
+    function maxScroll(){
+      return Math.max(0, track.scrollWidth - viewport.clientWidth);
+    }
+
+    /* 가장 가까운 카드 스냅 */
+    function snapToNearest(){
+      const current = viewport.scrollLeft;
+      const index   = Math.round(current / cardStep);
+      const target  = Math.max(0, Math.min(index * cardStep, maxScroll()));
+      viewport.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    /* 자동 이동 (루프 전용) */
+    function scrollLoop(){
+      if(maxScroll() === 0) return;
+
+      let target = viewport.scrollLeft + cardStep;
+      if (target >= maxScroll() - 4) target = 0;
+      viewport.scrollTo({ left: target, behavior:'smooth' });
+    }
+
+    /* 버튼 이동 (루프 없음) */
+    function scrollClamp(dir){
+      let target = viewport.scrollLeft + dir * cardStep;
+      target = Math.max(0, Math.min(target, maxScroll()));
+      viewport.scrollTo({ left: target, behavior:'smooth' });
+    }
+
+    /* -----------------------------
+       자동 재생 컨트롤
+    ----------------------------- */
+    let autoTimer = null;
+    let restartTimer = null;
+    let autoStoppedByButton = false;
+
+    function stopAuto(){
+      if(autoTimer){
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    function startAuto(){
+      if(autoStoppedByButton || autoTimer) return;
+      autoTimer = setInterval(scrollLoop, AUTO_INTERVAL);
+    }
+
+    function scheduleRestart(){
+      if(autoStoppedByButton) return;
+      stopAuto();
+      clearTimeout(restartTimer);
+      restartTimer = setTimeout(startAuto, IDLE_AFTER_DRAG);
+    }
+
+    /* -----------------------------
+       버튼 이벤트
+    ----------------------------- */
+    prevBtn.addEventListener('click',()=>{
+      autoStoppedByButton = true;
+      stopAuto();
+      scrollClamp(-1);
+    });
+
+    nextBtn.addEventListener('click',()=>{
+      autoStoppedByButton = true;
+      stopAuto();
+      scrollClamp(1);
+    });
+
+    /* -----------------------------
+       드래그 처리
+    ----------------------------- */
+    let isDown = false;
+    let startX = 0;
+    let startScroll = 0;
+    let moveX = 0;
+
+    function dragStart(x){
+      isDown = true;
+      moveX = 0;
+      startX = x;
+      startScroll = viewport.scrollLeft;
+      viewport.style.scrollBehavior = 'auto';
+      scheduleRestart();
+    }
+
+    function dragMove(x){
+      if(!isDown) return;
+      moveX = (x - startX) * DRAG_SENSITIVITY;
+      const raw = startScroll - moveX;
+      viewport.scrollLeft = Math.max(0, Math.min(raw, maxScroll()));
+    }
+
+    function dragEnd(){
+      if(!isDown) return;
+      isDown = false;
+      viewport.style.scrollBehavior = '';
+
+      const threshold = cardStep * SWIPE_RATIO; // ✅ 짧은 드래그 판정 기준
+
+      if(moveX > threshold){
+        scrollClamp(-1);
+      } else if(moveX < -threshold){
+        scrollClamp(1);
+      } else {
+        snapToNearest();
+      }
+    }
+
+    /* 마우스 */
+    viewport.addEventListener('mousedown', e=>dragStart(e.pageX));
+    window.addEventListener('mousemove', e=>dragMove(e.pageX));
+    window.addEventListener('mouseup', dragEnd);
+
+    /* 터치 */
+    viewport.addEventListener('touchstart', e=>{
+      if(e.touches[0]) dragStart(e.touches[0].clientX);
+    }, {passive:true});
+
+    window.addEventListener('touchmove', e=>{
+      if(e.touches[0]) dragMove(e.touches[0].clientX);
+    }, {passive:true});
+
+    window.addEventListener('touchend', dragEnd);
+
+    /* 시작 */
+    startAuto();
+  }
+
+  window.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelectorAll('section#testimonials').forEach(initTestimonialSection);
+
+    if(!document.body.hasAttribute('data-conf')){
+      document.body.setAttribute('data-conf','md8');
+    }
+  });
+
+})();
+</script>
+
+
+
+
+
+
+
+
+<!-- 🔹 기사/뉴스 슬라이더 (마음디톡스 7) -->
+<section id="blog-news-slider2" class="con-7">
   <div class="bns2-viewport">
     <div class="bns2-track">
-      <a href="https://kor.theasian.asia/archives/383668" class="bns2-slide" target="_blank">
-        <img src="./img/con4.jpg" class="bns2-thumb" alt="뉴스2">
+      <a href="https://www.viva100.com/article/20250715501554" class="bns2-slide con-7" target="_blank" rel="noopener">
+        <img src="https://stqnq5ux4599.edge.naverncp.com/data2/content/image/2025/07/15/.cache/512/20250715501550.jpg" class="bns2-thumb" alt="뉴스2">
         <div class="bns2-desc">
-          <h4 class="bns2-title">외로움과 우울, 어떻게 치유할까? ‘마음디톡스 컨퍼런스’서 길 찾는다 <img src="https://kor.theasian.asia/wp-content/uploads/2025/02/logo_theasian.png" style="width:80px;margin-left:10px;"></h4>
-          <p class="bns2-summary">이번 행사는 2018년 시작되어 꾸준히 이어져온 ‘마음디톡스’ 프로그램의 일환으로...</p>
+          <h4 class="bns2-title">[비바 2080] 우울 불안 공황에 ‘마음디톡스’… “마음이 살아야 몸이 산다, 그리고 ‘괜별그’ 마인드로 무장하라” </h4>
+          <p class="bns2-summary">함영준 ‘마음건강 길’ 대표가 운영하는 ‘마음디톡스 특강’이 15일 오후 대한성공회 서울주교좌성당 프란시스홀에서 열렸다....</p>
         </div>
       </a>
-     
-      <a href="https://blog.naver.com/fthursday/223873695548" class="bns2-slide" target="_blank">
-        <img src="./img/thumb2.jpg" class="bns2-thumb" alt="뉴스1">
+      <a href="https://monthly.chosun.com/client/news/viw.asp?ctcd=E&nNewsNumb=202509100052" class="bns2-slide con-7" target="_blank" rel="noopener">
+        <img src="http://monthly.chosun.com/upload/2509/2509_404_1.jpg" class="bns2-thumb" alt="뉴스2">
         <div class="bns2-desc">
-          <h4 class="bns2-title">마가스님 자비명상특강 <img src="./img/blog1.png" style="width:40px;"></h4>
-          <p class="bns2-summary">
-            최근 한국인들 마음건강의 적신호에 깊은
-            공감과 소명을 느껴 마가스님과 윤종모 주교님을 모시고 3인3색 토크쇼를 열었다...
-            </p>
+          <h4 class="bns2-title">[이 사람] 《우울탈출법》 펴낸 치유 저널리스트 함영준 </h4>
+          <p class="bns2-summary">언론·정부 일 하며 어느 순간 극심한 '소진' 지나 몸과 마음 무너져 ⊙ 자기 돌봄의 지혜 담은 신간 《우울탈출법》 펴내....</p>
         </div>
       </a>
-      <a href="https://m.blog.naver.com/fthursday/223873682570" class="bns2-slide" target="_blank">
-        <img src="https://mblogthumb-phinf.pstatic.net/MjAyNTA1MjJfMjg2/MDAxNzQ3ODU4NzMxMTYy.HtjHfb6Y1TsC3f1P3PXR6rGgrY5j7Ikjp_xsv7r8hE8g.lX6o90tPAudIehrxz8lHcn7ssiEAP88U-AbzdtX6Q1Eg.JPEG/900%EF%BC%BF20250521%EF%BC%BF150128.jpg?type=w800" class="bns2-thumb" alt="썸네일1">
+      <a href="https://www.chosun.com/medical/2025/07/01/D34VAHUJGVB5BEZGT6NF4S2HX4/" class="bns2-slide con-7" target="_blank" rel="noopener">
+        <img src="https://www.chosun.com/resizer/v2/VS6QEIBCLRAJFEWU2I75B47QHQ.jpg?auth=444f19623d09b5395bf897c4586c83546f45013ff6b9e67ee38b50b5184da8a5&width=616" class="bns2-thumb" alt="뉴스2">
         <div class="bns2-desc">
-          <h4 class="bns2-title">함영준 대표님 마음건강 특강 <img src="./img/blog1.png" style="width:40px;"></h4>
-          <p class="bns2-summary">함영준 대표님 특강! 본인 스스로 심한 우울증을  겪고 나서 마음건강의 중요성을 절감하고...</p>
+          <h4 class="bns2-title">[함영준의 마음PT] 우울증·공황장애·불면증…전문가가 전하는 치유 솔루션 </h4>
+          <p class="bns2-summary">마음의 병, 약으로만 해결될까?
+
+우울증, 공황장애, 불안장애, 불면증…. 이른바 마음의 병이 요즘 정말 많다....</p>
         </div>
       </a>
-      <a href="https://www.sisajournal.com/news/articleView.html?idxno=334185" class="bns2-slide" target="_blank">
-        <img src="./img/con7.jpeg" class="bns2-thumb" alt="블로그2">
-        <div class="bns2-desc">
-          <h4 class="bns2-title">우울증 극복을 통한 마음 건강 회복 이야기 <img src="https://cdn.sisajournal.com/image/logo/toplogo_20240513034706.png" style="width:80px;margin-left:10px;"></h4>
-          <p class="bns2-summary">겨우 한 살 때, 아버지를 사고로 잃었고, 어머니는 재혼 후 나를 떠났다. 조부모님의 극진한 사랑 속에서 성장했으나...</p>
-        </div>
-      </a>
-    
     </div>
     <button class="bns2-arrow bns2-prev" aria-label="이전">&lt;</button>
     <button class="bns2-arrow bns2-next" aria-label="다음">&gt;</button>
-    <!-- <div class="bns2-pagination"></div> -->
+  </div>
+</section>
+
+<!-- 🔹 기사/뉴스 슬라이더 (마음디톡스 6) -->
+<section id="blog-news-slider2" class="con-6">
+  <div class="bns2-viewport">
+    <div class="bns2-track">
+      <a href="https://kor.theasian.asia/archives/383668" class="bns2-slide con-6" target="_blank" rel="noopener">
+        <img src="./img/con4.jpg" class="bns2-thumb" alt="뉴스2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">외로움과 우울, 어떻게 치유할까? ‘마음디톡스 컨퍼런스’서 길 찾는다 <img src="https://kor.theasian.asia/wp-content/uploads/2025/02/logo_theasian.png" style="width:80px;margin-left:10px;" alt=""></h4>
+          <p class="bns2-summary">이번 행사는 2018년 시작되어 꾸준히 이어져온 ‘마음디톡스’ 프로그램의 일환으로...</p>
+        </div>
+      </a>
+      <a href="https://blog.naver.com/fthursday/223873695548" class="bns2-slide con-6" target="_blank" rel="noopener">
+        <img src="./img/thumb2.jpg" class="bns2-thumb" alt="뉴스1">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">마가스님 자비명상특강 <img src="./img/blog1.png" style="width:40px;" alt=""></h4>
+          <p class="bns2-summary">최근 한국인들 마음건강의 적신호에 깊은
+            공감과 소명을 느껴 마가스님과 윤종모 주교님을 모시고 3인3색 토크쇼를 열었다...
+          </p>
+        </div>
+      </a>
+      <a href="https://m.blog.naver.com/fthursday/223873682570" class="bns2-slide con-6" target="_blank" rel="noopener">
+        <img src="https://mblogthumb-phinf.pstatic.net/MjAyNTA1MjJfMjg2/MDAxNzQ3ODU4NzMxMTYy.HtjHfb6Y1TsC3f1P3PXR6rGgrY5j7Ikjp_xsv7r8hE8g.lX6o90tPAudIehrxz8lHcn7ssiEAP88U-AbzdtX6Q1Eg.JPEG/900%EF%BC%BF20250521%EF%BC%BF150128.jpg?type=w800" class="bns2-thumb" alt="썸네일1">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">함영준 대표님 마음건강 특강 <img src="./img/blog1.png" style="width:40px;" alt=""></h4>
+          <p class="bns2-summary">함영준 대표님 특강! 본인 스스로 심한 우울증을  겪고 나서 마음건강의 중요성을 절감하고...</p>
+        </div>
+      </a>
+      <a href="https://www.sisajournal.com/news/articleView.html?idxno=334185" class="bns2-slide con-6" target="_blank" rel="noopener">
+        <img src="./img/con7.jpeg" class="bns2-thumb" alt="블로그2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">우울증 극복을 통한 마음 건강 회복 이야기 <img src="https://cdn.sisajournal.com/image/logo/toplogo_20240513034706.png" style="width:80px;margin-left:10px;" alt=""></h4>
+          <p class="bns2-summary">겨우 한 살 때, 아버지를 사고로 잃었고, 어머니는 재혼 후 나를 떠났다. 조부모님의 극진한 사랑 속에서 성장했으나...</p>
+        </div>
+      </a>
+    </div>
+    <button class="bns2-arrow bns2-prev" aria-label="이전">&lt;</button>
+    <button class="bns2-arrow bns2-next" aria-label="다음">&gt;</button>
+  </div>
+</section>
+
+<!-- 🔹 기사/뉴스 슬라이더 (마음디톡스 8 – 기사 링크/이미지는 나중에 실제로 교체) -->
+<section id="blog-news-slider2" class="con-8">
+  <div class="bns2-viewport">
+    <div class="bns2-track">
+      <!-- TODO: 마음디톡스 8 관련 실제 기사/블로그 링크로 교체 -->
+      <a href="https://news.jkn.co.kr/post/855476" class="bns2-slide con-8" target="_blank" rel="noopener">
+        <img src="https://images.jkn.co.kr/data/images/full/982208/image.jpg?w=560" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 1">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">'웰 다잉 & 사후생’…마음건강 길, ‘마음 디톡스 8’ 성료</h4>
+          <p class="bns2-summary">죽음이라는 주제는 누구에게나 두렵지만, 동시에 삶의 본질을 되묻는 가장 깊은 질문이기도 하다...</p>
+        </div>
+      </a>
+      <a href="https://blog.naver.com/healingdiary/224088151043" class="bns2-slide con-8" target="_blank" rel="noopener">
+        <img src="./img/8-3.jpeg" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">11/22(토) "제 8회 마음 디톡스 컨퍼런스: 웰다잉&사후생" 명상 피아노 연주</h4>
+          <p class="bns2-summary">'죽음'에 대한 담론이 결코 가볍지 않은 주제인데, 생각보다 많은 분들이 참석해주셔서 놀라왔어요...</p>
+        </div>
+      </a>
+
+       <a href="https://www.chosun.com/medical/2025/11/25/45X2KJQC7JDD7NJ2WPCDJEUUJA/" class="bns2-slide con-8" target="_blank" rel="noopener">
+        <img src="https://www.chosun.com/resizer/v2/BNADKKY775BOZLUYUOFQNSGIIA.JPG?auth=dfefa1c4447b8955776c66c6d17fd6f1b19e4d726e4740766b2a28d68248a460&width=591&height=460&smart=true" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">죽음을 지켜본 사람들이 말하는 '좋은 죽음·웰다잉'</h4>
+          <p class="bns2-summary">50명이면 꽉 차는 지하 갤러리 공간은 토요일 오후 일찌감치 만석이었다....</p>
+        </div>
+      </a>
+
+
+      
+    </div>
+    <button class="bns2-arrow bns2-prev" aria-label="이전">&lt;</button>
+    <button class="bns2-arrow bns2-next" aria-label="다음">&gt;</button>
+  </div>
+</section>
+
+<section id="blog-news-slider2" class="con-9">
+  <div class="bns2-viewport">
+    <div class="bns2-track">
+
+
+       <a href="https://monthly.chosun.com/client/Mdaily/daily_view.asp?Idx=23830&Newsnumb=20260223830" class="bns2-slide con-9" target="_blank" rel="noopener">
+        <img src="https://monthly.chosun.com/editor/cheditor/attach/2026/20260224183949_cfnfscep.jpg" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">“육체의 죽음 뒤에도 의식은 지속된다”… 28일 ‘마음디톡스’ 강연</h4>
+          <p class="bns2-summary">서울대 의과대학 명예교수인 정현채 전 서울대학교병원 소화기내과 교수가...</p>
+        </div>
+      </a>
+
+      
+      <!-- TODO: 마음디톡스 8 관련 실제 기사/블로그 링크로 교체 -->
+      <a href="https://www.mindgil.com/news/articleView.html?idxno=100787" class="bns2-slide con-9" target="_blank" rel="noopener">
+        <img src="https://cdn.mindgil.com/news/photo/202512/100787_50974_4943.jpg" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 1">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">“암 진단 이후 내가 달라진 것들”</h4>
+          <p class="bns2-summary">서울대학교 의과대학 명예교수이자 19년간 800회가 넘는 죽음 강의를 이어온 권위자 정현채 교수.</p>
+        </div>
+      </a>
+      <a href="https://www.mindgil.com/news/articleView.html?idxno=76706" class="bns2-slide con-9" target="_blank" rel="noopener">
+        <img src="https://cdn.mindgil.com/news/photo/202304/76706_18457_4523.jpg" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">'죽음 이후' 연구하는 노의사</h4>
+          <p class="bns2-summary">"은퇴 후 제주 살면서 더 넉넉해졌죠"</p>
+        </div>
+      </a>
+
+
+
+      
+    </div>
+    <button class="bns2-arrow bns2-prev" aria-label="이전">&lt;</button>
+    <button class="bns2-arrow bns2-next" aria-label="다음">&gt;</button>
   </div>
 </section>
 
@@ -2642,7 +3614,7 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
 #blog-news-slider2 .bns2-viewport { position: relative; overflow: hidden; width: 100%; border-radius: 20px; background: #f8f8f8; box-shadow: 0 6px 24px rgba(0,0,0,.08); min-height: 410px;}
 #blog-news-slider2 .bns2-track { display: flex; transition: transform 0.38s cubic-bezier(.85,.02,.19,.99); will-change: transform; cursor: grab; user-select: none;}
 #blog-news-slider2 .bns2-slide { background: #fff; border-radius: 16px; box-shadow: 0 4px 18px rgba(0,0,0,.08); overflow: hidden; text-decoration: none; color: #232323; display: flex; flex-direction: column; align-items: stretch; pointer-events: auto; user-drag: none; -webkit-user-drag: none;}
-#blog-news-slider2 .bns2-thumb { width: 100%; height: 260px; object-fit: cover; border-bottom:1px solid #f2f2f2; user-drag: none; -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; pointer-events: auto; background: #ececec;}
+#blog-news-slider2 .bns2-thumb { width: 100%; height: 300px; object-fit: cover; border-bottom:1px solid #f2f2f2; user-drag: none; -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -moz-user-select: none; pointer-events: auto; background: #ececec;}
 #blog-news-slider2 .bns2-desc {padding: 22px 20px 16px 20px;}
 #blog-news-slider2 .bns2-title {font-size: 1.17rem; font-weight: 800; margin-bottom: 0.6em; color: #2563eb;}
 #blog-news-slider2 .bns2-summary {font-size: 1rem; color: #2c2c2c;}
@@ -2653,152 +3625,164 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
 #blog-news-slider2 .bns2-pagination { display: flex; gap: 8px; justify-content: center; margin: 16px 0 6px 0;}
 #blog-news-slider2 .bns2-dot { width: 11px; height: 11px; border-radius:50%; background:#E5E7EB; transition: background .2s; cursor: pointer;}
 #blog-news-slider2 .bns2-dot.active {background:#2563eb;}
-/* 동적 슬라이드 크기 조정 */
 #blog-news-slider2 .bns2-slide { transition: box-shadow .2s;}
 #blog-news-slider2 .bns2-slide:active { box-shadow: 0 2px 12px rgba(0,0,0,.12);}
 </style>
 
 <script>
 (function(){
-  // ------- 슬라이드 동시 표시 개수 옵션 --------
-  const visibleCountByBreakpoints = [
-    { maxWidth: 650, count: 1 },
-    { maxWidth: 900, count: 2 },
-    { maxWidth: 1200, count: 2},
-    { maxWidth: 9999, count: 3 }
-  ];
-  // 사용 예: 위 배열을 원하는대로 수정(최소/최대값 바꾸면 모든 크기 커버됨)
+  const sections = document.querySelectorAll('section#blog-news-slider2');
 
-  // ------- 동작 코드 --------
-  const section = document.getElementById("blog-news-slider2");
-  const track = section.querySelector(".bns2-track");
-  const slides = Array.from(section.querySelectorAll(".bns2-slide"));
-  const prevBtn = section.querySelector(".bns2-prev");
-  const nextBtn = section.querySelector(".bns2-next");
-  const pagination = section.querySelector(".bns2-pagination");
-  const slideCount = slides.length;
-  let current = 0, dragging = false, startX = 0, curX = 0, animating = false, dragMoved = false;
-  let visibleCount = 1.3, slideWidth = 0, gapPx = 32; // 기본값
+  sections.forEach(section=>{
+    if (section.__inited) return;
+    section.__inited = true;
 
-  // 이미지 드래그 방지
-  slides.forEach(slide=>{
-    slide.querySelectorAll('img').forEach(img=>{
-      img.addEventListener('dragstart',e=>e.preventDefault());
-    });
-  });
+    const visibleCountByBreakpoints = [
+      { maxWidth: 650, count: 1 },
+      { maxWidth: 900, count: 2 },
+      { maxWidth: 1200, count: 2 },
+      { maxWidth: 9999, count: 3 }
+    ];
 
-  // 반응형 visibleCount & slideWidth 계산
-  function updateSlideLayout() {
-    // 뷰포트 크기별 visibleCount 결정
-    let ww = window.innerWidth;
-    visibleCount = visibleCountByBreakpoints.find(bp => ww <= bp.maxWidth).count;
-    // Gap(px)은 브레이크포인트마다 맞게 조정
-    if (ww <= 650) gapPx = 10;
-    else if (ww <= 900) gapPx = 18;
-    else if (ww <= 1200) gapPx = 24;
-    else gapPx = 32;
-    // slideWidth = (viewport-전체패딩) / visibleCount - gap
-    const viewport = section.querySelector('.bns2-viewport');
-    let totalW = viewport.clientWidth || 1100;
-    slideWidth = (totalW - gapPx * (visibleCount-1)) / visibleCount;
+    const track = section.querySelector(".bns2-track");
+    const slides = Array.from(section.querySelectorAll(".bns2-slide"));
+    const prevBtn = section.querySelector(".bns2-prev");
+    const nextBtn = section.querySelector(".bns2-next");
+    let pagination = section.querySelector(".bns2-pagination");
+    if(!pagination){
+      pagination = document.createElement('div');
+      pagination.className = 'bns2-pagination';
+      section.appendChild(pagination);
+    }
+
+    const slideCount = slides.length;
+    let current = 0, dragging = false, startX = 0, curX = 0, dragMoved = false;
+    let visibleCount = 1.3, slideWidth = 0, gapPx = 32;
+
     slides.forEach(slide=>{
-      slide.style.minWidth = slide.style.maxWidth = slide.style.width = slideWidth+'px';
-      slide.style.marginLeft = '0';
-      slide.style.marginRight = gapPx+'px';
+      slide.querySelectorAll('img').forEach(img=>{
+        img.addEventListener('dragstart',e=>e.preventDefault());
+        img.loading = 'lazy';
+        img.decoding = 'async';
+      });
     });
-    slides[slides.length-1].style.marginRight = '0';
-    goTo(current, false);
-  }
-  window.addEventListener('resize', updateSlideLayout);
 
-  // 슬라이드 이동 함수
-  function goTo(idx, animate=true) {
-    current = Math.max(0, Math.min(idx, slideCount-Math.ceil(visibleCount)));
-    if (animate) {
-      track.style.transition = 'transform 0.38s cubic-bezier(.85,.02,.19,.99)';
-    } else {
+    function updateSlideLayout() {
+      let ww = window.innerWidth;
+      visibleCount = visibleCountByBreakpoints.find(bp => ww <= bp.maxWidth).count;
+      if (ww <= 650) gapPx = 10;
+      else if (ww <= 900) gapPx = 18;
+      else if (ww <= 1200) gapPx = 24;
+      else gapPx = 32;
+
+      const viewport = section.querySelector('.bns2-viewport');
+      let totalW = viewport.clientWidth || 1100;
+      slideWidth = (totalW - gapPx * (visibleCount-1)) / visibleCount;
+
+      slides.forEach(slide=>{
+        slide.style.minWidth = slide.style.maxWidth = slide.style.width = slideWidth+'px';
+        slide.style.marginLeft = '0';
+        slide.style.marginRight = gapPx+'px';
+      });
+      if(slides.length) slides[slides.length-1].style.marginRight = '0';
+      goTo(current, false);
+      updatePagination();
+    }
+    window.addEventListener('resize', updateSlideLayout, {passive:true});
+
+    function goTo(idx, animate=true) {
+      const maxIdx = Math.max(0, slideCount - Math.ceil(visibleCount));
+      current = Math.max(0, Math.min(idx, maxIdx));
+      track.style.transition = animate ? 'transform 0.38s cubic-bezier(.85,.02,.19,.99)' : 'none';
+      const offset = -current * (slideWidth+gapPx);
+      track.style.transform = `translateX(${offset}px)`;
+      section.querySelectorAll('.bns2-dot').forEach((dot,i)=>dot.classList.toggle('active',i===current));
+      if (animate) setTimeout(()=>{track.style.transition='';},410);
+    }
+
+    function updatePagination() {
+      pagination.innerHTML = '';
+      const pageCount = Math.max(1, slideCount - Math.ceil(visibleCount) + 1);
+      for (let i=0;i<pageCount;i++) {
+        const dot = document.createElement('div');
+        dot.className = 'bns2-dot' + (i===current?' active':'');
+        dot.addEventListener('click', ()=>goTo(i));
+        pagination.appendChild(dot);
+      }
+    }
+
+    function onDragStart(e) {
+      if (dragging) return;
+      dragging = true; dragMoved = false;
+      startX = (e.touches ? e.touches[0].clientX : e.clientX);
+      curX = startX;
       track.style.transition = 'none';
+      track.classList.add('dragging');
     }
-    const offset = -current * (slideWidth+gapPx);
-    track.style.transform = `translateX(${offset}px)`;
-    // pagination dot
-    section.querySelectorAll('.bns2-dot').forEach((dot,i)=>dot.classList.toggle('active',i===current));
-    setTimeout(()=>{track.style.transition='';},410);
-  }
-
-  // 페이지네이션 생성
-  function updatePagination() {
-    pagination.innerHTML = '';
-    let pageCount = slideCount - Math.ceil(visibleCount) + 1;
-    for (let i=0;i<pageCount;i++) {
-      const dot = document.createElement('div');
-      dot.className = 'bns2-dot' + (i===0?' active':'');
-      dot.addEventListener('click', ()=>goTo(i));
-      pagination.appendChild(dot);
+    function onDragMove(e) {
+      if (!dragging) return;
+      const x = (e.touches ? e.touches[0].clientX : e.clientX);
+      curX = x;
+      let moveX = x - startX;
+      if (Math.abs(moveX) > 6) dragMoved = true;
+      const maxIdx = Math.max(0, slideCount - Math.ceil(visibleCount));
+      if (current===0 && moveX>0) moveX = moveX/3;
+      if (current>=maxIdx && moveX<0) moveX = moveX/3;
+      track.style.transform = `translateX(${-current*(slideWidth+gapPx) + moveX}px)`;
     }
-  }
-
-  // 화살표
-  prevBtn.addEventListener('click',()=>goTo(current-1));
-  nextBtn.addEventListener('click',()=>goTo(current+1));
-
-  // 드래그/스와이프
-  function onDragStart(e) {
-    if (animating) return;
-    dragging = true;
-    dragMoved = false;
-    startX = (e.touches ? e.touches[0].clientX : e.clientX);
-    curX = startX;
-    track.style.transition = 'none';
-    track.classList.add('dragging');
-  }
-  function onDragMove(e) {
-    if (!dragging) return;
-    const x = (e.touches ? e.touches[0].clientX : e.clientX);
-    curX = x;
-    let moveX = x - startX;
-    if (Math.abs(moveX) > 6) dragMoved = true; // 실제 이동했을 때만
-    if (current===0 && moveX>0) moveX = moveX/3;
-    if (current>=(slideCount-Math.ceil(visibleCount)) && moveX<0) moveX = moveX/3;
-    track.style.transform = `translateX(${-current*(slideWidth+gapPx) + moveX}px)`;
-  }
-  function onDragEnd(e) {
-    if (!dragging) return;
-    dragging = false;
-    track.classList.remove('dragging');
-    let moveX = curX - startX;
-    if (Math.abs(moveX) > slideWidth/4) {
-      if (moveX < 0 && current < slideCount-Math.ceil(visibleCount)) goTo(current+1);
-      else if (moveX > 0 && current > 0) goTo(current-1);
-      else goTo(current);
-    } else {
-      goTo(current);
+    function onDragEnd() {
+      if (!dragging) return;
+      dragging = false;
+      track.classList.remove('dragging');
+      let moveX = curX - startX;
+      if (Math.abs(moveX) > slideWidth/4) {
+        const maxIdx = Math.max(0, slideCount - Math.ceil(visibleCount));
+        if (moveX < 0 && current < maxIdx) goTo(current+1);
+        else if (moveX > 0 && current > 0) goTo(current-1);
+        else goTo(current);
+      } else {
+        goTo(current);
+      }
     }
-  }
-  // 마우스
-  track.addEventListener('mousedown', onDragStart);
-  window.addEventListener('mousemove', onDragMove);
-  window.addEventListener('mouseup', onDragEnd);
-  // 터치
-  track.addEventListener('touchstart', onDragStart, {passive:true});
-  window.addEventListener('touchmove', onDragMove, {passive:false});
-  window.addEventListener('touchend', onDragEnd);
 
-  // 드래그 후 클릭 차단
-  slides.forEach(slide=>{
-    slide.addEventListener('click', function(e){
-      if (dragMoved) e.preventDefault();
+    prevBtn.addEventListener('click',()=>goTo(current-1));
+    nextBtn.addEventListener('click',()=>goTo(current+1));
+
+    track.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+
+    track.addEventListener('touchstart', onDragStart, {passive:true});
+    window.addEventListener('touchmove', onDragMove, {passive:false});
+    window.addEventListener('touchend', onDragEnd);
+
+    slides.forEach(slide=>{
+      slide.addEventListener('click', function(e){
+        if (dragMoved) e.preventDefault();
+      });
     });
+
+    updateSlideLayout();
+    updatePagination();
+    goTo(0,false);
+
+    const viewport = section.querySelector('.bns2-viewport');
+    let paused=false;
+    function pause(){ if(paused) return; paused=true; track.style.transition=''; }
+    function resume(){ paused=false; goTo(current,false); }
+    viewport.__pause = pause;
+    viewport.__resume = resume;
+
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting) resume();
+        else pause();
+      });
+    },{threshold:0.1});
+    io.observe(section);
   });
-
-  // 초기실행
-  updateSlideLayout();
-  updatePagination();
-  goTo(0,false);
-
 })();
 </script>
-
 
 <hr style="width:100%;">
 <h3 class="title-main">📣 매체 소개</h3>
