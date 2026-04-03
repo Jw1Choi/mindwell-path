@@ -3126,68 +3126,6 @@ About Us Section
       #confSwitch .conf-gallery__viewport{border-radius:14px;}
     }
 
-    /* ===================== ✅ testimonials 슬라이더 ===================== */
-    /* id="testimonials" 섹션을 좌우 버튼으로만 이동하는 슬라이더로 변경 */
-
-    #testimonials{
-      position:relative;
-      max-width:1200px;
-      margin:40px auto;
-      overflow:hidden;         /* article이 밖으로 넘치지 않도록 */
-    }
-
-    /* JS에서 articles를 ts-track 안으로 감싸서 가로 슬라이드로 만듦 */
-    #testimonials .ts-track{
-      display:flex;
-      transition:transform .5s cubic-bezier(.33,.7,.24,1); /* 부드러운 이동 */
-      will-change:transform;
-    }
-
-    /* 각 article을 100% 폭의 슬라이드로 처리 */
-    #testimonials article{
-      flex:0 0 100%;
-      max-width:100%;
-    }
-
-    /* 좌우 네비 버튼 */
-    #testimonials .ts-arrow{
-      position:absolute;
-      top:50%;
-      /* transform:translateY(-50%); */
-      width:40px;
-      height:40px;
-      border-radius:999px;
-      border:1px solid rgba(148,163,184,.7);
-      background:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      color:#64748b;
-      cursor:pointer;
-      box-shadow:0 4px 12px rgba(15,23,42,.18);
-      transition:background .18s, color .18s, transform .18s, box-shadow .18s;
-      z-index:5;
-    }
-/* 기존 hover 제거하고 이걸로 교체 */
-#testimonials .ts-arrow:hover{
-  background:rgba(15,23,42,.88);
-  color:#ffffff;
-  box-shadow:0 12px 28px rgba(15,23,42,.35);
-  /* 위치 변경 없음 */
-  transform:none;
-}
-    #testimonials .ts-prev{left:10px;}
-    #testimonials .ts-next{right:10px;}
-
-    /* 모바일일 때 버튼 조금 작게 */
-    @media(max-width:600px){
-      #testimonials .ts-arrow{
-        width:34px;
-        height:34px;
-        font-size:16px;
-      }
-    }
   </style>
 
   <div class="cs-wrap">
@@ -3597,538 +3535,754 @@ About Us Section
 <hr style="width:100%;">
 <h3 class="title-main">💌 프로그램 후기</h3>
 <style>
-  /* ─────────  TESTIMONIALS 공통  ───────── */
-  #testimonials,
-  #testimonials *{
+  /* ==============================
+     Testimonials Section
+     ============================== */
+  .testimonials-section,
+  .testimonials-section *{
     box-sizing:border-box;
     font-family:'Noto Sans KR',sans-serif;
   }
-  #testimonials{
+
+  .testimonials-section{
     --bg:#ffffff;
     --text:#111111;
-    --muted:#6f6f75;
-    --primary:#0062ff;
-    --card-bg:#f9fafc;
-    --card-border:#e8ebf0;
+    --muted:#8a8f98;
+    --card-bg:#f9f9fb;
+    --card-border:#e3e6eb;
+    --shadow:0 10px 24px rgba(15,23,42,.06);
+    --arrow-border:rgba(148,163,184,.45);
+    --arrow-bg:rgba(255,255,255,.88);
+    --arrow-ink:#4b5563;
 
     background:var(--bg);
     color:var(--text);
-    padding:80px 5vw;
-  }
-  #testimonials h2{
-    font-size:36px;
-    font-weight:800;
-    text-align:center;
-    line-height:1.3;
-    margin-bottom:56px;
+    padding:80px 0;
+    overflow:hidden;
+    position:relative;
   }
 
-  /* 카드 공통 스타일 */
-  #testimonials .testimonial-card{
-    flex:0 0 320px;
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    border-radius:20px;
-    padding:32px 28px;
-    line-height:1.5;
-    box-shadow:0 12px 28px rgba(0,0,0,.06);
-    transition:box-shadow .25s;    /* 위치 이동 X */
-  }
-  #testimonials .testimonial-card:hover{
-    box-shadow:0 14px 32px rgba(0,0,0,.08);
-  }
-  #testimonials .testimonial-card q{
-    display:block;
-    font-size:18px;
-    font-weight:600;
-    margin-bottom:24px;
-  }
-  #testimonials .testimonial-card .author{
-    font-size:15px;
-    color:var(--muted);
-  }
-
-  /* 섹션 간 여유 */
-  #testimonials .row-gap{height:36px;}
-
-  /* 반응형 */
-  @media(max-width:768px){
-    #testimonials{padding:60px 4vw;}
-    #testimonials h2{font-size:26px;margin-bottom:36px;}
-    #testimonials .testimonial-card{
-      flex:0 0 260px;
-      padding:26px 22px;
-    }
-    #testimonials .testimonial-card q{font-size:16px;}
-  }
-
-  /* ▼ 탭에 따른 내용 표시 제어 (6 / 7 / 8 공통) */
-  .con-6,.con-7,.con-8{display:none;}
+  .con-6,.con-7,.con-8,.con-9{display:none;}
   body[data-conf="md6"] .con-6{display:block;}
   body[data-conf="md7"] .con-7{display:block;}
   body[data-conf="md8"] .con-8{display:block;}
+  body[data-conf="md9"] .con-9{display:block;}
 
-  /* ─────────  슬라이더 레이아웃  ───────── */
-  #testimonials .ts-wrapper{
+  /* 헤더 */
+  .testimonials-section .ts-head{
+    max-width:1200px;
+    margin:0 auto 34px;
+    padding:0 56px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+  }
+
+  .testimonials-section .ts-title{
+    margin:0;
+    font-size:48px;
+    font-weight:800;
+    line-height:1.2;
+    letter-spacing:-0.03em;
+    text-align:center;
+    flex:0 1 auto;
+  }
+
+  /* 모바일용 헤더 버튼 */
+  .testimonials-section .ts-head-arrows{
+    display:none;
+    align-items:center;
+    gap:8px;
+    flex:0 0 auto;
+  }
+
+  /* 슬라이더 */
+  .testimonials-section .ts-shell{
     position:relative;
     max-width:1200px;
     margin:0 auto;
-    display:flex;             /* 버튼 + 뷰포트 가로 배치 */
+    padding:0 56px;
+  }
+
+  .testimonials-section .ts-wrapper{
+    position:relative;
+    display:flex;
     align-items:center;
     gap:16px;
   }
 
-  /* 가운데 영역: 실제 슬라이드 카드 */
-  #testimonials .ts-viewport{
+  .testimonials-section .ts-viewport{
     overflow-x:auto;
-    overflow-y:visible;
+    overflow-y:hidden;
     scroll-behavior:smooth;
     flex:1 1 auto;
-    padding:0;                /* 끝까지 가도 카드가 안 사라지도록 패딩 제거 */
+    touch-action:pan-x;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+
+    /* 왼쪽 카드 선 안 잘리게 */
+    padding:6px 10px 12px 12px;
   }
-  #testimonials .ts-viewport::-webkit-scrollbar{
+
+  /* 드래그 중에는 snap과 smooth scroll 끄기 */
+  .testimonials-section .ts-viewport.is-dragging{
+    scroll-snap-type:none;
+    scroll-behavior:auto;
+  }
+
+  .testimonials-section .ts-viewport::-webkit-scrollbar{
     display:none;
   }
 
-  #testimonials .ts-track{
+  .testimonials-section .ts-track{
     display:flex;
-    gap:32px;                 /* 모든 컨퍼런스 동일 간격 */
-    padding-bottom:4px;
+    align-items:stretch;
+    gap:28px;
+
+    padding-left:2px;
+    padding-right:2px;
   }
 
-  /* 반투명 swiper-style 버튼 (슬라이드 밖 고정) */
-  #testimonials .ts-arrow{
-    position:relative;
+  .testimonials-section .testimonial-card{
+    flex:0 0 288px;
+    min-width:0;
+    scroll-snap-align:start;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    padding:30px 26px 28px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+
+  .testimonials-section .testimonial-card q{
+    display:block;
+    margin:0 0 24px;
+    font-size:18px;
+    font-weight:700;
+    line-height:1.65;
+    letter-spacing:-0.02em;
+    color:var(--text);
+    word-break:keep-all;
+    overflow-wrap:break-word;
+  }
+
+  .testimonials-section .testimonial-card .author{
+    margin:0;
+    font-size:15px;
+    line-height:1.5;
+    color:var(--muted);
+    word-break:keep-all;
+  }
+
+  /* 버튼 */
+  .testimonials-section .ts-arrow{
     width:40px;
     height:40px;
     border-radius:999px;
-    border:1px solid rgba(148,163,184,.5);
-    background:rgba(255,255,255,.7);   /* 반투명 */
-    backdrop-filter:blur(6px);
+    border:1px solid var(--arrow-border);
+    background:var(--arrow-bg);
+    color:var(--arrow-ink);
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:18px;
-    color:#4b5563;
+    font-size:22px;
+    font-weight:700;
+    line-height:1;
     cursor:pointer;
-    box-shadow:0 8px 20px rgba(15,23,42,.18);
-    transition:background .18s, color .18s, box-shadow .18s, transform .18s;
     flex:0 0 auto;
-    z-index:1;
-  }
-  #testimonials .ts-arrow:hover{
-    background:rgba(15,23,42,.88);
-    color:#ffffff;
-    box-shadow:0 12px 28px rgba(15,23,42,.35);
-    transform:translateY(-1px); /* 너무 많이 안 내려가도록 살짝만 */
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    box-shadow:0 8px 22px rgba(15,23,42,.16);
+    transition:
+      background .18s ease,
+      color .18s ease,
+      transform .18s ease,
+      box-shadow .18s ease,
+      opacity .18s ease;
   }
 
-  @media(max-width:768px){
-    #testimonials .ts-wrapper{
-      gap:12px;
+  .testimonials-section .ts-arrow:hover{
+    background:rgba(17,24,39,.92);
+    color:#fff;
+    transform:translateY(-1px);
+    box-shadow:0 12px 28px rgba(15,23,42,.26);
+  }
+
+  .testimonials-section .ts-arrow:disabled{
+    opacity:.45;
+    cursor:default;
+    transform:none;
+  }
+
+  /* 태블릿 */
+  @media (max-width:1024px){
+    .testimonials-section{
+      padding:68px 0;
     }
-    #testimonials .ts-arrow{
+
+    .testimonials-section .ts-head,
+    .testimonials-section .ts-shell{
+      padding-left:28px;
+      padding-right:28px;
+    }
+
+    .testimonials-section .ts-title{
+      font-size:38px;
+    }
+
+    .testimonials-section .testimonial-card{
+      flex-basis:300px;
+    }
+  }
+
+  /* 모바일 */
+  @media (max-width:768px){
+    .testimonials-section{
+      padding:54px 0;
+    }
+
+    .testimonials-section .ts-head{
+      justify-content:space-between;
+      margin-bottom:22px;
+      padding:0 16px;
+    }
+
+    .testimonials-section .ts-title{
+      font-size:22px;
+      text-align:left;
+      flex:1 1 auto;
+    }
+
+    .testimonials-section .ts-head-arrows{
+      display:flex;
+    }
+
+    .testimonials-section .ts-head-arrows .ts-arrow{
       width:34px;
       height:34px;
+      font-size:18px;
+      box-shadow:0 6px 18px rgba(15,23,42,.14);
+    }
+
+    .testimonials-section .ts-shell{
+      padding:0;
+    }
+
+    .testimonials-section .ts-wrapper{
+      display:block;
+    }
+
+    /* 모바일에선 제목 옆 버튼만 사용 */
+    .testimonials-section .ts-wrapper > .ts-prev,
+    .testimonials-section .ts-wrapper > .ts-next{
+      display:none !important;
+    }
+
+    .testimonials-section .ts-viewport{
+      padding:6px 16px 12px 16px;
+    }
+
+    .testimonials-section .ts-track{
+      gap:16px;
+      padding-left:1px;
+      padding-right:1px;
+    }
+
+    .testimonials-section .testimonial-card{
+      flex:0 0 calc(100vw - 58px);
+      max-width:420px;
+      border-radius:18px;
+      padding:24px 20px 22px;
+    }
+
+    .testimonials-section .testimonial-card q{
       font-size:16px;
+      line-height:1.72;
+      margin-bottom:18px;
+    }
+
+    .testimonials-section .testimonial-card .author{
+      font-size:14px;
+    }
+  }
+
+  @media (max-width:480px){
+    .testimonials-section .ts-head{
+      padding:0 14px;
+    }
+
+    .testimonials-section .ts-title{
+      font-size:20px;
+    }
+
+    .testimonials-section .ts-head-arrows .ts-arrow{
+      width:32px;
+      height:32px;
+      font-size:16px;
+    }
+
+    .testimonials-section .ts-viewport{
+      padding:6px 14px 12px 14px;
+    }
+
+    .testimonials-section .testimonial-card{
+      flex:0 0 calc(100vw - 52px);
+      padding:22px 18px 20px;
+    }
+
+    .testimonials-section .testimonial-card q{
+      font-size:15px;
     }
   }
 </style>
 
 <!-- 🔹 마음디톡스 6 후기 -->
-<section id="testimonials" class="con-6">
-  <h2>참가자 분들의 실제 후기</h2>
-  <div class="ts-wrapper">
-    <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
-
-    <div class="ts-viewport">
-      <div class="ts-track">
-        <article class="testimonial-card">
-          <q>세 분의 전문가 모두 깊은 삶의 통찰을 나눠주셔서 감동이 컸습니다.<br>
-          특히 마가스님의 생활 수행법은 일상에서 바로 실천할 수 있어 큰 도움이 됐어요.</q>
-          <p class="author">60대 참가자 송xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>함영준 대표님의 강의에서 우울증을 극복한 실제 경험을 들으며 큰 위로를 받았습니다.<br>
-          마음을 다루는 구체적 방법을 배울 수 있었던 소중한 시간이었습니다.</q>
-          <p class="author">60대 참가자 김xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>윤종모 주교님의 강의를 통해 평소 외면했던 삶의 부분들을 다시 돌아보게 되었습니다.<br>
-          삶을 반성하고 새롭게 바라보는 계기가 되었어요.</q>
-          <p class="author">70대 참가자 박xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>청중과의 대화 시간 덕분에 쉽게 드러내기 어려운 우울의 이야기도 진솔하게 나눌 수 있었고,<br>
-            직접 그 시간을 견뎌온 분들의 진심 어린 답변 덕분에 큰 위로와 힘을 얻었습니다.</q>
-          <p class="author">50대 참가자 한xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>실제 상황에 적용 가능한 내용이 많아 바로 실천할 수 있겠다는 자신감이 생겼습니다.<br>
-          특히 마가스님과 함영준 대표님의 강의가 인상 깊었어요.</q>
-          <p class="author">60대 참가자(익명)</p>
-        </article>
-        <article class="testimonial-card">
-          <q>함영준 대표님의 강연이 특히 좋았습니다.<br>
-          우울증 극복에 대한 구체적인 솔루션이 현실적으로 와닿았어요.</q>
-          <p class="author">70대 참가자(익명)</p>
-        </article>
-        <article class="testimonial-card">
-          <q>강연장의 분위기도 좋았고, 영상 자료도 몰입에 도움이 됐습니다.<br>
-          윤종모 주교님의 대화법 강의에서 새로운 소통 방식에 대해 배울 수 있었어요.</q>
-          <p class="author">70대 참가자 유xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>마가스님의 강의를 들으며, 그동안 자책하던 나 자신을 조금씩 사랑하고 보듬을 수 있게 되었습니다.<br>
-            무엇보다 바로 실천할 수 있다는 점이 큰 도움이 되었어요.</q>
-          <p class="author">60대 참가자 조xx</p>
-        </article>
-      </div>
+<section id="testimonials-6" class="testimonials-section con-6">
+  <div class="ts-head">
+    <h2 class="ts-title">참가자 분들의 실제 후기</h2>
+    <div class="ts-head-arrows">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
     </div>
+  </div>
 
-    <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+  <div class="ts-shell">
+    <div class="ts-wrapper">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+
+      <div class="ts-viewport">
+        <div class="ts-track">
+          <article class="testimonial-card">
+            <q>세 분의 전문가 모두 깊은 삶의 통찰을 나눠주셔서 감동이 컸습니다.<br>
+            특히 마가스님의 생활 수행법은 일상에서 바로 실천할 수 있어 큰 도움이 됐어요.</q>
+            <p class="author">60대 참가자 송xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>함영준 대표님의 강의에서 우울증을 극복한 실제 경험을 들으며 큰 위로를 받았습니다.<br>
+            마음을 다루는 구체적 방법을 배울 수 있었던 소중한 시간이었습니다.</q>
+            <p class="author">60대 참가자 김xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>윤종모 주교님의 강의를 통해 평소 외면했던 삶의 부분들을 다시 돌아보게 되었습니다.<br>
+            삶을 반성하고 새롭게 바라보는 계기가 되었어요.</q>
+            <p class="author">70대 참가자 박xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>청중과의 대화 시간 덕분에 쉽게 드러내기 어려운 우울의 이야기도 진솔하게 나눌 수 있었고,<br>
+            직접 그 시간을 견뎌온 분들의 진심 어린 답변 덕분에 큰 위로와 힘을 얻었습니다.</q>
+            <p class="author">50대 참가자 한xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>실제 상황에 적용 가능한 내용이 많아 바로 실천할 수 있겠다는 자신감이 생겼습니다.<br>
+            특히 마가스님과 함영준 대표님의 강의가 인상 깊었어요.</q>
+            <p class="author">40대 참가자 이xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>마음을 돌보는 일이 거창한 것이 아니라 일상에서 조금씩 실천할 수 있다는 걸 배워서 참 좋았습니다.</q>
+            <p class="author">60대 참가자 조xx</p>
+          </article>
+        </div>
+      </div>
+
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+    </div>
   </div>
 </section>
 
 <!-- 🔹 마음디톡스 7 후기 -->
-<section id="testimonials" class="con-7">
-  <h2>참가자 분들의 실제 후기</h2>
-  <div class="ts-wrapper">
-    <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
-
-    <div class="ts-viewport">
-      <div class="ts-track">
-        <article class="testimonial-card">
-          <q>채정호 교수님 강연 중 가장 중요한 건 수용이라고 하는게 인상적이었고<br>
-          질병이든 뭐든 의지로 재단하는게 위험하다는 말씀도 인상적이었다.</q>
-          <p class="author">30대 참가자 신xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>마음기술 + 마음 근력 + 선업. 내 인생을 그대로 받아들이지 않으면
-          우울하다는 것을 크게 느꼈습니다.</q>
-          <p class="author">참가자 (익명)</p>
-        </article>
-        <article class="testimonial-card">
-          <q>제가 평소에 느꼈던 일들에 대하여 의학적 관점에서 이해할 수 있었습니다.</q>
-          <p class="author">70대 참가자 박xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>기대 이상으로 내용도 알차고 실질적인 도움도 되었습니다.
-          솔직하고 진실한 경험담이 와닿았습니다.</q>
-          <p class="author">50대 참가자(익명)</p>
-        </article>
-        <article class="testimonial-card">
-          <q>정신건강에 있어 간단 명료한 강의에 인상 깊었고,
-          치료법 또한 명료한 답을 주시는 것 같아 인상 깊었습니다.</q>
-          <p class="author">50대 참가자(익명)</p>
-        </article>
-        <article class="testimonial-card">
-          <q>7가지 치유법, 우울증의 세분화 강의 두 분의 강의는 최고였습니다!</q>
-          <p class="author">60대 참가자 (익명)</p>
-        </article>
-        <article class="testimonial-card">
-          <q>불안과 우울, 공황 상태는 병이 아니라는 것이 인상 깊었습니다.
-          뜻 깊은 강연을 들을 수 있어 좋았습니다.</q>
-          <p class="author">20대 참가자 박xx</p>
-        </article>
-      </div>
+<section id="testimonials-7" class="testimonials-section con-7">
+  <div class="ts-head">
+    <h2 class="ts-title">참가자 분들의 실제 후기</h2>
+    <div class="ts-head-arrows">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
     </div>
+  </div>
 
-    <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+  <div class="ts-shell">
+    <div class="ts-wrapper">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+
+      <div class="ts-viewport">
+        <div class="ts-track">
+          <article class="testimonial-card">
+            <q>채정호 교수님 강연 중 가장 중요한 건 수용이라고 하는게 인상적이었고<br>
+            질병이든 뭐든 의지로 재단하는게 위험하다는 말씀도 인상적이었다.</q>
+            <p class="author">30대 참가자 신xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>마음기술 + 마음 근력 + 선업. 내 인생을 그대로 받아들이지 않으면
+            우울하다는 것을 크게 느꼈습니다.</q>
+            <p class="author">참가자 (익명)</p>
+          </article>
+          <article class="testimonial-card">
+            <q>제가 평소에 느꼈던 일들에 대하여 의학적 관점에서 이해할 수 있었습니다.</q>
+            <p class="author">70대 참가자 박xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>기대 이상으로 내용도 알차고 실질적인 도움도 되었습니다.
+            솔직하고 진실한 경험담이 와닿았습니다.</q>
+            <p class="author">50대 참가자(익명)</p>
+          </article>
+          <article class="testimonial-card">
+            <q>정신건강에 있어 간단 명료한 강의에 인상 깊었고,
+            치료법 또한 명료한 답을 주시는 것 같아 인상 깊었습니다.</q>
+            <p class="author">50대 참가자(익명)</p>
+          </article>
+          <article class="testimonial-card">
+            <q>7가지 치유법, 우울증의 세분화 강의 두 분의 강의는 최고였습니다!</q>
+            <p class="author">60대 참가자 (익명)</p>
+          </article>
+          <article class="testimonial-card">
+            <q>불안과 우울, 공황 상태는 병이 아니라는 것이 인상 깊었습니다.
+            뜻 깊은 강연을 들을 수 있어 좋았습니다.</q>
+            <p class="author">20대 참가자 박xx</p>
+          </article>
+        </div>
+      </div>
+
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+    </div>
   </div>
 </section>
 
 <!-- 🔹 마음디톡스 8 후기 -->
-<section id="testimonials" class="con-8">
-  <h2>참가자 분들의 실제 후기</h2>
-  <div class="ts-wrapper">
-    <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
-
-    <div class="ts-viewport">
-      <div class="ts-track">
-        <article class="testimonial-card">
-          <q>최준식 교수님의 강연을 듣고 남은 삶에 대한 나의 태도, 생각 마무리에 보탬이 된 것 같습니다.</q>
-          <p class="author">70대 참가자 김xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>홍진의 선생님의 강연을 통해 임종 장면을 보면서 연명치료에 대한 생각을 정리하게 되는 계기가 되었습니다.</q>
-          <p class="author">60대 참가자 정xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>함영준 선생님의 사형수 인간의 모습을 보면서 죽음에 대한 이해를 더 깊게 할 수 있는 시간이었습니다.</q>
-          <p class="author">참가자 노xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>정수지 피아니스트님 음악을 듣고 있으니 나도 모르게 눈물이 났어요.</q>
-          <p class="author">60대 참가자 임xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>이한나님의 노래에 전율이 확 올라오는 감동을 느꼈습니다.
-          깊이있는 강연과 음악이 함께하는 시간이 정말 좋았습니다.</q>
-          <p class="author">참가자 최xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>죽음과 연명치료 등 알고 있었던 이야기였지만 막연했던 것들에 대해 강사분들께서
-          쉽게 전달해주셔서 감사했습니다.</q>
-          <p class="author">참가자 장xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>죽음 강연이 많지 않은데, 죽음에 대해 직접 대면해보고 앞으로의 삶에 도움이 된 것 같습니다.</q>
-          <p class="author">60대 참가자 오xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>서울대병원 호스피스 간호사님의 진솔한 임종에 대한 이야기가 너무 인상 깊었습니다.</q>
-          <p class="author">60대 참가자 노xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>영적 존재, 사후세계에 대해서 긍정적이었습니다. 호흡 명상을 통해 인간의 능력이 무한함을 느꼈으며,
-          새삼 교육을 통해 재확인이 되어 만족스럽습니다.</q>
-          <p class="author">80대 참가자 서xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>뇌수술과 패혈증으로 죽기 직전까지 경험한 적이 있는데, 궁금했던 내용을 다뤄서 호기심을 갖게 되었습니다.</q>
-          <p class="author">참가자 오xx</p>
-        </article>
-      </div>
+<section id="testimonials-8" class="testimonials-section con-8">
+  <div class="ts-head">
+    <h2 class="ts-title">참가자 분들의 실제 후기</h2>
+    <div class="ts-head-arrows">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
     </div>
+  </div>
 
-    <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+  <div class="ts-shell">
+    <div class="ts-wrapper">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+
+      <div class="ts-viewport">
+        <div class="ts-track">
+          <article class="testimonial-card">
+            <q>사후생에 대한 과학적인 근거와 경험을 들으면서 죽음에 대한
+            두려움이 줄어드는 좋은 강연이었습니다.</q>
+            <p class="author">참가자 김xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>죽음에 대한 어려운 학문을 다뤄주셔서 감사합니다. 조용하고
+            편안한 분위기도 좋았으며, 잔잔한 피아노 공연도 또한 감사합니다.</q>
+            <p class="author">참가자 김xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>주위에 죽음을 앞둔 나이 많고 아픈 사람들이 많이 생겼어요.
+            나 또한 노인의 대열에 오게 되어 죽음에 대해 공부하게 되었는데
+            모르던 내용을 알게되어 감사해요.</q>
+            <p class="author">참가자 배xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>일상에서 듣지 못하고 생각해 보는 기회가 어려운 내용을
+            전달해 주셔서 감사합니다.</q>
+            <p class="author">참가자 이xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>깊이있는 강연과 음악이 함께하는 시간이 정말 좋았습니다.</q>
+            <p class="author">참가자 최xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>죽음과 연명치료 등 알고 있었던 이야기였지만 막연했던 것들에 대해 강사분들께서
+            쉽게 전달해주셔서 감사했습니다.</q>
+            <p class="author">참가자 장xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>죽음 강연이 많지 않은데, 죽음에 대해 직접 대면해보고 앞으로의 삶에 도움이 된 것 같습니다.</q>
+            <p class="author">60대 참가자 오xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>서울대병원 호스피스 간호사님의 진솔한 임종에 대한 이야기가 너무 인상 깊었습니다.</q>
+            <p class="author">60대 참가자 노xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>영적 존재, 사후세계에 대해서 긍정적이었습니다. 호흡 명상을 통해 인간의 능력이 무한함을 느꼈으며,
+            새삼 교육을 통해 재확인이 되어 만족스럽습니다.</q>
+            <p class="author">80대 참가자 서xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>뇌수술과 패혈증으로 죽기 직전까지 경험한 적이 있는데, 궁금했던 내용을 다뤄서 호기심을 갖게 되었습니다.</q>
+            <p class="author">참가자 오xx</p>
+          </article>
+        </div>
+      </div>
+
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+    </div>
   </div>
 </section>
 
-<!-- 🔹 마음디톡스 8 후기 -->
-<section id="testimonials" class="con-9">
-  <h2>참가자 분들의 실제 후기</h2>
-  <div class="ts-wrapper">
-    <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
-
-    <div class="ts-viewport">
-      <div class="ts-track">
-        <article class="testimonial-card">
-          <q>죽음은 끝이 아니고 새로운 미지의 세계로의 여행이라는 생각이 들어 죽음에 대한 공포와 두려움을 극복할 수 있다는 생각이 듭니다.</q>
-          <p class="author">참가자 김xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>정현채 교수님의 경험을 바탕으로 한 진솔한 강의에 감사합니다. 교수님의 삶과 죽음에 대한 철학에 감동을 받았습니다.</q>
-          <p class="author">참가자 조xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>얼마전에 남편이 돌아가셨습니다. 종교가 불교라서 49제에 가서 진행중 나비가 수십마리가 떼를 지어 나타나고 이상하게 생각했는데 오늘, 나 잘 있다는 신호이다라는 말씀에 너무 좋았습니다. 많이 치유 받는 시간이 되었습니다. 감사합니다.</q>
-          <p class="author">참가자 육xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>일상에서 듣지 못하는 화두인 '죽음'에 관해 생각해 보는 기회가 되었어요. 기존에 접하기 어려운 내용을 전달해 주셔서 감사합니다.</q>
-          <p class="author">참가자 이xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>사후생에 대한 과학적인 근거와 경험을 들으면서 죽음에 대한 두려움이 줄어드는 좋은 강연이었습니다.</q>
-          <p class="author">참가자 김xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>죽음에 대한 어려운 학문을 다뤄주셔서 감사합니다. 조용하고 편안한 분위기도 좋았으며, 잔잔한 피아노 공연도 또한 감사합니다.</q>
-          <p class="author">참가자 김xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>주위에 죽음을 앞둔 사람도 있고 나이 많고 아픈 사람들이 많이 생겼어요. 나 또한 노인의 대열에 오게 되어 죽음에 대해 공부하게 되었는데 모르던 내용을 알게되어 감사해요.</q>
-          <p class="author">참가자 배xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>죽음은 끝이 아니고 새로운 미지의 세계로의 여행이라는 생각이 들어 죽음에 대한 공포와 두려움을 극복할 수 있다는 생각이 듭니다.</q>
-          <p class="author">참가자 권xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>죽음에 대한 의학적 관점에서 다양한 논의들을 들을 수 있었고, 강의와 음악의 조화가 좋았다.</q>
-          <p class="author">참가자 최xx</p>
-        </article>
-        <article class="testimonial-card">
-          <q>어려운 주제를 과학적 기록 등으로 가까이 접근할 수 있어 감사드립니다.</q>
-          <p class="author">참가자 박xx</p>
-        </article>
-      </div>
+<!-- 🔹 마음디톡스 9 후기 -->
+<section id="testimonials-9" class="testimonials-section con-9">
+  <div class="ts-head">
+    <h2 class="ts-title">참가자 분들의 실제 후기</h2>
+    <div class="ts-head-arrows">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
     </div>
+  </div>
 
-    <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+  <div class="ts-shell">
+    <div class="ts-wrapper">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+
+      <div class="ts-viewport">
+        <div class="ts-track">
+          <article class="testimonial-card">
+            <q>세대를 넘어 서로의 마음을 이해해보는 시간이어서 더 뜻깊었습니다.
+            부모와 자식의 입장을 함께 생각해볼 수 있었어요.</q>
+            <p class="author">참가자 김xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>강연을 듣고 나서 가족 안에서 내가 놓치고 있던 감정들을 다시 보게 되었습니다.
+            공감의 필요성을 깊게 느꼈습니다.</q>
+            <p class="author">참가자 박xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>부모로서의 나와 자식으로서의 나를 동시에 돌아보게 되어 마음이 많이 울렸습니다.</q>
+            <p class="author">참가자 이xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>가족 안의 소통이 왜 어려운지 심리적으로 이해할 수 있었고,
+            앞으로 관계를 바라보는 시선이 달라질 것 같습니다.</q>
+            <p class="author">참가자 최xx</p>
+          </article>
+        </div>
+      </div>
+
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+    </div>
   </div>
 </section>
 
 <script>
-/* ▷ 자동재생(루프) + 짧은 드래그 스냅 + 
-     버튼 클릭 시 자동 완전 종료 & 루프 없음 */
-
 (function(){
-  const AUTO_INTERVAL = 4500;
-  const IDLE_AFTER_DRAG = 5000;
-  const DRAG_SENSITIVITY = 1.6;       // ✅ 드래그 감도 상향
-  const SWIPE_RATIO = 0.12;           // ✅ 카드 폭 대비 12% 이동 시 스와이프 인정
+  function initTestimonials(section){
+    var viewport = section.querySelector('.ts-viewport');
+    var track = section.querySelector('.ts-track');
+    if(!viewport || !track) return;
 
-  function initTestimonialSection(sec){
-    const viewport = sec.querySelector('.ts-viewport');
-    const track    = sec.querySelector('.ts-track');
-    const cards    = Array.from(track.children);
-    const prevBtn  = sec.querySelector('.ts-prev');
-    const nextBtn  = sec.querySelector('.ts-next');
-    if (!viewport || !track || !cards.length) return;
+    var prevButtons = Array.from(section.querySelectorAll('.ts-prev'));
+    var nextButtons = Array.from(section.querySelectorAll('.ts-next'));
+    var cards = Array.from(track.querySelectorAll('.testimonial-card'));
+    if(!cards.length) return;
 
-    let cardStep = 0;
+    var step = 0;
+    var isDown = false;
+    var startX = 0;
+    var startScroll = 0;
+    var moved = false;
+    var velocityX = 0;
+    var lastMoveX = 0;
+    var lastMoveTime = 0;
+    var momentumRaf = null;
+
+    function getGap(){
+      var style = window.getComputedStyle(track);
+      return parseFloat(style.columnGap || style.gap || 0) || 0;
+    }
 
     function calcStep(){
-      if (cards.length < 2) {
-        cardStep = cards[0].offsetWidth;
-      } else {
-        const r0 = cards[0].getBoundingClientRect();
-        const r1 = cards[1].getBoundingClientRect();
-        cardStep = r1.left - r0.left;
-      }
-
-      if (!cardStep || cardStep <= 0) {
-        cardStep = cards[0].offsetWidth + 32;
-      }
-    }
-    calcStep();
-    window.addEventListener('resize', calcStep);
-
-    function maxScroll(){
-      return Math.max(0, track.scrollWidth - viewport.clientWidth);
+      var card = cards[0];
+      step = card.getBoundingClientRect().width + getGap();
     }
 
-    /* 가장 가까운 카드 스냅 */
-    function snapToNearest(){
-      const current = viewport.scrollLeft;
-      const index   = Math.round(current / cardStep);
-      const target  = Math.max(0, Math.min(index * cardStep, maxScroll()));
+    function getMaxScroll(){
+      return Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+    }
+
+    function updateButtons(){
+      var max = getMaxScroll();
+      var x = viewport.scrollLeft;
+
+      prevButtons.forEach(function(btn){
+        btn.disabled = x <= 4;
+      });
+
+      nextButtons.forEach(function(btn){
+        btn.disabled = x >= max - 4;
+      });
+    }
+
+    /* 현재 viewport 왼쪽 가장자리에 가장 가까운 카드 인덱스 */
+    function getCurrentIndex(){
+      var scrollLeft = viewport.scrollLeft;
+      var trackLeft = track.getBoundingClientRect().left;
+      var vpLeft = viewport.getBoundingClientRect().left;
+      var offset = scrollLeft;
+      var closest = 0;
+      var closestDist = Infinity;
+
+      for(var i = 0; i < cards.length; i++){
+        var cardLeft = cards[i].offsetLeft - track.offsetLeft;
+        var dist = Math.abs(cardLeft - offset);
+        if(dist < closestDist){
+          closestDist = dist;
+          closest = i;
+        }
+      }
+      return closest;
+    }
+
+    function scrollToIndex(idx){
+      idx = Math.max(0, Math.min(idx, cards.length - 1));
+      var cardLeft = cards[idx].offsetLeft - track.offsetLeft;
+      var target = Math.max(0, Math.min(cardLeft, getMaxScroll()));
       viewport.scrollTo({ left: target, behavior: 'smooth' });
     }
 
-    /* 자동 이동 (루프 전용) */
-    function scrollLoop(){
-      if(maxScroll() === 0) return;
-
-      let target = viewport.scrollLeft + cardStep;
-      if (target >= maxScroll() - 4) target = 0;
-      viewport.scrollTo({ left: target, behavior:'smooth' });
+    function scrollByStep(dir){
+      var cur = getCurrentIndex();
+      scrollToIndex(cur + dir);
     }
 
-    /* 버튼 이동 (루프 없음) */
-    function scrollClamp(dir){
-      let target = viewport.scrollLeft + dir * cardStep;
-      target = Math.max(0, Math.min(target, maxScroll()));
-      viewport.scrollTo({ left: target, behavior:'smooth' });
+    /* ── 모멘텀 (관성) 스크롤 ── */
+    function startMomentum(){
+      if(momentumRaf) cancelAnimationFrame(momentumRaf);
+
+      var friction = 0.95;
+      var minVelocity = 0.5;
+
+      function tick(){
+        velocityX *= friction;
+        if(Math.abs(velocityX) < minVelocity){
+          viewport.classList.remove('is-dragging');
+          snapToNearest();
+          return;
+        }
+        viewport.scrollLeft -= velocityX;
+        momentumRaf = requestAnimationFrame(tick);
+      }
+      momentumRaf = requestAnimationFrame(tick);
     }
 
-    /* -----------------------------
-       자동 재생 컨트롤
-    ----------------------------- */
-    let autoTimer = null;
-    let restartTimer = null;
-    let autoStoppedByButton = false;
+    function snapToNearest(){
+      var idx = getCurrentIndex();
+      scrollToIndex(idx);
+    }
 
-    function stopAuto(){
-      if(autoTimer){
-        clearInterval(autoTimer);
-        autoTimer = null;
+    function stopMomentum(){
+      if(momentumRaf){
+        cancelAnimationFrame(momentumRaf);
+        momentumRaf = null;
       }
     }
 
-    function startAuto(){
-      if(autoStoppedByButton || autoTimer) return;
-      autoTimer = setInterval(scrollLoop, AUTO_INTERVAL);
-    }
-
-    function scheduleRestart(){
-      if(autoStoppedByButton) return;
-      stopAuto();
-      clearTimeout(restartTimer);
-      restartTimer = setTimeout(startAuto, IDLE_AFTER_DRAG);
-    }
-
-    /* -----------------------------
-       버튼 이벤트
-    ----------------------------- */
-    prevBtn.addEventListener('click',()=>{
-      autoStoppedByButton = true;
-      stopAuto();
-      scrollClamp(-1);
+    prevButtons.forEach(function(btn){
+      btn.addEventListener('click', function(){ scrollByStep(-1); });
     });
 
-    nextBtn.addEventListener('click',()=>{
-      autoStoppedByButton = true;
-      stopAuto();
-      scrollClamp(1);
+    nextButtons.forEach(function(btn){
+      btn.addEventListener('click', function(){ scrollByStep(1); });
     });
 
-    /* -----------------------------
-       드래그 처리
-    ----------------------------- */
-    let isDown = false;
-    let startX = 0;
-    let startScroll = 0;
-    let moveX = 0;
+    viewport.addEventListener('scroll', updateButtons, { passive:true });
 
-    function dragStart(x){
+    /* ── 마우스 드래그 ── */
+    viewport.addEventListener('mousedown', function(e){
+      stopMomentum();
       isDown = true;
-      moveX = 0;
-      startX = x;
+      moved = false;
+      startX = e.pageX;
       startScroll = viewport.scrollLeft;
-      viewport.style.scrollBehavior = 'auto';
-      scheduleRestart();
-    }
+      velocityX = 0;
+      lastMoveX = e.pageX;
+      lastMoveTime = Date.now();
+      viewport.classList.add('is-dragging');
+    });
 
-    function dragMove(x){
+    window.addEventListener('mousemove', function(e){
       if(!isDown) return;
-      moveX = (x - startX) * DRAG_SENSITIVITY;
-      const raw = startScroll - moveX;
-      viewport.scrollLeft = Math.max(0, Math.min(raw, maxScroll()));
-    }
+      var dx = e.pageX - startX;
+      if(Math.abs(dx) > 3) moved = true;
+      viewport.scrollLeft = startScroll - dx;
 
-    function dragEnd(){
+      var now = Date.now();
+      var dt = now - lastMoveTime;
+      if(dt > 0){
+        velocityX = (e.pageX - lastMoveX) / dt * 16;
+      }
+      lastMoveX = e.pageX;
+      lastMoveTime = now;
+    });
+
+    window.addEventListener('mouseup', function(){
       if(!isDown) return;
       isDown = false;
-      viewport.style.scrollBehavior = '';
-
-      const threshold = cardStep * SWIPE_RATIO; // ✅ 짧은 드래그 판정 기준
-
-      if(moveX > threshold){
-        scrollClamp(-1);
-      } else if(moveX < -threshold){
-        scrollClamp(1);
+      if(moved && Math.abs(velocityX) > 1){
+        startMomentum();
       } else {
-        snapToNearest();
+        viewport.classList.remove('is-dragging');
+        if(moved) snapToNearest();
       }
-    }
+    });
 
-    /* 마우스 */
-    viewport.addEventListener('mousedown', e=>dragStart(e.pageX));
-    window.addEventListener('mousemove', e=>dragMove(e.pageX));
-    window.addEventListener('mouseup', dragEnd);
+    /* ── 터치 (모바일) ── */
+    viewport.addEventListener('touchstart', function(e){
+      if(!e.touches[0]) return;
+      stopMomentum();
+      isDown = true;
+      moved = false;
+      startX = e.touches[0].clientX;
+      startScroll = viewport.scrollLeft;
+      velocityX = 0;
+      lastMoveX = e.touches[0].clientX;
+      lastMoveTime = Date.now();
+      viewport.classList.add('is-dragging');
+    }, { passive:true });
 
-    /* 터치 */
-    viewport.addEventListener('touchstart', e=>{
-      if(e.touches[0]) dragStart(e.touches[0].clientX);
-    }, {passive:true});
+    viewport.addEventListener('touchmove', function(e){
+      if(!isDown || !e.touches[0]) return;
+      var dx = e.touches[0].clientX - startX;
+      if(Math.abs(dx) > 3) moved = true;
+      viewport.scrollLeft = startScroll - dx;
 
-    window.addEventListener('touchmove', e=>{
-      if(e.touches[0]) dragMove(e.touches[0].clientX);
-    }, {passive:true});
+      var now = Date.now();
+      var dt = now - lastMoveTime;
+      if(dt > 0){
+        velocityX = (e.touches[0].clientX - lastMoveX) / dt * 16;
+      }
+      lastMoveX = e.touches[0].clientX;
+      lastMoveTime = now;
+    }, { passive:true });
 
-    window.addEventListener('touchend', dragEnd);
+    viewport.addEventListener('touchend', function(){
+      if(!isDown) return;
+      isDown = false;
+      if(moved && Math.abs(velocityX) > 1){
+        startMomentum();
+      } else {
+        viewport.classList.remove('is-dragging');
+        if(moved) snapToNearest();
+      }
+    }, { passive:true });
 
-    /* 시작 */
-    startAuto();
+    window.addEventListener('resize', function(){
+      calcStep();
+      updateButtons();
+    });
+
+    calcStep();
+    updateButtons();
   }
 
-  window.addEventListener('DOMContentLoaded', ()=>{
-    document.querySelectorAll('section#testimonials').forEach(initTestimonialSection);
+  window.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.testimonials-section').forEach(initTestimonials);
 
     if(!document.body.hasAttribute('data-conf')){
-      document.body.setAttribute('data-conf','md8');
+      document.body.setAttribute('data-conf', 'md8');
     }
   });
-
 })();
 </script>
-
-
-
 
 
 
