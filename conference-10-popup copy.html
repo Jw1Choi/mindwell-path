@@ -62,7 +62,7 @@
     <link rel="icon" href="./img/logo-introduce.png" sizes="192x192"/>
     <link rel="icon" href="./img/logo-introduce.png" type="image/svg+xml"/>
 
-    <title> 마음디톡스 10 -  김경일 교수님과 함께 하는 가족 이야기</title>
+    <title> 5월 가정의 달 특집!| 마음디톡스 10 -  김경일 교수님과 함께 하는 가족의 마음 이야기</title>
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="css/font.css">
@@ -195,7 +195,7 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 650px;
+      max-width: var(--maxW);
           background: #ffffff50;
           padding:100px 20px;
           border-radius:10px;
@@ -317,7 +317,6 @@
 
   </div>
 </section>
-
 
 
 
@@ -483,6 +482,315 @@
 
 
 
+<hr style="width:100%;">
+<h3 class="title-main">👤 이런 분에게 권합니다</h3>
+
+
+<!-- ──────────────────────────────────────────
+     Benefit Section (복사-붙여넣기용 완전 코드)
+────────────────────────────────────────── -->
+<section id="benefit">
+<div class="dr-grid">
+  <!-- ── TITLE ── -->
+  <!-- <div class="dr-heading">
+    <h2>
+      컨퍼런스 신청을 통해<br>
+      얻을 수 있는 <em><b>특별한 장점</b></em>
+    </h2>
+  </div> -->
+
+<ul class="dr-cards">
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
+    <p>부모와의 관계가 점점 불편해진 분</p>
+  </li>
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
+    <p>자녀와의 거리감이나 서운함을 느끼는 분</p>
+  </li>
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
+    <p>부모를 이해하고 싶지만 감정이 앞서는 분</p>
+  </li>
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
+    <p>부모가 되면서 혼란을 느끼는 분</p>
+  </li>
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
+    <p>가족과의 관계를 조금 더 편안하게 풀고 싶은 분</p>
+  </li>
+</ul>
+</div>
+
+
+  <style>
+    /* ───────────────── benefit - STYLES ───────────────── */
+    #benefit{
+      /* 문서 흐름 고정 & 외부 z-index 격리 */
+      position:relative; isolation:isolate;
+
+      /* 색상 토큰 */
+      --dr-bg-grad:linear-gradient(135deg,#e6f0ff 0%,#fcfdff 60%);
+      --dr-card-bg:rgba(255,255,255,0.55);
+      --dr-card-filter:blur(12px) saturate(135%);
+      --dr-border:1px solid rgba(255,255,255,0.4);
+      --dr-shadow:0 8px 20px rgba(0,0,0,.06);
+      --dr-txt:#333;
+      --dr-accent:#4f6df5;
+
+      font-family:'Pretendard','Noto Sans KR',sans-serif;
+      color:var(--dr-txt);
+      background:var(--dr-bg-grad);
+      padding:4rem 1.25rem;
+    }
+
+    /* Grid : mobile 1col → desktop 2col */
+    #benefit .dr-grid{
+      position:relative;
+      display:grid;
+      gap:2.5rem;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    @media (min-width:992px){
+      #benefit .dr-grid{
+        grid-template-columns:1fr;
+        align-items:center;      /* 두 컬럼 높이 맞춘 뒤 가운데 정렬 */
+      }
+    }
+
+    /* ── Heading ── */
+    #benefit .dr-heading h2{
+      margin:0;
+      font-size:clamp(1.6rem,4vw,2.4rem);
+      font-weight:800;
+      line-height:1.35;
+      text-align:center;
+    }
+    #benefit .dr-heading em{color:var(--dr-accent);font-style:normal;}
+
+    @media (min-width:992px){
+      #benefit .dr-heading{
+        display:flex;
+        align-items:center;   /* 제목 세로 중앙 */
+        height:100%;
+      }
+      #benefit .dr-heading h2{text-align:left;}
+    }
+
+    /* ── Card List ── */
+    #benefit .dr-cards{
+      list-style:none;
+      margin:0; padding:0;
+      display:flex; flex-direction:column; gap:1.25rem;
+    }
+    #benefit .dr-cards li{
+      position:relative;
+      display:flex; gap:1rem; align-items:center;
+      padding:1.35rem 1.45rem;
+      border-radius:18px;
+      background:var(--dr-card-bg);
+      backdrop-filter:var(--dr-card-filter);
+      -webkit-backdrop-filter:var(--dr-card-filter);
+      border:var(--dr-border);
+      box-shadow:var(--dr-shadow);
+
+      /* reveal animation 초기값 */
+      opacity:0; transform:translateY(28px);
+      transition:opacity .7s cubic-bezier(.45,.1,.2,1),
+                 transform .7s cubic-bezier(.45,.1,.2,1);
+    }
+    #benefit .dr-cards li.visible{opacity:1; transform:translateY(0);}
+    #benefit .dr-cards li:hover{transform:translateY(-4px);}
+
+    #benefit .dr-cards p{
+      margin:0; font-size:1.55rem; font-weight:600;
+    }
+
+    #benefit .dr-icon{
+      flex-shrink:0;
+      margin:0;
+      width:40px; height:40px;
+      display:grid; place-items:center;
+    }
+    #benefit .dr-icon img{
+      width:100%; height:100%; object-fit:contain;
+    }
+  </style>
+
+  <script>
+    /* ── 카드 순차 등장 ── */
+    (()=>{
+      const cards=document.querySelectorAll('#benefit .dr-cards li');
+      const io=new IntersectionObserver((entries)=>{
+        entries.forEach((entry,i)=>{
+          if(entry.isIntersecting){
+            entry.target.style.transitionDelay=`${i*0.07}s`;
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.25});
+      cards.forEach(card=>io.observe(card));
+    })();
+  </script>
+</section>
+
+<hr style="width:100%;">
+<h3 class="title-main">🌷 이 시간을 통해 얻을 수 있는 것</h3>
+
+
+<!-- ──────────────────────────────────────────
+     Benefit Section (복사-붙여넣기용 완전 코드)
+────────────────────────────────────────── -->
+<section id="benefit">
+<div class="dr-grid">
+  <!-- ── TITLE ── -->
+  <!-- <div class="dr-heading">
+    <h2>
+      컨퍼런스 신청을 통해<br>
+      얻을 수 있는 <em><b>특별한 장점</b></em>
+    </h2>
+  </div> -->
+
+<ul class="dr-cards">
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+    <p>가족관계가 왜 어려운지 이해하게 됩니다.</p>
+  </li>
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+    <p>부모와 자식의 시선 차이를 알게 됩니다.</p>
+  </li>
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+    <p>말하지 못했던 감정을 정리하게 됩니다.</p>
+  </li>
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+    <p>관계를 바라보는 새로운 관점을 얻습니다.</p>
+  </li>
+  <li>
+    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
+    <p>마음이 한결 가벼워지는 경험을 하게 됩니다.</p>
+  </li>
+</ul>
+</div>
+
+
+  <style>
+    /* ───────────────── benefit - STYLES ───────────────── */
+    #benefit{
+      /* 문서 흐름 고정 & 외부 z-index 격리 */
+      position:relative; isolation:isolate;
+
+      /* 색상 토큰 */
+      --dr-bg-grad:linear-gradient(135deg,#e6f0ff 0%,#fcfdff 60%);
+      --dr-card-bg:rgba(255,255,255,0.55);
+      --dr-card-filter:blur(12px) saturate(135%);
+      --dr-border:1px solid rgba(255,255,255,0.4);
+      --dr-shadow:0 8px 20px rgba(0,0,0,.06);
+      --dr-txt:#333;
+      --dr-accent:#4f6df5;
+
+      font-family:'Pretendard','Noto Sans KR',sans-serif;
+      color:var(--dr-txt);
+      background:var(--dr-bg-grad);
+      padding:4rem 1.25rem;
+    }
+
+    /* Grid : mobile 1col → desktop 2col */
+    #benefit .dr-grid{
+      position:relative;
+      display:grid;
+      gap:2.5rem;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    @media (min-width:992px){
+      #benefit .dr-grid{
+        grid-template-columns:1fr;
+        align-items:center;      /* 두 컬럼 높이 맞춘 뒤 가운데 정렬 */
+      }
+    }
+
+    /* ── Heading ── */
+    #benefit .dr-heading h2{
+      margin:0;
+      font-size:clamp(1.6rem,4vw,2.4rem);
+      font-weight:800;
+      line-height:1.35;
+      text-align:center;
+    }
+    #benefit .dr-heading em{color:var(--dr-accent);font-style:normal;}
+
+    @media (min-width:992px){
+      #benefit .dr-heading{
+        display:flex;
+        align-items:center;   /* 제목 세로 중앙 */
+        height:100%;
+      }
+      #benefit .dr-heading h2{text-align:left;}
+    }
+
+    /* ── Card List ── */
+    #benefit .dr-cards{
+      list-style:none;
+      margin:0; padding:0;
+      display:flex; flex-direction:column; gap:1.25rem;
+    }
+    #benefit .dr-cards li{
+      position:relative;
+      display:flex; gap:1rem; align-items:center;
+      padding:1.35rem 1.45rem;
+      border-radius:18px;
+      background:var(--dr-card-bg);
+      backdrop-filter:var(--dr-card-filter);
+      -webkit-backdrop-filter:var(--dr-card-filter);
+      border:var(--dr-border);
+      box-shadow:var(--dr-shadow);
+
+      /* reveal animation 초기값 */
+      opacity:0; transform:translateY(28px);
+      transition:opacity .7s cubic-bezier(.45,.1,.2,1),
+                 transform .7s cubic-bezier(.45,.1,.2,1);
+    }
+    #benefit .dr-cards li.visible{opacity:1; transform:translateY(0);}
+    #benefit .dr-cards li:hover{transform:translateY(-4px);}
+
+    #benefit .dr-cards p{
+      margin:0; font-size:1.55rem; font-weight:600;
+    }
+
+    #benefit .dr-icon{
+      flex-shrink:0;
+      margin:0;
+      width:40px; height:40px;
+      display:grid; place-items:center;
+    }
+    #benefit .dr-icon img{
+      width:100%; height:100%; object-fit:contain;
+    }
+  </style>
+
+  <script>
+    /* ── 카드 순차 등장 ── */
+    (()=>{
+      const cards=document.querySelectorAll('#benefit .dr-cards li');
+      const io=new IntersectionObserver((entries)=>{
+        entries.forEach((entry,i)=>{
+          if(entry.isIntersecting){
+            entry.target.style.transitionDelay=`${i*0.07}s`;
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.25});
+      cards.forEach(card=>io.observe(card));
+    })();
+  </script>
+</section>
 
 <main id="main">
 <!--==========================
@@ -729,7 +1037,7 @@ About Us Section
         </ul>
       `;
     }else if(name === '김경일 | 아주대학교 심리학과 교수'){
-      imgSrc = "./img/bg10-2.jpg";
+      imgSrc = "https://www.chosun.com/resizer/v2/SIAHNFOFJZGKHGBJM5TZM2VD5Y.jpg?auth=9e12001f77adbf054d67f9a1dc03a24d01c2f5102e45e7459b9fe0f956fec661&width=616";
       content = `
         <h2>김경일 | 아주대학교 심리학과 교수</h2>
         <img src="${imgSrc}" alt="김경일 | 아주대학교 심리학과 교수">
@@ -1214,11 +1522,11 @@ About Us Section
 <div class="info-card">
     <h2 class="card-title">
         <i class="fas fa-calendar-alt"></i>
-        행사 일시 및 장소
+        행사 일시
     </h2>
     <div class="info-content">
         <p class="font-bold text-xl mb-2"><b>🗓️ 5월 9일 (토) 오후 2시 ~ 5시</p>
-        <p class="font-bold text-xl mb-2"><b>📍SCC 홀 서초 3층 (서울 서초구 남부순환로 325길 9, 3층)<br></b></p>
+        <p class="font-bold text-xl mb-2"><b>📍SCC 홀 서초 3층<br></b></p>
         <!-- <p class="font-bold text-xl mb-2">💻 ZOOM 생중계 신청 가능</b></p><br> -->
          <!-- <a href="#apply" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;"> 컨퍼런스 현장 참여하기</a></p><br> -->
            <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;">ZOOM 컨퍼런스 신청하기</a></p><br> -->
@@ -1552,7 +1860,7 @@ About Us Section
              <!-- <a href="#apply" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;"> 컨퍼런스 현장 참여하기</a></p><br> -->
               <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;">ZOOM 컨퍼런스 신청하기</a></p><br> -->
 <br>
-                <a class="cta-btn" href="#choice_p" rel="noopener">바로 신청하기</a><br><br>
+                <a class="cta-btn" href="https://forms.gle/pvfMwWhgHzhxjaHg6" target="_blank" rel="noopener">참가 신청 링크</a><br><br>
 
 
           <p class="font-bold text-xl mb-2">📞 02-725-7525 / 010-5385-0793</b></p>
@@ -1571,315 +1879,6 @@ About Us Section
 
 
 
-<hr style="width:100%;">
-<h3 class="title-main">👤 이런 분에게 권합니다</h3>
-
-
-<!-- ──────────────────────────────────────────
-     Benefit Section (복사-붙여넣기용 완전 코드)
-────────────────────────────────────────── -->
-<section id="benefit">
-<div class="dr-grid">
-  <!-- ── TITLE ── -->
-  <!-- <div class="dr-heading">
-    <h2>
-      컨퍼런스 신청을 통해<br>
-      얻을 수 있는 <em><b>특별한 장점</b></em>
-    </h2>
-  </div> -->
-
-<ul class="dr-cards">
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
-    <p>부모와의 관계가 점점 불편해진 분</p>
-  </li>
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
-    <p>자녀와의 거리감이나 서운함을 느끼는 분</p>
-  </li>
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
-    <p>부모를 이해하고 싶지만 감정이 앞서는 분</p>
-  </li>
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
-    <p>부모가 되면서 혼란을 느끼는 분</p>
-  </li>
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">👉</span></figure>
-    <p>가족과의 관계를 조금 더 편안하게 풀고 싶은 분</p>
-  </li>
-</ul>
-</div>
-
-
-  <style>
-    /* ───────────────── benefit - STYLES ───────────────── */
-    #benefit{
-      /* 문서 흐름 고정 & 외부 z-index 격리 */
-      position:relative; isolation:isolate;
-
-      /* 색상 토큰 */
-      --dr-bg-grad:linear-gradient(135deg,#e6f0ff 0%,#fcfdff 60%);
-      --dr-card-bg:rgba(255,255,255,0.55);
-      --dr-card-filter:blur(12px) saturate(135%);
-      --dr-border:1px solid rgba(255,255,255,0.4);
-      --dr-shadow:0 8px 20px rgba(0,0,0,.06);
-      --dr-txt:#333;
-      --dr-accent:#4f6df5;
-
-      font-family:'Pretendard','Noto Sans KR',sans-serif;
-      color:var(--dr-txt);
-      background:var(--dr-bg-grad);
-      padding:4rem 1.25rem;
-    }
-
-    /* Grid : mobile 1col → desktop 2col */
-    #benefit .dr-grid{
-      position:relative;
-      display:grid;
-      gap:2.5rem;
-      max-width:1200px;
-      margin:0 auto;
-    }
-    @media (min-width:992px){
-      #benefit .dr-grid{
-        grid-template-columns:1fr;
-        align-items:center;      /* 두 컬럼 높이 맞춘 뒤 가운데 정렬 */
-      }
-    }
-
-    /* ── Heading ── */
-    #benefit .dr-heading h2{
-      margin:0;
-      font-size:clamp(1.6rem,4vw,2.4rem);
-      font-weight:800;
-      line-height:1.35;
-      text-align:center;
-    }
-    #benefit .dr-heading em{color:var(--dr-accent);font-style:normal;}
-
-    @media (min-width:992px){
-      #benefit .dr-heading{
-        display:flex;
-        align-items:center;   /* 제목 세로 중앙 */
-        height:100%;
-      }
-      #benefit .dr-heading h2{text-align:left;}
-    }
-
-    /* ── Card List ── */
-    #benefit .dr-cards{
-      list-style:none;
-      margin:0; padding:0;
-      display:flex; flex-direction:column; gap:1.25rem;
-    }
-    #benefit .dr-cards li{
-      position:relative;
-      display:flex; gap:1rem; align-items:center;
-      padding:1.35rem 1.45rem;
-      border-radius:18px;
-      background:var(--dr-card-bg);
-      backdrop-filter:var(--dr-card-filter);
-      -webkit-backdrop-filter:var(--dr-card-filter);
-      border:var(--dr-border);
-      box-shadow:var(--dr-shadow);
-
-      /* reveal animation 초기값 */
-      opacity:0; transform:translateY(28px);
-      transition:opacity .7s cubic-bezier(.45,.1,.2,1),
-                 transform .7s cubic-bezier(.45,.1,.2,1);
-    }
-    #benefit .dr-cards li.visible{opacity:1; transform:translateY(0);}
-    #benefit .dr-cards li:hover{transform:translateY(-4px);}
-
-    #benefit .dr-cards p{
-      margin:0; font-size:1.55rem; font-weight:600;
-    }
-
-    #benefit .dr-icon{
-      flex-shrink:0;
-      margin:0;
-      width:40px; height:40px;
-      display:grid; place-items:center;
-    }
-    #benefit .dr-icon img{
-      width:100%; height:100%; object-fit:contain;
-    }
-  </style>
-
-  <script>
-    /* ── 카드 순차 등장 ── */
-    (()=>{
-      const cards=document.querySelectorAll('#benefit .dr-cards li');
-      const io=new IntersectionObserver((entries)=>{
-        entries.forEach((entry,i)=>{
-          if(entry.isIntersecting){
-            entry.target.style.transitionDelay=`${i*0.07}s`;
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-          }
-        });
-      },{threshold:0.25});
-      cards.forEach(card=>io.observe(card));
-    })();
-  </script>
-</section>
-
-<hr style="width:100%;">
-<h3 class="title-main">🌷 이 시간을 통해 얻을 수 있는 것</h3>
-
-
-<!-- ──────────────────────────────────────────
-     Benefit Section (복사-붙여넣기용 완전 코드)
-────────────────────────────────────────── -->
-<section id="benefit">
-<div class="dr-grid">
-  <!-- ── TITLE ── -->
-  <!-- <div class="dr-heading">
-    <h2>
-      컨퍼런스 신청을 통해<br>
-      얻을 수 있는 <em><b>특별한 장점</b></em>
-    </h2>
-  </div> -->
-
-<ul class="dr-cards">
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
-    <p>가족관계가 왜 어려운지 이해하게 됩니다.</p>
-  </li>
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
-    <p>부모와 자식의 시선 차이를 알게 됩니다.</p>
-  </li>
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
-    <p>말하지 못했던 감정을 정리하게 됩니다.</p>
-  </li>
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
-    <p>관계를 바라보는 새로운 관점을 얻습니다.</p>
-  </li>
-  <li>
-    <figure class="dr-icon"><span style="font-size:25px;">✅</span></figure>
-    <p>마음이 한결 가벼워지는 경험을 하게 됩니다.</p>
-  </li>
-</ul>
-</div>
-
-
-  <style>
-    /* ───────────────── benefit - STYLES ───────────────── */
-    #benefit{
-      /* 문서 흐름 고정 & 외부 z-index 격리 */
-      position:relative; isolation:isolate;
-
-      /* 색상 토큰 */
-      --dr-bg-grad:linear-gradient(135deg,#e6f0ff 0%,#fcfdff 60%);
-      --dr-card-bg:rgba(255,255,255,0.55);
-      --dr-card-filter:blur(12px) saturate(135%);
-      --dr-border:1px solid rgba(255,255,255,0.4);
-      --dr-shadow:0 8px 20px rgba(0,0,0,.06);
-      --dr-txt:#333;
-      --dr-accent:#4f6df5;
-
-      font-family:'Pretendard','Noto Sans KR',sans-serif;
-      color:var(--dr-txt);
-      background:var(--dr-bg-grad);
-      padding:4rem 1.25rem;
-    }
-
-    /* Grid : mobile 1col → desktop 2col */
-    #benefit .dr-grid{
-      position:relative;
-      display:grid;
-      gap:2.5rem;
-      max-width:1200px;
-      margin:0 auto;
-    }
-    @media (min-width:992px){
-      #benefit .dr-grid{
-        grid-template-columns:1fr;
-        align-items:center;      /* 두 컬럼 높이 맞춘 뒤 가운데 정렬 */
-      }
-    }
-
-    /* ── Heading ── */
-    #benefit .dr-heading h2{
-      margin:0;
-      font-size:clamp(1.6rem,4vw,2.4rem);
-      font-weight:800;
-      line-height:1.35;
-      text-align:center;
-    }
-    #benefit .dr-heading em{color:var(--dr-accent);font-style:normal;}
-
-    @media (min-width:992px){
-      #benefit .dr-heading{
-        display:flex;
-        align-items:center;   /* 제목 세로 중앙 */
-        height:100%;
-      }
-      #benefit .dr-heading h2{text-align:left;}
-    }
-
-    /* ── Card List ── */
-    #benefit .dr-cards{
-      list-style:none;
-      margin:0; padding:0;
-      display:flex; flex-direction:column; gap:1.25rem;
-    }
-    #benefit .dr-cards li{
-      position:relative;
-      display:flex; gap:1rem; align-items:center;
-      padding:1.35rem 1.45rem;
-      border-radius:18px;
-      background:var(--dr-card-bg);
-      backdrop-filter:var(--dr-card-filter);
-      -webkit-backdrop-filter:var(--dr-card-filter);
-      border:var(--dr-border);
-      box-shadow:var(--dr-shadow);
-
-      /* reveal animation 초기값 */
-      opacity:0; transform:translateY(28px);
-      transition:opacity .7s cubic-bezier(.45,.1,.2,1),
-                 transform .7s cubic-bezier(.45,.1,.2,1);
-    }
-    #benefit .dr-cards li.visible{opacity:1; transform:translateY(0);}
-    #benefit .dr-cards li:hover{transform:translateY(-4px);}
-
-    #benefit .dr-cards p{
-      margin:0; font-size:1.55rem; font-weight:600;
-    }
-
-    #benefit .dr-icon{
-      flex-shrink:0;
-      margin:0;
-      width:40px; height:40px;
-      display:grid; place-items:center;
-    }
-    #benefit .dr-icon img{
-      width:100%; height:100%; object-fit:contain;
-    }
-  </style>
-
-  <script>
-    /* ── 카드 순차 등장 ── */
-    (()=>{
-      const cards=document.querySelectorAll('#benefit .dr-cards li');
-      const io=new IntersectionObserver((entries)=>{
-        entries.forEach((entry,i)=>{
-          if(entry.isIntersecting){
-            entry.target.style.transitionDelay=`${i*0.07}s`;
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-          }
-        });
-      },{threshold:0.25});
-      cards.forEach(card=>io.observe(card));
-    })();
-  </script>
-</section>
 
 
 
@@ -2029,7 +2028,7 @@ About Us Section
       <div class="value">SCC 홀 서초</div>
     </div>
 
-  <div class="block small">
+   <div class="block small">
          ➜ (서울 서초구 남부순환로 325길 9, 3층)<br>
       ➜ 3호선 남부터미널역 4-2번 출구 360m<br>
       
@@ -2070,7 +2069,7 @@ About Us Section
 
     <div class="footer-line">
       <span>• 참가비 : 30,000원  (2인 이상: 25,000원)</span>
-      <span>• 계좌번호 : KB 002801-04-264807 <img src="./img/mindgil-white1.png" style="width:100px;"></span>
+      <!-- <span>• 계좌번호 : KB 002801-04-264807 <img src="./img/mindgil-white1.png" style="width:100px;"></span> -->
     </div>
 
     <div class="contact">
@@ -2206,7 +2205,7 @@ About Us Section
     /* ====== FAQ Cards ====== */
     .faq-card{border-radius:16px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.06);margin-bottom:16px;overflow:hidden;transition:box-shadow .25s ease}
     .faq-card:focus-within{box-shadow:0 6px 18px rgba(37,99,235,.16)}
-    .faq-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:transparent;border:none;font-size:23px;font-weight:700;color:#111827;cursor:pointer}
+    .faq-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:transparent;border:none;font-size:18px;font-weight:700;color:#111827;cursor:pointer}
     .faq-toggle:hover{background:#f9fafb}
     .icon{font-size:24px;color:#2563eb;transition:transform .3s ease}
     .faq-content{padding:0 22px;max-height:0;overflow:hidden;font-size:20px;color:#374151;background:#f9fafb;transition:max-height .35s ease,padding .2s ease;border-top:1px solid #e5e7eb}
@@ -2231,7 +2230,7 @@ About Us Section
   </style>
 
   <h2 class="faq-headline" id="apply">컨퍼런스 신청 방법</h2>
-  <p class="faq-subtext">원하는 방식으로 바로 신청하세요.</p>
+  <p class="faq-subtext">원하는 방식으로 바로 신청하세요. 아래 상세 안내는 기본으로 모두 펼쳐져 있습니다.</p>
 
   <!-- 가운데 정렬 CTA 버튼 두 개 -->
   <div class="cta-wrap" role="navigation" aria-label="신청 바로가기">
@@ -2241,33 +2240,22 @@ About Us Section
     
   </div>
 
-  <div class="faq-card active" data-group="offline">
-    <button class="faq-toggle" type="button" aria-expanded="true">
-      <span class="faq-title"><b>1. 간편 계좌이체</b></span>
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-content">
-     가장 간편하게 이용할 수 있는 방식입니다.<br><br>
-<b>[계좌번호: KB 002801-04-264807 마음건강길]</b><br><br>
-위 계좌로 입금(3만원)해주시면 신청이 완료됩니다.<br><br>
-<b>※ 단, 간편 계좌이체의 경우 추후 행사 안내를 받기 어렵다는 점 양해부탁드립니다.</b>
-<br><br>
-
-문의전화 : 02-725-7525, 010-5385-0793<br><br>
-      </div>
-  </div>
-
+  <!-- ====== 현장참가 ====== -->
 
   <div class="faq-card active" data-group="offline">
     <button class="faq-toggle" type="button" aria-expanded="true">
-      <span class="faq-title"><b>2. 온라인 신청</b></span>
+      <span class="faq-title"><b>1. 온라인 신청</b></span>
       <span class="icon">+</span>
     </button>
     <div class="faq-content">
-     <a href="">온라인 신청 방법<br><br>
-<b>[참가 신청 링크]</b> 클릭→ <b>[성함/전화번호]</b> 입력→ <b>[제출]</b> 클릭 → 계좌 입금 → 신청 완료<br><br>
-* 행사 관련 정보 제공되며, 현장에서 추첨을 통해 김경일 교수 저서 증정 혜택 있습니다.<br><br>
-  <a class="cta-btn" href="https://forms.gle/ZH3tJxZBqnfm5k1g7" target="_blank" rel="noopener">참가 신청 링크</a><br><br>
+     <a href="">참가 신청 링크</a> 클릭 후<br>
+→ 성함 / 연락처 입력<br><br>
+신청서 제출 후<br>
+→ 계좌로 참가비 입금<br><br>
+입금 확인 시<br>
+→ 신청이 최종 완료됩니다<br><br>
+
+  <a class="cta-btn" href="https://forms.gle/pvfMwWhgHzhxjaHg6" target="_blank" rel="noopener">참가 신청 링크</a><br><br>
     
       문의전화 : 02-725-7525, 010-3041-2734<br><br>
 
