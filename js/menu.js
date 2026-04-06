@@ -8,7 +8,7 @@ template.innerHTML = `
     <p class="logo-font blink" style="marin-top:20px;font-size:1rem;color:red;"></p>
     </a>
     <div class="menu-btn">
-       <button class=" Event_Menu" onclick="location.href='#choice_p';">바로 신청하기</button>
+       <button class=" Event_Menu" onclick="">바로 신청하기</button>
 
         <!-- <button class="total_menu"><img src="img/hamburger.svg" style="width:17px"></button> -->
     </div>
@@ -233,3 +233,45 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
         $('.ham-con').attr("data-depth", (depth - 1)); 
     })
+
+    // 기존 코드 그대로 유지
+$('.Event_Menu').click(function(){//메뉴 열기//
+    $('.our-con').slideToggle(400);
+    $('.our-con').toggleClass("on");
+    var our_con_check = $('.our-con').hasClass('on');
+    if(our_con_check == true){
+        $('body').css('overflow-y','hidden');	
+    }else{
+        $('body').css('overflow-y','scroll');						
+    }
+
+    // 🔥 여기부터 추가 (스크롤 효과)
+    var target = $('#choice_p');
+
+    if(target.length){
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top
+        }, 700); // 부드러운 속도
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll('a.cta-btn[href^="#"]');
+
+  links.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute("href");
+      const target = document.querySelector(targetId);
+
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+});
