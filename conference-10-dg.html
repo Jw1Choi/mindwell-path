@@ -166,7 +166,7 @@
       justify-content: center;
     }
 
-    /* ================= 배경 (선명하게) ================= */
+    /* ================= 배경 ================= */
     #mindDetoxPremium8::before{
       content:"";
       position:absolute;
@@ -174,7 +174,7 @@
       z-index:0;
       background: url('./img/bg10-1.jpg') center/cover no-repeat;
       filter: brightness(var(--bg-brightness));
-      transition: all .4s ease;
+      transition: all .5s ease;
     }
 
     /* ================= 고급 가독성 레이어 ================= */
@@ -196,9 +196,10 @@
       z-index: 1;
       width: 100%;
       max-width: 650px;
-          background: #ffffff50;
-          padding:100px 20px;
-          border-radius:10px;
+      background: #ffffff50;
+      padding:100px 20px;
+      border-radius:10px;
+      /* backdrop-filter: blur(4px); */
     }
 
     .subtitle{
@@ -225,7 +226,7 @@
       border-bottom:2px solid #222;
       padding:20px 0;
       max-width: 520px;
-      margin: 0 auto 30px;
+      margin: 0 auto 20px;
       font-family: 'GimpoPeaceFoundation';
     }
 
@@ -270,7 +271,7 @@
       .info{font-size:1.1rem}
     }
 
-     @media (max-width:550px){
+    @media (max-width:550px){
       .title{font-size:2rem}
       .headline{font-size:1.4rem}
       .desc{font-size:1.1rem}
@@ -282,6 +283,18 @@
         padding:80px 16px;
       }
       .headline{font-size:1.2rem}
+    }
+
+    /* ================= 핵심 추가: PC 배경 변경 ================= */
+    @media (min-width:1200px){
+      #mindDetoxPremium8::before{
+        background: url('./img/bg10-pc.jpg') center/cover no-repeat;
+      }
+
+      /* PC에서는 더 선명하게 */
+      #mindDetoxPremium8{
+        --bg-brightness: 0.95;
+      }
     }
 
   </style>
@@ -2272,7 +2285,7 @@ About Us Section
 <b>[참가 신청 링크]</b> 클릭→ <b>[성함/전화번호]</b> 입력→ <b>[제출]</b> 클릭 → 계좌 입금 → 신청 완료<br><br>
 <img src="./img/form-method.png" style="max-width:400px;width:100%;"><br><br>
 * 행사 관련 정보 제공되며, 현장에서 추첨을 통해 김경일 교수 저서 증정 혜택 있습니다.<br><br>
-  <a class="cta-btn blink" href="https://forms.gle/4LtEdUFradPWrxV38" target="_blank" rel="noopener">참가 신청 링크</a><br><br>
+  <a class="cta-btn" href="https://forms.gle/4LtEdUFradPWrxV38" target="_blank" rel="noopener"><span class="blink">참가 신청 링크</span></a><br><br>
     
       문의전화 : 02-725-7525, 010-3041-2734<br><br>
 
