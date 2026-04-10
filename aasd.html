@@ -1,0 +1,47 @@
+
+    #schedule1 .cta-btn1{
+      width:100%;
+      min-height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      text-decoration:none;
+      border-radius:18px;
+      padding:18px 20px;
+      box-sizing:border-box;
+      background:linear-gradient(135deg, #60a5fa 0%, #3b82f6 46%, #2563eb 100%);
+      color:#fff;
+      font-size:1.02rem;
+      font-weight:900;
+      letter-spacing:-0.02em;
+      line-height:1.2;
+      box-shadow:0 18px 36px rgba(59,130,246,0.22);
+      position:relative;
+      overflow:hidden;
+      transition:transform .28s ease, box-shadow .28s ease, filter .28s ease;
+      margin: 0 auto;
+      max-width: 500px;
+    }
+
+    #schedule1 .cta-btn1::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent 18%, rgba(255,255,255,0.16) 42%, transparent 62%);
+      transform:translateX(-140%);
+      animation:kimCtaShine 3.8s ease-in-out infinite;
+    }
+
+    #schedule1 .cta-btn1:hover{
+      transform:translateY(-2px);
+      box-shadow:0 24px 44px rgba(59,130,246,0.28);
+      filter:brightness(1.03);
+    }
+
+    #schedule1 .cta-btn1 span{
+      position:relative;
+      z-index:1;
+      display:block;
+      width:100%;
+    }
