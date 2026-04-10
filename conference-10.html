@@ -1956,9 +1956,37 @@ flos-section-head / flos-section-body 구조로 반복 사용
 About Us Section
 ============================-->
 
+
+
+
+<section class="flos-section-head" style="background:#f9fafb;">
+
+
+  <div class="flos-head-inner">
+
+    <!-- 상단 라벨 (선택) -->
+    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
+
+    <!-- 타이틀 -->
+    <h2 class="flos-title">
+      출연진
+      
+    </h2>
+
+    <!-- 라인 -->
+    <div class="flos-line"></div>
+
+    <!-- 설명 (선택) -->
+    <!-- <p class="flos-desc">
+      가족이라는 가장 가까운 관계 속에서
+      설명하기 어려운 감정들을 느끼고 계시다면
+    </p> -->
+
+  </div>
+</section>
+
+
 <style>
-
-
   /* 기본 스타일 */
   #profile1{
     font-family:'Pretendard','Noto Sans',sans-serif;
@@ -2005,17 +2033,55 @@ About Us Section
     animation:fadeIn .4s forwards; padding:20px;
   }
   #profile1 .modal1{
-    background:#fff; border-radius:20px; padding:50px 40px; max-width:620px; width:100%; position:relative;
+    background:#fff; border-radius:20px; padding:20px 40px 50px; max-width:620px; width:100%; position:relative;
     box-shadow:0 10px 40px rgba(0,0,0,.25); animation:slideUp .4s forwards; text-align:center;
-    overflow-y:auto; max-height:90vh; scrollbar-width:none; -ms-overflow-style:none;
+    overflow-y:auto; max-height:95vh;
+
+    /* 얇은 스크롤바 */
+    scrollbar-width:thin;
+    scrollbar-color:rgba(107,114,128,.55) transparent;
+    -ms-overflow-style:auto;
   }
-  #profile1 .modal1::-webkit-scrollbar{ display:none; }
+  #profile1 .modal1::-webkit-scrollbar{
+    width:6px;
+  }
+  #profile1 .modal1::-webkit-scrollbar-track{
+    background:transparent;
+  }
+  #profile1 .modal1::-webkit-scrollbar-thumb{
+    background:rgba(107,114,128,.45);
+    border-radius:999px;
+  }
+  #profile1 .modal1::-webkit-scrollbar-thumb:hover{
+    background:rgba(107,114,128,.7);
+  }
+
   #profile1 .close-btn{
-    position:absolute; top:7px; right:14px; background:none; border:none; font-size:32px; cursor:pointer;
-    color:#9ca3af; transition:color .3s;
+    position:sticky;
+    top:0;
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    background:rgba(255,255,255,.95);
+    border:none;
+    border-radius:999px;
+    font-size:32px;
+    line-height:1;
+    cursor:pointer;
+    color:#9ca3af;
+    transition:color .3s, background .3s, box-shadow .3s;
+    z-index:20;
+    float:right;
   }
-  #profile1 .close-btn:hover{ color:#6b7280; }
-  #profile1 #modalInner{ text-align:center; }
+  #profile1 .close-btn:hover{ color:#6b7280; box-shadow:0 4px 14px rgba(0,0,0,.08); }
+
+  #profile1 #modalInner{
+    text-align:center;
+    clear:both;
+  }
   #profile1 #modalInner img{ width:100%; height:auto; object-fit:contain; border-radius:12px; margin-bottom:24px; }
   #profile1 #modalInner h2{ font-size:25px; color:#111827; margin-bottom:16px; text-align:left; }
 
@@ -2044,7 +2110,7 @@ About Us Section
   }
   #profile1 .dot-list li{
     position:relative;
-    padding-left:1.2em;        /* 불릿 너비 */
+    padding-left:1.2em;
     margin:6px 0;
     word-break:keep-all;
   }
@@ -2062,33 +2128,6 @@ About Us Section
   @media (max-width:980px){ #profile1 .profile-grid{ grid-template-columns:1fr; } }
   @media (max-width:640px){ #profile1 .card-img-wrapper{ height:350px; } }
 </style>
-
-
-<section class="flos-section-head" style="background:#f9fafb;">
-
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-      출연진
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
 
 <div id="profile1" style="padding-top:0!important; padding-bottom:20px;">
   <div class="headline-section"></div>
@@ -2110,8 +2149,6 @@ About Us Section
       </div>
     </div>
 
-
-
     <div class="card" onclick="openModal1('정수지 | 명상 피아니스트')">
       <div class="card-img-wrapper">
         <img src="./img/8-4pro.jpg" alt="정수지" class="card-img">
@@ -2129,7 +2166,7 @@ About Us Section
       </div>
     </div>
 
-      <div class="card" onclick="openModal1('함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표')">
+    <div class="card" onclick="openModal1('함영준 |  前 조선일보 사회부장 ・ 마음건강 길 대표')">
       <div class="card-img-wrapper">
         <img src="./img/profile3.jpg" alt="함영준 대표" class="card-img">
       </div>
@@ -2146,8 +2183,6 @@ About Us Section
         <a class="button_detail">자세히 더 보기</a>
       </div>
     </div>
-
-
   </div>
 
   <!-- Modal -->
@@ -2205,6 +2240,7 @@ About Us Section
           <li>한국방송광고진흥공사 전무</li>
           <li>고려대 미디어학부 초빙교수</li>
           <li>저서 ⌜우울탈출법⌟, ⌜내려올 때 보인다⌟ 등 다수</li>
+  
         </ul>
       `;
     } else if(name === '정수지 | 명상 피아니스트'){
@@ -2258,7 +2294,6 @@ About Us Section
     document.getElementById('modalOverlay1').style.display = 'none';
   }
 </script>
-
 
 
 
@@ -3524,11 +3559,11 @@ About Us Section
         <h2><strong>가족을 이해하는<br>시간이 될 것입니다.</strong></h2><br><br>
         <p style="font-size:1.7rem;font-weight:bold;">▼ 지금 신청하세요 ▼</p>
         <div id="choice_p" ></div>
-
       </div>
     </div>
   </div>
 </section>
+
 
 
 
@@ -3804,8 +3839,8 @@ About Us Section
     #RouteS1 .singleImage img{
       width:100%;
       height:100%;
-      object-fit:contain;       /* contain → cover 로 변경 */
-      object-position:center; /* 중심 기준으로 꽉 채움 */
+      object-fit:contain;
+      object-position:center;
       display:block;
     }
 
@@ -3896,8 +3931,8 @@ About Us Section
       #RouteS1{
         grid-template-columns:1fr;
         grid-template-areas:
-          "panel"
-          "viewer";
+          "viewer"
+          "panel";
         border-radius:0;
         margin:0 auto;
       }
