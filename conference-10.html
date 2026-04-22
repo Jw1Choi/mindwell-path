@@ -55,7 +55,7 @@
 	<meta property="og:site_name" content="마음건강 길">
 	<meta property="og:type" content="website">
 
-  <meta property="og:image" content="./img/thumbnail-6.png" />				
+ <meta property="og:image" content="./img/thumbnail-6.png" />			
     <link rel="apple-touch-icon" href="./img/logo-introduce.png" sizes="180x180"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="16x16"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="32x32"/>
@@ -723,6 +723,215 @@
         </div>
       </div>
 
+
+
+
+<div id="event1">
+<!-- 행사 헤더 -->
+<!-- <div style="text-align:-webkit-center;margin:40px;">
+<h2><b>행사 일시</b></h2>
+</div> -->
+<!-- 날짜 및 시간 정보 -->
+ <div style="background: #f9f9f9;">
+<div class="info-card">
+    <h2 class="card-title">
+        <i class="fas fa-calendar-alt"></i>
+        행사 일시 및 장소
+    </h2>
+    <div class="info-content">
+        <p class="font-bold text-xl mb-2"><b>🗓️ 5월 9일 (토) 오후 2시 ~ 5시</p>
+        <p class="font-bold text-xl mb-2"><b>📍SCC 홀 서초 3층 (예술의 전당 건너편)<br>&nbsp;&nbsp;&nbsp;(서울 서초구 남부순환로 325길 9, 3층)<br><br></b></p>
+        <p class="font-bold text-xl mb-2"><b>주최 : 마음건강 길</b>
+        <p class="font-bold text-xl mb-2"><b>후원 : HTU GLOBAL</b>
+        <p class="font-bold text-xl mb-2"><b>문의 : ☎️  02-725-7525  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📱 010-5385-0793</b>
+        <p class="font-bold text-xl mb-2"><b>이메일 : mindgil21@naver.com</b>
+        
+
+
+
+
+
+        <!-- <p class="font-bold text-xl mb-2">💻 ZOOM 생중계 신청 가능</b></p><br> -->
+         <!-- <a href="#apply" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;"> 컨퍼런스 현장 참여하기</a></p><br> -->
+           <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;">ZOOM 컨퍼런스 신청하기</a></p><br> -->
+    </div>
+</div>
+</div>
+
+
+</div>
+
+
+<style>
+#event1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    /* background-color: #f9f9f9; */
+    /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); */
+    border-radius: 12px;
+    color: #333;
+}
+
+#event1 .event-header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+}
+
+#event1 .event-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+#event1 .event-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+#event1 .info-card {
+    background-color: white;
+    border-radius: 8px;
+    border:1px solid #00000032;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+}
+
+#event1 .info-card:hover {
+    transform: translateY(-5px);
+}
+
+#event1 .card-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #2575fc;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width:600px) {
+  
+  #event1 .card-title {
+    font-size: 1.2rem;
+  
+}
+
+}
+
+
+#event1 .card-title i {
+    margin-right: 10px;
+}
+
+#event1 .info-content {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+@media screen and (max-width:500px) {
+ 
+  #event1 .info-content {
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+  
+}
+
+#event1 .map-container {
+    position: relative;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+#event1 .map-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+}
+
+#event1 .map-marker {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+}
+
+#event1 .direction-steps {
+    background-color: #f0f7ff;
+    border-left: 4px solid #2575fc;
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 25px;
+}
+
+#event1 .step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+#event1 .step:last-child {
+    margin-bottom: 0;
+}
+
+#event1 .step-number {
+    background-color: #2575fc;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+#event1 .step-text {
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+#event1 .footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #666;
+    font-size: 0.9rem;
+}
+</style>
+
       <div class="content-bottom">
         <div class="offer-panel">
           <!-- <h3 class="panel-title">👉 듣고 끝나는 강연이 아니라,<br>1:1 대화 나누며<br>내 문제를 직접 연결해 보는 시간</h3> -->
@@ -1122,229 +1331,12 @@ flos-section-head / flos-section-body 구조로 반복 사용
     }
   </style>
 
-  <div class="flos-head-inner">
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
 
-    <h2 class="flos-title">
-      혹시 이런 경험 
-      <strong>있으신가요?</strong>
-    </h2>
-
-    <div class="flos-line"></div>
-
-    
-  </div>
 </section>
 
-<!-- =========================
-2) 내용 섹션
-========================= -->
-<section class="flos-section-body" id="mindDetoxFamilyEmotionBody">
-  <div class="flos-body-inner">
-    <!-- <div class="flos-box"> -->
-      <ul class="flos-list">
-        <li class="flos-item">부모와 대화하면 감정이 먼저 올라옵니다</li>
-        <li class="flos-item">자녀를 사랑하는데도 거리감이 생깁니다</li>
-        <li class="flos-item">부모가 되고 나서야 부모의 마음이 보입니다</li>
-        <li class="flos-item">가족이라서 더 말하기 어려운 순간이 있습니다</li>
-      </ul>
-
-      <div class="flos-quote">
-        <p class="flos-quote-text">
-          가장 사랑하지만<br>
-          <strong>가장 힘들기도 한 관계가 가족입니다.</strong>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    (function(){
-      const section = document.getElementById('mindDetoxFamilyEmotionBody');
-      if(!section) return;
-
-      const targets = section.querySelectorAll('.flos-item, .flos-quote');
-
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach((entry)=>{
-          if(entry.isIntersecting){
-            const index = Array.from(targets).indexOf(entry.target);
-            setTimeout(()=>{
-              entry.target.classList.add('is-visible');
-            }, index * 110);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.16 });
-
-      targets.forEach(el => observer.observe(el));
-    })();
-  </script>
-</section>
-
-<section class="flos-section-head">
-  <style>
-    .flos-section-head{
-      position:relative;
-      overflow:hidden;
-      padding:100px 20px 34px;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.76), transparent 40%),
-        linear-gradient(180deg, #edf2f7 0%, #e7edf5 100%);
-      font-family:"Pretendard","Noto Sans KR",sans-serif;
-    }
-
-    .flos-section-head *{
-      box-sizing:border-box;
-    }
-
-    .flos-section-head::before,
-    .flos-section-head::after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      pointer-events:none;
-      filter:blur(34px);
-      z-index:1;
-    }
-
-    .flos-section-head::before{
-      width:320px;
-      height:320px;
-      top:-110px;
-      right:-90px;
-      background:rgba(100, 140, 210, 0.16);
-    }
-
-    .flos-section-head::after{
-      width:240px;
-      height:240px;
-      left:-60px;
-      bottom:-80px;
-      background:rgba(150, 180, 220, 0.16);
-    }
-
-    .flos-head-inner{
-      width:min(100%, 980px);
-      margin:0 auto;
-      position:relative;
-      z-index:2;
-    }
-
-    .flos-kicker{
-      display:inline-flex;
-      align-items:center;
-      min-height:36px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.56);
-      border:1px solid rgba(84,118,166,0.10);
-      color:#5e7895;
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:0.05em;
-      box-shadow:0 8px 20px rgba(41,69,112,0.05);
-      backdrop-filter:blur(10px);
-      margin-bottom:16px;
-    }
-
-    .flos-title{
-      margin:0;
-      font-size:clamp(36px, 5vw, 56px);
-      line-height:1.18;
-      letter-spacing:-0.045em;
-      font-weight:900;
-      color:#233f68;
-      word-break:keep-all;
-    }
-
-    .flos-title strong{
-      color:#1b3558;
-    }
-
-    .flos-line{
-      width:88px;
-      height:5px;
-      border-radius:999px;
-      margin-top:16px;
-      background:linear-gradient(90deg, #7fa7e4 0%, #4176d9 100%);
-      box-shadow:0 10px 20px rgba(63,116,216,0.14);
-    }
-
-    .flos-desc{
-      margin:18px 0 0;
-      max-width:760px;
-      font-size:18px;
-      line-height:1.8;
-      color:#5a7089;
-    }
-
-    @media (max-width:768px){
-      .flos-section-head{
-        padding:74px 16px 24px;
-      }
-
-      .flos-title{
-        font-size:clamp(30px, 7vw, 42px);
-      }
-
-      .flos-desc{
-        font-size:15px;
-      }
-    }
-  </style>
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-      왜 이런 일이 반복될까요? 
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-
-<section id="saitoHitoriBowl">
- 
-
-  <div class="shb-wrap">
-
-    <div class="card">
-      <p class="desc">
-       이번 마음디톡스는<br>단순한 위로나 공감이 아니라<br><br>
-        <strong>가족 관계가 왜 반복해서 어긋나는지</strong>를
-        <br>그 원인을 알아보는 시간입니다.
-      </p>
-
-      <ul>
-        <li>왜 같은 말이 반복해서 싸움이 되는지</li>
-        <li>왜 가까울수록 더 상처받는지</li>
-        <li>왜 이해하려 해도 감정이 먼저 올라오는지</li>
-      </ul>
-
-      <div class="highlight">
-        김경일 교수와 함께<br>
-        실제 사례와 심리학으로 풀어봅니다
-      </div>
-    </div>
 
 
 
-  </div>
-</section>
 
 <section class="flos-section-head">
   <style>
@@ -2363,238 +2355,7 @@ About Us Section
   }
 </script>
 
-<section class="flos-section-head" style="background:#fff;">
 
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-      프로그램 안내
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-
-
-<div id="event1">
-<!-- 행사 헤더 -->
-<!-- <div style="text-align:-webkit-center;margin:40px;">
-<h2><b>행사 일시</b></h2>
-</div> -->
-<!-- 날짜 및 시간 정보 -->
- <div style="background: #f9f9f9;">
-<div class="info-card">
-    <h2 class="card-title">
-        <i class="fas fa-calendar-alt"></i>
-        행사 일시 및 장소
-    </h2>
-    <div class="info-content">
-        <p class="font-bold text-xl mb-2"><b>🗓️ 5월 9일 (토) 오후 2시 ~ 5시</p>
-        <p class="font-bold text-xl mb-2"><b>📍SCC 홀 서초 3층 (예술의 전당 건너편)<br>&nbsp;&nbsp;&nbsp;(서울 서초구 남부순환로 325길 9, 3층)<br><br></b></p>
-        <p class="font-bold text-xl mb-2"><b>주최 : 마음건강 길</b>
-        <p class="font-bold text-xl mb-2"><b>후원 : HTU GLOBAL</b>
-        <p class="font-bold text-xl mb-2"><b>문의 : ☎️  02-725-7525  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📱 010-5385-0793</b>
-        <p class="font-bold text-xl mb-2"><b>이메일 : mindgil21@naver.com</b>
-        
-
-
-
-
-
-        <!-- <p class="font-bold text-xl mb-2">💻 ZOOM 생중계 신청 가능</b></p><br> -->
-         <!-- <a href="#apply" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;"> 컨퍼런스 현장 참여하기</a></p><br> -->
-           <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;">ZOOM 컨퍼런스 신청하기</a></p><br> -->
-    </div>
-</div>
-</div>
-
-
-</div>
-
-
-<style>
-#event1 {
-    font-family: 'Noto Sans KR', sans-serif;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    /* background-color: #f9f9f9; */
-    /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); */
-    border-radius: 12px;
-    color: #333;
-}
-
-#event1 .event-header {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 30px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
-}
-
-#event1 .event-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-}
-
-#event1 .event-subtitle {
-    font-size: 1.2rem;
-    font-weight: 300;
-    opacity: 0.9;
-}
-
-#event1 .info-card {
-    background-color: white;
-    border-radius: 8px;
-    border:1px solid #00000032;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease;
-}
-
-#event1 .info-card:hover {
-    transform: translateY(-5px);
-}
-
-#event1 .card-title {
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: #2575fc;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-}
-
-@media screen and (max-width:600px) {
-  
-  #event1 .card-title {
-    font-size: 1.2rem;
-  
-}
-
-}
-
-
-#event1 .card-title i {
-    margin-right: 10px;
-}
-
-#event1 .info-content {
-    font-size: 1.6rem;
-    line-height: 1.6;
-}
-
-@media screen and (max-width:500px) {
- 
-  #event1 .info-content {
-    font-size: 1.3rem;
-    line-height: 1.6;
-}
-  
-}
-
-#event1 .map-container {
-    position: relative;
-    height: 300px;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-#event1 .map-overlay {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-}
-
-#event1 .map-marker {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
-}
-
-#event1 .direction-steps {
-    background-color: #f0f7ff;
-    border-left: 4px solid #2575fc;
-    padding: 15px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 25px;
-}
-
-#event1 .step {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 15px;
-}
-
-#event1 .step:last-child {
-    margin-bottom: 0;
-}
-
-#event1 .step-number {
-    background-color: #2575fc;
-    color: white;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-right: 15px;
-    flex-shrink: 0;
-}
-
-#event1 .step-text {
-    flex-grow: 1;
-    line-height: 1.5;
-}
-
-#event1 .footer {
-    text-align: center;
-    margin-top: 40px;
-    color: #666;
-    font-size: 0.9rem;
-}
-</style>
 
 <div id="event1">
   <!-- 행사 헤더 -->
@@ -2615,134 +2376,6 @@ About Us Section
   
   </div>
 
-
-
-<section class="flos-section-head" style="background:#fff;">
-
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-     이런 분께 권합니다 
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-
-
-<!-- ──────────────────────────────────────────
-     Benefit Section (복사-붙여넣기용 완전 코드)
-────────────────────────────────────────── -->
-<section class="flos-section-body" id="mindDetoxFamilyEmotionBody_v2" style="padding:40px 20px 40px;">
-  <div class="flos-body-inner">
-    <ul class="flos-list">
-      <li class="flos-item">부모와의 관계가 점점 불편해진 분</li>
-      <li class="flos-item">자녀와의 거리감이나 서운함을 느끼는 분</li>
-      <li class="flos-item">가족과의 대화가 반복해서 어긋나는 분</li>
-      <li class="flos-item">감정이 먼저 올라오는 이유를 알고 싶은 분</li>
-    </ul>
-
-
-  </div>
-
-  <script>
-    (function(){
-      const section = document.getElementById('mindDetoxFamilyEmotionBody_v2');
-      if(!section) return;
-
-      const targets = section.querySelectorAll('.flos-item, .flos-quote');
-
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach((entry)=>{
-          if(entry.isIntersecting){
-            const index = Array.from(targets).indexOf(entry.target);
-            setTimeout(()=>{
-              entry.target.classList.add('is-visible');
-            }, index * 110);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.16 });
-
-      targets.forEach(el => observer.observe(el));
-    })();
-  </script>
-</section>
-
-<section class="flos-section-head" style="background:#fff;">
-
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-      이 시간을 통해 얻을 수 있는 것 
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-
-
-<section class="flos-section-body" id="mindDetoxFamilyEmotionBody_v3" style="padding:40px 20px 40px;">
-  <div class="flos-body-inner">
-    <ul class="flos-list">
-      <li class="flos-item">가족 관계가 왜 어려운지 구조적으로 이해하게 됩니다</li>
-      <li class="flos-item">부모와 자식의 시선 차이를 명확히 보게 됩니다</li>
-      <li class="flos-item">감정에 휘둘리지 않고 바라보는 관점을 얻게 됩니다</li>
-      <li class="flos-item">내 상황에 적용할 수 있는 실마리를 찾게 됩니다</li>
-    </ul>
-  </div>
-
-  <script>
-    (function(){
-      const section = document.getElementById('mindDetoxFamilyEmotionBody_v3');
-      if(!section) return;
-
-      const targets = section.querySelectorAll('.flos-item, .flos-quote');
-
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach((entry)=>{
-          if(entry.isIntersecting){
-            const index = Array.from(targets).indexOf(entry.target);
-            setTimeout(()=>{
-              entry.target.classList.add('is-visible');
-            }, index * 110);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.16 });
-
-      targets.forEach(el => observer.observe(el));
-    })();
-  </script>
-</section>
 
 
 
@@ -3688,6 +3321,946 @@ About Us Section
     </div>
   </aside>
 </section>
+
+<section id="mindwellpathRouteSteps">
+  <style>
+    #mindwellpathRouteSteps{
+      position:relative;
+      overflow:hidden;
+      padding:110px 20px;
+      background:linear-gradient(180deg,#f8fbff 0%,#edf5ff 46%,#ffffff 100%);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      color:#12314d;
+    }
+
+    #mindwellpathRouteSteps .mprs-shell{
+      width:100%;
+      max-width:1320px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    #mindwellpathRouteSteps .mprs-orb{
+      position:absolute;
+      border-radius:999px;
+      pointer-events:none;
+      filter:blur(14px);
+      opacity:.42;
+    }
+
+    #mindwellpathRouteSteps .mprs-orb-1{
+      top:-30px;
+      left:-30px;
+      width:260px;
+      height:260px;
+      background:radial-gradient(circle at center, rgba(67,132,231,.18) 0%, rgba(67,132,231,0) 72%);
+    }
+
+    #mindwellpathRouteSteps .mprs-orb-2{
+      right:-30px;
+      bottom:40px;
+      width:320px;
+      height:320px;
+      background:radial-gradient(circle at center, rgba(96,173,255,.16) 0%, rgba(96,173,255,0) 72%);
+    }
+
+    #mindwellpathRouteSteps .mprs-head{
+      text-align:center;
+      margin-bottom:56px;
+    }
+
+    #mindwellpathRouteSteps .mprs-kicker{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:40px;
+      padding:9px 17px;
+      border-radius:999px;
+      border:1px solid rgba(80,137,211,.16);
+      background:rgba(255,255,255,.8);
+      color:#2c5f98;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      box-shadow:0 10px 28px rgba(33,86,151,.08);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      margin-bottom:18px;
+      box-sizing:border-box;
+    }
+
+    #mindwellpathRouteSteps .mprs-title{
+      margin:0;
+      font-size:clamp(31px,4.1vw,56px);
+      line-height:1.18;
+      letter-spacing:-0.04em;
+      font-weight:800;
+      color:#0f2f52;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-desc{
+      max-width:860px;
+      margin:18px auto 0;
+      font-size:17px;
+      line-height:1.85;
+      color:rgba(18,49,77,.76);
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-summary{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      margin-bottom:26px;
+    }
+
+    #mindwellpathRouteSteps .mprs-card{
+      position:relative;
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(76,132,208,.14);
+      border-radius:30px;
+      box-shadow:0 22px 56px rgba(24,73,136,.09);
+      overflow:hidden;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+
+    #mindwellpathRouteSteps .mprs-hero{
+      position:relative;
+      min-height:100%;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-media{
+      position:relative;
+      aspect-ratio:1.52/1;
+      overflow:hidden;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(6,28,56,0) 34%, rgba(6,28,56,.62) 100%);
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-media img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      transform:scale(1.03);
+      transition:transform .9s ease;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero:hover .mprs-hero-media img{
+      transform:scale(1.08);
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-copy{
+      position:absolute;
+      left:26px;
+      right:26px;
+      bottom:24px;
+      z-index:2;
+      color:#fff;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-copy span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.2);
+      color:#fff;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.1em;
+      margin-bottom:12px;
+      box-sizing:border-box;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-copy h3{
+      margin:0;
+      font-size:clamp(24px,2.4vw,36px);
+      line-height:1.28;
+      letter-spacing:-0.03em;
+      font-weight:800;
+      color:#fff;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-copy p{
+      margin:10px 0 0;
+      font-size:14px;
+      line-height:1.75;
+      color:rgba(255,255,255,.88);
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-info{
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+    }
+
+    #mindwellpathRouteSteps .mprs-place{
+      margin:0;
+      font-size:clamp(28px,2.5vw,40px);
+      line-height:1.2;
+      letter-spacing:-0.04em;
+      font-weight:800;
+      color:#103257;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-info p{
+      margin:0;
+      font-size:16px;
+      line-height:1.85;
+      color:rgba(18,49,77,.78);
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-meta{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    #mindwellpathRouteSteps .mprs-meta-item{
+      padding:18px 18px 16px;
+      border-radius:22px;
+      background:linear-gradient(180deg,#ffffff 0%, #f4f9ff 100%);
+      border:1px solid rgba(76,132,208,.14);
+    }
+
+    #mindwellpathRouteSteps .mprs-meta-item strong{
+      display:block;
+      margin-bottom:7px;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#4f7baa;
+    }
+
+    #mindwellpathRouteSteps .mprs-meta-item span{
+      display:block;
+      font-size:16px;
+      line-height:1.7;
+      color:#143a63;
+      font-weight:700;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:4px;
+    }
+
+    #mindwellpathRouteSteps .mprs-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 24px;
+      border-radius:999px;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:800;
+      letter-spacing:-0.02em;
+      transition:transform .35s ease, box-shadow .35s ease, background .35s ease, border-color .35s ease;
+      box-sizing:border-box;
+    }
+
+    #mindwellpathRouteSteps .mprs-btn-primary{
+      background:linear-gradient(135deg,#2e7feb 0%,#6aacff 100%);
+      color:#fff;
+      box-shadow:0 16px 34px rgba(46,127,235,.24);
+    }
+
+    #mindwellpathRouteSteps .mprs-btn-secondary{
+      background:#fff;
+      color:#245487;
+      border:1px solid rgba(76,132,208,.16);
+      box-shadow:0 10px 24px rgba(26,76,136,.08);
+    }
+
+    #mindwellpathRouteSteps .mprs-btn:hover{
+      transform:translateY(-4px);
+    }
+
+    #mindwellpathRouteSteps .mprs-steps{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    #mindwellpathRouteSteps .mprs-step{
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      border-radius:28px;
+      overflow:hidden;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(76,132,208,.14);
+      box-shadow:0 18px 44px rgba(30,85,150,.08);
+    }
+
+    #mindwellpathRouteSteps .mprs-step-media{
+      position:relative;
+      aspect-ratio:1/1.1;
+      overflow:hidden;
+      background:#dfeeff;
+    }
+
+    #mindwellpathRouteSteps .mprs-step-media img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      transition:transform .85s ease;
+    }
+
+    #mindwellpathRouteSteps .mprs-step:hover .mprs-step-media img{
+      transform:scale(1.08);
+    }
+
+    #mindwellpathRouteSteps .mprs-step-no{
+      position:absolute;
+      left:14px;
+      top:14px;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      background:rgba(15,49,87,.82);
+      border:1px solid rgba(255,255,255,.16);
+      color:#fff;
+      font-size:16px;
+      font-weight:800;
+      box-shadow:0 10px 20px rgba(10,34,66,.18);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    #mindwellpathRouteSteps .mprs-step-body{
+      padding:20px 18px 22px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1 1 auto;
+    }
+
+    #mindwellpathRouteSteps .mprs-step-title{
+      margin:0;
+      font-size:21px;
+      line-height:1.35;
+      letter-spacing:-0.03em;
+      font-weight:800;
+      color:#103257;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-step-text{
+      margin:0;
+      font-size:15px;
+      line-height:1.85;
+      color:rgba(18,49,77,.76);
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-step-tip{
+      margin-top:auto;
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#edf5ff;
+      color:#2e649f;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:-0.01em;
+      border:1px solid rgba(76,132,208,.14);
+      box-sizing:border-box;
+      width:max-content;
+      max-width:100%;
+    }
+
+    #mindwellpathRouteSteps .fadeInUp,
+    #mindwellpathRouteSteps .fadeInLeft,
+    #mindwellpathRouteSteps .fadeInRight{
+      opacity:0;
+      transition:opacity .9s ease, transform .9s cubic-bezier(.22,.61,.36,1);
+      will-change:opacity, transform;
+    }
+
+    #mindwellpathRouteSteps .fadeInUp{ transform:translate3d(0,44px,0); }
+    #mindwellpathRouteSteps .fadeInLeft{ transform:translate3d(-44px,0,0); }
+    #mindwellpathRouteSteps .fadeInRight{ transform:translate3d(44px,0,0); }
+
+    #mindwellpathRouteSteps .is-visible{
+      opacity:1;
+      transform:translate3d(0,0,0);
+    }
+
+    @media (max-width:1180px){
+      #mindwellpathRouteSteps .mprs-summary{
+        grid-template-columns:1fr;
+      }
+
+      #mindwellpathRouteSteps .mprs-steps{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width:767px){
+      #mindwellpathRouteSteps{
+        padding:78px 16px;
+      }
+
+      #mindwellpathRouteSteps .mprs-head{
+        margin-bottom:36px;
+      }
+
+      #mindwellpathRouteSteps .mprs-desc{
+        font-size:15px;
+        line-height:1.78;
+      }
+
+      #mindwellpathRouteSteps .mprs-info{
+        padding:22px 18px;
+      }
+
+      #mindwellpathRouteSteps .mprs-meta{
+        grid-template-columns:1fr;
+      }
+
+      #mindwellpathRouteSteps .mprs-actions{
+        flex-direction:column;
+      }
+
+      #mindwellpathRouteSteps .mprs-btn{
+        width:100%;
+      }
+
+      #mindwellpathRouteSteps .mprs-steps{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      #mindwellpathRouteSteps .mprs-step{
+        border-radius:24px;
+      }
+
+      #mindwellpathRouteSteps .mprs-step-body{
+        padding:18px 16px 20px;
+      }
+    }
+  </style>
+
+  <div class="mprs-orb mprs-orb-1"></div>
+  <div class="mprs-orb mprs-orb-2"></div>
+
+  <div class="mprs-shell">
+    <div class="mprs-head fadeInUp">
+      <div class="mprs-kicker">상세 안내</div>
+      <h2 class="mprs-title">사진으로 보는<br>강연장 오는 길</h2>
+      <p class="mprs-desc">
+        남부터미널역에서 출발해<br>SCC홀 서초까지 가장<br>빠르게 이동하는 흐름을 안내드립니다.
+        
+      </p>
+    </div>
+
+    <div class="mprs-summary">
+      <div class="mprs-card mprs-hero fadeInLeft">
+        <div class="mprs-hero-media">
+          <img src="https://storage.googleapis.com/cr-resource/image/b7ea7e5c197536de6b9f432f4af2c686/scchall/ae9cf547f84139ef5848fc0d45ee5e7a.jpg" alt="SCC홀 서초 메인 사진">
+        </div>
+        <div class="mprs-hero-copy">
+          <span>강연장 안내</span>
+          <h3>SCC홀 서초</h3>
+       
+        </div>
+      </div>
+
+      <div class="mprs-card mprs-info fadeInRight">
+        <h3 class="mprs-place">SCC홀 서초</h3>
+        <p>
+         
+          아래 단계를 따라가면 처음 방문하는 분도 쉽게 도착할 수 있습니다.
+        </p>
+
+        <div class="mprs-meta">
+          <div class="mprs-meta-item">
+            <strong>출발 위치</strong>
+            <span>남부터미널역 4-2번 출구</span>
+          </div>
+          <div class="mprs-meta-item">
+            <strong>도착 위치</strong>
+            <span>SCC홀 서초 건물</span>
+          </div>
+        </div>
+
+        <div class="mprs-actions">
+          <a class="mprs-btn mprs-btn-primary" href="https://map.naver.com/v5/search/SCC%ED%99%80%20%EC%84%9C%EC%B4%88" target="_blank" rel="noopener">네이버지도 열기</a>
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="mprs-steps">
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">01</span>
+          <img src="./img/g-1.jpg" alt="지하철 출구 안내 이미지">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">남부터미널 4-2 출구</h3>
+          
+          <span class="mprs-step-tip">출구 확인</span>
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">02</span>
+          <img src="./img/g-2.jpg" alt="삼거리">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">눈에 보이는 삼거리에서 우회전</h3>
+          <p class="mprs-step-text">삼거리에서 <strong>오른쪽 방향</strong>으로 이동합니다.</p>
+          <!-- <span class="mprs-step-tip">방향 전환</span> -->
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">03</span>
+          <img src="./img/g-3.jpg" alt="직진">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">직진 이동</h3>
+          <p class="mprs-step-text">길을 따라 <strong>계속 직진</strong>합니다.</p>
+          <!-- <span class="mprs-step-tip"></span> -->
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">04</span>
+          <img src="./img/g-4.jpg" alt="거리 분위기">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">SCC 홀 건물 확인</h3>
+          <p class="mprs-step-text">해당 건물이 보이면 왼쪽으로 꺾어서 정문을 찾아주세요.</p>
+      
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">05</span>
+          <img src="./img/g-5.jpg" alt="건물">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">SCC홀 정문</h3>
+          <p class="mprs-step-text"><strong>안내문에 맞춰 들어오시면 됩니다.</p>
+          <span 
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">06</span>
+          <img src="./img/g-6.jpg" alt="엘리베이터">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">엘리베이터 탑승</h3>
+          <p class="mprs-step-text"><strong>3층 강연장으로 이동</strong>해주세요.</p>
+      
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var section = document.getElementById('mindwellpathRouteSteps');
+      if(!section) return;
+
+      var targets = section.querySelectorAll('.fadeInUp, .fadeInLeft, .fadeInRight');
+      if(!targets.length) return;
+
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+      targets.forEach(function(target){
+        observer.observe(target);
+      });
+    })();
+  </script>
+</section>
+
+<section class="flos-section-head" style="background:#fff;">
+
+
+  <div class="flos-head-inner">
+
+    <!-- 상단 라벨 (선택) -->
+    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
+
+    <!-- 타이틀 -->
+    <h2 class="flos-title">
+     이런 분께 권합니다 
+      
+    </h2>
+
+    <!-- 라인 -->
+    <div class="flos-line"></div>
+
+    <!-- 설명 (선택) -->
+    <!-- <p class="flos-desc">
+      가족이라는 가장 가까운 관계 속에서
+      설명하기 어려운 감정들을 느끼고 계시다면
+    </p> -->
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     Benefit Section (복사-붙여넣기용 완전 코드)
+────────────────────────────────────────── -->
+<section class="flos-section-body" id="mindDetoxFamilyEmotionBody_v2" style="padding:40px 20px 40px;">
+  <div class="flos-body-inner">
+    <ul class="flos-list">
+      <li class="flos-item">부모와의 관계가 점점 불편해진 분</li>
+      <li class="flos-item">자녀와의 거리감이나 서운함을 느끼는 분</li>
+      <li class="flos-item">가족과의 대화가 반복해서 어긋나는 분</li>
+      <li class="flos-item">감정이 먼저 올라오는 이유를 알고 싶은 분</li>
+    </ul>
+
+
+  </div>
+
+  <script>
+    (function(){
+      const section = document.getElementById('mindDetoxFamilyEmotionBody_v2');
+      if(!section) return;
+
+      const targets = section.querySelectorAll('.flos-item, .flos-quote');
+
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach((entry)=>{
+          if(entry.isIntersecting){
+            const index = Array.from(targets).indexOf(entry.target);
+            setTimeout(()=>{
+              entry.target.classList.add('is-visible');
+            }, index * 110);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      targets.forEach(el => observer.observe(el));
+    })();
+  </script>
+</section>
+
+<section class="flos-section-head" style="background:#fff;">
+
+
+  <div class="flos-head-inner">
+
+    <!-- 상단 라벨 (선택) -->
+    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
+
+    <!-- 타이틀 -->
+    <h2 class="flos-title">
+      이 시간을 통해 얻을 수 있는 것 
+      
+    </h2>
+
+    <!-- 라인 -->
+    <div class="flos-line"></div>
+
+    <!-- 설명 (선택) -->
+    <!-- <p class="flos-desc">
+      가족이라는 가장 가까운 관계 속에서
+      설명하기 어려운 감정들을 느끼고 계시다면
+    </p> -->
+
+  </div>
+</section>
+
+
+<section class="flos-section-body" id="mindDetoxFamilyEmotionBody_v3" style="padding:40px 20px 40px;">
+  <div class="flos-body-inner">
+    <ul class="flos-list">
+      <li class="flos-item">가족 관계가 왜 어려운지 구조적으로 이해하게 됩니다</li>
+      <li class="flos-item">부모와 자식의 시선 차이를 명확히 보게 됩니다</li>
+      <li class="flos-item">감정에 휘둘리지 않고 바라보는 관점을 얻게 됩니다</li>
+      <li class="flos-item">내 상황에 적용할 수 있는 실마리를 찾게 됩니다</li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const section = document.getElementById('mindDetoxFamilyEmotionBody_v3');
+      if(!section) return;
+
+      const targets = section.querySelectorAll('.flos-item, .flos-quote');
+
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach((entry)=>{
+          if(entry.isIntersecting){
+            const index = Array.from(targets).indexOf(entry.target);
+            setTimeout(()=>{
+              entry.target.classList.add('is-visible');
+            }, index * 110);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      targets.forEach(el => observer.observe(el));
+    })();
+  </script>
+</section>
+
+
+<section class="flos-section-head" style="background:#fff;">
+
+
+  <div class="flos-head-inner">
+
+    <!-- 상단 라벨 (선택) -->
+    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
+
+    <!-- 타이틀 -->
+    <h2 class="flos-title">
+      프로그램 요약
+      
+    </h2>
+
+    <!-- 라인 -->
+    <div class="flos-line"></div>
+
+    <!-- 설명 (선택) -->
+    <!-- <p class="flos-desc">
+      가족이라는 가장 가까운 관계 속에서
+      설명하기 어려운 감정들을 느끼고 계시다면
+    </p> -->
+
+  </div>
+</section>
+
+
+<section id="mindgilPoster" aria-label="마음건강 길 포스터">
+  <style>
+    /* ===== Scope: #mindgilPoster only ===== */
+    #mindgilPoster{
+      --bg:#1e90ff;
+      --ink:#ffffff;
+      --line:rgba(255,255,255,.6);
+      --lineStrong:rgba(255,255,255,.85);
+
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Pretendard,"Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    #mindgilPoster, #mindgilPoster *{box-sizing:border-box;font-weight:800;}
+
+    #mindgilPoster .poster{
+      max-width:900px;
+      margin:0 auto;
+      padding:clamp(20px,5vw,44px) clamp(16px,5vw,36px) clamp(28px,6vw,56px);
+    }
+
+    #mindgilPoster .row{
+      display:flex;
+      gap:16px;
+      margin-bottom:14px;
+      align-items: center;
+    }
+
+    #mindgilPoster .label{
+      width:120px;
+      font-weight:800;
+      font-size:clamp(18px,4vw,24px);
+      letter-spacing:-0.02em;
+      flex-shrink:0;
+      line-height:1.2;
+    }
+
+    #mindgilPoster .value{
+      font-size:clamp(17px,4.5vw,32px);
+      font-weight:700;
+      letter-spacing:-0.02em;
+      line-height:1.4;
+    }
+
+    #mindgilPoster .small{
+      font-size:clamp(16px,4vw,20px);
+      font-weight:600;
+      opacity:.95;
+      line-height:1.6;
+      letter-spacing:-0.015em;
+    }
+
+    #mindgilPoster .block{
+      margin-top:6px;
+      margin-left:120px;
+    }
+
+    #mindgilPoster .program-box{
+      border:2.5px solid var(--lineStrong);
+      border-radius:12px;
+      margin:28px 0 30px;
+      overflow:hidden;
+    }
+
+    #mindgilPoster .program-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      padding:18px 20px;
+      border-bottom:1.5px solid var(--line);
+      font-size:clamp(18px,4vw,24px);
+      font-weight:700;
+      letter-spacing:-0.02em;
+      line-height:1.45;
+    }
+
+    #mindgilPoster .program-item:last-child{border-bottom:none}
+
+    #mindgilPoster .program-right{
+      white-space:nowrap;
+      margin-left:8px;
+      font-weight:700;
+    }
+
+    #mindgilPoster .footer-line,
+    #mindgilPoster .contact,
+    #mindgilPoster .email{
+      font-size:clamp(15px,4vw,24px);
+      font-weight:700;
+      letter-spacing:-0.02em;
+      line-height:1.6;
+    }
+
+    #mindgilPoster .footer-line{margin-top:18px}
+    #mindgilPoster .footer-line span{display:inline-block;margin-right:10px}
+
+    #mindgilPoster .contact{margin-top:10px}
+    #mindgilPoster .contact span{display:inline-block;margin-right:14px}
+
+    #mindgilPoster .email{margin-top:10px}
+
+    /* ===== Mobile optimizations ===== */
+    @media (max-width:600px){
+      #mindgilPoster .row{flex-direction:row;gap:14px}
+      #mindgilPoster .label{width:auto}
+      #mindgilPoster .block{margin-left:10px}
+      #mindgilPoster .program-item{flex-direction:column}
+      #mindgilPoster .program-right{text-align:right;width:100%}
+    }
+  </style>
+
+  <div class="poster">
+
+    <div class="row">
+      <div class="label">• 일시</div>
+      <div class="value">2026년 5월 9일 (토) 오후 2시 ~ 5시</div>
+    </div>
+
+    <div class="row">
+      <div class="label">• 장소</div>
+      <div class="value">SCC 홀 서초</div>
+    </div>
+
+  <div class="block small">
+         ➜ (서울 서초구 남부순환로 325길 9, 3층)<br>
+      ➜ 3호선 남부터미널역 4-2번 출구 360m<br>
+      
+    </div>
+
+    <div class="row" style="margin-top:16px;">
+      <div class="label">• 주최</div>
+      <div class="value">마음건강 길 (www.mindgil.com)</div>
+    </div>
+
+     <div class="row">
+      <div class="label">• 후원</div>
+      <div class="value">HTU GLOBAL</div>
+    </div> 
+
+    <div class="row" style="margin-top:24px;">
+      <div class="label">• 프로그램</div>
+    </div>
+
+    <div class="program-box" role="list">
+      <div class="program-item" role="listitem">
+        <div>1. 우리는 왜 가족에게 더 상처받는가</div>
+        <div class="program-right">- 김경일 교수</div>
+      </div>
+      <div class="program-item" role="listitem">
+        <div>2. 음악: 가족에게 전하는 마음의 선율</div>
+        <div class="program-right">- 정수지 피아니스트</div>
+      </div>
+      <div class="program-item" role="listitem">
+        <div>3. 말하지 못했던 그 마음, 가족의 감정을 이해하는 법</div>
+        <div class="program-right">- 김경일 교수</div>
+      </div>
+      <div class="program-item" role="listitem">
+        <div>4. 김경일 교수와 함께하는 대화의 시간</div>
+        <div class="program-right">- 사회: 함영준</div>
+      </div>
+    </div>
+
+    <div class="footer-line">
+      <span>• 참가비 : 25,000원  (2인 이상: 20,000원)</span>
+      <span>• 계좌번호 : KB 002801-04-264807 <img src="./img/mindgil-white1.png" style="width:100px;"></span>
+    </div>
+
+    <div class="contact">
+      <span>• 문의 : ☎️ 02-725-7525</span>
+      <span>📱 010-3041-2734</span>
+    </div>
+
+    <div class="email">• 이메일 : mindgil21@naver.com</div>
+
+  </div>
+</section>
+
+
 
 
 <section class="flos-section-head" style="background:#fff;">
@@ -6198,9 +6771,9 @@ Footer
     Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-           title: '[유퀴즈 출연]김경일 교수 가족관계 토크 콘서트',
+        title: '[유퀴즈 출연]김경일 교수 가족관계 토크 콘서트',
 description: '가까우면서 힘든 부모・자식 관계를 짚어봅니다.',
-        imageUrl: 'https://mindwellpath.co.kr/img/10th-kakao-4.png',
+        imageUrl: 'https://mindwellpath.co.kr/img/10th-kakao-6.png',
         link: {
           mobileWebUrl: 'https://mindwellpath.co.kr/conference-10-kakao.html',
           webUrl: 'https://mindwellpath.co.kr/conference-10-kakao.html'

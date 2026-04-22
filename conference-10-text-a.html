@@ -3237,6 +3237,608 @@ About Us Section
   </aside>
 </section>
 
+<section id="mindwellpathRouteSteps">
+  <style>
+    #mindwellpathRouteSteps{
+      position:relative;
+      overflow:hidden;
+      padding:110px 20px;
+      background:linear-gradient(180deg,#f8fbff 0%,#edf5ff 46%,#ffffff 100%);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+      color:#12314d;
+    }
+
+    #mindwellpathRouteSteps .mprs-shell{
+      width:100%;
+      max-width:1320px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    #mindwellpathRouteSteps .mprs-orb{
+      position:absolute;
+      border-radius:999px;
+      pointer-events:none;
+      filter:blur(14px);
+      opacity:.42;
+    }
+
+    #mindwellpathRouteSteps .mprs-orb-1{
+      top:-30px;
+      left:-30px;
+      width:260px;
+      height:260px;
+      background:radial-gradient(circle at center, rgba(67,132,231,.18) 0%, rgba(67,132,231,0) 72%);
+    }
+
+    #mindwellpathRouteSteps .mprs-orb-2{
+      right:-30px;
+      bottom:40px;
+      width:320px;
+      height:320px;
+      background:radial-gradient(circle at center, rgba(96,173,255,.16) 0%, rgba(96,173,255,0) 72%);
+    }
+
+    #mindwellpathRouteSteps .mprs-head{
+      text-align:center;
+      margin-bottom:56px;
+    }
+
+    #mindwellpathRouteSteps .mprs-kicker{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:40px;
+      padding:9px 17px;
+      border-radius:999px;
+      border:1px solid rgba(80,137,211,.16);
+      background:rgba(255,255,255,.8);
+      color:#2c5f98;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      box-shadow:0 10px 28px rgba(33,86,151,.08);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      margin-bottom:18px;
+      box-sizing:border-box;
+    }
+
+    #mindwellpathRouteSteps .mprs-title{
+      margin:0;
+      font-size:clamp(31px,4.1vw,56px);
+      line-height:1.18;
+      letter-spacing:-0.04em;
+      font-weight:800;
+      color:#0f2f52;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-desc{
+      max-width:860px;
+      margin:18px auto 0;
+      font-size:17px;
+      line-height:1.85;
+      color:rgba(18,49,77,.76);
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-summary{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+      margin-bottom:26px;
+    }
+
+    #mindwellpathRouteSteps .mprs-card{
+      position:relative;
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(76,132,208,.14);
+      border-radius:30px;
+      box-shadow:0 22px 56px rgba(24,73,136,.09);
+      overflow:hidden;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+
+    #mindwellpathRouteSteps .mprs-hero{
+      position:relative;
+      min-height:100%;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-media{
+      position:relative;
+      aspect-ratio:1.52/1;
+      overflow:hidden;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(6,28,56,0) 34%, rgba(6,28,56,.62) 100%);
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-media img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      transform:scale(1.03);
+      transition:transform .9s ease;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero:hover .mprs-hero-media img{
+      transform:scale(1.08);
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-copy{
+      position:absolute;
+      left:26px;
+      right:26px;
+      bottom:24px;
+      z-index:2;
+      color:#fff;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-copy span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.2);
+      color:#fff;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.1em;
+      margin-bottom:12px;
+      box-sizing:border-box;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-copy h3{
+      margin:0;
+      font-size:clamp(24px,2.4vw,36px);
+      line-height:1.28;
+      letter-spacing:-0.03em;
+      font-weight:800;
+      color:#fff;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-hero-copy p{
+      margin:10px 0 0;
+      font-size:14px;
+      line-height:1.75;
+      color:rgba(255,255,255,.88);
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-info{
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+    }
+
+    #mindwellpathRouteSteps .mprs-place{
+      margin:0;
+      font-size:clamp(28px,2.5vw,40px);
+      line-height:1.2;
+      letter-spacing:-0.04em;
+      font-weight:800;
+      color:#103257;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-info p{
+      margin:0;
+      font-size:16px;
+      line-height:1.85;
+      color:rgba(18,49,77,.78);
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-meta{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    #mindwellpathRouteSteps .mprs-meta-item{
+      padding:18px 18px 16px;
+      border-radius:22px;
+      background:linear-gradient(180deg,#ffffff 0%, #f4f9ff 100%);
+      border:1px solid rgba(76,132,208,.14);
+    }
+
+    #mindwellpathRouteSteps .mprs-meta-item strong{
+      display:block;
+      margin-bottom:7px;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#4f7baa;
+    }
+
+    #mindwellpathRouteSteps .mprs-meta-item span{
+      display:block;
+      font-size:16px;
+      line-height:1.7;
+      color:#143a63;
+      font-weight:700;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:4px;
+    }
+
+    #mindwellpathRouteSteps .mprs-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 24px;
+      border-radius:999px;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:800;
+      letter-spacing:-0.02em;
+      transition:transform .35s ease, box-shadow .35s ease, background .35s ease, border-color .35s ease;
+      box-sizing:border-box;
+    }
+
+    #mindwellpathRouteSteps .mprs-btn-primary{
+      background:linear-gradient(135deg,#2e7feb 0%,#6aacff 100%);
+      color:#fff;
+      box-shadow:0 16px 34px rgba(46,127,235,.24);
+    }
+
+    #mindwellpathRouteSteps .mprs-btn-secondary{
+      background:#fff;
+      color:#245487;
+      border:1px solid rgba(76,132,208,.16);
+      box-shadow:0 10px 24px rgba(26,76,136,.08);
+    }
+
+    #mindwellpathRouteSteps .mprs-btn:hover{
+      transform:translateY(-4px);
+    }
+
+    #mindwellpathRouteSteps .mprs-steps{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    #mindwellpathRouteSteps .mprs-step{
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      border-radius:28px;
+      overflow:hidden;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(76,132,208,.14);
+      box-shadow:0 18px 44px rgba(30,85,150,.08);
+    }
+
+    #mindwellpathRouteSteps .mprs-step-media{
+      position:relative;
+      aspect-ratio:1/1.1;
+      overflow:hidden;
+      background:#dfeeff;
+    }
+
+    #mindwellpathRouteSteps .mprs-step-media img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      transition:transform .85s ease;
+    }
+
+    #mindwellpathRouteSteps .mprs-step:hover .mprs-step-media img{
+      transform:scale(1.08);
+    }
+
+    #mindwellpathRouteSteps .mprs-step-no{
+      position:absolute;
+      left:14px;
+      top:14px;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      background:rgba(15,49,87,.82);
+      border:1px solid rgba(255,255,255,.16);
+      color:#fff;
+      font-size:16px;
+      font-weight:800;
+      box-shadow:0 10px 20px rgba(10,34,66,.18);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+
+    #mindwellpathRouteSteps .mprs-step-body{
+      padding:20px 18px 22px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1 1 auto;
+    }
+
+    #mindwellpathRouteSteps .mprs-step-title{
+      margin:0;
+      font-size:21px;
+      line-height:1.35;
+      letter-spacing:-0.03em;
+      font-weight:800;
+      color:#103257;
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-step-text{
+      margin:0;
+      font-size:15px;
+      line-height:1.85;
+      color:rgba(18,49,77,.76);
+      word-break:keep-all;
+    }
+
+    #mindwellpathRouteSteps .mprs-step-tip{
+      margin-top:auto;
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#edf5ff;
+      color:#2e649f;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:-0.01em;
+      border:1px solid rgba(76,132,208,.14);
+      box-sizing:border-box;
+      width:max-content;
+      max-width:100%;
+    }
+
+    #mindwellpathRouteSteps .fadeInUp,
+    #mindwellpathRouteSteps .fadeInLeft,
+    #mindwellpathRouteSteps .fadeInRight{
+      opacity:0;
+      transition:opacity .9s ease, transform .9s cubic-bezier(.22,.61,.36,1);
+      will-change:opacity, transform;
+    }
+
+    #mindwellpathRouteSteps .fadeInUp{ transform:translate3d(0,44px,0); }
+    #mindwellpathRouteSteps .fadeInLeft{ transform:translate3d(-44px,0,0); }
+    #mindwellpathRouteSteps .fadeInRight{ transform:translate3d(44px,0,0); }
+
+    #mindwellpathRouteSteps .is-visible{
+      opacity:1;
+      transform:translate3d(0,0,0);
+    }
+
+    @media (max-width:1180px){
+      #mindwellpathRouteSteps .mprs-summary{
+        grid-template-columns:1fr;
+      }
+
+      #mindwellpathRouteSteps .mprs-steps{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width:767px){
+      #mindwellpathRouteSteps{
+        padding:78px 16px;
+      }
+
+      #mindwellpathRouteSteps .mprs-head{
+        margin-bottom:36px;
+      }
+
+      #mindwellpathRouteSteps .mprs-desc{
+        font-size:15px;
+        line-height:1.78;
+      }
+
+      #mindwellpathRouteSteps .mprs-info{
+        padding:22px 18px;
+      }
+
+      #mindwellpathRouteSteps .mprs-meta{
+        grid-template-columns:1fr;
+      }
+
+      #mindwellpathRouteSteps .mprs-actions{
+        flex-direction:column;
+      }
+
+      #mindwellpathRouteSteps .mprs-btn{
+        width:100%;
+      }
+
+      #mindwellpathRouteSteps .mprs-steps{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      #mindwellpathRouteSteps .mprs-step{
+        border-radius:24px;
+      }
+
+      #mindwellpathRouteSteps .mprs-step-body{
+        padding:18px 16px 20px;
+      }
+    }
+  </style>
+
+  <div class="mprs-orb mprs-orb-1"></div>
+  <div class="mprs-orb mprs-orb-2"></div>
+
+  <div class="mprs-shell">
+    <div class="mprs-head fadeInUp">
+      <div class="mprs-kicker">상세 안내</div>
+      <h2 class="mprs-title">사진으로 보는<br>강연장 오는 길</h2>
+      <p class="mprs-desc">
+        남부터미널역에서 출발해<br>SCC홀 서초까지 가장<br>빠르게 이동하는 흐름을 안내드립니다.
+        
+      </p>
+    </div>
+
+    <div class="mprs-summary">
+      <div class="mprs-card mprs-hero fadeInLeft">
+        <div class="mprs-hero-media">
+          <img src="https://storage.googleapis.com/cr-resource/image/b7ea7e5c197536de6b9f432f4af2c686/scchall/ae9cf547f84139ef5848fc0d45ee5e7a.jpg" alt="SCC홀 서초 메인 사진">
+        </div>
+        <div class="mprs-hero-copy">
+          <span>강연장 안내</span>
+          <h3>SCC홀 서초</h3>
+       
+        </div>
+      </div>
+
+      <div class="mprs-card mprs-info fadeInRight">
+        <h3 class="mprs-place">SCC홀 서초</h3>
+        <p>
+         
+          아래 단계를 따라가면 처음 방문하는 분도 쉽게 도착할 수 있습니다.
+        </p>
+
+        <div class="mprs-meta">
+          <div class="mprs-meta-item">
+            <strong>출발 위치</strong>
+            <span>남부터미널역 4-2번 출구</span>
+          </div>
+          <div class="mprs-meta-item">
+            <strong>도착 위치</strong>
+            <span>SCC홀 서초 건물</span>
+          </div>
+        </div>
+
+        <div class="mprs-actions">
+          <a class="mprs-btn mprs-btn-primary" href="https://map.naver.com/v5/search/SCC%ED%99%80%20%EC%84%9C%EC%B4%88" target="_blank" rel="noopener">네이버지도 열기</a>
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="mprs-steps">
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">01</span>
+          <img src="./img/g-1.jpg" alt="지하철 출구 안내 이미지">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">남부터미널 4-2 출구</h3>
+          
+          <span class="mprs-step-tip">출구 확인</span>
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">02</span>
+          <img src="./img/g-2.jpg" alt="삼거리">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">눈에 보이는 삼거리에서 우회전</h3>
+          <p class="mprs-step-text">삼거리에서 <strong>오른쪽 방향</strong>으로 이동합니다.</p>
+          <!-- <span class="mprs-step-tip">방향 전환</span> -->
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">03</span>
+          <img src="./img/g-3.jpg" alt="직진">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">직진 이동</h3>
+          <p class="mprs-step-text">길을 따라 <strong>계속 직진</strong>합니다.</p>
+          <!-- <span class="mprs-step-tip"></span> -->
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">04</span>
+          <img src="./img/g-4.jpg" alt="거리 분위기">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">SCC 홀 건물 확인</h3>
+          <p class="mprs-step-text">해당 건물이 보이면 왼쪽으로 꺾어서 정문을 찾아주세요.</p>
+      
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">05</span>
+          <img src="./img/g-5.jpg" alt="건물">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">SCC홀 정문</h3>
+          <p class="mprs-step-text"><strong>안내문에 맞춰 들어오시면 됩니다.</p>
+          <span 
+        </div>
+      </article>
+
+      <article class="mprs-step fadeInUp">
+        <div class="mprs-step-media">
+          <span class="mprs-step-no">06</span>
+          <img src="./img/g-6.jpg" alt="엘리베이터">
+        </div>
+        <div class="mprs-step-body">
+          <h3 class="mprs-step-title">엘리베이터 탑승</h3>
+          <p class="mprs-step-text"><strong>3층 강연장으로 이동</strong>해주세요.</p>
+      
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var section = document.getElementById('mindwellpathRouteSteps');
+      if(!section) return;
+
+      var targets = section.querySelectorAll('.fadeInUp, .fadeInLeft, .fadeInRight');
+      if(!targets.length) return;
+
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+      targets.forEach(function(target){
+        observer.observe(target);
+      });
+    })();
+  </script>
+</section>
+
 
 <section class="flos-section-head" style="background:#fff;">
 
