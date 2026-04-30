@@ -55,7 +55,7 @@
 	<meta property="og:site_name" content="마음건강 길">
 	<meta property="og:type" content="website">
 
- <meta property="og:image" content="./img/thumb-260429.jpg" />			
+ <meta property="og:image" content="./img/thumbnail-6.png" />		
     <link rel="apple-touch-icon" href="./img/logo-introduce.png" sizes="180x180"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="16x16"/>
     <link rel="icon" href="./img/logo-introduce.png" sizes="32x32"/>
@@ -127,1880 +127,371 @@
 
   <template id="headerTemplate"></template>
 
-<section id="mindDetoxKimSection">
-  <style>
-    #mindDetoxKimSection{
-      --bg1:#f6faff;
-      --bg2:#eaf2ff;
-      --text:#10203a;
-      --muted:#5c6f8d;
-      --blue:#2563eb;
-      --blue2:#3b82f6;
-      --blue3:#60a5fa;
-      --blue4:#93c5fd;
-      --line:rgba(37,99,235,0.10);
-      --line2:rgba(59,130,246,0.16);
-      --white:rgba(255,255,255,0.84);
-      --white2:rgba(255,255,255,0.95);
-      --shadow-xl:0 30px 80px rgba(37,99,235,0.12);
-      --shadow-lg:0 20px 50px rgba(37,99,235,0.10);
-      --radius-xl:34px;
-      --radius-lg:26px;
-      --radius-md:18px;
-      position:relative;
-      overflow:hidden;
-      padding:120px 20px;
-      background:
-       linear-gradient(180deg, #e1e7f0 0%, #dee7f0 100%);
-      font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,sans-serif;
-      color:var(--text);
-      isolation:isolate;
-    }
-
-    #mindDetoxKimSection::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(rgba(255,255,255,0.24), rgba(255,255,255,0.05)),
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,0.06) 0,
-          rgba(255,255,255,0.06) 1px,
-          transparent 1px,
-          transparent 130px
-        );
-      mask-image:linear-gradient(180deg, rgba(0,0,0,0.92), transparent 94%);
-      -webkit-mask-image:linear-gradient(180deg, rgba(0,0,0,0.92), transparent 94%);
-      pointer-events:none;
-      z-index:0;
-    }
-
-    #mindDetoxKimSection .md-wrap{
-      position:relative;
-      z-index:1;
-      width:min(980px, 100%);
-      margin:0 auto;
-    }
-
-    #mindDetoxKimSection .md-frame{
-      border-radius:36px;
-      padding:16px;
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-    }
-
-    #mindDetoxKimSection .hero-grid{
-      display:block;
-    }
-
-    #mindDetoxKimSection .hero-copy{
-      position:relative;
-      overflow:hidden;
-      padding:54px 42px 46px;
-      background:linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.88) 68%, rgba(241,247,255,0.82) 100%);
-      border:1px solid rgba(255,255,255,0.92);
-      border-radius:var(--radius-xl);
-      box-shadow:var(--shadow-lg);
-      margin:0;
-    }
-
-    #mindDetoxKimSection .hero-copy::before{
-      content:"";
-      position:absolute;
-      top:-80px;
-      right:-80px;
-      width:240px;
-      height:240px;
-      border-radius:50%;
-      pointer-events:none;
-    }
-
-    #mindDetoxKimSection .intro-question{
-      position:relative;
-      margin-bottom:28px;
-    }
-
-    #mindDetoxKimSection .panel-title{
-      margin:0 0 18px;
-      font-size:2.25rem;
-      line-height:1.4;
-      font-weight:900;
-      letter-spacing:-0.04em;
-      color:#16325f;
-      text-align:center;
-      word-break:keep-all;
-    }
-
-    #mindDetoxKimSection .hero-visual-label{
-      text-align:center;
-      font-size:0.98rem;
-      font-weight:800;
-      color:#2563eb;
-      margin:6px 0 14px;
-      letter-spacing:-0.01em;
-    }
-
-    #mindDetoxKimSection .hero-visual{
-      position:relative;
-      max-width:500px;
-      margin:0 auto 34px;
-      border-radius:22px;
-      overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02)),
-        #cfd8e6;
-      border:1px solid rgba(255,255,255,0.92);
-      box-shadow:0 20px 40px rgba(37,99,235,0.10);
-    }
-
-    #mindDetoxKimSection .hero-visual img{
-      width:100%;
-      height:auto;
-      display:block;
-      object-fit:cover;
-    }
-
-    #mindDetoxKimSection .hero-visual::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at 65% 22%, rgba(255,255,255,0.18), transparent 28%);
-      z-index:1;
-      pointer-events:none;
-      mix-blend-mode:screen;
-    }
-
-    #mindDetoxKimSection .hero-desc{
-      margin:0;
-      font-size:1.7rem;
-      line-height:1.4;
-      color:var(--muted);
-      font-weight:600;
-      letter-spacing:-0.01em;
-      text-align:center;
-    }
-
-    #mindDetoxKimSection .hero-desc strong{
-      color:#15376b;
-      font-weight:900;
-    }
-
-    #mindDetoxKimSection .hero-focus{
-      margin-top:34px;
-      max-width:500px;
-      margin:20px auto;
-      position:relative;
-      overflow:hidden;
-      border-radius:28px;
-      padding:28px 28px 26px;
-      background:linear-gradient(135deg, #3b82f6 0%, #2563eb 52%, #60a5fa 100%);
-      color:#fff;
-      box-shadow:0 22px 46px rgba(59,130,246,0.20);
-    }
-
-    #mindDetoxKimSection .hero-focus::before{
-      content:"";
-      position:absolute;
-      right:-24px;
-      top:-24px;
-      width:160px;
-      height:160px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.08) 46%, transparent 68%);
-      pointer-events:none;
-    }
-
-    #mindDetoxKimSection .hero-focus-label{
-      display:inline-block;
-      margin-bottom:14px;
-      padding:7px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.14);
-      border:1px solid rgba(255,255,255,0.18);
-      font-size:0.8rem;
-      font-weight:800;
-      letter-spacing:0.08em;
-    }
-
-    #mindDetoxKimSection .hero-focus p{
-      position:relative;
-      z-index:1;
-      margin:0;
-      font-size:1.3rem;
-      line-height:1.82;
-      font-weight:800;
-      letter-spacing:-0.02em;
-      color:rgba(255,255,255,0.96);
-      text-align:left;
-    }
-
-    #mindDetoxKimSection .hero-focus .accent{
-      color:#dbeafe;
-      font-weight:900;
-    }
-
-    /* 간격 조절용 */
-    #mindDetoxKimSection .hero-focus .program-gap{
-      display:block;
-      margin-bottom:10px; /* 이 숫자로 간격 조절 */
-    }
-
-    #mindDetoxKimSection .content-bottom{
-      margin-top:24px;
-      display:block;
-    }
-
-    #mindDetoxKimSection .program-panel,
-    #mindDetoxKimSection .offer-panel{
-      border-radius:30px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.90));
-      border:1px solid rgba(255,255,255,0.90);
-      box-shadow:var(--shadow-lg);
-      padding:30px;
-      margin:20px 0 0;
-    }
-
-    #mindDetoxKimSection .panel-label{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(59,130,246,0.08);
-      border:1px solid rgba(59,130,246,0.12);
-      color:var(--blue2);
-      font-size:0.86rem;
-      font-weight:800;
-      letter-spacing:0.05em;
-      margin-bottom:18px;
-    }
-
-    #mindDetoxKimSection .program-list{
-      display:grid;
-      gap:14px;
-    }
-
-    #mindDetoxKimSection .program-item{
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-      padding:18px 18px;
-      border-radius:20px;
-      background:rgba(59,130,246,0.05);
-      border:1px solid rgba(59,130,246,0.08);
-    }
-
-    #mindDetoxKimSection .program-num{
-      width:42px;
-      height:42px;
-      flex:0 0 auto;
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg, rgba(59,130,246,0.16), rgba(147,197,253,0.10));
-      color:var(--blue2);
-      font-weight:900;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,0.88);
-    }
-
-    #mindDetoxKimSection .program-text strong{
-      display:block;
-      font-size:1.05rem;
-      font-weight:900;
-      color:#16325f;
-      margin-bottom:6px;
-      letter-spacing:-0.02em;
-    }
-
-    #mindDetoxKimSection .program-text span{
-      display:block;
-      font-size:0.98rem;
-      line-height:1.75;
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    #mindDetoxKimSection .offer-copy{
-      margin:0 0 22px;
-      font-size:1.08rem;
-      line-height:1.9;
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    #mindDetoxKimSection .offer-copy strong{
-      color:#15376b;
-      font-weight:900;
-    }
-
-    #mindDetoxKimSection .price-box{
-      max-width:500px;
-      margin:0 auto;
-      border-radius:24px;
-      padding:24px 22px;
-      background:linear-gradient(135deg, #60a5fa 0%, #3b82f6 45%, #2563eb 100%);
-      color:#fff;
-      box-shadow:0 22px 44px rgba(59,130,246,0.20);
-      margin-top:6px;
-    }
-
-    #mindDetoxKimSection .price-box .price-title{
-      margin:0 0 8px;
-      font-size:1rem;
-      font-weight:700;
-      color:rgba(255,255,255,0.84);
-    }
-
-    #mindDetoxKimSection .price-box .price-main{
-      margin:0 0 16px;
-      font-size:2.3rem;
-      line-height:1.1;
-      letter-spacing:-0.04em;
-      font-weight:900;
-    }
-
-    #mindDetoxKimSection .price-box .price-main strong{
-      color:#eff6ff;
-    }
-
-    #mindDetoxKimSection .discount-list{
-      display:grid;
-      gap:10px;
-    }
-
-    #mindDetoxKimSection .discount-item{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      padding:13px 14px;
-      border-radius:16px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.14);
-      font-size:1.7rem;
-      font-weight:700;
-      color:rgba(255,255,255,0.94);
-    }
-
-    #mindDetoxKimSection .discount-item strong{
-      color:#eff6ff;
-      white-space:nowrap;
-    }
-
-    #mindDetoxKimSection .cta-wrap{
-      margin-top:18px;
-      width:100%;
-    }
-
-    #mindDetoxKimSection .cta-btn{
-      width:100%;
-      min-height:64px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      text-decoration:none;
-      border-radius:18px;
-      padding:18px 20px;
-      box-sizing:border-box;
-      background:linear-gradient(135deg, #60a5fa 0%, #3b82f6 46%, #2563eb 100%);
-      color:#fff;
-      font-size:1.02rem;
-      font-weight:900;
-      letter-spacing:-0.02em;
-      line-height:1.2;
-      box-shadow:0 18px 36px rgba(59,130,246,0.22);
-      position:relative;
-      overflow:hidden;
-      transition:transform .28s ease, box-shadow .28s ease, filter .28s ease;
-      margin:0 auto;
-      max-width:500px;
-    }
-
-    #mindDetoxKimSection .cta-btn::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(120deg, transparent 18%, rgba(255,255,255,0.16) 42%, transparent 62%);
-      transform:translateX(-140%);
-      animation:kimCtaShine 3.8s ease-in-out infinite;
-    }
-
-    #mindDetoxKimSection .cta-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 24px 44px rgba(59,130,246,0.28);
-      filter:brightness(1.03);
-    }
-
-    #mindDetoxKimSection .cta-btn span{
-      position:relative;
-      z-index:1;
-      display:block;
-      width:100%;
-    }
-
-    #mindDetoxKimSection .cta-btn1{
-      width:100%;
-      min-height:64px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      text-decoration:none;
-      border-radius:18px;
-      padding:18px 20px;
-      box-sizing:border-box;
-      background:linear-gradient(135deg, #60a5fa 0%, #3b82f6 46%, #2563eb 100%);
-      color:#fff;
-      font-size:1.02rem;
-      font-weight:900;
-      letter-spacing:-0.02em;
-      line-height:1.2;
-      box-shadow:0 18px 36px rgba(59,130,246,0.22);
-      position:relative;
-      overflow:hidden;
-      transition:transform .28s ease, box-shadow .28s ease, filter .28s ease;
-      margin:0 auto;
-      max-width:500px;
-    }
-
-    #mindDetoxKimSection .cta-btn1::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(120deg, transparent 18%, rgba(255,255,255,0.16) 42%, transparent 62%);
-      transform:translateX(-140%);
-      animation:kimCtaShine 3.8s ease-in-out infinite;
-    }
-
-    #mindDetoxKimSection .cta-btn1:hover{
-      transform:translateY(-2px);
-      box-shadow:0 24px 44px rgba(59,130,246,0.28);
-      filter:brightness(1.03);
-    }
-
-    #mindDetoxKimSection .cta-btn1 span{
-      position:relative;
-      z-index:1;
-      display:block;
-      width:100%;
-    }
-
-    @keyframes kimCtaShine{
-      0%{ transform:translateX(-140%); }
-      42%{ transform:translateX(140%); }
-      100%{ transform:translateX(140%); }
-    }
-
-    @media (max-width: 640px){
-      #mindDetoxKimSection{
-        padding:78px 14px;
-      }
-
-      #mindDetoxKimSection .md-frame{
-        padding:10px;
-        border-radius:24px;
-      }
-
-      #mindDetoxKimSection .hero-copy{
-        padding:34px 18px 28px;
-        border-radius:24px;
-      }
-
-      #mindDetoxKimSection .panel-title{
-        font-size:1.4rem;
-        line-height:1.45;
-      }
-
-      #mindDetoxKimSection .hero-visual{
-        max-width:100%;
-        margin:0 auto 26px;
-        border-radius:18px;
-      }
-
-      #mindDetoxKimSection .hero-desc{
-        font-size:1.1rem;
-        line-height:1.82;
-      }
-
-      #mindDetoxKimSection .hero-focus{
-        margin-top:24px;
-        padding:22px 18px 20px;
-        border-radius:20px;
-      }
-
-      #mindDetoxKimSection .hero-focus p{
-        font-size:1.3rem;
-        line-height:1.8;
-      }
-
-      #mindDetoxKimSection .hero-focus .program-gap{
-        margin-bottom:14px;
-      }
-
-      #mindDetoxKimSection .program-panel,
-      #mindDetoxKimSection .offer-panel{
-        padding:22px 18px;
-        border-radius:22px;
-      }
-
-      #mindDetoxKimSection .program-item{
-        padding:15px 14px;
-      }
-
-      #mindDetoxKimSection .program-text strong{
-        font-size:1rem;
-      }
-
-      #mindDetoxKimSection .program-text span{
-        font-size:0.94rem;
-      }
-
-      #mindDetoxKimSection .price-box{
-        padding:20px 16px;
-        border-radius:20px;
-      }
-
-      #mindDetoxKimSection .price-box .price-main{
-        font-size:1.95rem;
-      }
-
-      #mindDetoxKimSection .discount-item{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:6px;
-      }
-
-      #mindDetoxKimSection .cta-btn{
-        min-height:58px;
-        border-radius:16px;
-        font-size:0.98rem;
-        padding:16px 16px;
-      }
-
-      #mindDetoxKimSection .cta-btn1{
-        min-height:58px;
-        border-radius:16px;
-        font-size:0.98rem;
-        padding:16px 16px;
-      }
-    }
-  </style>
-
-  <div class="md-wrap">
-    <div class="md-frame">
-
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="intro-question">
-            <h3 class="panel-title">왜 가족은<br>나를 힘들게 할까?</h3>
-            <h3 class="panel-title">가정이 편하면<br>만사가 편해진다</h3>
-          </div>
-
-          <!-- <div class="hero-visual-label">✔ 이번 강연 핵심 강연자</div> -->
-
-          <div class="hero-visual">
-            <img src="https://ihopenews.com/news/photo/202404/235150_99784_151.jpg" alt="김경일 교수">
-          </div>
-
-          <p class="hero-desc">
-            <span><b>인생은 '운'보다 '관계'입니다.</b></span><br><br>
-            <span style="padding-bottom:10px;">👉 <strong>대한민국 대표 인지심리학자<br>김경일 교수가 <br>알려주는 관계의 기술</strong></span>
-          </p>
-
-          <div class="hero-focus">
-            <p>
-              ✔ 김경일 교수 2회 강연<br>
-              <span class="program-gap"><b>✔ 정수지 피아노 공연</b></span>
-              <span class="blink" style="color:yellow;"><b>✔ 1시간 현장 Q &amp; A</b></span><br>
-              <span style="font-size:1.5rem;color:yellow;font-weight:bold;">👉 내 문제를 직접 질문할 수 있습니다.</span><br><br>
-              <span style="font-size:1.5rem;font-weight:bold;">💡 3시간 프로그램 / 참여형 강연</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-
-
-
-<div id="event1">
-<!-- 행사 헤더 -->
-<!-- <div style="text-align:-webkit-center;margin:40px;">
-<h2><b>행사 일시</b></h2>
-</div> -->
-<!-- 날짜 및 시간 정보 -->
- <div style="background: #f9f9f9;">
-<div class="info-card">
-    <h2 class="card-title">
-        <i class="fas fa-calendar-alt"></i>
-        행사 일시 및 장소
-    </h2>
-    <div class="info-content">
-        <p class="font-bold text-xl mb-2"><b>🗓️ 5월 9일 (토) 오후 2시 ~ 5시</p>
-        <p class="font-bold text-xl mb-2"><b>📍SCC 홀 서초 3층 (예술의 전당 건너편)<br>&nbsp;&nbsp;&nbsp;(서울 서초구 남부순환로 325길 9, 3층)<br><br></b></p>
-        <p class="font-bold text-xl mb-2"><b>주최 : 마음건강 길</b>
-        <!-- <p class="font-bold text-xl mb-2"><b>후원 : HTU GLOBAL</b> -->
-        <p class="font-bold text-xl mb-2"><b>문의 : ☎️  02-725-7525  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📱 010-5385-0793</b>
-        <p class="font-bold text-xl mb-2"><b>이메일 : mindgil21@naver.com</b>
-        
-
-
-
-
-
-        <!-- <p class="font-bold text-xl mb-2">💻 ZOOM 생중계 신청 가능</b></p><br> -->
-         <!-- <a href="#apply" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;"> 컨퍼런스 현장 참여하기</a></p><br> -->
-           <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;">ZOOM 컨퍼런스 신청하기</a></p><br> -->
-    </div>
-</div>
-</div>
-
-
-</div>
-
-
-<style>
-#event1 {
-    font-family: 'Noto Sans KR', sans-serif;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    /* background-color: #f9f9f9; */
-    /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); */
-    border-radius: 12px;
-    color: #333;
-}
-
-#event1 .event-header {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 30px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
-}
-
-#event1 .event-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-}
-
-#event1 .event-subtitle {
-    font-size: 1.2rem;
-    font-weight: 300;
-    opacity: 0.9;
-}
-
-#event1 .info-card {
-    background-color: white;
-    border-radius: 8px;
-    border:1px solid #00000032;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease;
-}
-
-#event1 .info-card:hover {
-    transform: translateY(-5px);
-}
-
-#event1 .card-title {
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: #2575fc;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-}
-
-@media screen and (max-width:600px) {
   
-  #event1 .card-title {
-    font-size: 1.2rem;
-  
-}
-
-}
-
-
-#event1 .card-title i {
-    margin-right: 10px;
-}
-
-#event1 .info-content {
-    font-size: 1.6rem;
-    line-height: 1.6;
-}
-
-@media screen and (max-width:500px) {
- 
-  #event1 .info-content {
-    font-size: 1.3rem;
-    line-height: 1.6;
-}
-  
-}
-
-#event1 .map-container {
-    position: relative;
-    height: 300px;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-#event1 .map-overlay {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-}
-
-#event1 .map-marker {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
-}
-
-#event1 .direction-steps {
-    background-color: #f0f7ff;
-    border-left: 4px solid #2575fc;
-    padding: 15px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 25px;
-}
-
-#event1 .step {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 15px;
-}
-
-#event1 .step:last-child {
-    margin-bottom: 0;
-}
-
-#event1 .step-number {
-    background-color: #2575fc;
-    color: white;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-right: 15px;
-    flex-shrink: 0;
-}
-
-#event1 .step-text {
-    flex-grow: 1;
-    line-height: 1.5;
-}
-
-#event1 .footer {
-    text-align: center;
-    margin-top: 40px;
-    color: #666;
-    font-size: 0.9rem;
-}
-</style>
-
-      <div class="content-bottom">
-        <div class="offer-panel">
-          <!-- <h3 class="panel-title">👉 듣고 끝나는 강연이 아니라,<br>1:1 대화 나누며<br>내 문제를 직접 연결해 보는 시간</h3> -->
-
-          <div class="price-box">
-            <div class="discount-list">
-              <div class="discount-item">
-                <span style="font-weight:bold;">참가비</span>
-                <strong style="font-weight:bold;">25,000원</strong>
-              </div>
-              <!-- <div class="discount-item blink" style="color:yellow">
-                <span style="font-weight:bold;">선착순 100명 한정!</span>
-                <strong style="color:yellow;font-weight:bold;">20,000원</strong>
-              </div> -->
-              <div class="discount-item" style="color:yellow">
-                <span style="font-weight:bold;">2인 이상 신청 시</span>
-                <strong style="color:yellow;font-weight:bold;">20,000원</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="cta-wrap">
-            <a href="#choice_p" class="cta-btn1">
-              <span style="font-size:27px;font-weight:bold;">지금 신청하기 👉</span>
-            </a>
-
-            <div class="cta-sub blink" style="font-weight:bold;font-size:20px;text-align:center;">
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- <hr style="width:100%;">
-<h3 class="title-main"> 혹시 이런 경험 있으신가요?</h3> -->
-<!-- =========================
-공통 제목 섹션 + 내용 섹션 구조 예시
-앞으로 모든 섹션에 같은 제목 디자인을 쓰고 싶을 때
-flos-section-head / flos-section-body 구조로 반복 사용
-========================= -->
-
-<!-- =========================
-1) 공통 제목 섹션
-=========
-
-
-================ -->
-
-
-
-
-<section class="flos-section-head">
+<section id="saitoHitoriBowl3" aria-label="사이토 히토리 ‘그릇’ 포스터">
   <style>
-    /* =========================
-       공통 제목 섹션
-    ========================= */
-    .flos-section-head{
-      position:relative;
-      overflow:hidden;
-      padding:100px 20px 34px;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.76), transparent 40%),
-        linear-gradient(180deg, #edf2f7 0%, #e7edf5 100%);
-      font-family:"Pretendard","Noto Sans KR",sans-serif;
-    }
-
-    .flos-section-head *{
-      box-sizing:border-box;
-    }
-
-    .flos-section-head::before,
-    .flos-section-head::after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      pointer-events:none;
-      filter:blur(34px);
-      z-index:1;
-    }
-
-    .flos-section-head::before{
-      width:320px;
-      height:320px;
-      top:-110px;
-      right:-90px;
-      background:rgba(100, 140, 210, 0.16);
-    }
-
-    .flos-section-head::after{
-      width:240px;
-      height:240px;
-      left:-60px;
-      bottom:-80px;
-      background:rgba(150, 180, 220, 0.16);
-    }
-
-    .flos-head-inner{
-      width:min(100%, 980px);
-      margin:0 auto;
-      position:relative;
-      z-index:2;
-    }
-
-    .flos-kicker{
-      display:inline-flex;
-      align-items:center;
-      min-height:36px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.56);
-      border:1px solid rgba(84,118,166,0.10);
-      color:#5e7895;
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:0.05em;
-      box-shadow:0 8px 20px rgba(41,69,112,0.05);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      margin-bottom:16px;
-    }
-
-    .flos-title{
-      margin:0;
-      font-size:clamp(36px, 5vw, 56px);
-      line-height:1.18;
-      letter-spacing:-0.045em;
-      font-weight:900;
-      color:#233f68;
-      word-break:keep-all;
-    }
-
-    .flos-title strong{
-      color:#1b3558;
-      font-weight:900;
-    }
-
-    .flos-line{
-      width:88px;
-      height:5px;
-      border-radius:999px;
-      margin-top:16px;
-      background:linear-gradient(90deg, #7fa7e4 0%, #4176d9 100%);
-      box-shadow:0 10px 20px rgba(63,116,216,0.14);
-    }
-
-    .flos-desc{
-      margin:18px 0 0;
-      max-width:760px;
-      font-size:18px;
-      line-height:1.8;
-      letter-spacing:-0.02em;
-      color:#5a7089;
-      word-break:keep-all;
-    }
-
-    /* =========================
-       공통 내용 섹션
-    ========================= */
-    .flos-section-body{
-      position:relative;
-      overflow:hidden;
-      padding:20px 20px 100px;
-      background:linear-gradient(180deg, #e7edf5 0%, #dee7f0 100%);
-      font-family:"Pretendard","Noto Sans KR",sans-serif;
-    }
-
-    .flos-section-body *{
-      box-sizing:border-box;
-    }
-
-    .flos-body-inner{
-      width:min(100%, 980px);
-      margin:0 auto;
-      position:relative;
-      z-index:2;
-    }
-
-    .flos-box{
-      position:relative;
-      padding:42px 38px 38px;
-      border-radius:32px;
-      background:rgba(255,255,255,0.58);
-      border:1px solid rgba(255,255,255,0.72);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
-      box-shadow:
-        0 22px 54px rgba(41,69,112,0.08),
-        inset 0 1px 0 rgba(255,255,255,0.92);
-    }
-
-    /* 제목 섹션과 자연스럽게 이어주는 브리지 */
-    .flos-box::before{
-      content:"";
-      position:absolute;
-      top:-18px;
-      left:42px;
-      width:120px;
-      height:36px;
-      border-radius:24px 24px 0 0;
-      background:rgba(255,255,255,0.42);
-      border:1px solid rgba(255,255,255,0.52);
-      border-bottom:none;
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-      box-shadow:0 8px 20px rgba(41,69,112,0.04);
-    }
-
-    .flos-list{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-      margin:0;
-      padding:0;
-      list-style:none;
-    }
-
-    .flos-item{
-      position:relative;
-      min-height:122px;
-      display:flex;
-      align-items:center;
-      padding:28px 24px 28px 66px;
-      border-radius:24px;
-      background:rgba(255,255,255,0.82);
-      border:1px solid rgba(78,112,164,0.08);
-      box-shadow:0 12px 28px rgba(33,58,98,0.05);
-      font-size:clamp(21px, 2vw, 25px);
-      font-weight:800;
-      line-height:1.52;
-      letter-spacing:-0.032em;
-      color:#2b4058;
-      word-break:keep-all;
-      opacity:0;
-      transform:translateY(22px);
-      transition:
-        opacity 0.72s ease,
-        transform 0.72s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease,
-        background 0.35s ease;
-    }
-
-    .flos-item.is-visible{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    .flos-item:hover{
-      background:rgba(255,255,255,0.92);
-      border-color:rgba(63,116,216,0.18);
-      box-shadow:0 18px 34px rgba(33,58,98,0.09);
-    }
-
-    .flos-item::before{
-      content:"";
-      position:absolute;
-      left:24px;
-      top:50%;
-      transform:translateY(-50%);
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:linear-gradient(135deg,#78a6ea 0%, #3f74d8 100%);
-      box-shadow:0 0 0 7px rgba(120,166,234,0.18);
-      flex-shrink:0;
-    }
-
-    .flos-quote{
-      position:relative;
-      margin-top:28px;
-      padding:36px 32px;
-      border-radius:26px;
-      background:linear-gradient(135deg, #5a92ea 0%, #3368d9 100%);
-      color:#ffffff;
-      box-shadow:0 20px 46px rgba(51,104,217,0.22);
-      overflow:hidden;
-      opacity:0;
-      transform:translateY(26px);
-      transition:
-        opacity 0.85s ease,
-        transform 0.85s ease;
-    }
-
-    .flos-quote.is-visible{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    .flos-quote::after{
-      content:"";
-      position:absolute;
-      right:-38px;
-      bottom:-38px;
-      width:160px;
-      height:160px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.09);
-    }
-
-    .flos-quote-text{
-      position:relative;
-      z-index:1;
-      margin:0;
-      font-size:clamp(24px, 3vw, 34px);
-      line-height:1.52;
-      letter-spacing:-0.04em;
-      font-weight:700;
-      word-break:keep-all;
-    }
-
-    .flos-quote-text strong{
-      font-weight:900;
-      color:#ffffff;
-    }
-
-    @media (max-width: 900px){
-      .flos-box{
-        padding:34px 24px 28px;
-        border-radius:26px;
-      }
-
-      .flos-box::before{
-        left:28px;
-        width:92px;
-        height:28px;
-        top:-14px;
-      }
-
-      .flos-list{
-        grid-template-columns:1fr;
-      }
-
-      .flos-item{
-        min-height:auto;
-      }
-    }
-
-    @media (max-width: 768px){
-      .flos-section-head{
-        padding:74px 16px 24px;
-      }
-
-      .flos-section-body{
-        padding:0 16px 72px;
-      }
-
-      .flos-kicker{
-        font-size:12px;
-        padding:7px 12px;
-        margin-bottom:14px;
-      }
-
-      .flos-title{
-        font-size:clamp(30px, 7vw, 42px);
-      }
-
-      .flos-line{
-        width:70px;
-        height:4px;
-        margin-top:12px;
-      }
-
-      .flos-desc{
-        margin-top:14px;
-        font-size:15px;
-        line-height:1.75;
-      }
-
-      .flos-item{
-        padding:22px 18px 22px 54px;
-        font-size:clamp(18px, 5vw, 22px);
-        line-height:1.48;
-        border-radius:18px;
-      }
-
-      .flos-item::before{
-        left:18px;
-        width:18px;
-        height:18px;
-        box-shadow:0 0 0 6px rgba(120,166,234,0.18);
-      }
-
-      .flos-quote{
-        margin-top:22px;
-        padding:26px 20px;
-        border-radius:18px;
-      }
-
-      .flos-quote-text{
-        font-size:clamp(21px, 5.7vw, 28px);
-        line-height:1.48;
-      }
-    }
-  </style>
-
-
-</section>
-
-
-
-
-
-<section class="flos-section-head">
-  <style>
-    .flos-section-head{
-      position:relative;
-      overflow:hidden;
-      padding:100px 20px 34px;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.76), transparent 40%),
-        linear-gradient(180deg, #edf2f7 0%, #e7edf5 100%);
-      font-family:"Pretendard","Noto Sans KR",sans-serif;
-    }
-
-    .flos-section-head *{
-      box-sizing:border-box;
-    }
-
-    .flos-section-head::before,
-    .flos-section-head::after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      pointer-events:none;
-      filter:blur(34px);
-      z-index:1;
-    }
-
-    .flos-section-head::before{
-      display:none;
-      width:320px;
-      height:320px;
-      top:-110px;
-      right:-90px;
-      /* background:rgba(100, 140, 210, 0.16); */
-    }
-
-    .flos-section-head::after{
-      display:none;
-      width:240px;
-      height:240px;
-      left:-60px;
-      bottom:-80px;
-      background:rgba(150, 180, 220, 0.16);
-    }
-
-    .flos-head-inner{
-      width:min(100%, 980px);
-      margin:0 auto;
-      position:relative;
-      z-index:2;
-    }
-
-    .flos-kicker{
-      display:inline-flex;
-      align-items:center;
-      min-height:36px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.56);
-      border:1px solid rgba(84,118,166,0.10);
-      color:#5e7895;
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:0.05em;
-      box-shadow:0 8px 20px rgba(41,69,112,0.05);
-      backdrop-filter:blur(10px);
-      margin-bottom:16px;
-    }
-
-    .flos-title{
-      margin:0;
-      font-size:clamp(36px, 5vw, 56px);
-      line-height:1.18;
-      letter-spacing:-0.045em;
-      font-weight:900;
-      color:#233f68;
-      word-break:keep-all;
-    }
-
-    .flos-title strong{
-      color:#1b3558;
-    }
-
-    .flos-line{
-      width:88px;
-      height:5px;
-      border-radius:999px;
-      margin-top:16px;
-      background:linear-gradient(90deg, #7fa7e4 0%, #4176d9 100%);
-      box-shadow:0 10px 20px rgba(63,116,216,0.14);
-    }
-
-    .flos-desc{
-      margin:18px 0 0;
-      max-width:760px;
-      font-size:18px;
-      line-height:1.8;
-      color:#5a7089;
-    }
-
-    @media (max-width:768px){
-      .flos-section-head{
-        padding:74px 16px 24px;
-      }
-
-      .flos-title{
-        font-size:clamp(30px, 7vw, 42px);
-      }
-
-      .flos-desc{
-        font-size:15px;
-      }
-    }
-  </style>
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-      이번 강연이 특별한 이유 
+    /* ================= Scope: #saitoHitoriBowl3 only ================= */
+    #saitoHitoriBowl3{
       
-    </h2>
+      /* ======= Theme Tokens (필요 시 수정) ======= */
+      --bg:url('./img/intro-10.jpg');             /* 배경 이미지 (교체 가능) */
+      --ink:#e7efe9;                              /* 기본 텍스트 */
+      --muted:#cfe0d9;                            /* 보조 텍스트 */
+      --title:#cfe7e1;                            /* 상단 영문 타이틀 */
+      --accent:#ffd84a;                           /* 노란 하이라이트 */
+      --accent-ink:#253433;                       /* 하이라이트 텍스트 */
+      --shadow:rgba(0,0,0,.35);                   /* 그림자 공통 */
+      --panel:rgba(0,0,0,.28);                    /* 카드 배경 톤 */
+      --radius:16px;
+      --maxW:520px;                               /* 카드 가로폭 */
+      --ff-base:"Pretendard","Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      --ff-title:"BookkMyungjo","Times New Roman",serif; /* 상단 영문 느낌 */
 
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-
-<section id="saitoHitoriBowl">
-  <style>
-    #saitoHitoriBowl{
-      --bg:#eef4fb;
-      --bg2:#e7eff9;
-      --navy:#1b3558;
-      --text:#2e4666;
-      --muted:#6b7f99;
-      --blue:#4f83ff;
-      --blue-soft:#e2edff;
-      --white:rgba(255,255,255,0.82);
-      --white-strong:rgba(255,255,255,0.95);
-      --line:rgba(80,120,200,0.12);
-      --shadow:0 20px 50px rgba(30,60,120,0.08);
-      --radius:24px;
-
-      padding:20px 20px 100px;
+      position:relative; display:block; width:100%;
+      margin:0px 0 0;
+      padding:36px 16px 48px;                     /* 섹션 여백 */
       background:
-        linear-gradient(180deg, #e7edf5 0%, #dee7f0 100%);
-      font-family:"Pretendard","Noto Sans KR",sans-serif;
+        radial-gradient(60% 28% at 50% 10%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, rgba(7,43,47,.94) 0%, rgba(7,43,47,.96) 100%);
+      overflow:hidden; box-sizing:border-box;
+      font-family:var(--ff-base);
+      text-align:center;                          /* 전체 중앙 정렬 */
+    }
+    /* 배경 이미지 + 폭죽 라이트(블렌드) */
+    #saitoHitoriBowl3::before{
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background:
+        var(--bg) center/cover no-repeat,
+        radial-gradient(240px 240px at 80% 78%, rgba(255,255,255,.12), transparent 60%),
+        radial-gradient(200px 200px at 18% 72%, rgba(255,255,255,.10), transparent 62%),
+        radial-gradient(140px 140px at 72% 30%, rgba(255,255,255,.08), transparent 62%);
+      mix-blend-mode:screen; opacity:.85;
+    }
+    #saitoHitoriBowl3::after{               /* 어둡게 덮어 컬러 톤 맞춤 */
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+    
     }
 
-    #saitoHitoriBowl .shb-wrap{
-      max-width:980px;
-      margin:0 auto;
+    /* ===== 카드 래퍼 ===== */
+    #saitoHitoriBowl3 .shb-wrap{
+      position:relative; z-index:2; margin:0 auto; max-width:var(--maxW);
+      padding:34px 22px 40px; border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(5,36,40,.55), rgba(5,36,40,.65));
+      /* box-shadow:0 10px 42px var(--shadow), inset 0 0 0 1px rgba(255,255,255,.06); */
     }
 
-    /* 카드 */
-    #saitoHitoriBowl .card{
-      border-radius:var(--radius);
-      background:var(--white);
-      backdrop-filter:blur(14px);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      padding:36px 32px;
+    /* ===== 상단 영문 타이틀 ===== */
+    #saitoHitoriBowl3 .shb-stit{
+         font-family: 'GounBatang-t';
+      font-weight:700; letter-spacing:.04em; color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,.25);
+      margin:0 0 10px; line-height:1.4;
+      font-size:36px;                 /* 모바일 기본 */
     }
 
-    /* 제목 */
-    #saitoHitoriBowl h2{
-      margin:0 0 20px;
-      font-size:38px;
-      font-weight:900;
-      color:var(--navy);
-      text-align:center;
-      line-height:1.4;
+    /* ===== 큰 인용문(따옴표 포함) ===== */
+    #saitoHitoriBowl3 .shb-quote{
+      color:var(--ink); opacity:.95; margin:0 0 18px; line-height:1.8;
+      font-weight:600; font-size:18px; /* 모바일 */
+    }
+    #saitoHitoriBowl3 .shb-quote em{ color:#ffffff; font-style:normal; }
+
+    /* ===== 책 이미지 (별도 삽입) ===== */
+    #saitoHitoriBowl3 .shb-book{
+      width:235px; margin:14px auto 18px; position:relative;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));
+      transform:translateZ(0);
+    }
+    #saitoHitoriBowl3 .shb-book img{ width:100%; height:auto; display:block; border-radius:6px; }
+
+    /* ===== 회색 본문 (재출간 알림) ===== */
+    #saitoHitoriBowl3 .shb-lead{     color: var(--muted);
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 14px 0 10px; }
+
+    /* ===== 노란 하이라이트 배지 (두 줄) ===== */
+    #saitoHitoriBowl3 .shb-badge{
+      display:inline-block; background:#4fb1bc; color:#fff;
+      padding:10px 14px; border-radius:10px; font-weight:800; font-size:18px;
+      line-height:140%;
+      /* box-shadow:0 6px 22px rgba(255,216,74,.28); line-height:1.25; margin:10px 0 8px; */
     }
 
-    /* 설명 */
-    #saitoHitoriBowl .desc{
-      text-align:center;
-      color:var(--muted);
-      font-size:26px;
-      margin-bottom:26px;
-  
-      font-weight: 800;
-        line-height:140%;
+    /* ===== 상세 카피(리스트 느낌의 본문) ===== */
+    #saitoHitoriBowl3 .shb-copy{ color:var(--muted); font-size:14.5px; line-height:1.95; margin-top:6px; }
+    #saitoHitoriBowl3 .shb-copy .em{ color:#ffe16a; font-weight:800; }
+    #saitoHitoriBowl3 .shb-copy .st{ color:#ffffff; font-weight:800; }
+
+    /* ===== 하단 문구 ===== */
+    #saitoHitoriBowl3 .shb-foot{ margin-top:16px; color:var(--ink); font-size:14.5px; line-height:1.9; }
+    #saitoHitoriBowl3 .shb-foot .em{ color:#ffe16a; font-weight:800; }
+
+    /* ===== 살짝 떠오르는 미세 애니메이션 (책) ===== */
+    @keyframes shb-float{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-3px) } 100%{ transform:translateY(0) } }
+    #saitoHitoriBowl3 .shb-book{ animation:shb-float 4.6s ease-in-out infinite; }
+
+    /* ===== 반응형 ===== */
+    @media (min-width:480px){
+      #saitoHitoriBowl3 .shb-stit{ font-size:34px }
+      #saitoHitoriBowl3 .shb-quote{ font-size:19px }
+      #saitoHitoriBowl3 .shb-book{ width:250px }
     }
-
-    #saitoHitoriBowl .desc strong{
-      color:var(--blue);
-      font-weight:900;
+    @media (min-width:768px){
+      #saitoHitoriBowl3{ padding:46px 20px 64px }
+      #saitoHitoriBowl3 .shb-wrap{ max-width:560px; padding:38px 28px 44px }
+      #saitoHitoriBowl3 .shb-stit{ font-size:38px }
+      #saitoHitoriBowl3 .shb-quote{ font-size:20px }
+      #saitoHitoriBowl3 .shb-book{ width:268px }
     }
-
-    /* 리스트 */
-    #saitoHitoriBowl ul{
-      list-style:none;
-      padding:0;
-      margin:0;
-      display:grid;
-      gap:14px;
-    }
-
-    #saitoHitoriBowl li{
-      background:var(--white-strong);
-      border-radius:16px;
-      padding:28px 24px 28px 66px;
-      position:relative;
-       font-size: clamp(21px, 2vw, 25px);
-      font-weight:900;
-      color:var(--text);
-      border:1px solid var(--line);
-      line-height:1.7;
-    }
-
-    #saitoHitoriBowl li::before{
-      content:"";
-      position:absolute;
-      left:16px;
-      top:50%;
-      transform:translateY(-50%);
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:var(--blue);
-      box-shadow:0 0 0 7px rgba(79,131,255,0.15);
-    }
-
-    /* 강조 */
-    #saitoHitoriBowl .highlight{
-      margin-top:24px;
-      padding:20px;
-      border-radius:16px;
-      background:var(--blue-soft);
-      text-align:center;
-      font-weight:900;
-      color:var(--navy);
-      line-height:1.7;
-      font-size:28px;
-    }
-
-    /* 두 번째 카드 */
-    #saitoHitoriBowl .special{
-      margin-top:26px;
-    }
-
-    #saitoHitoriBowl .core{
-      background:linear-gradient(135deg,#6ea3ff,#3f7dff);
-      color:#fff;
-      padding:22px;
-      border-radius:18px;
-      text-align:center;
-      font-weight:900;
-      margin-bottom:18px;
-      font-size:22px;
-    }
-
-    #saitoHitoriBowl .core .big{
-      display:block;
-      font-size:36px;
-      margin-top:10px;
-    }
-
-    #saitoHitoriBowl .note{
-      text-align:center;
-      font-weight:800;
-      color:var(--navy);
-      margin-top:16px;
-      line-height:1.8;
-      font-size:21px;
-    }
-
-    /* 모바일 */
-    @media (max-width:768px){
-      #saitoHitoriBowl{
-        padding:10px 16px 80px;
-      }
-
-      #saitoHitoriBowl .card{
-        padding:26px 18px;
-      }
-
-      #saitoHitoriBowl h2{
-        font-size:30px;
-      }
-
-      #saitoHitoriBowl .desc{
-        font-size: 22px;
-        font-weight: 800;
-        line-height:140%;
-      }
-
-      #saitoHitoriBowl li{
-        font-size:21px;
-        padding:22px 18px 22px 54px;
-      }
-
-      #saitoHitoriBowl .highlight{
-        font-size:24px;
-        line-height: 140%;
-      }
-
-      #saitoHitoriBowl .core{
-        font-size:18px;
-      }
-
-      #saitoHitoriBowl .core .big{
-        font-size:28px;
-      }
-
-      #saitoHitoriBowl .note{
-        font-size:24px;
-        line-height: 140%;
-      }
-    }
-
-
-#saitoHitoriBowl li.arrow::before{
-  content:"👉";
-  left:16px;
-  width:auto;
-  height:auto;
-  background:none;
-  box-shadow:none;
-  font-size:20px;
-}
   </style>
 
   <div class="shb-wrap">
+    <!-- <h1 class="shb-stit blink" style="color:rgb(244, 255, 30);">행사 종료<br></h1><br> -->
+  <h1 class="shb-stit">사랑하는데<br>왜 이렇게 어려울까요<br></h1><br>
+  <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">
+부모와 대화하면 자꾸 부딪히게 됩니다.<br>
+  자녀를 사랑하는데 서운함이 남습니다.<br><br>
+  가까울수록<br>더 많이 오해하고<br>같은 문제가 반복되고 있다면?<br><br>
+<!-- 그런데 이게<br>성격 문제가 아니라<br>'이해하는 방식'의 문제라면?<br><br> -->
+<!-- 사람은 상대를<br>있는 그대로 보지 않고<br>자기 기준으로 해석합니다<br><br> -->
+김경일 교수는<br>성격 문제가 아니라<br><br>'이해하는 방식'과<br>'관계를 다루는 기술'의<br>문제라고 봅니다.<br><br>
+  </p>
 
- 
+    <!-- ✅ 책 이미지를 별도 삽입: 경로만 교체하면 됨 -->
+    <figure class="shb-book">
+      <img src="https://koreadailytimes.com/files/attach/images/149/856/041/fdf4d78646830714a689c83253edb942.jpg" alt="사이토 히토리 ‘그릇’ 도서 표지">
+    </figure>
+    
+    <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">이번 <b style=" font-family: 'SchoolSafetyNotification-d';color:#4ed250;">마음 디톡스 </b><span style="font-weight:900;color:#4ed250;">⑩</span> 은<br>부모와 자식 사이에<br>쌓여온 복잡한 감정과<br>알지 못했던 마음을<br><br>어떻게 이해하고<br>가까운 관계로 만들 수 있을지<br><br>대한민국 대표 인지심리학자<br>김경일 교수가<br>시원하게 풀어드립니다
+</em><br></p>
 
-    <div class="card special">
-  
+    <!-- 회색 리드 카피 (중앙정렬) -->
+    <p class="shb-lead"></b></p>
 
-      <div class="core">
-        <b style="font-size:24px;">이번 강연의 핵심</b>
-        <span class="big blink" style="font-weight:bold;color:yellow;">1시간 현장 질의응답</span>
-      </div>
+    <!-- 노란 하이라이트 CTA 라인 -->
+    <div class="shb-badge" style="font-size:1.5rem;">'가화만사성!'<br>가정이 편안해야<br>만사가 편해집니다</div>
+<br><br>
+    <!-- 상세 카피 -->
+    <!-- <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">학문과 예술<br>
+그리고 인간의 깊은 경험이
+<br>한데 어우러지는<br><Br>
+가장 인간적인<br>
+‘마음 치유의 시간’을 만나보세요. 
 
-      <ul>
-        <li class="arrow">내 상황을 직접 질문할 수 있습니다.</li>
-        <li>강연 내용을 내 삶에 바로 연결</li>
-        <li>단순히 듣는 강연이 아닌 참여형 강연</li>
-        
-        
-      </ul>
-      <br>
+</em></p> -->
 
-          <div class="core">
-        <b style="font-size:24px;"> <span class="big " style="font-weight:bold;color:yellow;">듣고 끝나는 강연이 아니라<br>
-직접 묻고 답하는 시간입니다
-</span></b>
-      </div>
-
-
- 
-    </div>
-
+    
   </div>
 </section>
 
-<section class="flos-section-head" style="background:#fff;">
 
 
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-      프로그램 구성
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-<section id="schedule1">
-
+<section id="mindDetoxPremium8" aria-label="마음 디톡스 8 안내 포스터">
   <style>
-    #schedule1 {
-      padding: 60px 20px;
-      text-align:center;
+
+    /* ================= 폰트 ================= */
+    @font-face {
+      font-family: 'GounBatang-t';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
     }
 
-    #schedule1 .timeline {
+    @font-face {
+      font-family: 'SchoolSafetyNotification-d';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'GimpoPeaceFoundation';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/GimpoBatang00.woff') format('woff');
+    }
+
+    /* ================= 기본 ================= */
+    #mindDetoxPremium8{
+      --maxW: 1400px;
+      --ink: #1a1a1a;
+      --muted: #2c2b2b;
+      --titleGreen: #2c662d;
+
+      --bg-brightness: 0.85;
+
+      font-family: "Pretendard","Noto Sans KR",sans-serif;
       position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    #schedule1 .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 20px;
-      width: 2px;
-      background: #ededed;
-    }
-
-    #schedule1 .session {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 40px;
-      padding-left: 40px;
-    }
-
-    #schedule1 .session::before {
-      content: '';
-      position: absolute;
-      top: 27px;
-      left: 14px;
-      width: 14px;
-      height: 14px;
-      background: #3b82f6;
-      border-radius: 50%;
-      z-index: 2;
-    }
-
-    #schedule1 .card {
-      background: #ffffff;
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      flex: 1;
-      width: 100%;
-      transition: all 0.3s ease;
-      text-align:left;
-    }
-
-    #schedule1 .card .time {
-      display: inline-block;
-      background: #3b82f6;
-      color: #ffffff;
-      font-size: 20px;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-    }
-
-    #schedule1 .card h3 {
-      font-size: 23px;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-
-    #schedule1 .profile-text .name {
-      font-size: 20px;
-      font-weight: 600;
-      color: #374151;
-    }
-
-    /* 핵심 카드 */
-    #schedule1 .session:last-child .card {
-      position: relative;
-      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
-      border: 2px solid #2563eb;
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+      isolation: isolate;
       overflow: hidden;
+      text-align: center;
+      padding: 100px 24px;
+      display: flex;
+      justify-content: center;
     }
 
-    #schedule1 .session:last-child .card .time {
-      background: #1d4ed8;
-      font-weight: 800;
-      font-size: 22px;
+    /* ================= 배경 ================= */
+    #mindDetoxPremium8::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background: url('./img/bg10-1.jpg') center/cover no-repeat;
+      filter: brightness(var(--bg-brightness));
+      transition: all .5s ease;
     }
 
-    #schedule1 .session:last-child .card h3 {
-      font-size: 25px;
-      font-weight: 900;
-      color: #0f172a;
-    }
-
-    #schedule1 .session:last-child::before {
-      background: #1d4ed8;
-      width: 18px;
-      height: 18px;
-      box-shadow: 0 0 0 6px rgba(59,130,246,0.2);
-    }
-
-    /* 애니메이션 */
-    .blink-once {
-      animation: strongBlink 1s ease;
-    }
-
-    .shine-once::after {
-      content: '';
-      position: absolute;
-      inset: 0;
+    /* ================= 고급 가독성 레이어 ================= */
+    #mindDetoxPremium8::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
       background: linear-gradient(
-        120deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.2) 35%,
-        rgba(255,255,255,0.6) 50%,
-        rgba(255,255,255,0.2) 65%,
-        rgba(255,255,255,0) 100%
+        to bottom,
+        rgba(255,255,255,0.3),
+        rgba(255,255,255,0.45)
       );
-      transform: translateX(-130%);
-      animation: shineMove 1s linear;
     }
 
-    @keyframes strongBlink {
-      50% {
-        transform: scale(1.03);
-        filter: brightness(1.2);
-      }
+    /* ================= 콘텐츠 ================= */
+    #mindDetoxPremium8 .mdp8-inner{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 650px;
+      background: #ffffff50;
+      padding:100px 20px;
+      border-radius:10px;
+      /* backdrop-filter: blur(4px); */
     }
 
-    @keyframes shineMove {
-      100% {
-        transform: translateX(130%);
-      }
+    .subtitle{
+      color:#3185ff;
+      font-weight:600;
+      font-size:1.2rem;
+      margin-bottom:10px;
+      font-family: 'GounBatang-t';
     }
 
-
-
-
-
-
-    /* ===============================
-       🔥 CTA 버튼
-    =============================== */
-    #schedule1 .cta-wrap{
-      margin-top:60px;
-      max-width:800px;
-      margin-left:auto;
-      margin-right:auto;
+    .title{
+      font-size:2.6rem;
+      font-weight:900;
+      color:var(--titleGreen);
+      margin-bottom:30px;
+      font-family: 'SchoolSafetyNotification-d';
     }
 
-    #schedule1 .cta-btn1{
-      width:100%;
-      display:block;
-      padding:20px;
-      font-size:22px;
-      font-weight:700;
-      color:#ffffff;
-      background:linear-gradient(135deg,#3b82f6,#2563eb);
-      border-radius:14px;
-      text-decoration:none;
-      box-shadow:0 10px 25px rgba(37,99,235,0.35);
-      transition:all 0.3s ease;
+    .headline{
+      font-size:1.8rem;
+      font-weight:bold;
+      line-height:1.7;
+      border-top:2px solid #222;
+      border-bottom:2px solid #222;
+      padding:20px 0;
+      max-width: 520px;
+      margin: 0 auto 20px;
+      font-family: 'GimpoPeaceFoundation';
     }
 
-    #schedule1 .cta-btn1:hover{
-      transform:translateY(-2px);
-      box-shadow:0 15px 35px rgba(37,99,235,0.5);
-      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    .desc{
+      font-size:1.3rem;
+      line-height:1.9;
+      margin-bottom:40px;
+      text-shadow: 0.5px 0px #00000020;
+      font-family: 'GimpoPeaceFoundation';
     }
 
-    #schedule1 .cta-sub{
-      margin-top:12px;
-      font-size:15px;
-      color:#6b7280;
+    /* ================= info ================= */
+    .info-wrap{
+      display:flex;
+      justify-content:center;
     }
 
+    .info{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      text-align:left;
+      font-size:1.3rem;
+      font-weight:bold;
+      line-height:1.9;  
+      text-shadow: 0.5px 0px #00000020;
+    }
+
+    .info-line + .info-line{
+      margin-top:4px;
+    }
+
+    .info-line{
+      font-weight:bold;
+    }
+
+    /* ================= 반응형 ================= */
     @media (max-width:768px){
-      #schedule1 .cta-btn1{
-        font-size:18px;
-        padding:16px;
-      }
+      .title{font-size:2rem}
+      .headline{font-size:1.4rem}
+      .desc{font-size:1.3rem}
+      .info{font-size:1.1rem}
     }
 
-  
+    @media (max-width:550px){
+      .title{font-size:2rem}
+      .headline{font-size:1.4rem}
+      .desc{font-size:1.1rem}
+      .info{font-size:1.1rem}
+    }
 
-      
+    @media (max-width:480px){
+      #mindDetoxPremium8{
+        padding:80px 16px;
+      }
+      .headline{font-size:1.2rem}
+    }
+
+    /* ================= 핵심 추가: PC 배경 변경 ================= */
+    @media (min-width:1200px){
+      #mindDetoxPremium8::before{
+        background: url('./img/bg10-pc.jpg') center/cover no-repeat;
+      }
+
+      /* PC에서는 더 선명하게 */
+      #mindDetoxPremium8{
+        --bg-brightness: 0.95;
+      }
+    }
 
   </style>
 
-  <div class="timeline">
+  <div class="mdp8-inner">
 
-    <div class="session">
-      <div class="card">
-        <div class="time">14:00 ~ 14:50</div>
-        <h3>🎤 강연1. 부모와 자식, 왜 자꾸 부딪힐까?</h3>
-        <div class="profile-text">
-          <span class="name">김경일 | 아주대학교 심리학과 교수</span>
-        </div>
-      </div>
+    <div class="subtitle">
+      <b style="font-size:28px;">김경일 교수와 함께하는</b>
     </div>
 
-    <div class="session">
-      <div class="card">
-        <div class="time">14:50 ~ 15:00</div>
-        <h3>휴식</h3>
-      </div>
+    <div class="title">
+      마음 디톡스 ⑩
     </div>
 
-    <div class="session">
-      <div class="card">
-        <div class="time">15:00 ~ 15:30</div>
-        <h3>🎹 공연: 가족에게 전하는 마음의 선율</h3>
-        <div class="profile-text">
-          <span class="name">정수지 | 명상 피아니스트</span>
-        </div>
-      </div>
+    <div class="headline">
+      왜 우리는 가족에게 더 상처받을까
     </div>
 
-    <div class="session">
-      <div class="card">
-        <div class="time">15:30 ~ 16:00</div>
-        <h3>🎤 강연2. 말하지 못했던 그 마음</h3>
-        <div class="profile-text">
-          <span class="name">김경일 | 아주대학교 심리학과 교수</span>
-        </div>
-      </div>
+    <div class="desc" style="font-weight:bold;">
+      <b style="font-size:1.3rem;">대한민국 대표 인지심리학자<br>김경일 교수와<br>함께 풀어가는 부모・자식 관계 해법</b><br><br>
+      가족 관계가 어긋나는 이유와<br>
+      여러분의 고민을<br>직접 묻고 답하며<br>문제를 해결해보는 특별한 시간!
     </div>
 
-    <div class="session">
-      <div class="card">
-        <div class="time">16:10 ~ 17:00</div>
-        <h3>💬 김경일 교수와 함께하는 대화의 시간</h3>
-        <div class="profile-text">
-          <span class="name">사회 : 함영준 | 마음건강 길 대표</span>
-        </div>
+    <div class="info-wrap">
+      <div class="info">
+        <div class="info-line">일시: 2026년 5월 9일 (토) 오후 2시 ~ 5시</div>
+        <div class="info-line">장소: SCC 홀 서초</div>
+        <div class="info-line">참가비: 25,000원 (2인 이상 20,000원)</div>
+        <div class="info-line blink" style="color:red;">[선착순 100명! 얼리버드 20,000원]</div>
       </div>
     </div>
 
   </div>
-
-  <!-- 🔥 CTA 버튼 -->
-  <div class="cta-wrap">
-    <a href="#choice_p" class="cta-btn1">
-      👉 지금 신청하기
-    </a>
-    <div class="cta-sub blink" style="font-weight:bold;font-size:20px">
-    
-    </div>
-  </div>
-
-  <script>
-    (function(){
-      const card = document.querySelector('#schedule1 .session:last-child .card');
-
-      function triggerEffect(){
-        card.classList.add('blink-once','shine-once');
-        setTimeout(()=>card.classList.remove('blink-once','shine-once'),1000);
-      }
-
-      triggerEffect();
-      setInterval(triggerEffect,5000);
-    })();
-  </script>
-
 </section>
+
+
 
   
 
@@ -2355,6 +846,540 @@ About Us Section
 
 
 
+
+
+<section class="flos-section-head" style="background:#fff;">
+
+
+  <div class="flos-head-inner">
+
+    <!-- 상단 라벨 (선택) -->
+    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
+
+    <!-- 타이틀 -->
+    <h2 class="flos-title">
+      프로그램 구성
+      
+    </h2>
+
+    <!-- 라인 -->
+    <div class="flos-line"></div>
+
+    <!-- 설명 (선택) -->
+    <!-- <p class="flos-desc">
+      가족이라는 가장 가까운 관계 속에서
+      설명하기 어려운 감정들을 느끼고 계시다면
+    </p> -->
+
+  </div>
+</section>
+<section id="schedule1">
+
+  <style>
+    #schedule1 {
+      padding: 60px 20px;
+      text-align:center;
+    }
+
+    #schedule1 .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #schedule1 .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 20px;
+      width: 2px;
+      background: #ededed;
+    }
+
+    #schedule1 .session {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      padding-left: 40px;
+    }
+
+    #schedule1 .session::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: 14px;
+      width: 14px;
+      height: 14px;
+      background: #3b82f6;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    #schedule1 .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      flex: 1;
+      width: 100%;
+      transition: all 0.3s ease;
+      text-align:left;
+    }
+
+    #schedule1 .card .time {
+      display: inline-block;
+      background: #3b82f6;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    #schedule1 .card h3 {
+      font-size: 23px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    #schedule1 .profile-text .name {
+      font-size: 20px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    /* 핵심 카드 */
+    #schedule1 .session:last-child .card {
+      position: relative;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
+      border: 2px solid #2563eb;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+      overflow: hidden;
+    }
+
+    #schedule1 .session:last-child .card .time {
+      background: #1d4ed8;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    #schedule1 .session:last-child .card h3 {
+      font-size: 25px;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    #schedule1 .session:last-child::before {
+      background: #1d4ed8;
+      width: 18px;
+      height: 18px;
+      box-shadow: 0 0 0 6px rgba(59,130,246,0.2);
+    }
+
+    /* 애니메이션 */
+    .blink-once {
+      animation: strongBlink 1s ease;
+    }
+
+    .shine-once::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.2) 35%,
+        rgba(255,255,255,0.6) 50%,
+        rgba(255,255,255,0.2) 65%,
+        rgba(255,255,255,0) 100%
+      );
+      transform: translateX(-130%);
+      animation: shineMove 1s linear;
+    }
+
+    @keyframes strongBlink {
+      50% {
+        transform: scale(1.03);
+        filter: brightness(1.2);
+      }
+    }
+
+    @keyframes shineMove {
+      100% {
+        transform: translateX(130%);
+      }
+    }
+
+
+
+
+
+
+    /* ===============================
+       🔥 CTA 버튼
+    =============================== */
+    #schedule1 .cta-wrap{
+      margin-top:60px;
+      max-width:800px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    #schedule1 .cta-btn1{
+      width:100%;
+      display:block;
+      padding:20px;
+      font-size:22px;
+      font-weight:700;
+      color:#ffffff;
+      background:linear-gradient(135deg,#3b82f6,#2563eb);
+      border-radius:14px;
+      text-decoration:none;
+      box-shadow:0 10px 25px rgba(37,99,235,0.35);
+      transition:all 0.3s ease;
+    }
+
+    #schedule1 .cta-btn1:hover{
+      transform:translateY(-2px);
+      box-shadow:0 15px 35px rgba(37,99,235,0.5);
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    }
+
+    #schedule1 .cta-sub{
+      margin-top:12px;
+      font-size:15px;
+      color:#6b7280;
+    }
+
+    @media (max-width:768px){
+      #schedule1 .cta-btn1{
+        font-size:18px;
+        padding:16px;
+      }
+    }
+
+  
+
+      
+
+  </style>
+
+  <div class="timeline">
+
+    <div class="session">
+      <div class="card">
+        <div class="time">14:00 ~ 14:50</div>
+        <h3>🎤 강연1. 부모와 자식, 왜 자꾸 부딪힐까?</h3>
+        <div class="profile-text">
+          <span class="name">김경일 | 아주대학교 심리학과 교수</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="session">
+      <div class="card">
+        <div class="time">14:50 ~ 15:00</div>
+        <h3>휴식</h3>
+      </div>
+    </div>
+
+    <div class="session">
+      <div class="card">
+        <div class="time">15:00 ~ 15:30</div>
+        <h3>🎹 공연: 가족에게 전하는 마음의 선율</h3>
+        <div class="profile-text">
+          <span class="name">정수지 | 명상 피아니스트</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="session">
+      <div class="card">
+        <div class="time">15:30 ~ 16:00</div>
+        <h3>🎤 강연2. 말하지 못했던 그 마음</h3>
+        <div class="profile-text">
+          <span class="name">김경일 | 아주대학교 심리학과 교수</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="session">
+      <div class="card">
+        <div class="time">16:10 ~ 17:00</div>
+        <h3>💬 김경일 교수와 함께하는 대화의 시간</h3>
+        <div class="profile-text">
+          <span class="name">사회 : 함영준 | 마음건강 길 대표</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 🔥 CTA 버튼 -->
+  <div class="cta-wrap">
+    <a href="#choice_p" class="cta-btn1">
+      👉 지금 신청하기
+    </a>
+    <div class="cta-sub blink" style="font-weight:bold;font-size:20px">
+      회원 한정 선착순 | <span style="font-weight:bold;color:red;font-size:20px;">조기 마감될 수 있습니다</span>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const card = document.querySelector('#schedule1 .session:last-child .card');
+
+      function triggerEffect(){
+        card.classList.add('blink-once','shine-once');
+        setTimeout(()=>card.classList.remove('blink-once','shine-once'),1000);
+      }
+
+      triggerEffect();
+      setInterval(triggerEffect,5000);
+    })();
+  </script>
+
+</section>
+
+
+<section class="flos-section-head" style="background:#fff;">
+
+
+  <div class="flos-head-inner">
+
+    <!-- 상단 라벨 (선택) -->
+    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
+
+    <!-- 타이틀 -->
+    <h2 class="flos-title">
+      프로그램 안내
+      
+    </h2>
+
+    <!-- 라인 -->
+    <div class="flos-line"></div>
+
+    <!-- 설명 (선택) -->
+    <!-- <p class="flos-desc">
+      가족이라는 가장 가까운 관계 속에서
+      설명하기 어려운 감정들을 느끼고 계시다면
+    </p> -->
+
+  </div>
+</section>
+
+
+<div id="event1">
+<!-- 행사 헤더 -->
+<!-- <div style="text-align:-webkit-center;margin:40px;">
+<h2><b>행사 일시</b></h2>
+</div> -->
+<!-- 날짜 및 시간 정보 -->
+ <div style="background: #f9f9f9;">
+<div class="info-card">
+    <h2 class="card-title">
+        <i class="fas fa-calendar-alt"></i>
+        행사 일시 및 장소
+    </h2>
+    <div class="info-content">
+        <p class="font-bold text-xl mb-2"><b>🗓️ 5월 9일 (토) 오후 2시 ~ 5시</p>
+        <p class="font-bold text-xl mb-2"><b>📍SCC 홀 서초 3층 (예술의 전당 건너편)<br>&nbsp;&nbsp;&nbsp;(서울 서초구 남부순환로 325길 9, 3층)<br><br></b></p>
+        <p class="font-bold text-xl mb-2"><b>주최 : 마음건강 길</b>
+        
+        <p class="font-bold text-xl mb-2"><b>문의 : ☎️  02-725-7525  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📱 010-5385-0793</b>
+        <p class="font-bold text-xl mb-2"><b>이메일 : mindgil21@naver.com</b>
+        
+
+
+
+
+
+        <!-- <p class="font-bold text-xl mb-2">💻 ZOOM 생중계 신청 가능</b></p><br> -->
+         <!-- <a href="#apply" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;"> 컨퍼런스 현장 참여하기</a></p><br> -->
+           <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4jdbuIJNEiEsEyTWhIP7YeNsH9BzOEOGh-O0xG4QhhIbQ/viewform?usp=dialog" style="padding:20px 20px; color:#fff;background-color: #2563eb;border-radius:10px;font-size:1.2rem;">ZOOM 컨퍼런스 신청하기</a></p><br> -->
+    </div>
+</div>
+</div>
+
+
+</div>
+
+
+<style>
+#event1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    /* background-color: #f9f9f9; */
+    /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); */
+    border-radius: 12px;
+    color: #333;
+}
+
+#event1 .event-header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+}
+
+#event1 .event-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+#event1 .event-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+#event1 .info-card {
+    background-color: white;
+    border-radius: 8px;
+    border:1px solid #00000032;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+}
+
+#event1 .info-card:hover {
+    transform: translateY(-5px);
+}
+
+#event1 .card-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #2575fc;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width:600px) {
+  
+  #event1 .card-title {
+    font-size: 1.2rem;
+  
+}
+
+}
+
+
+#event1 .card-title i {
+    margin-right: 10px;
+}
+
+#event1 .info-content {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+@media screen and (max-width:500px) {
+ 
+  #event1 .info-content {
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+  
+}
+
+#event1 .map-container {
+    position: relative;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+#event1 .map-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+}
+
+#event1 .map-marker {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+}
+
+#event1 .direction-steps {
+    background-color: #f0f7ff;
+    border-left: 4px solid #2575fc;
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 25px;
+}
+
+#event1 .step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+#event1 .step:last-child {
+    margin-bottom: 0;
+}
+
+#event1 .step-number {
+    background-color: #2575fc;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+#event1 .step-text {
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+#event1 .footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #666;
+    font-size: 0.9rem;
+}
+</style>
+
 <div id="event1">
   <!-- 행사 헤더 -->
   <!-- <div style="text-align:-webkit-center;margin:40px;">
@@ -2374,6 +1399,478 @@ About Us Section
   
   </div>
 
+
+
+<section class="flos-section-head" style="background:#fff;">
+
+
+  <div class="flos-head-inner">
+
+    <!-- 상단 라벨 (선택) -->
+    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
+
+    <!-- 타이틀 -->
+    <h2 class="flos-title">
+     이런 분께 권합니다 
+      
+    </h2>
+
+    <!-- 라인 -->
+    <div class="flos-line"></div>
+
+    <!-- 설명 (선택) -->
+    <!-- <p class="flos-desc">
+      가족이라는 가장 가까운 관계 속에서
+      설명하기 어려운 감정들을 느끼고 계시다면
+    </p> -->
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     Benefit Section (복사-붙여넣기용 완전 코드)
+────────────────────────────────────────── -->
+<section class="flos-section-body" id="mindDetoxFamilyEmotionBody_v2" style="padding:40px 20px 40px;">
+  <div class="flos-body-inner">
+    <ul class="flos-list">
+      <li class="flos-item">부모와의 관계가 점점 불편해진 분</li>
+      <li class="flos-item">자녀와의 거리감이나 서운함을 느끼는 분</li>
+      <li class="flos-item">가족과의 대화가 반복해서 어긋나는 분</li>
+      <li class="flos-item">감정이 먼저 올라오는 이유를 알고 싶은 분</li>
+    </ul>
+
+
+  </div>
+
+  <script>
+    (function(){
+      const section = document.getElementById('mindDetoxFamilyEmotionBody_v2');
+      if(!section) return;
+
+      const targets = section.querySelectorAll('.flos-item, .flos-quote');
+
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach((entry)=>{
+          if(entry.isIntersecting){
+            const index = Array.from(targets).indexOf(entry.target);
+            setTimeout(()=>{
+              entry.target.classList.add('is-visible');
+            }, index * 110);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      targets.forEach(el => observer.observe(el));
+    })();
+  </script>
+</section>
+
+<section class="flos-section-head" style="background:#fff;">
+
+
+  <div class="flos-head-inner">
+
+    <!-- 상단 라벨 (선택) -->
+    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
+
+    <!-- 타이틀 -->
+    <h2 class="flos-title">
+      이 시간을 통해 얻을 수 있는 것 
+      
+    </h2>
+
+    <!-- 라인 -->
+    <div class="flos-line"></div>
+
+    <!-- 설명 (선택) -->
+    <!-- <p class="flos-desc">
+      가족이라는 가장 가까운 관계 속에서
+      설명하기 어려운 감정들을 느끼고 계시다면
+    </p> -->
+
+  </div>
+</section>
+
+
+<section class="flos-section-body" id="mindDetoxFamilyEmotionBody_v3" style="padding:40px 20px 40px;">
+  <style>
+      <style>
+    /* =========================
+       공통 제목 섹션
+    ========================= */
+    .flos-section-head{
+      position:relative;
+      overflow:hidden;
+      padding:100px 20px 34px;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.76), transparent 40%),
+        linear-gradient(180deg, #edf2f7 0%, #e7edf5 100%);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+    }
+
+    .flos-section-head *{
+      box-sizing:border-box;
+    }
+
+    .flos-section-head::before,
+    .flos-section-head::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
+      filter:blur(34px);
+      z-index:1;
+    }
+
+    .flos-section-head::before{
+      width:320px;
+      height:320px;
+      top:-110px;
+      right:-90px;
+      background:rgba(100, 140, 210, 0.16);
+    }
+
+    .flos-section-head::after{
+      width:240px;
+      height:240px;
+      left:-60px;
+      bottom:-80px;
+      background:rgba(150, 180, 220, 0.16);
+    }
+
+    .flos-head-inner{
+      width:min(100%, 980px);
+      margin:0 auto;
+      position:relative;
+      z-index:2;
+    }
+
+    .flos-kicker{
+      display:inline-flex;
+      align-items:center;
+      min-height:36px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.56);
+      border:1px solid rgba(84,118,166,0.10);
+      color:#5e7895;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:0.05em;
+      box-shadow:0 8px 20px rgba(41,69,112,0.05);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      margin-bottom:16px;
+    }
+
+    .flos-title{
+      margin:0;
+      font-size:clamp(36px, 5vw, 56px);
+      line-height:1.18;
+      letter-spacing:-0.045em;
+      font-weight:900;
+      color:#233f68;
+      word-break:keep-all;
+    }
+
+    .flos-title strong{
+      color:#1b3558;
+      font-weight:900;
+    }
+
+    .flos-line{
+      width:88px;
+      height:5px;
+      border-radius:999px;
+      margin-top:16px;
+      background:linear-gradient(90deg, #7fa7e4 0%, #4176d9 100%);
+      box-shadow:0 10px 20px rgba(63,116,216,0.14);
+    }
+
+    .flos-desc{
+      margin:18px 0 0;
+      max-width:760px;
+      font-size:18px;
+      line-height:1.8;
+      letter-spacing:-0.02em;
+      color:#5a7089;
+      word-break:keep-all;
+    }
+
+    /* =========================
+       공통 내용 섹션
+    ========================= */
+    .flos-section-body{
+      position:relative;
+      overflow:hidden;
+      padding:20px 20px 100px;
+      background:linear-gradient(180deg, #e7edf5 0%, #dee7f0 100%);
+      font-family:"Pretendard","Noto Sans KR",sans-serif;
+    }
+
+    .flos-section-body *{
+      box-sizing:border-box;
+    }
+
+    .flos-body-inner{
+      width:min(100%, 980px);
+      margin:0 auto;
+      position:relative;
+      z-index:2;
+    }
+
+    .flos-box{
+      position:relative;
+      padding:42px 38px 38px;
+      border-radius:32px;
+      background:rgba(255,255,255,0.58);
+      border:1px solid rgba(255,255,255,0.72);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      box-shadow:
+        0 22px 54px rgba(41,69,112,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.92);
+    }
+
+    /* 제목 섹션과 자연스럽게 이어주는 브리지 */
+    .flos-box::before{
+      content:"";
+      position:absolute;
+      top:-18px;
+      left:42px;
+      width:120px;
+      height:36px;
+      border-radius:24px 24px 0 0;
+      background:rgba(255,255,255,0.42);
+      border:1px solid rgba(255,255,255,0.52);
+      border-bottom:none;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      box-shadow:0 8px 20px rgba(41,69,112,0.04);
+    }
+
+    .flos-list{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .flos-item{
+      position:relative;
+      min-height:122px;
+      display:flex;
+      align-items:center;
+      padding:28px 24px 28px 66px;
+      border-radius:24px;
+      background:rgba(255,255,255,0.82);
+      border:1px solid rgba(78,112,164,0.08);
+      box-shadow:0 12px 28px rgba(33,58,98,0.05);
+      font-size:clamp(21px, 2vw, 25px);
+      font-weight:800;
+      line-height:1.52;
+      letter-spacing:-0.032em;
+      color:#2b4058;
+      word-break:keep-all;
+      opacity:0;
+      transform:translateY(22px);
+      transition:
+        opacity 0.72s ease,
+        transform 0.72s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+    }
+
+    .flos-item.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .flos-item:hover{
+      background:rgba(255,255,255,0.92);
+      border-color:rgba(63,116,216,0.18);
+      box-shadow:0 18px 34px rgba(33,58,98,0.09);
+    }
+
+    .flos-item::before{
+      content:"";
+      position:absolute;
+      left:24px;
+      top:50%;
+      transform:translateY(-50%);
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#78a6ea 0%, #3f74d8 100%);
+      box-shadow:0 0 0 7px rgba(120,166,234,0.18);
+      flex-shrink:0;
+    }
+
+    .flos-quote{
+      position:relative;
+      margin-top:28px;
+      padding:36px 32px;
+      border-radius:26px;
+      background:linear-gradient(135deg, #5a92ea 0%, #3368d9 100%);
+      color:#ffffff;
+      box-shadow:0 20px 46px rgba(51,104,217,0.22);
+      overflow:hidden;
+      opacity:0;
+      transform:translateY(26px);
+      transition:
+        opacity 0.85s ease,
+        transform 0.85s ease;
+    }
+
+    .flos-quote.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .flos-quote::after{
+      content:"";
+      position:absolute;
+      right:-38px;
+      bottom:-38px;
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.09);
+    }
+
+    .flos-quote-text{
+      position:relative;
+      z-index:1;
+      margin:0;
+      font-size:clamp(24px, 3vw, 34px);
+      line-height:1.52;
+      letter-spacing:-0.04em;
+      font-weight:700;
+      word-break:keep-all;
+    }
+
+    .flos-quote-text strong{
+      font-weight:900;
+      color:#ffffff;
+    }
+
+    @media (max-width: 900px){
+      .flos-box{
+        padding:34px 24px 28px;
+        border-radius:26px;
+      }
+
+      .flos-box::before{
+        left:28px;
+        width:92px;
+        height:28px;
+        top:-14px;
+      }
+
+      .flos-list{
+        grid-template-columns:1fr;
+      }
+
+      .flos-item{
+        min-height:auto;
+      }
+    }
+
+    @media (max-width: 768px){
+      .flos-section-head{
+        padding:74px 16px 24px;
+      }
+
+      .flos-section-body{
+        padding:0 16px 72px;
+      }
+
+      .flos-kicker{
+        font-size:12px;
+        padding:7px 12px;
+        margin-bottom:14px;
+      }
+
+      .flos-title{
+        font-size:clamp(30px, 7vw, 42px);
+      }
+
+      .flos-line{
+        width:70px;
+        height:4px;
+        margin-top:12px;
+      }
+
+      .flos-desc{
+        margin-top:14px;
+        font-size:15px;
+        line-height:1.75;
+      }
+
+      .flos-item{
+        padding:22px 18px 22px 54px;
+        font-size:clamp(18px, 5vw, 22px);
+        line-height:1.48;
+        border-radius:18px;
+      }
+
+      .flos-item::before{
+        left:18px;
+        width:18px;
+        height:18px;
+        box-shadow:0 0 0 6px rgba(120,166,234,0.18);
+      }
+
+      .flos-quote{
+        margin-top:22px;
+        padding:26px 20px;
+        border-radius:18px;
+      }
+
+      .flos-quote-text{
+        font-size:clamp(21px, 5.7vw, 28px);
+        line-height:1.48;
+      }
+    }
+  </style>
+  </style>
+  <div class="flos-body-inner">
+    <ul class="flos-list">
+      <li class="flos-item">가족 관계가 왜 어려운지 구조적으로 이해하게 됩니다</li>
+      <li class="flos-item">부모와 자식의 시선 차이를 명확히 보게 됩니다</li>
+      <li class="flos-item">감정에 휘둘리지 않고 바라보는 관점을 얻게 됩니다</li>
+      <li class="flos-item">내 상황에 적용할 수 있는 실마리를 찾게 됩니다</li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const section = document.getElementById('mindDetoxFamilyEmotionBody_v3');
+      if(!section) return;
+
+      const targets = section.querySelectorAll('.flos-item, .flos-quote');
+
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach((entry)=>{
+          if(entry.isIntersecting){
+            const index = Array.from(targets).indexOf(entry.target);
+            setTimeout(()=>{
+              entry.target.classList.add('is-visible');
+            }, index * 110);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      targets.forEach(el => observer.observe(el));
+    })();
+  </script>
+</section>
 
 
 
@@ -2892,8 +2389,8 @@ About Us Section
       
       <b>[계좌번호: KB 002801-04-264807 마음건강길]</b><br><br>
       위 계좌로 입금해주시면 신청이 완료됩니다.<br><br>
-      참가비 : 25,000원<br>
-      <span style="color:#f91d1d;"><b>👉 2인 이상 20,000원</b></span><br>
+      <del>참가비 : 25,000원</del><br>
+      <span class="blink" style="color:#f91d1d;"><b>👉 월간조선, 조선뉴스프레스 회원 한정 15,000원</b></span><br>
       <!-- 👉 2인 이상 신청 시 20,000원<br> -->
       <br>
 
@@ -3885,344 +3382,6 @@ About Us Section
     })();
   </script>
 </section>
-
-<section class="flos-section-head" style="background:#fff;">
-
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-     이런 분께 권합니다 
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-
-
-<!-- ──────────────────────────────────────────
-     Benefit Section (복사-붙여넣기용 완전 코드)
-────────────────────────────────────────── -->
-<section class="flos-section-body" id="mindDetoxFamilyEmotionBody_v2" style="padding:40px 20px 40px;">
-  <div class="flos-body-inner">
-    <ul class="flos-list">
-      <li class="flos-item">부모와의 관계가 점점 불편해진 분</li>
-      <li class="flos-item">자녀와의 거리감이나 서운함을 느끼는 분</li>
-      <li class="flos-item">가족과의 대화가 반복해서 어긋나는 분</li>
-      <li class="flos-item">감정이 먼저 올라오는 이유를 알고 싶은 분</li>
-    </ul>
-
-
-  </div>
-
-  <script>
-    (function(){
-      const section = document.getElementById('mindDetoxFamilyEmotionBody_v2');
-      if(!section) return;
-
-      const targets = section.querySelectorAll('.flos-item, .flos-quote');
-
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach((entry)=>{
-          if(entry.isIntersecting){
-            const index = Array.from(targets).indexOf(entry.target);
-            setTimeout(()=>{
-              entry.target.classList.add('is-visible');
-            }, index * 110);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.16 });
-
-      targets.forEach(el => observer.observe(el));
-    })();
-  </script>
-</section>
-
-<section class="flos-section-head" style="background:#fff;">
-
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-      이 시간을 통해 얻을 수 있는 것 
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-
-
-<section class="flos-section-body" id="mindDetoxFamilyEmotionBody_v3" style="padding:40px 20px 40px;">
-  <div class="flos-body-inner">
-    <ul class="flos-list">
-      <li class="flos-item">가족 관계가 왜 어려운지 구조적으로 이해하게 됩니다</li>
-      <li class="flos-item">부모와 자식의 시선 차이를 명확히 보게 됩니다</li>
-      <li class="flos-item">감정에 휘둘리지 않고 바라보는 관점을 얻게 됩니다</li>
-      <li class="flos-item">내 상황에 적용할 수 있는 실마리를 찾게 됩니다</li>
-    </ul>
-  </div>
-
-  <script>
-    (function(){
-      const section = document.getElementById('mindDetoxFamilyEmotionBody_v3');
-      if(!section) return;
-
-      const targets = section.querySelectorAll('.flos-item, .flos-quote');
-
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach((entry)=>{
-          if(entry.isIntersecting){
-            const index = Array.from(targets).indexOf(entry.target);
-            setTimeout(()=>{
-              entry.target.classList.add('is-visible');
-            }, index * 110);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.16 });
-
-      targets.forEach(el => observer.observe(el));
-    })();
-  </script>
-</section>
-
-
-<section class="flos-section-head" style="background:#fff;">
-
-
-  <div class="flos-head-inner">
-
-    <!-- 상단 라벨 (선택) -->
-    <!-- <div class="flos-kicker">RELATIONSHIP CHECK</div> -->
-
-    <!-- 타이틀 -->
-    <h2 class="flos-title">
-      프로그램 요약
-      
-    </h2>
-
-    <!-- 라인 -->
-    <div class="flos-line"></div>
-
-    <!-- 설명 (선택) -->
-    <!-- <p class="flos-desc">
-      가족이라는 가장 가까운 관계 속에서
-      설명하기 어려운 감정들을 느끼고 계시다면
-    </p> -->
-
-  </div>
-</section>
-
-
-<section id="mindgilPoster" aria-label="마음건강 길 포스터">
-  <style>
-    /* ===== Scope: #mindgilPoster only ===== */
-    #mindgilPoster{
-      --bg:#1e90ff;
-      --ink:#ffffff;
-      --line:rgba(255,255,255,.6);
-      --lineStrong:rgba(255,255,255,.85);
-
-      background:var(--bg);
-      color:var(--ink);
-      font-family:Pretendard,"Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-
-    #mindgilPoster, #mindgilPoster *{box-sizing:border-box;font-weight:800;}
-
-    #mindgilPoster .poster{
-      max-width:900px;
-      margin:0 auto;
-      padding:clamp(20px,5vw,44px) clamp(16px,5vw,36px) clamp(28px,6vw,56px);
-    }
-
-    #mindgilPoster .row{
-      display:flex;
-      gap:16px;
-      margin-bottom:14px;
-      align-items: center;
-    }
-
-    #mindgilPoster .label{
-      width:120px;
-      font-weight:800;
-      font-size:clamp(18px,4vw,24px);
-      letter-spacing:-0.02em;
-      flex-shrink:0;
-      line-height:1.2;
-    }
-
-    #mindgilPoster .value{
-      font-size:clamp(17px,4.5vw,32px);
-      font-weight:700;
-      letter-spacing:-0.02em;
-      line-height:1.4;
-    }
-
-    #mindgilPoster .small{
-      font-size:clamp(16px,4vw,20px);
-      font-weight:600;
-      opacity:.95;
-      line-height:1.6;
-      letter-spacing:-0.015em;
-    }
-
-    #mindgilPoster .block{
-      margin-top:6px;
-      margin-left:120px;
-    }
-
-    #mindgilPoster .program-box{
-      border:2.5px solid var(--lineStrong);
-      border-radius:12px;
-      margin:28px 0 30px;
-      overflow:hidden;
-    }
-
-    #mindgilPoster .program-item{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:10px;
-      padding:18px 20px;
-      border-bottom:1.5px solid var(--line);
-      font-size:clamp(18px,4vw,24px);
-      font-weight:700;
-      letter-spacing:-0.02em;
-      line-height:1.45;
-    }
-
-    #mindgilPoster .program-item:last-child{border-bottom:none}
-
-    #mindgilPoster .program-right{
-      white-space:nowrap;
-      margin-left:8px;
-      font-weight:700;
-    }
-
-    #mindgilPoster .footer-line,
-    #mindgilPoster .contact,
-    #mindgilPoster .email{
-      font-size:clamp(15px,4vw,24px);
-      font-weight:700;
-      letter-spacing:-0.02em;
-      line-height:1.6;
-    }
-
-    #mindgilPoster .footer-line{margin-top:18px}
-    #mindgilPoster .footer-line span{display:inline-block;margin-right:10px}
-
-    #mindgilPoster .contact{margin-top:10px}
-    #mindgilPoster .contact span{display:inline-block;margin-right:14px}
-
-    #mindgilPoster .email{margin-top:10px}
-
-    /* ===== Mobile optimizations ===== */
-    @media (max-width:600px){
-      #mindgilPoster .row{flex-direction:row;gap:14px}
-      #mindgilPoster .label{width:auto}
-      #mindgilPoster .block{margin-left:10px}
-      #mindgilPoster .program-item{flex-direction:column}
-      #mindgilPoster .program-right{text-align:right;width:100%}
-    }
-  </style>
-
-  <div class="poster">
-
-    <div class="row">
-      <div class="label">• 일시</div>
-      <div class="value">2026년 5월 9일 (토) 오후 2시 ~ 5시</div>
-    </div>
-
-    <div class="row">
-      <div class="label">• 장소</div>
-      <div class="value">SCC 홀 서초</div>
-    </div>
-
-  <div class="block small">
-         ➜ (서울 서초구 남부순환로 325길 9, 3층)<br>
-      ➜ 3호선 남부터미널역 4-2번 출구 360m<br>
-      
-    </div>
-
-    <div class="row" style="margin-top:16px;">
-      <div class="label">• 주최</div>
-      <div class="value">마음건강 길 (www.mindgil.com)</div>
-    </div>
-
-     <!-- <div class="row">
-      <div class="label">• 후원</div>
-      <div class="value">HTU GLOBAL</div>
-    </div>  -->
-
-    <div class="row" style="margin-top:24px;">
-      <div class="label">• 프로그램</div>
-    </div>
-
-    <div class="program-box" role="list">
-      <div class="program-item" role="listitem">
-        <div>1. 우리는 왜 가족에게 더 상처받는가</div>
-        <div class="program-right">- 김경일 교수</div>
-      </div>
-      <div class="program-item" role="listitem">
-        <div>2. 음악: 가족에게 전하는 마음의 선율</div>
-        <div class="program-right">- 정수지 피아니스트</div>
-      </div>
-      <div class="program-item" role="listitem">
-        <div>3. 말하지 못했던 그 마음, 가족의 감정을 이해하는 법</div>
-        <div class="program-right">- 김경일 교수</div>
-      </div>
-      <div class="program-item" role="listitem">
-        <div>4. 김경일 교수와 함께하는 대화의 시간</div>
-        <div class="program-right">- 사회: 함영준</div>
-      </div>
-    </div>
-
-    <div class="footer-line">
-      <span>• 참가비 : 25,000원  (2인 이상: 20,000원)</span>
-      <span>• 계좌번호 : KB 002801-04-264807 <img src="./img/mindgil-white1.png" style="width:100px;"></span>
-    </div>
-
-    <div class="contact">
-      <span>• 문의 : ☎️ 02-725-7525</span>
-      <span>📱 010-3041-2734</span>
-    </div>
-
-    <div class="email">• 이메일 : mindgil21@naver.com</div>
-
-  </div>
-</section>
-
-
 
 
 <section class="flos-section-head" style="background:#fff;">
@@ -6733,9 +5892,9 @@ Footer
     Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-        title: '[유퀴즈 출연]김경일 교수 가족관계 토크 콘서트',
+      title: '[유퀴즈 출연]김경일 교수 가족관계 토크 콘서트',
 description: '가까우면서 힘든 부모・자식 관계를 짚어봅니다.',
-        imageUrl: 'https://mindwellpath.co.kr/img/kakao-10-final.jpg',
+        imageUrl: 'https://mindwellpath.co.kr/img/10th-kakao-6.png',
         link: {
           mobileWebUrl: 'https://mindwellpath.co.kr/conference-10-kakao.html',
           webUrl: 'https://mindwellpath.co.kr/conference-10-kakao.html'
@@ -6743,7 +5902,7 @@ description: '가까우면서 힘든 부모・자식 관계를 짚어봅니다.'
       },
       buttons: [
         {
-               title: '지금 신청하기 👉',
+               title: '선착순 신청하기 👉',
           link: {
             mobileWebUrl: 'https://mindwellpath.co.kr/conference-10-kakao.html',
             webUrl: 'https://mindwellpath.co.kr/conference-10-kakao.html'

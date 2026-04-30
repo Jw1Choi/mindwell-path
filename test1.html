@@ -1,0 +1,362 @@
+<section id="saitoHitoriBowl3" aria-label="사이토 히토리 ‘그릇’ 포스터">
+  <style>
+    /* ================= Scope: #saitoHitoriBowl3 only ================= */
+    #saitoHitoriBowl3{
+      
+      /* ======= Theme Tokens (필요 시 수정) ======= */
+      --bg:url('./img/intro-10.jpg');             /* 배경 이미지 (교체 가능) */
+      --ink:#e7efe9;                              /* 기본 텍스트 */
+      --muted:#cfe0d9;                            /* 보조 텍스트 */
+      --title:#cfe7e1;                            /* 상단 영문 타이틀 */
+      --accent:#ffd84a;                           /* 노란 하이라이트 */
+      --accent-ink:#253433;                       /* 하이라이트 텍스트 */
+      --shadow:rgba(0,0,0,.35);                   /* 그림자 공통 */
+      --panel:rgba(0,0,0,.28);                    /* 카드 배경 톤 */
+      --radius:16px;
+      --maxW:520px;                               /* 카드 가로폭 */
+      --ff-base:"Pretendard","Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      --ff-title:"BookkMyungjo","Times New Roman",serif; /* 상단 영문 느낌 */
+
+      position:relative; display:block; width:100%;
+      margin:0px 0 0;
+      padding:36px 16px 48px;                     /* 섹션 여백 */
+      background:
+        radial-gradient(60% 28% at 50% 10%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, rgba(7,43,47,.94) 0%, rgba(7,43,47,.96) 100%);
+      overflow:hidden; box-sizing:border-box;
+      font-family:var(--ff-base);
+      text-align:center;                          /* 전체 중앙 정렬 */
+    }
+    /* 배경 이미지 + 폭죽 라이트(블렌드) */
+    #saitoHitoriBowl3::before{
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background:
+        var(--bg) center/cover no-repeat,
+        radial-gradient(240px 240px at 80% 78%, rgba(255,255,255,.12), transparent 60%),
+        radial-gradient(200px 200px at 18% 72%, rgba(255,255,255,.10), transparent 62%),
+        radial-gradient(140px 140px at 72% 30%, rgba(255,255,255,.08), transparent 62%);
+      mix-blend-mode:screen; opacity:.85;
+    }
+    #saitoHitoriBowl3::after{               /* 어둡게 덮어 컬러 톤 맞춤 */
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+    
+    }
+
+    /* ===== 카드 래퍼 ===== */
+    #saitoHitoriBowl3 .shb-wrap{
+      position:relative; z-index:2; margin:0 auto; max-width:var(--maxW);
+      padding:34px 22px 40px; border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(5,36,40,.55), rgba(5,36,40,.65));
+      /* box-shadow:0 10px 42px var(--shadow), inset 0 0 0 1px rgba(255,255,255,.06); */
+    }
+
+    /* ===== 상단 영문 타이틀 ===== */
+    #saitoHitoriBowl3 .shb-stit{
+         font-family: 'GounBatang-t';
+      font-weight:700; letter-spacing:.04em; color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,.25);
+      margin:0 0 10px; line-height:1.4;
+      font-size:36px;                 /* 모바일 기본 */
+    }
+
+    /* ===== 큰 인용문(따옴표 포함) ===== */
+    #saitoHitoriBowl3 .shb-quote{
+      color:var(--ink); opacity:.95; margin:0 0 18px; line-height:1.8;
+      font-weight:600; font-size:18px; /* 모바일 */
+    }
+    #saitoHitoriBowl3 .shb-quote em{ color:#ffffff; font-style:normal; }
+
+    /* ===== 책 이미지 (별도 삽입) ===== */
+    #saitoHitoriBowl3 .shb-book{
+      width:235px; margin:14px auto 18px; position:relative;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));
+      transform:translateZ(0);
+    }
+    #saitoHitoriBowl3 .shb-book img{ width:100%; height:auto; display:block; border-radius:6px; }
+
+    /* ===== 회색 본문 (재출간 알림) ===== */
+    #saitoHitoriBowl3 .shb-lead{     color: var(--muted);
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 14px 0 10px; }
+
+    /* ===== 노란 하이라이트 배지 (두 줄) ===== */
+    #saitoHitoriBowl3 .shb-badge{
+      display:inline-block; background:#4fb1bc; color:#fff;
+      padding:10px 14px; border-radius:10px; font-weight:800; font-size:18px;
+      line-height:140%;
+      /* box-shadow:0 6px 22px rgba(255,216,74,.28); line-height:1.25; margin:10px 0 8px; */
+    }
+
+    /* ===== 상세 카피(리스트 느낌의 본문) ===== */
+    #saitoHitoriBowl3 .shb-copy{ color:var(--muted); font-size:14.5px; line-height:1.95; margin-top:6px; }
+    #saitoHitoriBowl3 .shb-copy .em{ color:#ffe16a; font-weight:800; }
+    #saitoHitoriBowl3 .shb-copy .st{ color:#ffffff; font-weight:800; }
+
+    /* ===== 하단 문구 ===== */
+    #saitoHitoriBowl3 .shb-foot{ margin-top:16px; color:var(--ink); font-size:14.5px; line-height:1.9; }
+    #saitoHitoriBowl3 .shb-foot .em{ color:#ffe16a; font-weight:800; }
+
+    /* ===== 살짝 떠오르는 미세 애니메이션 (책) ===== */
+    @keyframes shb-float{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-3px) } 100%{ transform:translateY(0) } }
+    #saitoHitoriBowl3 .shb-book{ animation:shb-float 4.6s ease-in-out infinite; }
+
+    /* ===== 반응형 ===== */
+    @media (min-width:480px){
+      #saitoHitoriBowl3 .shb-stit{ font-size:34px }
+      #saitoHitoriBowl3 .shb-quote{ font-size:19px }
+      #saitoHitoriBowl3 .shb-book{ width:250px }
+    }
+    @media (min-width:768px){
+      #saitoHitoriBowl3{ padding:46px 20px 64px }
+      #saitoHitoriBowl3 .shb-wrap{ max-width:560px; padding:38px 28px 44px }
+      #saitoHitoriBowl3 .shb-stit{ font-size:38px }
+      #saitoHitoriBowl3 .shb-quote{ font-size:20px }
+      #saitoHitoriBowl3 .shb-book{ width:268px }
+    }
+  </style>
+
+  <div class="shb-wrap">
+    <!-- <h1 class="shb-stit blink" style="color:rgb(244, 255, 30);">행사 종료<br></h1><br> -->
+  <h1 class="shb-stit">사랑하는데<br>왜 이렇게 어려울까요<br></h1><br>
+  <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">
+부모와 대화하면 자꾸 부딪히게 됩니다.<br>
+  자녀를 사랑하는데 서운함이 남습니다.<br><br>
+  가까울수록<br>더 많이 오해하고<br>같은 문제가 반복되고 있다면?<br><br>
+<!-- 그런데 이게<br>성격 문제가 아니라<br>'이해하는 방식'의 문제라면?<br><br> -->
+<!-- 사람은 상대를<br>있는 그대로 보지 않고<br>자기 기준으로 해석합니다<br><br> -->
+김경일 교수는<br>성격 문제가 아니라<br><br>'이해하는 방식'과<br>'관계를 다루는 기술'의<br>문제라고 봅니다.<br><br>
+  </p>
+
+    <!-- ✅ 책 이미지를 별도 삽입: 경로만 교체하면 됨 -->
+    <figure class="shb-book">
+      <img src="https://koreadailytimes.com/files/attach/images/149/856/041/fdf4d78646830714a689c83253edb942.jpg" alt="사이토 히토리 ‘그릇’ 도서 표지">
+    </figure>
+    
+    <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">이번 <b style=" font-family: 'SchoolSafetyNotification-d';color:#4ed250;">마음 디톡스 </b><span style="font-weight:900;color:#4ed250;">⑩</span> 은<br>부모와 자식 사이에<br>쌓여온 복잡한 감정과<br>알지 못했던 마음을<br><br>어떻게 이해하고<br>가까운 관계로 만들 수 있을지<br><br>대한민국 대표 인지심리학자<br>김경일 교수가<br>시원하게 풀어드립니다
+</em><br></p>
+
+    <!-- 회색 리드 카피 (중앙정렬) -->
+    <p class="shb-lead"></b></p>
+
+    <!-- 노란 하이라이트 CTA 라인 -->
+    <div class="shb-badge" style="font-size:1.5rem;">'가화만사성!'<br>가정이 편안해야<br>만사가 편해집니다</div>
+<br><br>
+    <!-- 상세 카피 -->
+    <!-- <p class="shb-quote"><em style="font-family: 'GimpoPeaceFoundation';">학문과 예술<br>
+그리고 인간의 깊은 경험이
+<br>한데 어우러지는<br><Br>
+가장 인간적인<br>
+‘마음 치유의 시간’을 만나보세요. 
+
+</em></p> -->
+
+    
+  </div>
+</section>
+
+
+
+<section id="mindDetoxPremium8" aria-label="마음 디톡스 8 안내 포스터">
+  <style>
+
+    /* ================= 폰트 ================= */
+    @font-face {
+      font-family: 'GounBatang-t';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'SchoolSafetyNotification-d';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'GimpoPeaceFoundation';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/GimpoBatang00.woff') format('woff');
+    }
+
+    /* ================= 기본 ================= */
+    #mindDetoxPremium8{
+      --maxW: 1400px;
+      --ink: #1a1a1a;
+      --muted: #2c2b2b;
+      --titleGreen: #2c662d;
+
+      --bg-brightness: 0.85;
+
+      font-family: "Pretendard","Noto Sans KR",sans-serif;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      text-align: center;
+      padding: 100px 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ================= 배경 ================= */
+    #mindDetoxPremium8::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background: url('./img/bg10-1.jpg') center/cover no-repeat;
+      filter: brightness(var(--bg-brightness));
+      transition: all .5s ease;
+    }
+
+    /* ================= 고급 가독성 레이어 ================= */
+    #mindDetoxPremium8::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.3),
+        rgba(255,255,255,0.45)
+      );
+    }
+
+    /* ================= 콘텐츠 ================= */
+    #mindDetoxPremium8 .mdp8-inner{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 650px;
+      background: #ffffff50;
+      padding:100px 20px;
+      border-radius:10px;
+      /* backdrop-filter: blur(4px); */
+    }
+
+    .subtitle{
+      color:#3185ff;
+      font-weight:600;
+      font-size:1.2rem;
+      margin-bottom:10px;
+      font-family: 'GounBatang-t';
+    }
+
+    .title{
+      font-size:2.6rem;
+      font-weight:900;
+      color:var(--titleGreen);
+      margin-bottom:30px;
+      font-family: 'SchoolSafetyNotification-d';
+    }
+
+    .headline{
+      font-size:1.8rem;
+      font-weight:bold;
+      line-height:1.7;
+      border-top:2px solid #222;
+      border-bottom:2px solid #222;
+      padding:20px 0;
+      max-width: 520px;
+      margin: 0 auto 20px;
+      font-family: 'GimpoPeaceFoundation';
+    }
+
+    .desc{
+      font-size:1.3rem;
+      line-height:1.9;
+      margin-bottom:40px;
+      text-shadow: 0.5px 0px #00000020;
+      font-family: 'GimpoPeaceFoundation';
+    }
+
+    /* ================= info ================= */
+    .info-wrap{
+      display:flex;
+      justify-content:center;
+    }
+
+    .info{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      text-align:left;
+      font-size:1.3rem;
+      font-weight:bold;
+      line-height:1.9;  
+      text-shadow: 0.5px 0px #00000020;
+    }
+
+    .info-line + .info-line{
+      margin-top:4px;
+    }
+
+    .info-line{
+      font-weight:bold;
+    }
+
+    /* ================= 반응형 ================= */
+    @media (max-width:768px){
+      .title{font-size:2rem}
+      .headline{font-size:1.4rem}
+      .desc{font-size:1.3rem}
+      .info{font-size:1.1rem}
+    }
+
+    @media (max-width:550px){
+      .title{font-size:2rem}
+      .headline{font-size:1.4rem}
+      .desc{font-size:1.1rem}
+      .info{font-size:1.1rem}
+    }
+
+    @media (max-width:480px){
+      #mindDetoxPremium8{
+        padding:80px 16px;
+      }
+      .headline{font-size:1.2rem}
+    }
+
+    /* ================= 핵심 추가: PC 배경 변경 ================= */
+    @media (min-width:1200px){
+      #mindDetoxPremium8::before{
+        background: url('./img/bg10-pc.jpg') center/cover no-repeat;
+      }
+
+      /* PC에서는 더 선명하게 */
+      #mindDetoxPremium8{
+        --bg-brightness: 0.95;
+      }
+    }
+
+  </style>
+
+  <div class="mdp8-inner">
+
+    <div class="subtitle">
+      <b style="font-size:28px;">김경일 교수와 함께하는</b>
+    </div>
+
+    <div class="title">
+      마음 디톡스 ⑩
+    </div>
+
+    <div class="headline">
+      왜 우리는 가족에게 더 상처받을까
+    </div>
+
+    <div class="desc" style="font-weight:bold;">
+      <b style="font-size:1.3rem;">대한민국 대표 인지심리학자<br>김경일 교수와<br>함께 풀어가는 부모・자식 관계 해법</b><br><br>
+      가족 관계가 어긋나는 이유와<br>
+      여러분의 고민을<br>직접 묻고 답하며<br>문제를 해결해보는 특별한 시간!
+    </div>
+
+    <div class="info-wrap">
+      <div class="info">
+        <div class="info-line">일시: 2026년 5월 9일 (토) 오후 2시 ~ 5시</div>
+        <div class="info-line">장소: SCC 홀 서초</div>
+        <div class="info-line">참가비: 25,000원 (2인 이상 20,000원)</div>
+        <div class="info-line blink" style="color:red;">[선착순 100명! 얼리버드 20,000원]</div>
+      </div>
+    </div>
+
+  </div>
+</section>
