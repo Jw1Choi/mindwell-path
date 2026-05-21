@@ -1488,7 +1488,7 @@ About Us Section
       설명하기 어려운 감정들을 느끼고 계시다면
     </p> -->
 
-  </div>
+  </div>ㅗ7
 </section>
 
 
@@ -3593,6 +3593,7 @@ About Us Section
 </section>
 
 
+
 <section class="flos-section-head" style="background:#fff;">
 
 
@@ -3877,6 +3878,7 @@ About Us Section
     <div class="cs-header-wrap">
       <button type="button" class="cs-nav-arrow cs-nav-prev" aria-label="이전 컨퍼런스">&lt;</button>
       <div class="cs-header" role="tablist">
+         <button class="cs-tab" role="tab" aria-selected="true" data-target="md10">마음디톡스 10</button>
         <button class="cs-tab" role="tab" aria-selected="true" data-target="md9">마음디톡스 9</button>
         <button class="cs-tab" role="tab" aria-selected="true" data-target="md8">마음디톡스 8</button>
         <button class="cs-tab" role="tab" aria-selected="false" data-target="md7">마음디톡스 7</button>
@@ -3885,7 +3887,31 @@ About Us Section
       <button type="button" class="cs-nav-arrow cs-nav-next" aria-label="다음 컨퍼런스">&gt;</button>
     </div>
 
-     <!-- 🔹 마음디톡스 8 갤러리 -->
+     <section id="md10" class="conf-gallery">
+      <div class="conf-poster">
+        <img src="./img/10-poster.png" alt="마음디톡스 9 포스터">
+      </div>
+      <div class="conf-gallery__viewport">
+        <div class="conf-gallery__track">
+          <div class="conf-gallery__slide active"><img src="./img/4.jpg" alt="마음디톡스 9 현장 사진 1"></div>
+          <!-- <div class="conf-gallery__slide"><img src="./img/2.jpg" alt="마음디톡스 9 현장 사진 2"></div>
+          <div class="conf-gallery__slide"><img src="./img/3.jpg" alt="마음디톡스 9 현장 사진 3"></div> -->
+          <div class="conf-gallery__slide"><img src="./img/1.jpg" alt="마음디톡스 9 현장 사진 5"></div>
+          <div class="conf-gallery__slide"><img src="./img/5.jpg" alt="마음디톡스 9 현장 사진 6"></div>
+          <div class="conf-gallery__slide"><img src="./img/6.jpg" alt="마음디톡스 9 현장 사진 7"></div>
+          <div class="conf-gallery__slide"><img src="./img/7.jpg" alt="마음디톡스 9 현장 사진 7"></div>
+          <div class="conf-gallery__slide"><img src="./img/8.jpg" alt="마음디톡스 9 현장 사진 7"></div>
+          <div class="conf-gallery__slide"><img src="./img/9.jpg" alt="마음디톡스 9 현장 사진 7"></div>
+          <div class="conf-gallery__slide"><img src="./img/10.jpg" alt="마음디톡스 9 현장 사진 7"></div>
+        </div>
+        <button class="conf-gallery__arrow left" aria-label="이전">&#10094;</button>
+        <button class="conf-gallery__arrow right" aria-label="다음">&#10095;</button>
+        <div class="conf-gallery__dots" aria-hidden="true"></div>
+      </div>
+      <div class="conf-gallery__thumbs" aria-label="썸네일 목록"></div>
+    </section> 
+
+
     <section id="md9" class="conf-gallery">
       <div class="conf-poster">
         <img src="./img/9-poster.png" alt="마음디톡스 9 포스터">
@@ -4328,11 +4354,12 @@ About Us Section
     position:relative;
   }
 
-  .con-6,.con-7,.con-8,.con-9{display:none;}
+  .con-6,.con-7,.con-8,.con-9,.con-10{display:none;}
   body[data-conf="md6"] .con-6{display:block;}
   body[data-conf="md7"] .con-7{display:block;}
   body[data-conf="md8"] .con-8{display:block;}
   body[data-conf="md9"] .con-9{display:block;}
+  body[data-conf="md10"] .con-10{display:block;}
 
   /* 헤더 */
   .testimonials-section .ts-head{
@@ -4846,6 +4873,66 @@ About Us Section
   </div>
 </section>
 
+<!-- 🔹 마음디톡스 9 후기 -->
+<section id="testimonials-10" class="testimonials-section con-10">
+  <div class="ts-head">
+    <h2 class="ts-title">참가자 분들의 실제 후기</h2>
+    <div class="ts-head-arrows">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+    </div>
+  </div>
+
+  <div class="ts-shell">
+    <div class="ts-wrapper">
+      <button type="button" class="ts-arrow ts-prev" aria-label="이전 후기">&#10094;</button>
+
+      <div class="ts-viewport">
+        <div class="ts-track">
+          <article class="testimonial-card">
+            <q>역시 명불허전입니다. 유쾌하고 도움이 많이 됨. 아이 이름 안부르고 학교이름, 반, 번호로 부르고 할말 다하는 방법. 너무 신박했다. 오늘 당장 써먹어야겠다 생각함</q>
+            <p class="author">참가자 조xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>이해가 쉽게 설명해주시고, 재미도 있었습니다. 교수님께서 연구하신 내용을 강연을 통해 나누어주셔서 감사합니다. 명상 세션도 좋았습니다.</q>
+            <p class="author">참가자 노xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>요즘 마음이 많이 힘들었는데 좋은 강사님과 마음을 다독여주는 피아노 연주가 같이 있는 강의는 신선하고 좋았습니다. 멀리서 온 보람이 있네요.</q>
+            <p class="author">참가자 임xx</p>
+          </article>
+          <article class="testimonial-card">
+            <q>정현채 교수님의 경험을 바탕으로 한 진솔한 강의에 감사한다. 교수님의 삶과 죽음에 대한 철학에 감동을 받았습니다.</q>
+            <p class="author">참가자 조xx</p>
+          </article>
+           <article class="testimonial-card">
+            <q>일상에서 듣지 못하는 화두인 '죽음'에 관해 생각해 보는 기회가 되었어요. 기존에 접하기 어려운 내용을 전달해 주셔서 감사합니다.</q>
+            <p class="author">참가자 이xx</p>
+          </article>
+           <article class="testimonial-card">
+            <q>평상시 정교수님 동영상을 봐왔는데 뇌와 연결시켜 강의를 하시니 더 이해가 잘 되었습니다. 뇌가 멈추면 의식도 끊어진다고 알고 있었는데 오늘 강의로 불멸한다는 걸 확신하게 되었습니다. 강의와 음악, 미술이 어우러지니 영성도 높아지고, 따스한 손길로 위로 받은 기분입니다.</q>
+            <p class="author">참가자 서xx</p>
+          </article>
+           <article class="testimonial-card">
+            <q>가족을 넘어서 직장, 친구 관계에도 적용할 수 있는 해법이었습니다. 1-2부 내내 즐겁게 들었습니다. AI도 중간중간 활용법을 접목시켜서 일상에 대한 relevance가 좋았습니다.</q>
+            <p class="author">참가자 이xx</p>
+          </article>
+           <article class="testimonial-card">
+            <q>재미있고 유쾌하다. 다만 건강처럼 안좋은 것을 안하는 것만큼 인간 관계로 안하는 것이 중요하다는 내용은 정말 인상적입니다. 앞으로 어떤 쪽의 어떤 프로젝트를 하실 생각인지 궁금합니다.</q>
+            <p class="author">참가자 장xx</p>
+          </article>
+           <article class="testimonial-card">
+            <q>가족관계의 원만함을 위한 원인 및 해결방법도 알려주었습니다. 인지심리학이란 학문을 처음 접했는데, 매력있었습니다.</q>
+            <p class="author">참가자 이xx</p>
+          </article>
+        </div>
+      </div>
+
+      <button type="button" class="ts-arrow ts-next" aria-label="다음 후기">&#10095;</button>
+    </div>
+  </div>
+</section>
+
 <script>
 (function(){
   function initTestimonials(section){
@@ -5219,6 +5306,46 @@ About Us Section
   </div>
 </section>
 
+
+<section id="blog-news-slider2" class="con-10">
+  <div class="bns2-viewport">
+    <div class="bns2-track">
+
+
+       <a href="https://www.chosun.com/medical/2026/05/12/CANV7V5EZBDLFGSYQIUGYANR6U/" class="bns2-slide con-10" target="_blank" rel="noopener">
+        <img src="https://www.chosun.com/resizer/v2/RP4IYD7SC5D6FFGYT7STBNWDLI.jpg?auth=1510dd81b7296fc23d1c4e131bdb7b2771eeccef69bb669d2b6acbd4e643bda7&width=600&height=445&smart=true" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">조급함과 번아웃 시대의 가족 관계 회복법</h4>
+          <p class="bns2-summary">카카오택시를 이용하는 사람들의 대표적인 불만 중 하나가 “곧 도착합니다”라는 안내 메시지였다고 한다...</p>
+        </div>
+      </a>
+
+      
+      <!-- TODO: 마음디톡스 8 관련 실제 기사/블로그 링크로 교체 -->
+      <a href="https://www.mindgil.com/news/articleView.html?idxno=101768" class="bns2-slide con-10" target="_blank" rel="noopener">
+        <img src="https://cdn.mindgil.com/news/photo/202604/101768_52161_370.jpg" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 1">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">'내가 맞았나?'… 다시 묻는 사람</h4>
+          <p class="bns2-summary">대한민국 대표 인지 심리학자 김경일. 풍부한 삶의 경험과 학문적 깊이가 바탕이 된 메시지는 많은 이들에게 영감과 위로를 주고 있다. </p>
+        </div>
+      </a>
+      <a href="https://www.chosun.com/medical/2026/04/14/JPVF754YGFHYLFCW2VQ7FV5YVE/" class="bns2-slide con-10" target="_blank" rel="noopener">
+        <img src="https://www.chosun.com/resizer/v2/AC42JFN4TFCVTLUF4X7B25FONA.jpg?auth=716443d728349f90a9fcf33f665f821afbef4263595271aa0e4f77a8d6d55129&width=616" class="bns2-thumb" alt="마음디톡스 8 기사 썸네일 2">
+        <div class="bns2-desc">
+          <h4 class="bns2-title">왜 우리는 가족에게 더 상처받을까</h4>
+          <p class="bns2-summary">나는 어린 시절 울음을 스스로 멈추는 법을 먼저 배웠다.</p>
+        </div>
+      </a>
+
+
+
+      
+    </div>
+    <button class="bns2-arrow bns2-prev" aria-label="이전">&lt;</button>
+    <button class="bns2-arrow bns2-next" aria-label="다음">&gt;</button>
+  </div>
+</section>
+
 <style>
 #blog-news-slider2 { width: 98%; max-width: 1100px; margin: 3rem auto 2rem auto; font-family: 'Noto Sans KR', sans-serif;}
 #blog-news-slider2 .bns2-viewport { position: relative; overflow: hidden; width: 100%; border-radius: 20px; background: #f8f8f8; box-shadow: 0 6px 24px rgba(0,0,0,.08); min-height: 410px;}
@@ -5425,6 +5552,20 @@ About Us Section
  
 <section id="detox-nav">
   <div class="detox-nav-inner">
+
+        <a href="./conference-10.html" target="_blank" class="detox-nav-row">
+      <div class="detox-nav-left">
+        <!-- <span class="detox-nav-badge newest">NEW</span> -->
+        <img src="./img/logo-introduce.png" alt="마음건강 길" class="detox-nav-logo">
+      </div>
+      <div class="detox-nav-info">
+        <strong class="detox-nav-title">마음디톡스 10</strong>
+        <span class="detox-nav-topic">왜 가족은 나를 힘들게 할까?</span>
+      </div>
+      <span class="detox-nav-arrow">→</span>
+    </a>
+
+
  
     <a href="./conference-9.html" target="_blank" class="detox-nav-row">
       <div class="detox-nav-left">

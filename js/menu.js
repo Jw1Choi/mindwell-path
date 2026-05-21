@@ -8,7 +8,7 @@ template.innerHTML = `
     <p class="logo-font blink" style="marin-top:20px;font-size:1rem;color:red;"></p>
     </a>
     <div class="menu-btn">
-       <button class=" Event_Menu" onclick="">바로 신청하기</button>
+       <!-- <button class=" Event_Menu" onclick="">홈페이지 바로가기</button> -->
 
         <!-- <button class="total_menu"><img src="img/hamburger.svg" style="width:17px"></button> -->
     </div>
