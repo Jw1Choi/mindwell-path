@@ -118,6 +118,8 @@ template.innerHTML = `
 </div>
 
 </header>
+
+
 `;
 
 document.body.appendChild(template.content);
@@ -274,4 +276,154 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+});
+
+
+document.body.appendChild(template.content);
+
+
+/* ================================
+   Floating Top Button
+================================ */
+
+const floatingTopBtn = document.createElement('button');
+floatingTopBtn.id = 'floatingTopBtn';
+floatingTopBtn.setAttribute('aria-label','상단으로 이동');
+
+floatingTopBtn.innerHTML = `
+<svg viewBox="0 0 24 24" fill="none">
+  <path d="M12 19V5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M6.5 10.5L12 5L17.5 10.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+
+document.body.appendChild(floatingTopBtn);
+
+
+/* ================================
+   Floating Button Style
+================================ */
+
+const floatingTopStyle = document.createElement('style');
+
+floatingTopStyle.innerHTML = `
+#floatingTopBtn{
+    position:fixed;
+    right:24px;
+    bottom:28px;
+    width:58px;
+    height:58px;
+    border:none;
+    border-radius:50%;
+    background:linear-gradient(145deg,#111 0%,#1f1f1f 55%,#000 100%);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:99999;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(20px) scale(.9);
+
+    box-shadow:
+      0 12px 35px rgba(0,0,0,.28),
+      inset 0 1px 0 rgba(255,255,255,.12);
+
+    transition:
+      opacity .35s ease,
+      transform .35s ease,
+      visibility .35s ease,
+      box-shadow .35s ease,
+      background .35s ease;
+
+    -webkit-tap-highlight-color:transparent;
+    backdrop-filter:blur(8px);
+}
+
+#floatingTopBtn.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0) scale(1);
+    animation:floatingFadeUp .55s ease both;
+}
+
+#floatingTopBtn:hover{
+    transform:translateY(-4px) scale(1.03);
+    background:linear-gradient(145deg,#1a1a1a 0%,#000 100%);
+    box-shadow:
+      0 20px 45px rgba(0,0,0,.35),
+      inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+#floatingTopBtn:active{
+    transform:translateY(-1px) scale(.96);
+}
+
+#floatingTopBtn svg{
+    width:23px;
+    height:23px;
+}
+
+@keyframes floatingFadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@media(max-width:768px){
+
+    #floatingTopBtn{
+        width:52px;
+        height:52px;
+        right:18px;
+        bottom:22px;
+    }
+
+    #floatingTopBtn svg{
+        width:21px;
+        height:21px;
+    }
+}
+`;
+
+document.head.appendChild(floatingTopStyle);
+
+
+/* ================================
+   Floating Button Logic
+================================ */
+
+function toggleFloatingTopBtn(){
+
+    if(window.scrollY > 300){
+        floatingTopBtn.classList.add('show');
+    }else{
+        floatingTopBtn.classList.remove('show');
+    }
+}
+
+window.addEventListener('scroll', toggleFloatingTopBtn, {
+    passive:true
+});
+
+window.addEventListener('load', toggleFloatingTopBtn);
+
+toggleFloatingTopBtn();
+
+
+floatingTopBtn.addEventListener('click', function(){
+
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+
 });
