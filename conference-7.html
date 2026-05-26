@@ -2589,7 +2589,8 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
     #confSwitch .cs-header-wrap{display:flex;align-items:center;justify-content:center;gap:8px;max-width:980px;margin:4px auto 8px;}
     #confSwitch .cs-nav-arrow{width:30px;height:30px;border-radius:999px;border:1px solid rgba(148,163,184,.7);background:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;color:#64748b;cursor:pointer;box-shadow:0 1px 4px rgba(15,23,42,.12);transition:background .18s,color .18s,transform .18s;flex-shrink:0;}
     #confSwitch .cs-nav-arrow:hover{background:var(--brand);color:#fff;transform:translateY(-1px);}
-    #confSwitch .cs-header{display:flex;gap:8px;align-items:center;margin:0;padding:4px 4px 8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth;max-width:900px;}
+    #confSwitch .cs-header{display:flex;gap:8px;align-items:center;margin:0;padding:4px 4px 8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth;max-width:900px;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-x;-webkit-overflow-scrolling:touch;}
+    #confSwitch .cs-header.is-dragging{cursor:grabbing;scroll-behavior:auto;}
     #confSwitch .cs-header::-webkit-scrollbar{display:none;}
     #confSwitch .cs-tab{appearance:none;border:1.5px solid var(--ring);background:#fff;border-radius:999px;padding:.55rem 1.1rem;font-weight:700;font-size:.92rem;cursor:pointer;box-shadow:0 1px 4px rgba(15,23,42,.05);transition:.2s;white-space:nowrap;flex-shrink:0;}
     #confSwitch .cs-tab:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(15,23,42,.06);}
@@ -2837,6 +2838,82 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
       });
     }
 
+    /* ================================
+       1-1) 컨퍼런스 차수 버튼 드래그 스크롤
+       - 버튼 클릭 기능은 유지
+       - 마우스/손가락으로 좌우 이동 가능
+       ================================= */
+    (function initConferenceTabDrag(){
+      if(!header) return;
+
+      let isDown = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let moved = false;
+      let blockClick = false;
+
+      function getX(e){
+        if(e.touches && e.touches[0]) return e.touches[0].clientX;
+        if(e.changedTouches && e.changedTouches[0]) return e.changedTouches[0].clientX;
+        return e.clientX;
+      }
+
+      function dragStart(e){
+        isDown = true;
+        moved = false;
+        blockClick = false;
+        startX = getX(e);
+        startScrollLeft = header.scrollLeft;
+        header.classList.add('is-dragging');
+      }
+
+      function dragMove(e){
+        if(!isDown) return;
+        const currentX = getX(e);
+        const walk = currentX - startX;
+
+        if(Math.abs(walk) > 4){
+          moved = true;
+          blockClick = true;
+        }
+
+        header.scrollLeft = startScrollLeft - walk;
+      }
+
+      function dragEnd(){
+        if(!isDown) return;
+        isDown = false;
+        header.classList.remove('is-dragging');
+
+        if(blockClick){
+          window.setTimeout(function(){
+            blockClick = false;
+          }, 80);
+        }
+      }
+
+      header.addEventListener('mousedown', dragStart);
+      window.addEventListener('mousemove', dragMove);
+      window.addEventListener('mouseup', dragEnd);
+
+      header.addEventListener('touchstart', dragStart, {passive:true});
+      header.addEventListener('touchmove', dragMove, {passive:true});
+      header.addEventListener('touchend', dragEnd, {passive:true});
+      header.addEventListener('touchcancel', dragEnd, {passive:true});
+
+      header.addEventListener('click', function(e){
+        if(!blockClick) return;
+        e.preventDefault();
+        e.stopPropagation();
+      }, true);
+
+      header.querySelectorAll('.cs-tab').forEach(function(btn){
+        btn.addEventListener('dragstart', function(e){
+          e.preventDefault();
+        });
+      });
+    })();
+
     class ConfGallery{
       constructor(section){
         this.sec = section;
@@ -2910,6 +2987,7 @@ document.querySelectorAll('#choice .faq-toggle').forEach((button, index) => {
   });
 })();
 </script>
+
 
 
 
