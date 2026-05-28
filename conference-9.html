@@ -4905,7 +4905,7 @@ About Us Section
 
 
  
-<section id="conferenceDetailCta" aria-label="선택한 마음디톡스 자세히 보기">
+<section id="conferenceDetailCta" aria-label="선택한 마음디톡스 자세히 보기" data-current-conf="md9">
   <style>
     #conferenceDetailCta,
     #conferenceDetailCta *{
@@ -5103,6 +5103,10 @@ About Us Section
       background:rgba(255,255,255,.26);
     }
 
+    #conferenceDetailCta .cdc-hidden{
+      display:none !important;
+    }
+
     #conferenceDetailCta .cdc-panel.is-changing{
       animation:cdcSoftChange .34s ease both;
     }
@@ -5234,19 +5238,84 @@ About Us Section
         }
       };
 
-      function getSelectedConference(){
-        var bodyConf = document.body ? document.body.getAttribute('data-conf') : '';
+      var conferenceOrder = ['md10','md9','md8','md7','md6'];
+
+      function normalizeConfId(value){
+        if(!value) return '';
+        value = String(value).trim().toLowerCase();
+        if(/^\d+$/.test(value)) return 'md' + value;
+        return value;
+      }
+
+      function getCurrentPageConference(){
+        var sectionConf = normalizeConfId(root.getAttribute('data-current-conf'));
+        if(sectionConf && conferenceData[sectionConf]) return sectionConf;
+
+        var bodyConf = document.body ? normalizeConfId(document.body.getAttribute('data-current-conf') || document.body.getAttribute('data-conf')) : '';
         if(bodyConf && conferenceData[bodyConf]) return bodyConf;
 
-        var selectedTab = document.querySelector('#confSwitch .cs-tab[aria-selected="true"][data-target]');
-        var selectedTarget = selectedTab ? selectedTab.getAttribute('data-target') : '';
-        if(selectedTarget && conferenceData[selectedTarget]) return selectedTarget;
+        var path = window.location && window.location.pathname ? window.location.pathname : '';
+        var matched = path.match(/conference[-_ ]?(\d+)/i);
+        if(matched && matched[1]){
+          var pathConf = 'md' + matched[1];
+          if(conferenceData[pathConf]) return pathConf;
+        }
 
-        return 'md10';
+        return '';
+      }
+
+      function getFirstAvailableConference(excludeConf){
+        for(var i = 0; i < conferenceOrder.length; i++){
+          if(conferenceOrder[i] !== excludeConf && conferenceData[conferenceOrder[i]]){
+            return conferenceOrder[i];
+          }
+        }
+        return '';
+      }
+
+      function getSelectedConference(){
+        var currentPageConf = getCurrentPageConference();
+        var bodyConf = document.body ? normalizeConfId(document.body.getAttribute('data-conf')) : '';
+
+        if(bodyConf && conferenceData[bodyConf] && bodyConf !== currentPageConf){
+          return bodyConf;
+        }
+
+        var selectedTab = document.querySelector('#confSwitch .cs-tab[aria-selected="true"][data-target]');
+        var selectedTarget = selectedTab ? normalizeConfId(selectedTab.getAttribute('data-target')) : '';
+
+        if(selectedTarget && conferenceData[selectedTarget] && selectedTarget !== currentPageConf){
+          return selectedTarget;
+        }
+
+        return '';
+      }
+
+      function hideCurrentConferenceTab(){
+        /*
+          회차 선택 버튼은 절대 숨기거나 클릭을 막지 않습니다.
+          현재 랜딩페이지에 해당하는 회차가 선택되었을 때는
+          아래 자세히 보기 CTA 섹션만 숨겨지도록 render()에서 처리합니다.
+        */
       }
 
       function render(confId){
-        var data = conferenceData[confId] || conferenceData.md10;
+        var currentPageConf = getCurrentPageConference();
+
+        if(confId === currentPageConf || !confId){
+          root.style.display = 'none';
+          return;
+        }
+
+        var data = conferenceData[confId];
+
+        if(!data){
+          root.style.display = 'none';
+          return;
+        }
+
+        root.style.display = '';
+
         if(!roundEl || !topicEl || !buttonEl) return;
 
         roundEl.textContent = data.round;
@@ -5262,6 +5331,7 @@ About Us Section
       }
 
       function sync(){
+        hideCurrentConferenceTab();
         render(getSelectedConference());
       }
 
@@ -5271,6 +5341,9 @@ About Us Section
       document.addEventListener('click', function(e){
         var tab = e.target.closest ? e.target.closest('#confSwitch .cs-tab[data-target]') : null;
         if(!tab) return;
+
+        if(tab.getAttribute('data-link-only') === 'true') return;
+
         window.setTimeout(sync, 0);
         window.setTimeout(sync, 80);
       });
@@ -5278,19 +5351,20 @@ About Us Section
       if(window.MutationObserver && document.body){
         var observer = new MutationObserver(function(mutations){
           for(var i = 0; i < mutations.length; i++){
-            if(mutations[i].attributeName === 'data-conf'){
+            if(mutations[i].attributeName === 'data-conf' || mutations[i].attributeName === 'data-current-conf'){
               sync();
               break;
             }
           }
         });
-        observer.observe(document.body, { attributes:true, attributeFilter:['data-conf'] });
+        observer.observe(document.body, { attributes:true, attributeFilter:['data-conf','data-current-conf'] });
       }
 
       sync();
     })();
   </script>
 </section>
+
 
  
 <style>
